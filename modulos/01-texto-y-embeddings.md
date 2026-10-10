@@ -33,7 +33,7 @@ Esta progresión se basa en **SRC-01, `2025_word2vec.ipynb`**, disponible en `fu
 
 Con el notebook original, modificar un pequeño corpus y observar cómo cambian la tokenización, las representaciones y las relaciones vectoriales. Documentar las decisiones tomadas y distinguir los resultados observados de las interpretaciones.
 
-**Material interactivo:** notebook y enlace a Colab pendientes de incorporar. No se ha proporcionado aún el archivo fuente en este repositorio.
+**Material interactivo:** la página generada ofrece lectura estática, descarga de la notebook y enlace a Colab. Antes de ejecutar, revisar el requisito del corpus, las versiones y las advertencias del módulo.
 
 ## Puente al módulo siguiente
 

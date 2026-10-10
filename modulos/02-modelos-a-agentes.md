@@ -32,7 +32,7 @@ El contenido se basa en **SRC-04, `Agente_ReAct.ipynb`**, disponible en `fuentes
 
 Seguir una iteración del agente identificando pensamiento, acción, entrada de la herramienta, observación y respuesta. Luego, proponer una herramienta sencilla adicional y describir qué entradas, salidas y errores debería contemplar.
 
-**Material interactivo:** notebook y enlace a Colab pendientes de incorporar. Las credenciales o claves de API no deben incluirse en archivos públicos; el procedimiento final se documentará a partir del notebook revisado.
+**Material interactivo:** la página generada ofrece lectura estática, descarga de la notebook y enlace a Colab. Las credenciales o claves de API no deben incluirse en archivos públicos; el procedimiento de ejecución debe comprobarse a partir del notebook revisado.
 
 ## Puente al módulo siguiente
 

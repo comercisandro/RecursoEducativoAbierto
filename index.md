@@ -18,7 +18,7 @@ title: De Word2Vec a agentes de inteligencia artificial
     <p class="source-note">Material de la Cátedra de Inteligencia Artificial · páginas HTML y cuadernos Jupyter · guía docente disponible</p>
   </section>
 
-  <aside class="notice home-status"><strong>Estado del recurso: borrador para revisión docente.</strong> Las notebooks se ofrecen como lectura web estática; las celdas no se ejecutan en estas páginas. La autorización de licencias y el cotejo institucional siguen pendientes. Se documentan las versiones y límites técnicos conocidos para apoyar una implementación informada.</aside>
+  <aside class="notice home-status"><strong>Estado del recurso: versión de revisión pública.</strong> Las notebooks se ofrecen como lectura web estática; las celdas no se ejecutan en estas páginas. La autorización de licencias y el cotejo institucional siguen pendientes. Se documentan las versiones y límites técnicos conocidos para apoyar una implementación informada.</aside>
 
   <section class="home-route" aria-labelledby="route-title">
     <div class="section-heading">

@@ -22,6 +22,7 @@ html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: var(--canvas); line-height: 1.68; }
 a { color: var(--violet-dark); text-underline-offset: .18em; }
 a:hover { color: var(--violet); }
+a:focus-visible, summary:focus-visible { outline: 3px solid #f0a93b; outline-offset: 3px; }
 .skip-link { position: absolute; left: -10000px; top: 1rem; z-index: 20; padding: .7rem 1rem; color: var(--ink); background: white; }
 .skip-link:focus { left: 1rem; }
 
@@ -88,6 +89,24 @@ h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; letter-spacing: -.03em; }
 .lesson-dot { width: .58rem; height: .58rem; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 4px #e9e3ff; }
 .lesson-source { margin-left: auto; font-size: .8rem; font-weight: 550; letter-spacing: 0; }
 
+.module-overview { display: grid; grid-template-columns: minmax(220px, .72fr) minmax(0, 1.28fr); gap: 1rem; margin: 1.45rem 0 1.2rem; padding: 1.25rem; border: 1px solid #d9d5f2; border-radius: 1.1rem; background: linear-gradient(135deg, #fff 0%, #f5f2ff 100%); box-shadow: 0 9px 26px rgb(34 49 82 / 5%); }
+.module-overview-heading { padding: .2rem .4rem .2rem .1rem; }
+.section-kicker, .overview-label { color: var(--violet-dark); font-size: .68rem; font-weight: 900; letter-spacing: .12em; }
+.module-overview-heading h2, .module-notices-heading h2 { margin: .4rem 0 .55rem; color: var(--navy); font-size: clamp(1.35rem, 2.5vw, 1.75rem); }
+.module-overview-heading p, .module-notices-heading p { margin: 0; color: var(--muted); font-size: .91rem; }
+.module-overview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+.overview-card { padding: .85rem .9rem; border: 1px solid rgb(101 70 200 / 15%); border-radius: .8rem; background: rgb(255 255 255 / 78%); }
+.overview-card p { margin: .45rem 0 0; color: #35445d; font-size: .88rem; line-height: 1.55; }
+.overview-purpose { border-top: 3px solid var(--mint); }
+.overview-evidence { border-top: 3px solid var(--coral); }
+.overview-requirements { border-top: 3px solid var(--gold); }
+.module-notices { margin: 1.2rem 0 1.4rem; padding: 1.15rem 1.25rem .55rem; border: 1px solid var(--line); border-radius: 1.1rem; background: rgb(255 255 255 / 72%); }
+.module-notices-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: .1rem 1rem; margin-bottom: .55rem; }
+.module-notices-heading .section-kicker { flex-basis: 100%; }
+.module-notices-heading h2, .module-notices-heading p { margin-top: 0; }
+.notice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+.notice-grid .notice { height: 100%; margin: 0; }
+
 .notebook-content { padding: clamp(1.15rem, 4vw, 2.6rem); border: 1px solid var(--line); border-radius: 1.2rem; background: var(--paper); box-shadow: 0 16px 40px rgb(34 49 82 / 6%); }
 .markdown-cell { margin: 0 0 1.2rem; }
 .markdown-cell:first-child:empty { display: none; }
@@ -103,6 +122,7 @@ h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; letter-spacing: -.03em; }
 .markdown-cell hr { margin: 2rem 0; border: 0; border-top: 1px solid var(--line); }
 .markdown-cell strong { color: #253251; }
 .markdown-cell a { font-weight: 650; }
+.markdown-cell img { max-width: 100%; height: auto; }
 .markdown-cell code, .notice code { padding: .12em .35em; border: 1px solid #e5e2f3; border-radius: .35rem; color: #573caa; background: #f3f0ff; font-size: .9em; }
 
 .markdown-code, .code-cell pre, .output-text, .output-error { overflow-x: auto; padding: 1rem 1.1rem; border-radius: .7rem; background: var(--code); color: #edf3fc; font: .87rem/1.65 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; tab-size: 4; }
@@ -186,6 +206,8 @@ code { overflow-wrap: anywhere; }
   .learning-path > a:not(:last-child)::after { top: auto; right: auto; bottom: -.28rem; left: 1.67rem; width: 1px; height: .5rem; }
   .path-caption { flex-direction: column; gap: .1rem; }
   .module-nav { grid-template-columns: 1fr; }
+  .module-overview { grid-template-columns: 1fr; }
+  .module-overview-grid, .notice-grid { grid-template-columns: 1fr; }
   .lesson-source { display: none; }
   .home-module-grid { grid-template-columns: 1fr; }
   .home-module-card { min-height: auto; }

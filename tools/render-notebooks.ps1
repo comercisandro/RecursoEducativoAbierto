@@ -70,7 +70,12 @@ function Convert-Markdown([string]$Markdown) {
     $flushParagraph = {
         if ($paragraph.Count -gt 0) {
             $joined = ($paragraph -join "`n") -replace '\s*\n\s*', ' '
-            [void]$html.AppendLine("<p>$(Convert-InlineMarkdown $joined)</p>")
+            $converted = Convert-InlineMarkdown $joined
+            if ($converted -match '^\s*<figure class="notebook-image"[\s\S]*</figure>\s*$') {
+                [void]$html.AppendLine($converted)
+            } else {
+                [void]$html.AppendLine("<p>$converted</p>")
+            }
             $paragraph.Clear()
         }
     }
@@ -187,24 +192,33 @@ function Add-CellOutput($Builder, $Output) {
 $modules = @(
     [pscustomobject]@{
         File='2025_word2vec.ipynb'; Output='01-word2vec.html'; Number='01'; Title='Del texto a Word2Vec';
-        Focus=@('Preparar un corpus','Aprender embeddings','Explorar distancias');
+        Focus=@('Preparar el corpus','Aprender embeddings','Leer similitudes');
         SourceId='SRC-01'; Pdf='2025_word2vec.ipynb - Colab.pdf';
         Summary='Preprocesamiento, tokenización, representaciones del texto y exploración de embeddings estáticos.';
-        Lead='Partimos de las palabras y de las decisiones que convierten un corpus en datos analizables. Después exploramos cómo Word2Vec aprende vectores a partir de contextos y qué relaciones se pueden observar en ese espacio.'
+        Lead='Convertimos un corpus en datos analizables y observamos cómo Word2Vec aprende vectores a partir de los contextos. La meta no es “entender” el texto, sino aprender a leer qué representan los resultados y cuáles son sus límites.';
+        Purpose='Relacionar las decisiones de limpieza y tokenización con las representaciones vectoriales que aprende un modelo de embeddings.';
+        Evidence='Un registro de decisiones sobre el corpus, los parámetros de entrenamiento y la interpretación prudente de una similitud.';
+        Requirements='Lectura web para seguir el concepto; para ejecutar, notebook, corpus simpsons_dataset.csv y un entorno compatible con Gensim.'
     },
     [pscustomobject]@{
         File='Agente_ReAct.ipynb'; Output='02-agente-react.html'; Number='02'; Title='Construir un agente ReAct';
-        Focus=@('Definir herramientas','Interpretar acciones','Cerrar el ciclo ReAct');
+        Focus=@('Definir herramientas','Interpretar acciones','Cerrar el ciclo');
         SourceId='SRC-04'; Pdf='Agente_ReAct.ipynb - Colab.pdf';
         Summary='Herramientas, formato de acciones, parser y ciclo Thought–Action–Observation implementado en Python.';
-        Lead='El notebook construye un agente desde sus componentes: conexión con un modelo, definición de herramientas, instrucciones estructuradas, análisis de la respuesta y bucle de ejecución.'
+        Lead='Construimos un agente haciendo visibles sus piezas: herramienta, instrucciones, parser, observación y respuesta final. El foco está en analizar el flujo y sus fallos, no en atribuir razonamiento humano al modelo.';
+        Purpose='Distinguir la generación de texto de la ejecución de acciones y analizar cómo un bucle ReAct coordina ambas.';
+        Evidence='Una traza anotada del ciclo y un conjunto de pruebas para respuestas válidas, errores, herramientas desconocidas y límite de iteraciones.';
+        Requirements='Lectura web para analizar el flujo; para ejecutar, notebook, dependencias compatibles y token de Hugging Face configurado fuera del repositorio.'
     },
     [pscustomobject]@{
         File='Agente_LangChain.ipynb'; Output='03-frameworks-skills.html'; Number='03'; Title='De ReAct a frameworks y skills';
-        Focus=@('Declarar tools','Orquestar un agente','Componer skills');
+        Focus=@('Declarar tools','Orquestar el flujo','Componer skills');
         SourceId='SRC-03'; Pdf='Agente_LangChain.ipynb - Colab.pdf';
         Summary='Abstracción de herramientas y agentes con LangChain/LangGraph, y composición de skills.';
-        Lead='Después de implementar ReAct manualmente, comparamos ese flujo con las abstracciones de LangChain y exploramos herramientas y skills que reúnen varias operaciones.'
+        Lead='Comparamos el bucle ReAct explícito con las abstracciones de LangChain y LangGraph, y distinguimos una herramienta, una Skill y un protocolo como MCP. Elegimos la capa adecuada sin ocultar sus riesgos.';
+        Purpose='Comparar distintas capas de abstracción y justificar cuándo conviene una herramienta puntual, una Skill o un runtime de orquestación.';
+        Evidence='Un diagrama de componentes con permisos mínimos, criterios de elección y casos de prueba para una herramienta o flujo.';
+        Requirements='Lectura web para comparar conceptos; para ejecutar, notebook, versiones verificadas y token configurado de forma segura. MCP no es requisito.'
     }
 )
 
@@ -256,6 +270,14 @@ foreach ($module in $modules) {
         [void]$builder.AppendLine("<a class=`"$stepClass`" href=`"$($step.Href)`"$aria><span class=`"path-number`">$($step.Number)</span><span class=`"path-label`">$([System.Net.WebUtility]::HtmlEncode($step.Label))</span></a>")
     }
     [void]$builder.AppendLine('</nav>')
+    [void]$builder.AppendLine('<section class="module-overview" aria-labelledby="overview-title">')
+    [void]$builder.AppendLine('<div class="module-overview-heading"><span class="section-kicker">ANTES DE EMPEZAR</span><h2 id="overview-title">Qué vas a hacer en este módulo</h2><p>La página permite estudiar el recorrido sin ejecutar código. Usa la notebook solo después de revisar los requisitos y las advertencias.</p></div>')
+    [void]$builder.AppendLine('<div class="module-overview-grid">')
+    [void]$builder.AppendLine("<article class=`"overview-card overview-purpose`"><span class=`"overview-label`">PROPÓSITO</span><p>$([System.Net.WebUtility]::HtmlEncode($module.Purpose))</p></article>")
+    [void]$builder.AppendLine("<article class=`"overview-card overview-evidence`"><span class=`"overview-label`">EVIDENCIA SUGERIDA</span><p>$([System.Net.WebUtility]::HtmlEncode($module.Evidence))</p></article>")
+    [void]$builder.AppendLine("<article class=`"overview-card overview-requirements`"><span class=`"overview-label`">REQUISITOS</span><p>$([System.Net.WebUtility]::HtmlEncode($module.Requirements))</p></article>")
+    [void]$builder.AppendLine('</div></section>')
+    [void]$builder.AppendLine('<section class="module-notices" aria-labelledby="notices-title"><div class="module-notices-heading"><span class="section-kicker">TRANSPARENCIA Y SEGURIDAD</span><h2 id="notices-title">Antes de ejecutar</h2><p>Estas condiciones acompañan la lectura y deben comprobarse en cada entorno de práctica.</p></div><div class="notice-grid">')
     [void]$builder.AppendLine('<aside class="notice"><strong>Licencia en revisión.</strong> La página y el notebook no muestran una licencia abierta declarada. La publicación pública del archivo no concede por sí sola permisos de adaptación o redistribución. Ver <a href="../licencias-y-atribuciones.html">estado de licencias y atribuciones</a>.</aside>')
     [void]$builder.AppendLine('<aside class="notice info"><strong>Lectura estática.</strong> Esta página muestra el texto, el código y las salidas que ya estaban guardadas en la notebook. No ejecuta celdas. Las salidas HTML dinámicas de terceros se omiten por seguridad; los gráficos interactivos requieren abrir la notebook.</aside>')
 
@@ -276,8 +298,9 @@ foreach ($module in $modules) {
     if ($module.File -in @('Agente_ReAct.ipynb','Agente_LangChain.ipynb')) {
         [void]$builder.AppendLine('<aside class="notice warning"><strong>Requisito de API.</strong> El notebook solicita un token de Hugging Face mediante una entrada oculta. No publiques ni guardes tokens en el repositorio; configura el secreto en tu entorno antes de ejecutar las celdas que llaman al modelo o a servicios externos.</aside>')
     }
+    [void]$builder.AppendLine('</div></section>')
 
-    [void]$builder.AppendLine("<div class=`"lesson-label`"><span class=`"lesson-dot`"></span><span>$($module.Number) / CONTENIDO DE LA LECCIÓN</span><span class=`"lesson-source`">Versión de lectura web</span></div>")
+    [void]$builder.AppendLine("<div class=`"lesson-label`"><span class=`"lesson-dot`"></span><span>$($module.Number) / CONTENIDO DE LA LECCIÓN</span><span class=`"lesson-source`">Transcripción estática de la notebook</span></div>")
     [void]$builder.AppendLine('<section class="notebook-content" aria-label="Contenido original de la notebook">')
     $cellNumber = 0
     foreach ($cell in $notebook.cells) {

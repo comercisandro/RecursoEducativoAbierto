@@ -32,7 +32,7 @@ El contenido se basa en **SRC-03, `Agente_LangChain.ipynb`**, disponible en `fue
 
 Elegir una tarea del módulo anterior y describir dos soluciones: una con el bucle manual y otra con la abstracción del notebook. Comparar legibilidad, control del flujo, facilidad de extensión y manejo de errores.
 
-**Material interactivo:** notebook y enlace a Colab pendientes de incorporar.
+**Material interactivo:** la página generada ofrece lectura estática, descarga de la notebook y enlace a Colab. Las versiones de bibliotecas y los requisitos de servicios deben verificarse antes de ejecutar.
 
 ## Cierre de la ruta
 
