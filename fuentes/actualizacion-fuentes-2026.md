@@ -49,6 +49,14 @@ El selector de Creative Commons permite comparar atribución, usos comerciales, 
 
 Fuentes: [Recomendación UNESCO sobre REA](https://www.unesco.org/en/legal-affairs/recommendation-open-educational-resources-oer), [Guidance for generative AI in education and research](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research) y [Creative Commons License Chooser](https://creativecommons.org/chooser/), consultadas el 10-10-2026.
 
+## Diseño de REA, guía docente y accesibilidad — SRC-37, SRC-38 y SRC-39
+
+La guía rápida de REBIUN propone un ciclo para buscar, crear, adoptar o adaptar, usar y compartir REA, e incluye la importancia de los metadatos y de seleccionar una licencia apropiada (SRC-37). El material de planificación del INTEF sugiere partir de contexto, objetivos y necesidades del grupo, articular tareas con evaluación y considerar desde el diseño recursos, accesibilidad y distribución (SRC-38). CAST organiza prácticas de accesibilidad en estructura, enlaces, descripción de imágenes, tipografía/color y evaluación (SRC-39); advierte que una lista o comprobación automatizada no reemplaza una auditoría completa ni la evaluación con personas usuarias.
+
+**Aplicación:** se añadió a la guía una secuencia orientativa con evidencias, modalidades con y sin ejecución de notebooks, una lista de preparación docente y una revisión básica de accesibilidad. Son adaptaciones de criterios generales a este borrador; no se copió una plantilla ni se afirma que el recurso haya superado una auditoría.
+
+Fuentes consultadas el 10-10-2026: [REBIUN — Guía rápida para profesores](https://www.rebiun.org/kit-rea/guia-rapida-para-profesores), [INTEF — Pasos para crear un REA](https://formacion.intef.es/aulaenabierto/mod/book/tool/print/index.php?id=4158) y [CAST AEM Center — Protocol for Creating Accessible OER](https://aem.cast.org/binaries/content/assets/common/publications/aem/protocol-creating-accessible-oer-a11y.pdf).
+
 ## Cotejo de fuentes curriculares en copia local
 
 En la carpeta de trabajo también existen PDFs con nombres correspondientes a SRC-06, SRC-09, SRC-16, SRC-17, SRC-21 y SRC-26. Se leyeron las copias disponibles, que no forman parte de este registro de fuentes web ni se incorporaron automáticamente a Git:

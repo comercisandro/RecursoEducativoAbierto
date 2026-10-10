@@ -23,6 +23,8 @@ permalink: /guia-reutilizacion.html
 
 Propuesta dirigida a estudiantes de nivel superior vinculados con Inteligencia Artificial o áreas afines. El nivel, carrera, espacio curricular y perfil de ingreso deben precisarse con la cátedra.
 
+Antes de implementarla, completar con el equipo docente: asignatura/carrera, conocimientos previos, modalidad, cantidad de encuentros, tamaño del grupo, dispositivos disponibles y conectividad. La planificación se presenta como adaptable y no presupone una duración institucional.
+
 ## 3. Propósito pedagógico
 
 Construir una comprensión progresiva del procesamiento y la representación del lenguaje, y conectar esos fundamentos con el diseño de agentes que utilizan herramientas.
@@ -48,6 +50,18 @@ La secuencia se organiza en tres módulos: **texto y embeddings** (SRC-01), **Re
 
 > La copia local de las instrucciones **SRC-16** indica que para la actividad cooperativa acreditable del punto 3 no corresponde usar herramientas de IA. Confirmar la consigna vigente en el aula virtual; las actividades de IA de esta guía son propuestas independientes y no modifican esa instrucción.
 
+### Secuencia orientativa
+
+| Momento | Propuesta de trabajo | Evidencia observable |
+|---|---|---|
+| Apertura | Recuperar ideas previas sobre cómo representar texto y qué puede hacer un agente. Presentar una pregunta guía: ¿qué información gana y qué pierde un sistema al convertir texto en vectores y acciones? | Predicción inicial o mapa de conceptos. |
+| Módulo 1 | Explorar tokens, Bag-of-Words y embeddings; contrastar una lectura conceptual con la notebook si el entorno está disponible. | Explicación de una transformación y registro de corpus/parámetros. |
+| Módulo 2 | Seguir un ciclo ReAct e inspeccionar parser, acción, observación y terminación. Probar ejemplos válidos y fallidos. | Traza anotada y casos de prueba. |
+| Módulo 3 | Comparar herramientas, Skills, MCP y orquestación; diseñar una solución acotada que aplique mínimo privilegio. | Diagrama de componentes y plan de pruebas. |
+| Cierre | Integrar la ruta en una explicación, prototipo en papel o demostración revisada por pares. | Producto integrador y reflexión sobre límites y reproducibilidad. |
+
+La secuencia retoma como orientación el diseño desde contexto, objetivos, tareas y evaluación de SRC-38 y el ciclo de adopción/adaptación de SRC-37. No es una plantilla institucional ni sustituye la planificación de la asignatura.
+
 ## 6. Requisitos técnicos y formatos
 
 - Navegador web para leer las páginas estáticas; no requieren ejecutar código ni instalar software (SRC-09, portabilidad).
@@ -55,9 +69,17 @@ La secuencia se organiza en tres módulos: **texto y embeddings** (SRC-01), **Re
 - La práctica Word2Vec necesita el CSV `simpsons_dataset.csv`, no incluido; cada ejemplo con modelo externo puede exigir una cuenta/token y depender de cambios de proveedor o API (SRC-01, SRC-03, SRC-04).
 - Antes de la actividad, documentar versiones probadas y dependencias. No se publicarán claves, tokens ni credenciales.
 
+### Alternativas de implementación
+
+- **Con ejecución:** preparar Python/Jupyter o Colab y probar previamente dependencias, datos y servicios. Para actividades con modelos/API, explicitar costos, límites, manejo de datos y alternativas sin cuenta.
+- **Solo lectura o baja conectividad:** trabajar con las páginas HTML, capturas/código ya visibles y trazas impresas o descargadas; entregar análisis y casos de prueba sin ejecutar celdas.
+- **Trabajo colaborativo:** distribuir roles (lectura del flujo, pruebas, documentación y revisión de riesgos) y permitir una entrega individual equivalente si las condiciones de acceso lo requieren.
+
 ## 7. Accesibilidad y alternativas de participación
 
 Mantener jerarquía de encabezados, instrucciones textuales, enlaces descriptivos y explicaciones que no dependan únicamente del color o de una imagen. Acompañar gráficos con una descripción textual. Ofrecer una alternativa de lectura/análisis para quien no pueda ejecutar el notebook. La copia local de **SRC-09** incluye accesibilidad sensorial/motora, acceso en distintos dispositivos y problemas técnicos; revisar el sitio con esos criterios y documentar las limitaciones observadas. **SRC-26** pide declarar elementos de Diseño Universal para el Aprendizaje (DUA), como transcripciones, contraste y compatibilidad con lectores de pantalla: no marcar una característica como satisfecha sin comprobarla.
+
+Como comprobación práctica inspirada en SRC-39, revisar: orden de encabezados; navegación por teclado; propósito comprensible de cada enlace; texto alternativo útil para imágenes informativas y descripción extensa cuando el gráfico sea complejo; contraste y legibilidad en móvil; y disponibilidad de alternativa textual para medios. Una revisión automatizada puede ayudar, pero no demuestra por sí sola conformidad ni sustituye pruebas con tecnologías de asistencia y personas usuarias.
 
 ## 8. Orientaciones para adaptar y remezclar
 
@@ -81,6 +103,18 @@ La posibilidad legal de adaptar o redistribuir los materiales de este repositori
 - Repetir una práctica Word2Vec registrando versión de Gensim, corpus, semilla y número de workers; explicar la variación observada (SRC-27).
 
 Son propuestas iniciales. Para el pilotaje, registrar evidencias usando como referencia las dimensiones visibles de **SRC-09**: claridad de objetivos, calidad/vigencia, feedback, accesibilidad, reutilización, portabilidad, licenciamiento, diseño y usabilidad. **SRC-21** incluye la presentación de una plantilla completa para evaluar el REA de un compañero y reflexión personal; esta guía propone que esa evaluación cite ejemplos concretos del recurso y relacione conceptos con las fuentes. **SRC-06** agrega plazos, actividades acreditables/citación APA, condición REA y exposición final. Las rúbricas locales son referencias de cotejo, no autorizan inventar puntajes o reemplazar las decisiones de la cátedra.
+
+### Lista breve para preparar una implementación
+
+- [ ] Validar destinatarios, objetivos y contenidos con el programa vigente.
+- [ ] Elegir módulos y tiempos; indicar qué actividades son obligatorias o ampliatorias.
+- [ ] Comprobar equipos, conectividad, dependencias, datasets y servicios externos antes de clase.
+- [ ] Preparar una vía equivalente sin ejecución y opciones para diferentes dispositivos.
+- [ ] Alinear cada actividad con una evidencia y dar criterios/retroalimentación comprensibles.
+- [ ] Revisar accesibilidad, datos personales, credenciales, atribuciones y permisos antes de compartir materiales.
+- [ ] Registrar versión, adaptaciones realizadas y problemas observados durante el pilotaje.
+
+Esta lista sintetiza criterios de planificación de SRC-38, adopción/adaptación y metadatos de SRC-37, y revisión de accesibilidad de SRC-39; es una ayuda de trabajo, no una certificación de calidad.
 
 ### Evidencias de revisión sugeridas
 

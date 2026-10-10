@@ -23,6 +23,17 @@ No se incorpora un archivo `LICENSE` ni se asigna aquí una licencia concreta: p
 4. Añadir el texto de licencia correspondiente al repositorio, a la página y a los propios materiales fuente.
 5. Incluir atribuciones y referencias para todos los materiales de terceros.
 
+## Lista de cotejo para la revisión editorial
+
+- [ ] Cada componente tiene autoría/procedencia identificada y un estado de permiso documentado.
+- [ ] Los materiales de terceros se usan de acuerdo con las condiciones de su fuente; la cita bibliográfica no se confunde con permiso de reproducción.
+- [ ] Las atribuciones identifican obra, autoría, enlace, licencia y cambios, cuando corresponda.
+- [ ] Se informa la versión, fecha de actualización y cambios de la adaptación.
+- [ ] Se comprueba que formatos, navegación y alternativas de acceso respondan a las necesidades previstas.
+- [ ] La licencia final fue elegida y aprobada por las personas titulares para los componentes que controlan.
+
+La lista toma como referencia el ciclo de adopción/adaptación y difusión de **SRC-37**, y la planificación de publicación de **SRC-38**. Es una ayuda editorial; no resuelve titularidad, compatibilidad de licencias ni asesoramiento legal.
+
 Entre las fuentes de contexto se encuentran **SRC-02** (video sobre acceso abierto y repositorios), **SRC-18** (libro de Educ.ar sobre REA) y **SRC-23** (portal del SNRD). Estas fuentes no bastan para determinar la titularidad o licencia de los archivos particulares de esta cátedra.
 
 Como orientación complementaria, **SRC-36**, el [selector de licencias de Creative Commons](https://creativecommons.org/chooser/), permite comparar condiciones como atribución, uso comercial, adaptaciones y compartir igual. La herramienta no determina quién posee los derechos ni autoriza al equipo a licenciar materiales ajenos; toda decisión sigue pendiente de confirmación por las personas titulares. Ver el [registro de fuentes actuales](fuentes/actualizacion-fuentes-2026.html).

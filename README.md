@@ -22,9 +22,9 @@ El script solo representa texto, código y salidas guardadas; **no ejecuta las n
 4. [Guía de reutilización docente](guia-reutilizacion.md).
 5. [Licencias, atribuciones y estado del proyecto](licencias-y-atribuciones.md).
 
-## Materiales por incorporar
+## Estado y materiales de referencia
 
-Las tres notebooks originales `.ipynb` y sus PDF exportados ya están en `fuentes/`. Los documentos institucionales de evaluación y guía docente SRC-06, SRC-09, SRC-21 y SRC-26 todavía faltan; la lista completa está en el inventario de fuentes. Los enlaces de Colab apuntan a los notebooks de este repositorio.
+Las tres notebooks originales `.ipynb` y sus PDF exportados ya están en `fuentes/`. Hay copias de trabajo locales asociadas a fuentes curriculares, pero no se incorporan al repositorio mientras se cotejan procedencia, integridad y permisos. Los enlaces de Colab apuntan a los notebooks de este repositorio.
 
 El inventario de originales, atribuciones, licencias registradas y copias curriculares locales está en [`fuentes/README.md`](fuentes/README.md). La carpeta también incluye [`fuentes/actualizacion-fuentes-2026.md`](fuentes/actualizacion-fuentes-2026.md), con fuentes primarias actuales y cambios propuestos para la ruta. Los PDFs curriculares locales todavía no se publican desde Git y requieren cotejo y autorización.
 
@@ -34,4 +34,4 @@ El repositorio no declara todavía una licencia abierta. La publicación visible
 
 ## Fuentes de contexto
 
-La secuencia se basa en las notebooks SRC-01 (Word2Vec), SRC-04 (ReAct) y SRC-03 (LangChain), disponibles en `fuentes/`, y se complementa con referencias actuales SRC-27 a SRC-36. Hay copias locales de rúbricas y guías SRC-06, SRC-09, SRC-16, SRC-17, SRC-21 y SRC-26; su versión, integridad y permisos deben cotejarse antes de usarlas como criterios definitivos o publicarlas.
+La secuencia se basa en las notebooks SRC-01 (Word2Vec), SRC-04 (ReAct) y SRC-03 (LangChain), disponibles en `fuentes/`, y se complementa con referencias técnicas, pedagógicas y de REA SRC-27 a SRC-39. Hay copias locales de rúbricas y guías SRC-06, SRC-09, SRC-16, SRC-17, SRC-21 y SRC-26; su versión, integridad y permisos deben cotejarse antes de usarlas como criterios definitivos o publicarlas.

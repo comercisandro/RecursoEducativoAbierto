@@ -31,6 +31,9 @@ Consultadas el **10 de octubre de 2026**. Son referencias web oficiales o public
 | SRC-34 | Marco internacional REA | [UNESCO — Recommendation on Open Educational Resources](https://www.unesco.org/en/legal-affairs/recommendation-open-educational-resources-oer) | Referencia de política pública para creación, acceso, adaptación y cooperación en REA. |
 | SRC-35 | IA generativa en educación | [UNESCO — Guidance for generative AI in education and research](https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research) | Orientación centrada en las personas; página consultada indica actualización del 16 de enero de 2026. |
 | SRC-36 | Selección de licencias | [Creative Commons — License Chooser](https://creativecommons.org/chooser/) | Ayuda a comparar atribución, uso comercial, adaptaciones y compartir igual; la elección requiere titularidad/autorización. |
+| SRC-37 | Guía REA para profesorado | [REBIUN — Guía rápida para profesores](https://www.rebiun.org/kit-rea/guia-rapida-para-profesores) | Ciclo de búsqueda, creación, adopción/adaptación, uso y difusión con metadatos y licencia. |
+| SRC-38 | Diseño de secuencia didáctica REA | [INTEF — Pasos para crear un REA](https://formacion.intef.es/aulaenabierto/mod/book/tool/print/index.php?id=4158) | Planificación desde contexto, objetivos, actividades, evaluación, accesibilidad y distribución. |
+| SRC-39 | Accesibilidad en REA | [CAST AEM Center — Protocol for Creating Accessible OER](https://aem.cast.org/binaries/content/assets/common/publications/aem/protocol-creating-accessible-oer-a11y.pdf) | Prácticas de estructura, enlaces, texto alternativo, diseño visual y revisión; no equivale a auditoría de conformidad. |
 
 Los metadatos de licencias se registran tal como aparecen en las fichas/repositorios consultados; verificar la ficha original antes de redistribuir o modificar cada documento. Una consulta web no concede permiso para copiar o relicenciar su contenido.
 
