@@ -187,18 +187,21 @@ function Add-CellOutput($Builder, $Output) {
 $modules = @(
     [pscustomobject]@{
         File='2025_word2vec.ipynb'; Output='01-word2vec.html'; Number='01'; Title='Del texto a Word2Vec';
+        Focus=@('Preparar un corpus','Aprender embeddings','Explorar distancias');
         SourceId='SRC-01'; Pdf='2025_word2vec.ipynb - Colab.pdf';
         Summary='Preprocesamiento, tokenización, representaciones del texto y exploración de embeddings estáticos.';
         Lead='Partimos de las palabras y de las decisiones que convierten un corpus en datos analizables. Después exploramos cómo Word2Vec aprende vectores a partir de contextos y qué relaciones se pueden observar en ese espacio.'
     },
     [pscustomobject]@{
         File='Agente_ReAct.ipynb'; Output='02-agente-react.html'; Number='02'; Title='Construir un agente ReAct';
+        Focus=@('Definir herramientas','Interpretar acciones','Cerrar el ciclo ReAct');
         SourceId='SRC-04'; Pdf='Agente_ReAct.ipynb - Colab.pdf';
         Summary='Herramientas, formato de acciones, parser y ciclo Thought–Action–Observation implementado en Python.';
         Lead='El notebook construye un agente desde sus componentes: conexión con un modelo, definición de herramientas, instrucciones estructuradas, análisis de la respuesta y bucle de ejecución.'
     },
     [pscustomobject]@{
         File='Agente_LangChain.ipynb'; Output='03-frameworks-skills.html'; Number='03'; Title='De ReAct a frameworks y skills';
+        Focus=@('Declarar tools','Orquestar un agente','Componer skills');
         SourceId='SRC-03'; Pdf='Agente_LangChain.ipynb - Colab.pdf';
         Summary='Abstracción de herramientas y agentes con LangChain/LangGraph, y composición de skills.';
         Lead='Después de implementar ReAct manualmente, comparamos ese flujo con las abstracciones de LangChain y exploramos herramientas y skills que reúnen varias operaciones.'
@@ -226,16 +229,32 @@ foreach ($module in $modules) {
     [void]$builder.AppendLine('<body>')
     [void]$builder.AppendLine('<a class="skip-link" href="#contenido">Saltar al contenido</a>')
     [void]$builder.AppendLine('<header class="site-header"><a class="brand" href="../index.html">De Word2Vec a agentes de IA</a><nav aria-label="Navegación principal"><a href="../index.html">Inicio</a><a href="../guia-reutilizacion.html">Guía docente</a><a href="../licencias-y-atribuciones.html">Licencias</a></nav></header>')
-    [void]$builder.AppendLine('<main id="contenido" class="page-shell">')
-    [void]$builder.AppendLine('<div class="eyebrow">RUTA DE APRENDIZAJE · MÓDULO ' + $module.Number + '</div>')
+    [void]$builder.AppendLine("<main id=`"contenido`" class=`"page-shell module-page module-$($module.Number)`">")
+    [void]$builder.AppendLine('<section class="module-hero">')
+    [void]$builder.AppendLine('<div class="eyebrow"><span>RUTA DE APRENDIZAJE</span><span class="eyebrow-divider"></span><span>MÓDULO ' + $module.Number + ' DE 03</span></div>')
     [void]$builder.AppendLine("<h1>$([System.Net.WebUtility]::HtmlEncode($module.Title))</h1>")
     [void]$builder.AppendLine("<p class=`"lead`">$([System.Net.WebUtility]::HtmlEncode($module.Lead))</p>")
-    [void]$builder.AppendLine("<p class=`"source-note`">Fuente: $($module.SourceId) · <code>$([System.Net.WebUtility]::HtmlEncode($module.File))</code></p>")
+    [void]$builder.AppendLine("<div class=`"focus-grid`" aria-label=`"Focos de aprendizaje`"><div class=`"focus-card`"><span class=`"focus-number`">01</span><span>$([System.Net.WebUtility]::HtmlEncode($module.Focus[0]))</span></div><div class=`"focus-card`"><span class=`"focus-number`">02</span><span>$([System.Net.WebUtility]::HtmlEncode($module.Focus[1]))</span></div><div class=`"focus-card`"><span class=`"focus-number`">03</span><span>$([System.Net.WebUtility]::HtmlEncode($module.Focus[2]))</span></div></div>")
     [void]$builder.AppendLine('<div class="action-row">')
     [void]$builder.AppendLine("<a class=`"button primary`" href=`"$colabPath`" target=`"_blank`" rel=`"noopener noreferrer`">Abrir notebook en Google Colab <span aria-hidden=`"true`">↗</span></a>")
     [void]$builder.AppendLine("<a class=`"button secondary`" href=`"$notebookPath`" download>Descargar notebook (.ipynb)</a>")
     [void]$builder.AppendLine("<a class=`"button secondary`" href=`"$pdfPath`" download>Descargar PDF</a>")
     [void]$builder.AppendLine('</div>')
+    [void]$builder.AppendLine("<p class=`"source-note`">Fuente: $($module.SourceId) · <code>$([System.Net.WebUtility]::HtmlEncode($module.File))</code></p>")
+    [void]$builder.AppendLine('</section>')
+    [void]$builder.AppendLine('<nav class="learning-path" aria-label="Progreso de la ruta formativa">')
+    [void]$builder.AppendLine('<div class="path-caption"><span>ITINERARIO</span><span>De la representación a la acción</span></div>')
+    $pathSteps = @(
+        [pscustomobject]@{ Number='01'; Label='Texto y embeddings'; Href='01-word2vec.html' },
+        [pscustomobject]@{ Number='02'; Label='Agentes ReAct'; Href='02-agente-react.html' },
+        [pscustomobject]@{ Number='03'; Label='Frameworks y skills'; Href='03-frameworks-skills.html' }
+    )
+    foreach ($step in $pathSteps) {
+        $stepClass = if ($step.Number -eq $module.Number) { 'path-step active' } elseif ([int]$step.Number -lt [int]$module.Number) { 'path-step complete' } else { 'path-step' }
+        $aria = if ($step.Number -eq $module.Number) { ' aria-current="step"' } else { '' }
+        [void]$builder.AppendLine("<a class=`"$stepClass`" href=`"$($step.Href)`"$aria><span class=`"path-number`">$($step.Number)</span><span class=`"path-label`">$([System.Net.WebUtility]::HtmlEncode($step.Label))</span></a>")
+    }
+    [void]$builder.AppendLine('</nav>')
     [void]$builder.AppendLine('<aside class="notice"><strong>Licencia en revisión.</strong> La página y el notebook no muestran una licencia abierta declarada. La publicación pública del archivo no concede por sí sola permisos de adaptación o redistribución. Ver <a href="../licencias-y-atribuciones.html">estado de licencias y atribuciones</a>.</aside>')
     [void]$builder.AppendLine('<aside class="notice info"><strong>Lectura estática.</strong> Esta página muestra el texto, el código y las salidas que ya estaban guardadas en la notebook. No ejecuta celdas. Las salidas HTML dinámicas de terceros se omiten por seguridad; los gráficos interactivos requieren abrir la notebook.</aside>')
 
@@ -253,6 +272,7 @@ foreach ($module in $modules) {
         [void]$builder.AppendLine('<aside class="notice warning"><strong>Requisito de API.</strong> El notebook solicita un token de Hugging Face mediante una entrada oculta. No publiques ni guardes tokens en el repositorio; configura el secreto en tu entorno antes de ejecutar las celdas que llaman al modelo o a servicios externos.</aside>')
     }
 
+    [void]$builder.AppendLine("<div class=`"lesson-label`"><span class=`"lesson-dot`"></span><span>$($module.Number) / CONTENIDO DE LA LECCIÓN</span><span class=`"lesson-source`">Versión de lectura web</span></div>")
     [void]$builder.AppendLine('<section class="notebook-content" aria-label="Contenido original de la notebook">')
     $cellNumber = 0
     foreach ($cell in $notebook.cells) {
@@ -276,8 +296,16 @@ foreach ($module in $modules) {
         }
     }
     [void]$builder.AppendLine('</section>')
-    [void]$builder.AppendLine('<nav class="module-nav" aria-label="Navegación entre módulos">')
-    [void]$builder.AppendLine('<a href="01-word2vec.html">Modulo 01</a><a href="02-agente-react.html">Modulo 02</a><a href="03-frameworks-skills.html">Modulo 03</a>')
+    [void]$builder.AppendLine('<nav class="module-nav" aria-label="Explorar módulos de la ruta">')
+    $moduleLinks = @(
+        [pscustomobject]@{ Number='01'; Label='Texto y embeddings'; Href='01-word2vec.html' },
+        [pscustomobject]@{ Number='02'; Label='Agentes ReAct'; Href='02-agente-react.html' },
+        [pscustomobject]@{ Number='03'; Label='Frameworks y skills'; Href='03-frameworks-skills.html' }
+    )
+    foreach ($link in $moduleLinks) {
+        $current = if ($link.Number -eq $module.Number) { ' aria-current="page"' } else { '' }
+        [void]$builder.AppendLine("<a href=`"$($link.Href)`"$current><span>MÓDULO $($link.Number)</span><strong>$([System.Net.WebUtility]::HtmlEncode($link.Label))</strong></a>")
+    }
     [void]$builder.AppendLine('</nav>')
     [void]$builder.AppendLine('</main>')
     [void]$builder.AppendLine('<footer class="site-footer"><p>Recurso educativo en preparación · Cátedra de Inteligencia Artificial</p><p>Fuentes originales y estado de permisos: <a href="https://github.com/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/README.md" rel="noopener noreferrer">inventario de fuentes</a>.</p></footer>')
