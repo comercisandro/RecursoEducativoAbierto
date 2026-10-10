@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Abstracci&#243;n de herramientas y agentes con LangChain/LangGraph, y composici&#243;n de skills.">
 <title>De ReAct a frameworks y skills · Recurso educativo</title>
-<link rel="stylesheet" href="../assets/rea.css?v=20261010-4">
+<link rel="stylesheet" href="../assets/rea.css?v=20261010-5">
 <script src="../assets/header-scroll.js" defer></script>
+<script src="../assets/learning.js?v=20261010-1" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<header class="site-header"><div class="header-inner"><a class="brand" href="../index.html">De Word2Vec a agentes de IA</a><nav aria-label="Navegación principal"><a href="../index.html">Inicio</a><a href="../guia-reutilizacion.html">Guía docente</a><a href="../licencias-y-atribuciones.html">Licencias</a></nav></div></header>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../index.html">De Word2Vec a agentes de IA</a><nav aria-label="Navegación principal"><a href="../index.html">Inicio</a><a href="../guia-reutilizacion.html">Guía docente</a><a href="../evaluacion-final.html">Evaluación</a><a href="../licencias-y-atribuciones.html">Licencias</a></nav></div></header>
 <main id="contenido" class="page-shell module-page module-03">
 <section class="module-hero">
 <div class="eyebrow"><span>RUTA DE APRENDIZAJE</span><span class="eyebrow-divider"></span><span>MÓDULO 03 DE 03</span></div>
@@ -45,6 +46,16 @@
 <aside class="notice warning"><strong>Diseño seguro de herramientas (SRC-33).</strong> Define permisos mínimos, valida argumentos y resultados, limita iteraciones y pide confirmación antes de efectos externos. No conectes credenciales reales ni servidores locales que no hayas auditado; consulta las prácticas de <a href="https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices" target="_blank" rel="noopener noreferrer">seguridad de MCP ↗</a>.</aside>
 <aside class="notice warning"><strong>Requisito de API.</strong> El notebook solicita un token de Hugging Face mediante una entrada oculta. No publiques ni guardes tokens en el repositorio; configura el secreto en tu entorno antes de ejecutar las celdas que llaman al modelo o a servicios externos.</aside>
 </div></section>
+<section class="learning-activity" aria-labelledby="activity-title">
+<div class="activity-heading"><span class="section-kicker">PRACTICA FORMATIVA</span><h2 id="activity-title">Comprueba lo que comprendiste</h2><p>Responde sin ejecutar código. Puedes volver a intentarlo; el resultado queda solamente en este navegador y no es una calificación oficial.</p></div>
+<form class="interactive-quiz" novalidate>
+<fieldset class="quiz-question" data-answer="b"><legend><span class="question-number">1</span>¿Qué opción describe mejor una Skill en esta ruta?</legend><label><input type="radio" name="m03-q01" value="a"> Un permiso secreto que habilita cualquier acción.</label><label><input type="radio" name="m03-q01" value="b"> Un paquete de instrucciones y recursos reutilizables para una capacidad.</label><label><input type="radio" name="m03-q01" value="c"> Un reemplazo obligatorio de todas las herramientas.</label><p class="quiz-feedback" data-correct="Correcto: una Skill organiza instrucciones y recursos; su forma y alcance dependen de la plataforma que la implemente." data-incorrect="Una Skill no es un secreto ni un permiso universal: en este recurso se entiende como un paquete de instrucciones y recursos reutilizables." hidden></p></fieldset>
+<fieldset class="quiz-question" data-answer="a"><legend><span class="question-number">2</span>¿Qué principio debería guiar los permisos de una herramienta?</legend><label><input type="radio" name="m03-q02" value="a"> Mínimo privilegio: habilitar solo lo necesario y validar entradas y resultados.</label><label><input type="radio" name="m03-q02" value="b"> Dar acceso total para que el agente no se bloquee.</label><label><input type="radio" name="m03-q02" value="c"> Evitar documentar los datos que entran y salen.</label><p class="quiz-feedback" data-correct="Correcto: el mínimo privilegio reduce el impacto de errores y debe acompañarse de validación y confirmación para efectos externos." data-incorrect="El acceso total aumenta el riesgo. Define permisos mínimos, valida entradas y resultados y pide confirmación cuando corresponda." hidden></p></fieldset>
+<fieldset class="quiz-question" data-answer="c"><legend><span class="question-number">3</span>¿Qué conviene hacer antes de adaptar un ejemplo de un framework de agentes?</legend><label><input type="radio" name="m03-q03" value="a"> Suponer que todas las APIs mantienen el mismo comportamiento.</label><label><input type="radio" name="m03-q03" value="b"> Conectar credenciales reales para comprobar rápidamente.</label><label><input type="radio" name="m03-q03" value="c"> Validar versiones, dependencias, permisos y casos de error en un entorno controlado.</label><p class="quiz-feedback" data-correct="Correcto: los frameworks cambian; una adaptación responsable registra versiones y prueba límites sin exponer credenciales reales." data-incorrect="Antes de adaptar, revisa versiones y dependencias, usa un entorno controlado y prueba errores sin exponer credenciales." hidden></p></fieldset>
+<div class="quiz-actions"><button class="button primary" type="submit">Corregir respuestas</button><output class="quiz-score" aria-live="polite">Práctica pendiente · 0 de 3</output></div>
+</form>
+<aside class="activity-transfer"><strong>Para conversar o entregar.</strong> Explica una respuesta a otra persona, señala un supuesto o posible fallo y escribe qué evidencia necesitarías para cambiar de opinión. Si no puedes ejecutar la notebook, responde usando el código y las salidas visibles en esta página.</aside>
+</section>
 <div class="lesson-label"><span class="lesson-dot"></span><span>03 / CONTENIDO DE LA LECCIÓN</span><span class="lesson-source">Transcripción estática de la notebook</span></div>
 <section class="notebook-content" aria-label="Contenido original de la notebook">
 <article class="markdown-cell">

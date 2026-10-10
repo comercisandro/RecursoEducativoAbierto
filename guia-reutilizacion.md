@@ -9,15 +9,15 @@ permalink: /guia-reutilizacion.html
 
 # Guía de reutilización docente
 
-> Borrador de trabajo. Hay copias locales de **SRC-06, SRC-09, SRC-21 y SRC-26**, ya cotejadas para esta revisión, pero todavía no están versionadas. El PDF disponible de SRC-26 muestra las secciones 1 y 8–11; falta contrastar la guía con el original completo. Las propuestas de abajo no reemplazan las rúbricas ni equivalen a una evaluación institucional.
+> **Primera versión pública de revisión.** Hay copias locales de **SRC-06, SRC-09, SRC-21 y SRC-26**, ya cotejadas para esta revisión, pero todavía no están versionadas. El PDF disponible de SRC-26 muestra las secciones 1 y 8–11; falta contrastar la guía con el original completo. Las propuestas de abajo no reemplazan las rúbricas ni equivalen a una evaluación institucional.
 
 ## 1. Identificación del recurso
 
 - **Título:** De Word2Vec a agentes de inteligencia artificial.
 - **Autoría y afiliación:** pendientes de confirmar con el equipo de cátedra.
 - **Área:** Inteligencia Artificial y Procesamiento del Lenguaje Natural.
-- **Versión:** borrador inicial.
-- **Repositorio:** este repositorio de GitHub; URL pública permanente pendiente de confirmar.
+- **Versión:** primera versión pública de revisión, 2026-10-10.
+- **Repositorio:** [RecursoEducativoAbierto en GitHub](https://github.com/comercisandro/RecursoEducativoAbierto); publicación web en GitHub Pages.
 
 ## 2. Destinatarios y contexto
 
@@ -126,9 +126,17 @@ Esta lista sintetiza criterios de planificación de SRC-38, adopción/adaptació
 | Evaluación entre pares y reflexión (SRC-21) | Plantilla completa aplicada a otro REA con ejemplos y reflexión conectada a autores/fuentes. |
 | Actividades, referencias y presentación (SRC-06) | Registro de actividades entregadas, citas APA verificadas y material para la exposición final. |
 
+### Autocomprobaciones y producto integrador
+
+Cada módulo incluye tres preguntas conceptuales con retroalimentación inmediata. El resultado se muestra como **práctica sobre 3 por módulo y sobre 9 en la ruta completa**; puede repetirse y no se almacena ni se envía a un servidor. El puntaje no es una nota: sirve para decidir qué concepto revisar y qué evidencia conviene discutir.
+
+La [actividad integradora](evaluacion-final.html) propone diseñar un agente pequeño y auditable en código, pseudocódigo o diagrama. Incluye una rúbrica formativa de **100 puntos**: comprensión conceptual (25), flujo y pruebas (25), reproducibilidad y límites (20), seguridad y privacidad (20), y comunicación y reflexión (10). La cátedra debe validar los criterios, los puntajes y cualquier condición de acreditación antes de aplicarlos.
+
+La interacción entre pares sigue el ciclo **resolver → comparar → revisar**. Cada estudiante debe poder entregar una alternativa equivalente sin ejecución, cuenta o clave de API. La actividad no modifica las reglas de SRC-16: confirmar siempre la consigna vigente antes de usar herramientas de IA en una tarea acreditable.
+
 ## 10. Licencias, atribución y materiales de terceros
 
-La licencia del recurso está pendiente de acuerdo con las personas titulares. Antes de publicar la versión final, identificar autoría, procedencia y licencia de cada texto, imagen, dataset, fragmento de código y biblioteca incorporados. Ver [Licencias y atribuciones](licencias-y-atribuciones.html).
+La licencia de los componentes propios autorizados está declarada en [LICENSE.md](LICENSE.md). Antes de adaptar o redistribuir la versión, identificar autoría, procedencia y licencia de cada texto, imagen, dataset, fragmento de código y biblioteca incorporados. Ver [Licencias y atribuciones](licencias-y-atribuciones.html).
 
 ## 11. Referencias, versión y transparencia
 

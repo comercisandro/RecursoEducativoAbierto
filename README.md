@@ -1,6 +1,6 @@
 # De Word2Vec a agentes de inteligencia artificial
 
-Proyecto de Recurso Educativo Abierto (REA) en preparación para la cátedra de Inteligencia Artificial. El sitio propone una ruta progresiva desde el preprocesamiento del texto y los embeddings hasta la construcción de agentes con herramientas.
+Primera versión pública de revisión de un Recurso Educativo Abierto (REA) para la cátedra de Inteligencia Artificial. El sitio propone una ruta progresiva desde el preprocesamiento del texto y los embeddings hasta la construcción de agentes con herramientas, con prácticas conceptuales y una actividad integradora.
 
 ## Ver el sitio
 
@@ -19,8 +19,9 @@ El script solo representa texto, código y salidas guardadas; **no ejecuta las n
 1. [Del texto a Word2Vec](modulos_html/01-word2vec.html) — tokens, preprocesamiento, Bag-of-Words y embeddings.
 2. [Construir un agente ReAct](modulos_html/02-agente-react.html) — herramientas y ciclo Thought–Action–Observation.
 3. [Frameworks y skills](modulos_html/03-frameworks-skills.html) — LangChain/LangGraph y capacidades compuestas.
-4. [Guía de reutilización docente](guia-reutilizacion.md).
-5. [Licencias, atribuciones y estado del proyecto](licencias-y-atribuciones.md).
+4. [Actividad integradora y rúbrica propuesta](evaluacion-final.md).
+5. [Guía de reutilización docente](guia-reutilizacion.md).
+6. [Licencias, atribuciones y estado del proyecto](licencias-y-atribuciones.md).
 
 ## Estado y materiales de referencia
 

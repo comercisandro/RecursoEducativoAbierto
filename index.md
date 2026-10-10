@@ -14,6 +14,7 @@ title: De Word2Vec a agentes de inteligencia artificial
     <div class="action-row">
       <a class="button primary" href="modulos_html/01-word2vec.html?v=cf595a3">Comenzar la ruta <span aria-hidden="true">→</span></a>
       <a class="button secondary" href="guia-reutilizacion.html">Ver guía docente</a>
+      <a class="button secondary" href="evaluacion-final.html">Actividad integradora</a>
     </div>
     <p class="source-note">Material de la Cátedra de Inteligencia Artificial · páginas HTML y cuadernos Jupyter · guía docente disponible</p>
   </section>
@@ -63,6 +64,8 @@ title: De Word2Vec a agentes de inteligencia artificial
       <h2>Reutilizar, adaptar, evaluar</h2>
       <p>Consulta objetivos propuestos, secuencia de actividades, requisitos, alternativas de acceso, evidencias formativas y una lista breve para planificar la implementación.</p>
       <a class="text-link" href="guia-reutilizacion.html">Abrir guía de reutilización docente →</a>
+      <hr>
+      <a class="text-link" href="evaluacion-final.html">Ver actividad integradora y rúbrica propuesta →</a>
       <hr>
       <p class="small-note">La licencia de los componentes propios ya está declarada. Los documentos curriculares locales y los materiales de terceros requieren cotejo de procedencia, integridad y condiciones de uso.</p>
       <a class="text-link" href="licencias-y-atribuciones.html">Revisar licencias y atribuciones →</a>
