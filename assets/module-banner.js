@@ -8,6 +8,8 @@
   const update = () => {
     const headerHeight = header ? header.getBoundingClientRect().height : 0;
     const bannerHeight = hero.getBoundingClientRect().height;
+    hero.style.setProperty('position', 'fixed', 'important');
+    hero.style.setProperty('z-index', '99');
     document.documentElement.style.setProperty('--module-banner-top', `${headerHeight}px`);
     document.documentElement.style.setProperty('--module-banner-space', `${bannerHeight + 19}px`);
     scheduled = false;
