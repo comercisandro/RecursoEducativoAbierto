@@ -225,6 +225,7 @@ foreach ($module in $modules) {
     [void]$builder.AppendLine("<meta name=`"description`" content=`"$([System.Net.WebUtility]::HtmlEncode($module.Summary))`">")
     [void]$builder.AppendLine("<title>$([System.Net.WebUtility]::HtmlEncode($module.Title)) · Recurso educativo</title>")
     [void]$builder.AppendLine('<link rel="stylesheet" href="../assets/rea.css">')
+    [void]$builder.AppendLine('<script src="../assets/header-scroll.js" defer></script>')
     [void]$builder.AppendLine('</head>')
     [void]$builder.AppendLine('<body>')
     [void]$builder.AppendLine('<a class="skip-link" href="#contenido">Saltar al contenido</a>')
