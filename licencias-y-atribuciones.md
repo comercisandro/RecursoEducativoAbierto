@@ -4,6 +4,9 @@ title: Licencias y atribuciones
 permalink: /licencias-y-atribuciones.html
 ---
 
+<link rel="stylesheet" href="{{ '/assets/rea.css' | relative_url }}">
+<script src="{{ '/assets/header-scroll.js' | relative_url }}" defer></script>
+
 # Licencias y atribuciones
 
 ## Estado actual

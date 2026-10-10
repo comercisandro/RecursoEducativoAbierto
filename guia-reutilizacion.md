@@ -4,6 +4,9 @@ title: Guía de reutilización docente
 permalink: /guia-reutilizacion.html
 ---
 
+<link rel="stylesheet" href="{{ '/assets/rea.css' | relative_url }}">
+<script src="{{ '/assets/header-scroll.js' | relative_url }}" defer></script>
+
 # Guía de reutilización docente
 
 > Borrador de trabajo. La matriz de fuentes del proyecto identifica **SRC-26** como plantilla con 11 campos obligatorios, pero el documento original no está en el repositorio. Esta guía debe cotejarse con esa plantilla antes de considerarse completa.
