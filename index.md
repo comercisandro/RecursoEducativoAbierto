@@ -18,7 +18,7 @@ title: De Word2Vec a agentes de inteligencia artificial
     <p class="source-note">Material de la Cátedra de Inteligencia Artificial · lectura web y cuadernos Jupyter</p>
   </section>
 
-  <aside class="notice home-status"><strong>Proyecto en preparación.</strong> Las notebooks ya se pueden leer en HTML. La autorización de licencias y el cotejo con los documentos originales de evaluación siguen pendientes.</aside>
+  <aside class="notice home-status"><strong>Proyecto en preparación.</strong> Las notebooks ya se pueden leer en HTML. La autorización de licencias y el cotejo institucional siguen pendientes. La ruta técnica incorpora una actualización documentada de Gensim, agentes, Skills, MCP y prácticas de seguridad.</aside>
 
   <section class="home-route" aria-labelledby="route-title">
     <div class="section-heading">
@@ -69,5 +69,5 @@ title: De Word2Vec a agentes de inteligencia artificial
     </article>
   </section>
 
-  <footer class="home-footer-note">Las páginas muestran el contenido guardado en las notebooks y no ejecutan código. Los cuadernos originales se pueden descargar desde cada módulo.</footer>
+  <footer class="home-footer-note">Las páginas muestran el contenido guardado en las notebooks y no ejecutan código. Los cuadernos originales se pueden descargar desde cada módulo. <a href="fuentes/actualizacion-fuentes-2026.html">Consulta las fuentes actuales y los cambios incorporados.</a></footer>
 </main>
