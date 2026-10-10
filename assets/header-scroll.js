@@ -1,6 +1,7 @@
 (() => {
   const header = document.querySelector('.site-header');
-  if (!header) return;
+  const banners = document.querySelectorAll('.module-hero');
+  if (!header && banners.length === 0) return;
 
   const compactAt = 64;
   const expandAt = 24;
@@ -11,7 +12,8 @@
     const scrollY = window.scrollY || document.documentElement.scrollTop;
     if (!compact && scrollY > compactAt) compact = true;
     else if (compact && scrollY < expandAt) compact = false;
-    header.classList.toggle('is-compact', compact);
+    if (header) header.classList.toggle('is-compact', compact);
+    banners.forEach((banner) => banner.classList.toggle('is-compact', compact));
     scheduled = false;
   };
 
