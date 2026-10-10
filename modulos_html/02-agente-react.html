@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Herramientas, formato de acciones, parser y ciclo Thought&#226;€“Action&#226;€“Observation implementado en Python.">
-<title>Construir un agente ReAct Â· Recurso educativo</title>
+<meta name="description" content="Herramientas, formato de acciones, parser y ciclo Thought–Action–Observation implementado en Python.">
+<title>Construir un agente ReAct · Recurso educativo</title>
 <link rel="stylesheet" href="../assets/rea.css">
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<header class="site-header"><a class="brand" href="../index.html">De Word2Vec a agentes de IA</a><nav aria-label="NavegaciÃ³n principal"><a href="../index.html">Inicio</a><a href="../guia-reutilizacion.html">GuÃ­a docente</a><a href="../licencias-y-atribuciones.html">Licencias</a></nav></header>
+<header class="site-header"><a class="brand" href="../index.html">De Word2Vec a agentes de IA</a><nav aria-label="Navegación principal"><a href="../index.html">Inicio</a><a href="../guia-reutilizacion.html">Guía docente</a><a href="../licencias-y-atribuciones.html">Licencias</a></nav></header>
 <main id="contenido" class="page-shell">
-<div class="eyebrow">RUTA DE APRENDIZAJE Â· MÃ“DULO 02</div>
+<div class="eyebrow">RUTA DE APRENDIZAJE · MÓDULO 02</div>
 <h1>Construir un agente ReAct</h1>
-<p class="lead">El notebook construye un agente desde sus componentes: conexi&#195;&#179;n con un modelo, definici&#195;&#179;n de herramientas, instrucciones estructuradas, an&#195;&#161;lisis de la respuesta y bucle de ejecuci&#195;&#179;n.</p>
-<p class="source-note">Fuente: SRC-04 Â· <code>Agente_ReAct.ipynb</code></p>
+<p class="lead">El notebook construye un agente desde sus componentes: conexi&#243;n con un modelo, definici&#243;n de herramientas, instrucciones estructuradas, an&#225;lisis de la respuesta y bucle de ejecuci&#243;n.</p>
+<p class="source-note">Fuente: SRC-04 · <code>Agente_ReAct.ipynb</code></p>
 <div class="action-row">
-<a class="button primary" href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/Agente_ReAct.ipynb" target="_blank" rel="noopener noreferrer">Abrir notebook en Google Colab <span aria-hidden="true">â†—</span></a>
+<a class="button primary" href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/Agente_ReAct.ipynb" target="_blank" rel="noopener noreferrer">Abrir notebook en Google Colab <span aria-hidden="true">↗</span></a>
 <a class="button secondary" href="../fuentes/Agente_ReAct.ipynb" download>Descargar notebook (.ipynb)</a>
 <a class="button secondary" href="../fuentes/Agente_ReAct.ipynb%20-%20Colab.pdf" download>Descargar PDF</a>
 </div>
-<aside class="notice"><strong>Licencia en revisiÃ³n.</strong> La pÃ¡gina y el notebook no muestran una licencia abierta declarada. La publicaciÃ³n pÃºblica del archivo no concede por sÃ­ sola permisos de adaptaciÃ³n o redistribuciÃ³n. Ver <a href="../licencias-y-atribuciones.html">estado de licencias y atribuciones</a>.</aside>
-<aside class="notice info"><strong>Lectura estÃ¡tica.</strong> Esta pÃ¡gina muestra el texto, el cÃ³digo y las salidas que ya estaban guardadas en la notebook. No ejecuta celdas. Las salidas HTML dinÃ¡micas de terceros se omiten por seguridad; los grÃ¡ficos interactivos requieren abrir la notebook.</aside>
-<aside class="notice warning"><strong>RevisiÃ³n del flujo ReAct (SRC-04).</strong> En la notebook, el prompt solicita <code>FINAL:</code>, mientras que el parser busca <code>Final Answer:</code>. AdemÃ¡s, el patrÃ³n de acciÃ³n requiere texto despuÃ©s de <code>|</code>, aunque el ejemplo de la herramienta de hora no lleva entrada. La salida guardada de esa prueba tampoco llega a la fecha final. Revisa y corrige estas diferencias antes de usarlo como prÃ¡ctica ejecutable.</aside>
+<aside class="notice"><strong>Licencia en revisión.</strong> La página y el notebook no muestran una licencia abierta declarada. La publicación pública del archivo no concede por sí sola permisos de adaptación o redistribución. Ver <a href="../licencias-y-atribuciones.html">estado de licencias y atribuciones</a>.</aside>
+<aside class="notice info"><strong>Lectura estática.</strong> Esta página muestra el texto, el código y las salidas que ya estaban guardadas en la notebook. No ejecuta celdas. Las salidas HTML dinámicas de terceros se omiten por seguridad; los gráficos interactivos requieren abrir la notebook.</aside>
+<aside class="notice warning"><strong>Revisión del flujo ReAct (SRC-04).</strong> En la notebook, el prompt solicita <code>FINAL:</code>, mientras que el parser busca <code>Final Answer:</code>. Además, el patrón de acción requiere texto después de <code>|</code>, aunque el ejemplo de la herramienta de hora no lleva entrada. La salida guardada de esa prueba tampoco llega a la fecha final. Revisa y corrige estas diferencias antes de usarlo como práctica ejecutable.</aside>
 <aside class="notice warning"><strong>Requisito de API.</strong> El notebook solicita un token de Hugging Face mediante una entrada oculta. No publiques ni guardes tokens en el repositorio; configura el secreto en tu entorno antes de ejecutar las celdas que llaman al modelo o a servicios externos.</aside>
 <section class="notebook-content" aria-label="Contenido original de la notebook">
 <article class="markdown-cell">
@@ -46,7 +46,7 @@
 <p>Para dar respuesta a esta pregunta necesitamos: conectar con un LLM, probar una llamada simple, definir herramientas, dise&#241;ar un prompt ReAct, implementar el bucle <code>Thought → Action → Observation → Final Answer</code> y ejecutar ejemplos.</p>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python Â· ejecuciÃ³n guardada #1</summary><pre><code>import warnings
+<details class="code-cell"><summary>Código Python · ejecución guardada #1</summary><pre><code>import warnings
 warnings.filterwarnings(
     &quot;ignore&quot;,
     message=&quot;datetime.datetime.utcnow&quot;
@@ -71,7 +71,7 @@ Successfully installed ddgs-9.16.0 primp-2.0.1
 <p>Antes de crear el agente, importamos librer&#237;as generales y definimos tipos auxiliares.</p>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python Â· ejecuciÃ³n guardada #2</summary><pre><code>import os
+<details class="code-cell"><summary>Código Python · ejecución guardada #2</summary><pre><code>import os
 import re
 import ast
 import math
@@ -97,7 +97,7 @@ from typing import Callable, Dict, List, Optional, Tuple</code></pre></details>
 <p>La comunicaci&#243;n ocurre mediante requests HTTP. Internamente, el cliente de OpenAI env&#237;a mensajes JSON a un endpoint remoto. Hugging Face Router implementa una interfaz compatible con OpenAI, por eso podemos reutilizar el mismo cliente cambiando &#250;nicamente la URL base (<code>base_url</code>).</p>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python Â· ejecuciÃ³n guardada #3</summary><pre><code>from openai import OpenAI
+<details class="code-cell"><summary>Código Python · ejecución guardada #3</summary><pre><code>from openai import OpenAI
 
 if &quot;HF_TOKEN&quot; not in os.environ:
     os.environ[&quot;HF_TOKEN&quot;] = getpass(&quot;Ingres&#225; tu HF_TOKEN: &quot;)
@@ -111,7 +111,7 @@ print(&quot;Cliente inicializado correctamente.&quot;)</code></pre></details>
 <pre class="output-text"><code>Ingres&#225; tu HF_TOKEN: &#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;
 Cliente inicializado correctamente.
 </code></pre>
-<details class="code-cell"><summary>CÃ³digo Python Â· ejecuciÃ³n guardada #4</summary><pre><code>models = client.models.list()
+<details class="code-cell"><summary>Código Python · ejecución guardada #4</summary><pre><code>models = client.models.list()
 
 print(&quot;Modelos disponibles:&quot;)
 for m in models.data[:30]:
@@ -156,7 +156,7 @@ for m in models.data[:30]:
 <p>B = 1 billion = 1.000 millones</p>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>MODEL_ID = &quot;Qwen/Qwen2.5-7B-Instruct&quot;
+<details class="code-cell"><summary>Código Python</summary><pre><code>MODEL_ID = &quot;Qwen/Qwen2.5-7B-Instruct&quot;
 
 response = client.chat.completions.create(
     model=MODEL_ID,
@@ -168,9 +168,9 @@ print(response.choices[0].message.content)
 </code></pre></details>
 <pre class="output-text"><code>Un agente de IA es un programa o sistema dise&#241;ado para tomar decisiones y realizar tareas de manera aut&#243;noma utilizando inteligencia artificial, aprendiendo de los datos y adapt&#225;ndose a nuevas situaciones.
 </code></pre>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>response</code></pre></details>
+<details class="code-cell"><summary>Código Python</summary><pre><code>response</code></pre></details>
 <pre class="output-text"><code>ChatCompletion(id=&#39;oiBCAHg-6Ng1vN-9f82fb8b3c6ffb02&#39;, choices=[Choice(finish_reason=&#39;stop&#39;, index=0, logprobs=None, message=ChatCompletionMessage(content=&#39;Un agente de IA es un programa o sistema dise&#241;ado para tomar decisiones y realizar tareas de manera aut&#243;noma utilizando inteligencia artificial, aprendiendo de los datos y adapt&#225;ndose a nuevas situaciones.&#39;, refusal=None, role=&#39;assistant&#39;, annotations=None, audio=None, function_call=None, tool_calls=[]), seed=3256071366684055000)], created=1778185826, model=&#39;Qwen/Qwen2.5-7B-Instruct-Turbo&#39;, object=&#39;chat.completion&#39;, service_tier=None, system_fingerprint=None, usage=CompletionUsage(completion_tokens=44, prompt_tokens=43, total_tokens=87, completion_tokens_details=None, prompt_tokens_details=None, cached_tokens=0), prompt=[])</code></pre>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>def call_llm(messages: List[Dict[str, str]], temperature: float = 0.2) -&gt; str:
+<details class="code-cell"><summary>Código Python</summary><pre><code>def call_llm(messages: List[Dict[str, str]], temperature: float = 0.2) -&gt; str:
     response = client.chat.completions.create(
         model=MODEL_ID,
         messages=messages,
@@ -207,9 +207,9 @@ print(response.choices[0].message.content)
 <pre class="markdown-code"><code>Action: calculator | 2 + 2</code></pre>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>def tool_now(_: str = &quot;&quot;) -&gt; str:
+<details class="code-cell"><summary>Código Python</summary><pre><code>def tool_now(_: str = &quot;&quot;) -&gt; str:
     return datetime.now().strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</code></pre></details>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>from ddgs import DDGS
+<details class="code-cell"><summary>Código Python</summary><pre><code>from ddgs import DDGS
 
 def web_search_tool(tool_input: str):
 
@@ -272,7 +272,7 @@ def parse_tool_input(text: str):
 <p>Para representar esa estructura utilizamos <code>@dataclass</code>.</p>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>@dataclass
+<details class="code-cell"><summary>Código Python</summary><pre><code>@dataclass
 class Tool:
     name: str
     description: str
@@ -284,7 +284,7 @@ def build_tools_description(tools: Dict[str, Tool]) -&gt; str:
         f&quot;- {tool.name}: {tool.description}&quot;
         for tool in tools.values()
     )</code></pre></details>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>TOOLS: Dict[str, Tool] = {
+<details class="code-cell"><summary>Código Python</summary><pre><code>TOOLS: Dict[str, Tool] = {
 
     &quot;now&quot;: Tool(
         name=&quot;now&quot;,
@@ -423,7 +423,7 @@ Observation: resultado de la herramienta
 FINAL: respuesta final al usuario</code></pre>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>SYSTEM_PROMPT = f&quot;&quot;&quot;
+<details class="code-cell"><summary>Código Python</summary><pre><code>SYSTEM_PROMPT = f&quot;&quot;&quot;
 Sos un agente ReAct.
 
 Tu objetivo es:
@@ -666,7 +666,7 @@ FINAL: Hoy es 7 de mayo de 2026.
 <p>Esto permite transformar texto generado por el LLM en acciones reales ejecutadas por Python.</p>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>ACTION_RE = re.compile(r&quot;^\s*Action:\s*([\w\-]+)\s*\|\s*(.+)\s*$&quot;, re.MULTILINE)
+<details class="code-cell"><summary>Código Python</summary><pre><code>ACTION_RE = re.compile(r&quot;^\s*Action:\s*([\w\-]+)\s*\|\s*(.+)\s*$&quot;, re.MULTILINE)
 FINAL_RE = re.compile(r&quot;Final Answer:\s*(.*)&quot;, re.DOTALL)
 
 
@@ -712,7 +712,7 @@ El LLM contin&#250;a razonando</code></pre>
 <pre class="markdown-code"><code>Final Answer: ...</code></pre>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python Â· ejecuciÃ³n guardada #5</summary><pre><code>def run_agent(user_query: str, max_steps: int = 5) -&gt; Tuple[str, List[dict]]:
+<details class="code-cell"><summary>Código Python · ejecución guardada #5</summary><pre><code>def run_agent(user_query: str, max_steps: int = 5) -&gt; Tuple[str, List[dict]]:
     messages = [
         {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: SYSTEM_PROMPT},
         {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: user_query},
@@ -755,7 +755,7 @@ El LLM contin&#250;a razonando</code></pre>
         return llm_output, trace
 
     return &quot;No se obtuvo una respuesta final dentro del m&#225;ximo de pasos.&quot;, trace</code></pre></details>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>def print_trace(trace: List[dict]) -&gt; None:
+<details class="code-cell"><summary>Código Python</summary><pre><code>def print_trace(trace: List[dict]) -&gt; None:
     for row in trace:
         print(f&quot;\n--- Paso {row[&#39;step&#39;]} ---&quot;)
         print(row[&quot;llm_output&quot;])
@@ -766,7 +766,7 @@ El LLM contin&#250;a razonando</code></pre>
             print(&quot;Observation:&quot;)
             print(row[&quot;observation&quot;])
 </code></pre></details>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>answer, trace = run_agent(&quot;qu&#233; es una herramienta en un agente de IA&quot;)
+<details class="code-cell"><summary>Código Python</summary><pre><code>answer, trace = run_agent(&quot;qu&#233; es una herramienta en un agente de IA&quot;)
 print_trace(trace)
 print(&quot;\nFINAL:\n&quot;, answer)</code></pre></details>
 <pre class="output-text"><code>
@@ -791,7 +791,7 @@ Final Answer: Una herramienta en un agente de IA es una funcionalidad que permit
 FINAL:
  Una herramienta en un agente de IA es una funcionalidad que permite al agente interactuar con el mundo externo, como navegar la web, enviar correos electr&#243;nicos, procesar datos y automatizar flujos de trabajo. Estas herramientas permiten que los agentes de IA realicen tareas de manera aut&#243;noma, integrando memoria persistente y la orquestaci&#243;n de modelos de lenguaje.
 </code></pre>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>answer, trace = run_agent(&quot;Qu&#233; fecha es hoy?&quot;)
+<details class="code-cell"><summary>Código Python</summary><pre><code>answer, trace = run_agent(&quot;Qu&#233; fecha es hoy?&quot;)
 print_trace(trace)
 print(&quot;\nFINAL:\n&quot;, answer)</code></pre></details>
 <pre class="output-text"><code>
@@ -803,7 +803,7 @@ FINAL:
  Thought: Necesito saber la fecha actual.
 Action: now |
 </code></pre>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>answer, trace = run_agent(&quot;Busc&#225; informaci&#243;n sobre Los Simpson y dame 5 enlaces relacionados.&quot;)
+<details class="code-cell"><summary>Código Python</summary><pre><code>answer, trace = run_agent(&quot;Busc&#225; informaci&#243;n sobre Los Simpson y dame 5 enlaces relacionados.&quot;)
 print_trace(trace)
 print(&quot;\nFINAL:\n&quot;, answer)</code></pre></details>
 <pre class="output-text"><code>
@@ -880,7 +880,7 @@ Estos enlaces te proporcionar&#225;n informaci&#243;n variada sobre la serie, de
 </ul>
 
 </article>
-<details class="code-cell"><summary>CÃ³digo Python</summary><pre><code>import pandas as pd
+<details class="code-cell"><summary>Código Python</summary><pre><code>import pandas as pd
 
 # Assuming &#39;sample_file.csv&#39; is the file you want to load.
 # Replace &#39;sample_file.csv&#39; with the actual path to your file.
@@ -893,9 +893,9 @@ except FileNotFoundError:
 except Exception as e:
     print(f&quot;An error occurred while loading the file: {e}&quot;)</code></pre></details>
 </section>
-<nav class="module-nav" aria-label="NavegaciÃ³n entre mÃ³dulos">
+<nav class="module-nav" aria-label="Navegación entre módulos">
 <a href="01-word2vec.html">Modulo 01</a><a href="02-agente-react.html">Modulo 02</a><a href="03-frameworks-skills.html">Modulo 03</a>
 </nav>
 </main>
-<footer class="site-footer"><p>Recurso educativo en preparaciÃ³n Â· CÃ¡tedra de Inteligencia Artificial</p><p>Fuentes originales y estado de permisos: <a href="https://github.com/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/README.md" rel="noopener noreferrer">inventario de fuentes</a>.</p></footer>
+<footer class="site-footer"><p>Recurso educativo en preparación · Cátedra de Inteligencia Artificial</p><p>Fuentes originales y estado de permisos: <a href="https://github.com/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/README.md" rel="noopener noreferrer">inventario de fuentes</a>.</p></footer>
 </body></html>
