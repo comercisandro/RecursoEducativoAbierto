@@ -55,7 +55,7 @@ title: De Word2Vec a agentes de inteligencia artificial
         <div><dt>Área</dt><dd>Inteligencia Artificial y Procesamiento del Lenguaje Natural</dd></div>
         <div><dt>Destinatarios</dt><dd>Estudiantes de nivel superior; perfil y conocimientos previos por confirmar con la cátedra.</dd></div>
         <div><dt>Formatos</dt><dd>Páginas HTML estáticas y notebooks Jupyter; algunos materiales de referencia pueden requerir acceso externo.</dd></div>
-        <div><dt>Autoría y licencia</dt><dd>Pendientes de confirmación y autorización del equipo titular.</dd></div>
+        <div><dt>Licencia</dt><dd>CC BY-NC-SA 4.0 para los componentes propios autorizados; los materiales de terceros conservan sus condiciones.</dd></div>
       </dl>
     </article>
     <article class="home-info-card home-info-tint">
@@ -64,7 +64,7 @@ title: De Word2Vec a agentes de inteligencia artificial
       <p>Consulta objetivos propuestos, secuencia de actividades, requisitos, alternativas de acceso, evidencias formativas y una lista breve para planificar la implementación.</p>
       <a class="text-link" href="guia-reutilizacion.html">Abrir guía de reutilización docente →</a>
       <hr>
-      <p class="small-note">La licencia abierta está pendiente de autorización. Los documentos curriculares locales requieren cotejo completo; consulta el inventario para conocer su estado.</p>
+      <p class="small-note">La licencia de los componentes propios ya está declarada. Los documentos curriculares locales y los materiales de terceros requieren cotejo de procedencia, integridad y condiciones de uso.</p>
       <a class="text-link" href="licencias-y-atribuciones.html">Revisar licencias y atribuciones →</a>
     </article>
   </section>

@@ -11,17 +11,19 @@ permalink: /licencias-y-atribuciones.html
 
 ## Estado actual
 
-Este repositorio **todavía no declara una licencia abierta**. Que el contenido pueda consultarse públicamente en GitHub no significa por sí solo que otras personas tengan permiso para copiarlo, modificarlo o redistribuirlo. La matriz de fuentes del proyecto recoge la necesidad de declarar expresamente las licencias para otorgar permisos de reutilización.
+Los **componentes propios autorizados** de este recurso se distribuyen bajo **Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)**. La licencia permite compartir y adaptar esos componentes con atribución, para fines no comerciales y con la misma licencia en las adaptaciones, conforme a sus condiciones.
 
-No se incorpora un archivo `LICENSE` ni se asigna aquí una licencia concreta: primero hay que confirmar la titularidad de derechos y obtener el acuerdo de quienes correspondan. Esta página no sustituye una revisión jurídica ni la consulta de los documentos normativos originales.
+Consulta el [archivo de licencia del repositorio](LICENSE.html), el [texto legal en español](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es) y la [versión legal completa](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). La autorización para declarar esta licencia fue confirmada por las personas titulares correspondientes.
+
+La licencia **no cubre automáticamente** materiales de terceros: notebooks, textos, imágenes, datasets, fragmentos de código, bibliotecas y documentos externos conservan sus propias condiciones. Verificar cada componente en el inventario antes de reutilizarlo.
 
 ## Tareas previas a la publicación como REA
 
 1. Confirmar autoría, coautorías y derechos sobre notebooks, textos, imágenes, gráficos y materiales de cátedra.
 2. Revisar condiciones de plataformas, bibliotecas, datasets y materiales de terceros usados en cada notebook.
-3. Acordar qué licencia se aplicará a cada componente y registrar la decisión con las personas titulares.
-4. Añadir el texto de licencia correspondiente al repositorio, a la página y a los propios materiales fuente.
-5. Incluir atribuciones y referencias para todos los materiales de terceros.
+3. Mantener el alcance de CC BY-NC-SA 4.0 limitado a los componentes propios autorizados.
+4. Añadir atribuciones y referencias para todos los materiales de terceros.
+5. Registrar cambios, permisos y excepciones cuando se incorpore o adapte material externo.
 
 ## Lista de cotejo para la revisión editorial
 
@@ -36,17 +38,17 @@ La lista toma como referencia el ciclo de adopción/adaptación y difusión de *
 
 Entre las fuentes de contexto se encuentran **SRC-02** (video sobre acceso abierto y repositorios), **SRC-18** (libro de Educ.ar sobre REA) y **SRC-23** (portal del SNRD). Estas fuentes no bastan para determinar la titularidad o licencia de los archivos particulares de esta cátedra.
 
-Como orientación complementaria, **SRC-36**, el [selector de licencias de Creative Commons](https://creativecommons.org/chooser/), permite comparar condiciones como atribución, uso comercial, adaptaciones y compartir igual. La herramienta no determina quién posee los derechos ni autoriza al equipo a licenciar materiales ajenos; toda decisión sigue pendiente de confirmación por las personas titulares. Ver el [registro de fuentes actuales](fuentes/actualizacion-fuentes-2026.html).
+Como orientación complementaria, **SRC-36**, el [selector de licencias de Creative Commons](https://creativecommons.org/chooser/), permite comparar condiciones como atribución, uso comercial, adaptaciones y compartir igual. La herramienta no determina quién posee los derechos ni autoriza al equipo a licenciar materiales ajenos; la declaración de este proyecto se limita a los componentes propios autorizados. Ver el [registro de fuentes actuales](fuentes/actualizacion-fuentes-2026.html).
 
 ## Registro de procedencia pendiente
 
 | Componente | Fuente/autoría | Licencia o permiso | Estado |
 |---|---|---|---|
-| Notebook Word2Vec | Por confirmar (SRC-01) | Por acordar | Pendiente |
-| Notebook ReAct | Por confirmar (SRC-04) | Por acordar | Pendiente |
-| Notebook LangChain | Por confirmar (SRC-03) | Por acordar | Pendiente |
+| Notebook Word2Vec | Componente propio autorizado (SRC-01) | CC BY-NC-SA 4.0; revisar terceros | Declarado |
+| Notebook ReAct | Componente propio autorizado (SRC-04) | CC BY-NC-SA 4.0; revisar terceros | Declarado |
+| Notebook LangChain | Componente propio autorizado (SRC-03) | CC BY-NC-SA 4.0; revisar terceros | Declarado |
 | Textos, gráficos y datasets | Revisar notebook por notebook | Verificar cada componente | Pendiente |
-| Recursos creados para las páginas | Equipo autor por confirmar | Acordar antes de publicación | Pendiente |
+| Recursos creados para las páginas | Equipo autor según autorización | CC BY-NC-SA 4.0 | Declarado |
 
 ## Transparencia sobre el uso de IA
 

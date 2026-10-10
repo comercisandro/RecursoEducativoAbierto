@@ -6,9 +6,9 @@ Esta carpeta contiene las notebooks de la cátedra y copias de documentos descar
 
 | ID | Archivo local | Fuente original | Licencia indicada por el repositorio |
 |---|---|---|---|
-| SRC-01 | `2025_word2vec.ipynb` y `2025_word2vec.ipynb - Colab.pdf` | Original local aportado al proyecto | No declarada en el archivo; confirmar con titulares |
-| SRC-03 | `Agente_LangChain.ipynb` y `Agente_LangChain.ipynb - Colab.pdf` | Original local aportado al proyecto | No declarada en el archivo; confirmar con titulares |
-| SRC-04 | `Agente_ReAct.ipynb` y `Agente_ReAct.ipynb - Colab.pdf` | Original local aportado al proyecto | No declarada en el archivo; confirmar con titulares |
+| SRC-01 | `2025_word2vec.ipynb` y `2025_word2vec.ipynb - Colab.pdf` | Original local aportado al proyecto | Componente propio autorizado: CC BY-NC-SA 4.0; revisar terceros |
+| SRC-03 | `Agente_LangChain.ipynb` y `Agente_LangChain.ipynb - Colab.pdf` | Original local aportado al proyecto | Componente propio autorizado: CC BY-NC-SA 4.0; revisar terceros |
+| SRC-04 | `Agente_ReAct.ipynb` y `Agente_ReAct.ipynb - Colab.pdf` | Original local aportado al proyecto | Componente propio autorizado: CC BY-NC-SA 4.0; revisar terceros |
 | SRC-07 | `SRC-07-villarreal-curso-repositorios-aspectos-tecnologicos.pdf` | [SEDICI: Curso de Repositorios Digitales - Aspectos tecnológicos](https://sedici.unlp.edu.ar/handle/10915/57192) | CC BY-SA 4.0 |
 | SRC-08 | `SRC-08-diaz-davila-aprendizaje-matematica-ingenieria.pdf` | [SEDICI: La pandemia. Acciones para facilitar el aprendizaje en Matemática durante el ingreso a carreras de Ingeniería](https://sedici.unlp.edu.ar/handle/10915/103682) | CC BY-NC-SA 4.0 |
 | SRC-12 | `SRC-12-educar-ia-y-educacion-encuesta-2025.pdf` | [Educ.ar: IA y educación. Usos y representaciones de la comunidad educativa](https://www.educ.ar/recursos/159144/ia-y-educacion-informe-encuesta) | CC BY-NC-SA (según ficha de Educ.ar) |

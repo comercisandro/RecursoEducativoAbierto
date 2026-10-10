@@ -89,7 +89,7 @@ Como comprobación práctica inspirada en SRC-39, revisar: orden de encabezados;
 - Cambiar el problema integrador conservando la progresión conceptual.
 - Registrar los cambios realizados y atribuir las fuentes y materiales reutilizados según sus licencias.
 
-La posibilidad legal de adaptar o redistribuir los materiales de este repositorio depende de la licencia que acuerden sus titulares; por ahora no se declara una licencia abierta.
+Los componentes propios autorizados pueden adaptarse y redistribuirse bajo **CC BY-NC-SA 4.0**, respetando atribución, uso no comercial y compartir igual. Esta licencia no se extiende automáticamente a materiales de terceros; revisar el inventario y las condiciones de cada componente antes de reutilizarlo.
 
 ## 9. Actividades y evaluación formativa
 

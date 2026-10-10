@@ -30,7 +30,7 @@ El inventario de originales, atribuciones, licencias registradas y copias curric
 
 ## Estado de licenciamiento
 
-El repositorio no declara todavía una licencia abierta. La publicación visible en GitHub no basta para conceder permisos de adaptación o redistribución. La licencia debe acordarse con las personas titulares de derechos y declararse explícitamente antes de presentar el material como REA. Ver [Licencias y atribuciones](licencias-y-atribuciones.md).
+Los componentes propios autorizados se distribuyen bajo **CC BY-NC-SA 4.0**. Los materiales de terceros no quedan relicenciados por esta declaración y deben revisarse individualmente. Ver [Licencias y atribuciones](licencias-y-atribuciones.md) y [`LICENSE.md`](LICENSE.md).
 
 ## Fuentes de contexto
 
