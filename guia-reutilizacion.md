@@ -78,7 +78,7 @@ Son propuestas iniciales; se ajustarán a las consignas y dimensiones de **SRC-0
 
 ## 10. Licencias, atribución y materiales de terceros
 
-La licencia del recurso está pendiente de acuerdo con las personas titulares. Antes de publicar la versión final, identificar autoría, procedencia y licencia de cada texto, imagen, dataset, fragmento de código y biblioteca incorporados. Ver [Licencias y atribuciones](licencias-y-atribuciones.md).
+La licencia del recurso está pendiente de acuerdo con las personas titulares. Antes de publicar la versión final, identificar autoría, procedencia y licencia de cada texto, imagen, dataset, fragmento de código y biblioteca incorporados. Ver [Licencias y atribuciones](licencias-y-atribuciones.html).
 
 ## 11. Referencias, versión y transparencia
 
