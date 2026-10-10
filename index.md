@@ -12,7 +12,7 @@ title: De Word2Vec a agentes de inteligencia artificial
     <h1 id="home-title">Del texto a los agentes de IA</h1>
     <p class="lead">Una ruta teórico-práctica para explorar cómo se procesa el lenguaje, cómo se representa con vectores y cómo un agente puede usar herramientas para resolver tareas. Avanza desde los fundamentos de NLP hasta la orquestación de agentes, con prácticas en notebooks y alternativas de lectura sin ejecutar código.</p>
     <div class="action-row">
-      <a class="button primary" href="modulos_html/01-word2vec.html">Comenzar la ruta <span aria-hidden="true">→</span></a>
+      <a class="button primary" href="modulos_html/01-word2vec.html?v=cf595a3">Comenzar la ruta <span aria-hidden="true">→</span></a>
       <a class="button secondary" href="guia-reutilizacion.html">Ver guía docente</a>
     </div>
     <p class="source-note">Material de la Cátedra de Inteligencia Artificial · páginas HTML y cuadernos Jupyter · guía docente disponible</p>
@@ -30,19 +30,19 @@ title: De Word2Vec a agentes de inteligencia artificial
         <div class="home-card-top"><span class="home-module-number">01</span><span class="home-card-kicker">REPRESENTACIÓN</span></div>
         <h3>Del texto a Word2Vec</h3>
         <p>Preprocesamiento, tokens, Bag-of-Words, embeddings y distancias entre palabras. Requiere revisar el corpus y la reproducibilidad del entrenamiento.</p>
-        <div class="home-card-actions"><a href="modulos_html/01-word2vec.html">Leer módulo <span aria-hidden="true">→</span></a><a href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/2025_word2vec.ipynb" target="_blank" rel="noopener noreferrer">Abrir Colab ↗</a></div>
+        <div class="home-card-actions"><a href="modulos_html/01-word2vec.html?v=cf595a3">Leer módulo <span aria-hidden="true">→</span></a><a href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/2025_word2vec.ipynb" target="_blank" rel="noopener noreferrer">Abrir Colab ↗</a></div>
       </article>
       <article class="home-module-card module-card-02">
         <div class="home-card-top"><span class="home-module-number">02</span><span class="home-card-kicker">RAZONAR Y ACTUAR</span></div>
         <h3>Construir un agente ReAct</h3>
         <p>Herramientas, parser de acciones y ciclo Thought–Action–Observation en Python; incluye casos de prueba y límites del formato de respuesta.</p>
-        <div class="home-card-actions"><a href="modulos_html/02-agente-react.html">Leer módulo <span aria-hidden="true">→</span></a><a href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/Agente_ReAct.ipynb" target="_blank" rel="noopener noreferrer">Abrir Colab ↗</a></div>
+        <div class="home-card-actions"><a href="modulos_html/02-agente-react.html?v=cf595a3">Leer módulo <span aria-hidden="true">→</span></a><a href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/Agente_ReAct.ipynb" target="_blank" rel="noopener noreferrer">Abrir Colab ↗</a></div>
       </article>
       <article class="home-module-card module-card-03">
         <div class="home-card-top"><span class="home-module-number">03</span><span class="home-card-kicker">ABSTRACCIÓN</span></div>
         <h3>Frameworks y skills</h3>
         <p>LangChain, LangGraph, Skills y MCP: qué resuelve cada capa y qué controles considerar al conectar herramientas.</p>
-        <div class="home-card-actions"><a href="modulos_html/03-frameworks-skills.html">Leer módulo <span aria-hidden="true">→</span></a><a href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/Agente_LangChain.ipynb" target="_blank" rel="noopener noreferrer">Abrir Colab ↗</a></div>
+        <div class="home-card-actions"><a href="modulos_html/03-frameworks-skills.html?v=cf595a3">Leer módulo <span aria-hidden="true">→</span></a><a href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/Agente_LangChain.ipynb" target="_blank" rel="noopener noreferrer">Abrir Colab ↗</a></div>
       </article>
     </div>
   </section>

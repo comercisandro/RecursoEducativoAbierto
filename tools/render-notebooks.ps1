@@ -262,9 +262,9 @@ foreach ($module in $modules) {
     [void]$builder.AppendLine('<nav class="learning-path" aria-label="Progreso de la ruta formativa">')
     [void]$builder.AppendLine('<div class="path-caption"><span>ITINERARIO</span><span>De la representación a la acción</span></div>')
     $pathSteps = @(
-        [pscustomobject]@{ Number='01'; Label='Texto y embeddings'; Href='01-word2vec.html' },
-        [pscustomobject]@{ Number='02'; Label='Agentes ReAct'; Href='02-agente-react.html' },
-        [pscustomobject]@{ Number='03'; Label='Frameworks y skills'; Href='03-frameworks-skills.html' }
+        [pscustomobject]@{ Number='01'; Label='Texto y embeddings'; Href='01-word2vec.html?v=cf595a3' },
+        [pscustomobject]@{ Number='02'; Label='Agentes ReAct'; Href='02-agente-react.html?v=cf595a3' },
+        [pscustomobject]@{ Number='03'; Label='Frameworks y skills'; Href='03-frameworks-skills.html?v=cf595a3' }
     )
     foreach ($step in $pathSteps) {
         $stepClass = if ($step.Number -eq $module.Number) { 'path-step active' } elseif ([int]$step.Number -lt [int]$module.Number) { 'path-step complete' } else { 'path-step' }
@@ -328,9 +328,9 @@ foreach ($module in $modules) {
     [void]$builder.AppendLine('</section>')
     [void]$builder.AppendLine('<nav class="module-nav" aria-label="Explorar módulos de la ruta">')
     $moduleLinks = @(
-        [pscustomobject]@{ Number='01'; Label='Texto y embeddings'; Href='01-word2vec.html' },
-        [pscustomobject]@{ Number='02'; Label='Agentes ReAct'; Href='02-agente-react.html' },
-        [pscustomobject]@{ Number='03'; Label='Frameworks y skills'; Href='03-frameworks-skills.html' }
+        [pscustomobject]@{ Number='01'; Label='Texto y embeddings'; Href='01-word2vec.html?v=cf595a3' },
+        [pscustomobject]@{ Number='02'; Label='Agentes ReAct'; Href='02-agente-react.html?v=cf595a3' },
+        [pscustomobject]@{ Number='03'; Label='Frameworks y skills'; Href='03-frameworks-skills.html?v=cf595a3' }
     )
     foreach ($link in $moduleLinks) {
         $current = if ($link.Number -eq $module.Number) { ' aria-current="page"' } else { '' }
