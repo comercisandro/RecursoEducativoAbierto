@@ -18,8 +18,6 @@ title: Del lenguaje a los agentes inteligentes
     <p class="source-note">Material de la Cátedra de Inteligencia Artificial · páginas HTML y cuadernos Jupyter · guía docente disponible</p>
   </section>
 
-  <aside class="notice home-status"><strong>Estado del recurso: versión de revisión pública.</strong> Las notebooks se ofrecen como lectura web estática; las celdas no se ejecutan en estas páginas. La autorización de licencias y el cotejo institucional siguen pendientes. Se documentan las versiones y límites técnicos conocidos para apoyar una implementación informada.</aside>
-
   <section class="home-route" aria-labelledby="route-title">
     <div class="section-heading">
       <div><div class="eyebrow home-eyebrow">ITINERARIO FORMATIVO</div><h2 id="route-title">Avanza paso a paso</h2></div>
