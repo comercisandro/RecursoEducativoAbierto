@@ -289,7 +289,7 @@ foreach ($module in $modules) {
     [void]$builder.AppendLine('<meta name="viewport" content="width=device-width, initial-scale=1">')
     [void]$builder.AppendLine("<meta name=`"description`" content=`"$([System.Net.WebUtility]::HtmlEncode($module.Summary))`">")
     [void]$builder.AppendLine("<title>$([System.Net.WebUtility]::HtmlEncode($module.Title)) · Recurso educativo</title>")
-    [void]$builder.AppendLine('<link rel="stylesheet" href="../assets/rea.css?v=20261010-6">')
+    [void]$builder.AppendLine('<link rel="stylesheet" href="../assets/rea.css?v=20261010-7">')
     [void]$builder.AppendLine('<script src="../assets/header-scroll.js" defer></script>')
     [void]$builder.AppendLine('<script src="../assets/learning.js?v=20261010-1" defer></script>')
     [void]$builder.AppendLine('</head>')

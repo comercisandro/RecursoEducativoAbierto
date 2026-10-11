@@ -53,6 +53,15 @@ a:focus-visible, summary:focus-visible { outline: 3px solid #f0a93b; outline-off
 .site-header.is-compact .site-nav .page-link::after { font-size: .84rem; }
 
 .page-shell { width: min(1010px, calc(100% - 2rem)); margin: 0 auto; padding: 2.2rem 0 3.5rem; }
+.standard-content { padding: clamp(1.15rem, 4vw, 2.6rem); border: 1px solid var(--line); border-radius: 1.2rem; background: var(--paper); box-shadow: 0 16px 40px rgb(34 49 82 / 6%); }
+.standard-content > h1:first-of-type { margin-top: 0; color: var(--navy); font-size: clamp(2rem, 4vw, 3rem); }
+.standard-content h2 { margin: 2rem 0 .8rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); color: var(--navy); }
+.standard-content h3 { margin: 1.6rem 0 .7rem; color: var(--violet-dark); }
+.standard-content p, .standard-content li { color: #33435a; }
+.standard-content table { width: 100%; border-collapse: collapse; }
+.standard-content th, .standard-content td { padding: .65rem; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+.standard-content th { color: var(--navy); background: #f0edff; }
+.standard-content blockquote { margin: 1rem 0; padding: .3rem 1rem; border-left: 3px solid #81cdb8; color: var(--muted); background: #f2fbf8; }
 .module-hero { position: relative; isolation: isolate; overflow: hidden; padding: clamp(1.5rem, 5vw, 3.5rem); border-radius: 1.45rem; color: white; background: radial-gradient(ellipse at 88% 4%, rgb(185 240 223 / 22%), transparent 28%), linear-gradient(125deg, var(--navy) 0%, #252e59 62%, #354577 100%); box-shadow: 0 22px 55px rgb(29 38 76 / 18%); }
 .module-page > .module-hero { position: relative; margin-bottom: 1.2rem; }
 .module-hero::after { position: absolute; z-index: -1; right: -5rem; bottom: -9rem; width: 24rem; height: 24rem; border: 1px solid rgb(255 255 255 / 13%); border-radius: 50%; box-shadow: 0 0 0 2rem rgb(255 255 255 / 3%), 0 0 0 4rem rgb(255 255 255 / 3%); content: ""; }
