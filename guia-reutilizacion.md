@@ -47,8 +47,6 @@ Estos objetivos son una propuesta y deben validarse con el programa de la asigna
 
 La secuencia se organiza en tres módulos: **texto y embeddings** (SRC-01), **ReAct manual** (SRC-04) y **frameworks y skills** (SRC-03). Se sugiere avanzar en ese orden y reservar una instancia integradora para diseñar y probar una herramienta. La duración y modalidad se definirán según la planificación de la cátedra.
 
-> La copia local de las instrucciones **SRC-16** indica que para la actividad cooperativa acreditable del punto 3 no corresponde usar herramientas de IA. Confirmar la consigna vigente en el aula virtual; las actividades de IA de esta guía son propuestas independientes y no modifican esa instrucción.
-
 ### Secuencia orientativa
 
 | Momento | Propuesta de trabajo | Evidencia observable |
