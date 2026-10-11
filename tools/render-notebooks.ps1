@@ -353,7 +353,6 @@ foreach ($module in $modules) {
         }
     }
     [void]$builder.AppendLine('</section>')
-    Add-InteractiveActivity $builder $module
     [void]$builder.AppendLine('<nav class="module-nav" aria-label="Explorar módulos de la ruta">')
     $moduleLinks = @(
         [pscustomobject]@{ Number='01'; Label='Texto y embeddings'; Href='01-word2vec.html?v=cf595a3' },
@@ -365,6 +364,7 @@ foreach ($module in $modules) {
         [void]$builder.AppendLine("<a href=`"$($link.Href)`"$current><span>MÓDULO $($link.Number)</span><strong>$([System.Net.WebUtility]::HtmlEncode($link.Label))</strong></a>")
     }
     [void]$builder.AppendLine('</nav>')
+    Add-InteractiveActivity $builder $module
     Add-TransparencyNotices $builder $module
     [void]$builder.AppendLine('</main>')
     [void]$builder.AppendLine('<footer class="site-footer"><p>Recurso educativo en preparación · Cátedra de Inteligencia Artificial</p><p>Fuentes originales y estado de permisos: <a href="https://github.com/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/README.md" rel="noopener noreferrer">inventario de fuentes</a>.</p></footer>')
