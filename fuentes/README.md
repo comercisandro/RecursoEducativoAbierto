@@ -1,3 +1,9 @@
+---
+layout: page
+title: Inventario de fuentes
+permalink: /fuentes/README.html
+---
+
 # Fuentes originales recuperadas
 
 Esta carpeta contiene las notebooks de la cátedra y copias de documentos descargables de las fuentes de referencia del proyecto. Se mantienen los identificadores SRC para relacionar cada material con la matriz bibliográfica de trabajo. Cada obra conserva su autoría y licencia propia; la inclusión aquí no relicencia esos documentos bajo la licencia del proyecto.
@@ -17,7 +23,7 @@ Esta carpeta contiene las notebooks de la cátedra y copias de documentos descar
 
 ## Referencias técnicas y pedagógicas actuales
 
-Consultadas el **10 de octubre de 2026**. Son referencias web oficiales o publicaciones académicas; se enlazan al original porque su contenido y versiones pueden cambiar. El resumen de hallazgos y su aplicación al recurso está en [`actualizacion-fuentes-2026.md`](actualizacion-fuentes-2026.md).
+Consultadas el **10 de octubre de 2026**. Son referencias web oficiales o publicaciones académicas; se enlazan al original porque su contenido y versiones pueden cambiar. El resumen de hallazgos y su aplicación al recurso está en [`actualizacion-fuentes-2026.html`](actualizacion-fuentes-2026.html).
 
 | ID | Tema | Fuente primaria | Uso en el proyecto |
 |---|---|---|---|
