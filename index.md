@@ -3,7 +3,7 @@ layout: home
 title: De Word2Vec a agentes de inteligencia artificial
 ---
 
-<link rel="stylesheet" href="{{ '/assets/rea.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/rea.css?v=20261010-6' | relative_url }}">
 <script src="{{ '/assets/header-scroll.js' | relative_url }}" defer></script>
 
 <main class="page-shell home-page">

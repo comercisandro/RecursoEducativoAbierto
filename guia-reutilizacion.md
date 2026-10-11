@@ -4,7 +4,7 @@ title: Guía de reutilización docente
 permalink: /guia-reutilizacion.html
 ---
 
-<link rel="stylesheet" href="{{ '/assets/rea.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/rea.css?v=20261010-6' | relative_url }}">
 <script src="{{ '/assets/header-scroll.js' | relative_url }}" defer></script>
 
 # Guía de reutilización docente
