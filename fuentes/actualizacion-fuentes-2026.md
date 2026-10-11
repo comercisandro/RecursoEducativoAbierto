@@ -5,7 +5,6 @@ permalink: /fuentes/actualizacion-fuentes-2026.html
 ---
 
 <link rel="stylesheet" href="{{ '/assets/rea.css?v=20261010-6' | relative_url }}">
-<script src="{{ '/assets/header-scroll.js' | relative_url }}" defer></script>
 
 # Actualización de fuentes y hallazgos — 10 de octubre de 2026
 
