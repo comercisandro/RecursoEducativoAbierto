@@ -12,7 +12,7 @@ permalink: /guia-reutilizacion.html
 
 ## 1. Identificación del recurso
 
-- **Título:** De Word2Vec a agentes de inteligencia artificial.
+- **Título:** Del lenguaje a los agentes inteligentes.
 - **Autoría y afiliación:** pendientes de confirmar con el equipo de cátedra.
 - **Área:** Inteligencia Artificial y Procesamiento del Lenguaje Natural.
 - **Versión:** primera versión pública de revisión, 2026-10-10.

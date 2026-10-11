@@ -1,4 +1,4 @@
-# De Word2Vec a agentes de inteligencia artificial
+# Del lenguaje a los agentes inteligentes
 
 Primera versión pública de revisión de un Recurso Educativo Abierto (REA) para la cátedra de Inteligencia Artificial. El sitio propone una ruta progresiva desde el preprocesamiento del texto y los embeddings hasta la construcción de agentes con herramientas, con prácticas conceptuales y una actividad integradora.
 

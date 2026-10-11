@@ -12,7 +12,7 @@ Salvo que se indique lo contrario, los **componentes propios autorizados** de es
 
 - Texto legal: <https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es>
 - Licencia en inglés: <https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode>
-- Atribución sugerida: *De Word2Vec a agentes de inteligencia artificial*, Cátedra de Inteligencia Artificial, versión publicada en este repositorio.
+- Atribución sugerida: *Del lenguaje a los agentes inteligentes*, Cátedra de Inteligencia Artificial, versión publicada en este repositorio.
 
 La licencia permite compartir y adaptar los componentes propios con atribución, únicamente para fines no comerciales y con la misma licencia en las adaptaciones, conforme a sus condiciones. La autorización para declarar esta licencia fue confirmada por las personas titulares correspondientes.
 

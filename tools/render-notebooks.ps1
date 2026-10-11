@@ -294,7 +294,7 @@ foreach ($module in $modules) {
     [void]$builder.AppendLine('</head>')
     [void]$builder.AppendLine('<body>')
     [void]$builder.AppendLine('<a class="skip-link" href="#contenido">Saltar al contenido</a>')
-    [void]$builder.AppendLine('<header class="site-header"><div class="header-inner"><a class="brand" href="../index.html">De Word2Vec a agentes de IA</a><nav aria-label="Navegación principal"><a href="../index.html">Inicio</a><a href="../guia-reutilizacion.html">Guía de reutilización</a><a href="../evaluacion-final.html">Actividad integradora</a><a href="../licencias-y-atribuciones.html">Licencias</a></nav></div></header>')
+    [void]$builder.AppendLine('<header class="site-header"><div class="header-inner"><a class="brand" href="../index.html">Del lenguaje a los agentes inteligentes</a><nav aria-label="Navegación principal"><a href="../index.html">Inicio</a><a href="../guia-reutilizacion.html">Guía de reutilización</a><a href="../evaluacion-final.html">Actividad integradora</a><a href="../licencias-y-atribuciones.html">Licencias</a></nav></div></header>')
     [void]$builder.AppendLine("<main id=`"contenido`" class=`"page-shell module-page module-$($module.Number)`">")
     [void]$builder.AppendLine('<section class="module-hero">')
     [void]$builder.AppendLine('<div class="eyebrow"><span>RUTA DE APRENDIZAJE</span><span class="eyebrow-divider"></span><span>MÓDULO ' + $module.Number + ' DE 03</span></div>')

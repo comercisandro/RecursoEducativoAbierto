@@ -1,6 +1,6 @@
 ---
 layout: home
-title: De Word2Vec a agentes de inteligencia artificial
+title: Del lenguaje a los agentes inteligentes
 ---
 
 <link rel="stylesheet" href="{{ '/assets/rea.css?v=20261010-6' | relative_url }}">
