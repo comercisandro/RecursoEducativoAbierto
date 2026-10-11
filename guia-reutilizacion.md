@@ -10,14 +10,10 @@ permalink: /guia-reutilizacion.html
 
 > **Primera versión pública de revisión.** Hay copias locales de **SRC-06, SRC-09, SRC-21 y SRC-26**, ya cotejadas para esta revisión, pero todavía no están versionadas. El PDF disponible de SRC-26 muestra las secciones 1 y 8–11; falta contrastar la guía con el original completo. Las propuestas de abajo no reemplazan las rúbricas ni equivalen a una evaluación institucional.
 
-## Inventario de fuentes
-
-Consulta el [inventario de fuentes SRC](fuentes/README.html) para identificar la procedencia, licencia y estado de cada material utilizado en esta guía. Los códigos `SRC-01`, `SRC-03`, etc. funcionan como referencias breves para localizar allí la fuente completa.
-
 ## 1. Identificación del recurso
 
 - **Título:** Del lenguaje a los agentes inteligentes.
-- **Autoría y afiliación:** pendientes de confirmar con el equipo de cátedra.
+- **Autoría y afiliación:** Ing. Comerci Sandro Mauricio, Dra. Laura Diaz Davila
 - **Área:** Inteligencia Artificial y Procesamiento del Lenguaje Natural.
 - **Versión:** primera versión pública de revisión, 2026-10-10.
 - **Repositorio:** [RecursoEducativoAbierto en GitHub](https://github.com/comercisandro/RecursoEducativoAbierto); publicación web en GitHub Pages.
@@ -144,3 +140,7 @@ La licencia de los componentes propios autorizados está declarada en [LICENSE.m
 ## 11. Referencias, versión y transparencia
 
 La secuencia técnica se apoya en SRC-01, SRC-04 y SRC-03, actualizadas con documentación oficial de Gensim (SRC-27), el artículo de ReAct (SRC-28), LangChain (SRC-29), LangGraph (SRC-30), Agent Skills (SRC-31) y MCP (SRC-32 y SRC-33). Para el marco REA y la IA en educación se incorporan la Recomendación UNESCO sobre REA (SRC-34), su orientación sobre IA generativa (SRC-35) y la herramienta de selección de Creative Commons (SRC-36). El registro de consulta y los hallazgos están en [`fuentes/actualizacion-fuentes-2026.html`](fuentes/actualizacion-fuentes-2026.html); consultar las fuentes primarias antes de implementar cambios porque la documentación técnica es dinámica. El uso de IA durante la elaboración se documentará con precisión en la versión publicada.
+
+## Inventario de fuentes
+
+Consulta el [inventario de fuentes SRC](fuentes/README.html) para identificar la procedencia, licencia y estado de cada material utilizado en esta guía. Los códigos `SRC-01`, `SRC-03`, etc. funcionan como referencias breves para localizar allí la fuente completa.
