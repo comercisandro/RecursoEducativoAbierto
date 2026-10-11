@@ -8,8 +8,6 @@ permalink: /guia-reutilizacion.html
 
 # Guía de reutilización docente
 
-> **Primera versión pública de revisión.** Hay copias locales de **SRC-06, SRC-09, SRC-21 y SRC-26**, ya cotejadas para esta revisión, pero todavía no están versionadas. El PDF disponible de SRC-26 muestra las secciones 1 y 8–11; falta contrastar la guía con el original completo. Las propuestas de abajo no reemplazan las rúbricas ni equivalen a una evaluación institucional.
-
 ## 1. Identificación del recurso
 
 - **Título:** Del lenguaje a los agentes inteligentes.
