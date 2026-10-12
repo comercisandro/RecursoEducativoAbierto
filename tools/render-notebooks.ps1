@@ -234,21 +234,21 @@ function Add-TransparencyNotices($Builder, $Module) {
     [void]$Builder.AppendLine('<aside class="notice info"><strong>Licencia declarada para los componentes propios.</strong> Esta versión se distribuye bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0 ↗</a>, con atribución, uso no comercial y compartir igual. Los materiales de terceros mantienen sus propias condiciones; revisa el <a href="../licencias-y-atribuciones.html">estado de licencias y atribuciones</a>.</aside>')
     [void]$Builder.AppendLine('<aside class="notice info"><strong>Lectura estática.</strong> Esta página muestra el texto, el código y las salidas que ya estaban guardadas en la notebook. No ejecuta celdas. Las salidas HTML dinámicas de terceros se omiten por seguridad; los gráficos interactivos requieren abrir la notebook.</aside>')
 
-    if ($Module.File -eq '2025_word2vec.ipynb') {
+    if ($Module.File -eq 'modulo-1.ipynb') {
         [void]$Builder.AppendLine('<aside class="notice warning"><strong>Requisito de datos.</strong> El notebook busca <code>simpsons_dataset.csv</code> en una ruta de Google Drive específica. Para ejecutarlo desde Colab, tendrás que proporcionar ese archivo o actualizar la ruta en una copia de trabajo. El dataset no está incluido en este repositorio.</aside>')
         [void]$Builder.AppendLine('<aside class="notice warning"><strong>Revisión del código fuente (SRC-01, SRC-27).</strong> La celda de analogías contiene una línea que parece tener un error de sintaxis. La documentación de Gensim 4.3.3 marca <code>init_sims()</code> como obsoleto; para vectores normalizados documenta <code>model.wv.get_vector(palabra, norm=True)</code>. Registra versión, parámetros y corpus, y prueba las celdas en un entorno limpio antes de usarlas.</aside>')
         [void]$Builder.AppendLine('<aside class="notice info"><strong>Reproducibilidad del entrenamiento (SRC-27).</strong> La API permite registrar una semilla, pero su documentación advierte que la planificación concurrente puede introducir variación: usa <code>workers=1</code> y fija <code>PYTHONHASHSEED</code> para una ejecución más reproducible. La normalización y las analogías describen asociaciones del corpus; no prueban causalidad ni comprensión humana. <a href="https://radimrehurek.com/gensim/models/word2vec.html" target="_blank" rel="noopener noreferrer">Consultar documentación de Gensim ↗</a></aside>')
     }
-    if ($Module.File -eq 'Agente_ReAct.ipynb') {
+    if ($Module.File -eq 'modulo-2.ipynb') {
         [void]$Builder.AppendLine('<aside class="notice warning"><strong>Revisión del flujo ReAct (SRC-04).</strong> En la notebook, el prompt solicita <code>FINAL:</code>, mientras que el parser busca <code>Final Answer:</code>. Además, el patrón de acción requiere texto después de <code>|</code>, aunque el ejemplo de la herramienta de hora no lleva entrada. La salida guardada de esa prueba tampoco llega a la fecha final. Revisa y corrige estas diferencias antes de usarlo como práctica ejecutable.</aside>')
         [void]$Builder.AppendLine('<aside class="notice info"><strong>Fundamento y evaluación (SRC-28).</strong> ReAct propone intercalar razonamiento y acciones; el patrón del artículo no garantiza que cada agente o parser funcione correctamente. Evalúa por separado el formato de salida, selección de herramienta, observación, respuesta final y límite de iteraciones. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener noreferrer">Leer el artículo original ↗</a></aside>')
     }
-    if ($Module.File -eq 'Agente_LangChain.ipynb') {
+    if ($Module.File -eq 'modulo-3.ipynb') {
         [void]$Builder.AppendLine('<aside class="notice warning"><strong>Reproducibilidad (SRC-03).</strong> Las dependencias se instalan sin fijar versiones y el ejemplo utiliza APIs de frameworks que pueden cambiar. Para una práctica reproducible, valida el notebook en un entorno limpio y registra versiones probadas.</aside>')
         [void]$Builder.AppendLine('<aside class="notice info"><strong>Mapa actual de abstracciones (SRC-29 a SRC-33).</strong> LangChain documenta <code>create_agent</code> para bucles modelo-herramientas configurables; LangGraph se centra en orquestar flujos con estado, persistencia y supervisión humana. Skills son paquetes de instrucciones y recursos cuya forma depende de la plataforma; MCP es un protocolo para conectar aplicaciones y herramientas, no un framework de agentes. Consulta la <a href="../fuentes/actualizacion-fuentes-2026.html">actualización de fuentes</a> antes de adaptar ejemplos a APIs actuales.</aside>')
         [void]$Builder.AppendLine('<aside class="notice warning"><strong>Diseño seguro de herramientas (SRC-33).</strong> Define permisos mínimos, valida argumentos y resultados, limita iteraciones y pide confirmación antes de efectos externos. No conectes credenciales reales ni servidores locales que no hayas auditado; consulta las prácticas de <a href="https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices" target="_blank" rel="noopener noreferrer">seguridad de MCP ↗</a>.</aside>')
     }
-    if ($Module.File -in @('Agente_ReAct.ipynb','Agente_LangChain.ipynb')) {
+    if ($Module.File -in @('modulo-2.ipynb','modulo-3.ipynb')) {
         [void]$Builder.AppendLine('<aside class="notice warning"><strong>Requisito de API.</strong> El notebook solicita un token de Hugging Face mediante una entrada oculta. No publiques ni guardes tokens en el repositorio; configura el secreto en tu entorno antes de ejecutar las celdas que llaman al modelo o a servicios externos.</aside>')
     }
     [void]$Builder.AppendLine('</div></section>')
@@ -256,7 +256,7 @@ function Add-TransparencyNotices($Builder, $Module) {
 
 $modules = @(
     [pscustomobject]@{
-        File='2025_word2vec.ipynb'; Output='01-word2vec.html'; Number='01'; Title='Del texto a Word2Vec';
+        File='modulo-1.ipynb'; Output='01-word2vec.html'; Number='01'; Title='Del texto a Word2Vec';
         Focus=@('Preparar el corpus','Aprender embeddings','Leer similitudes');
         SourceId='SRC-01'; Pdf='2025_word2vec.ipynb - Colab.pdf';
         Summary='Preprocesamiento, tokenización, representaciones del texto y exploración de embeddings estáticos.';
@@ -266,7 +266,7 @@ $modules = @(
         Requirements='Lectura web para seguir el concepto; para ejecutar, notebook, corpus simpsons_dataset.csv y un entorno compatible con Gensim.'
     },
     [pscustomobject]@{
-        File='Agente_ReAct.ipynb'; Output='02-agente-react.html'; Number='02'; Title='Construir un agente ReAct';
+        File='modulo-2.ipynb'; Output='02-agente-react.html'; Number='02'; Title='Construir un agente ReAct';
         Focus=@('Definir herramientas','Interpretar acciones','Cerrar el ciclo');
         SourceId='SRC-04'; Pdf='Agente_ReAct.ipynb - Colab.pdf';
         Summary='Herramientas, formato de acciones, parser y ciclo Thought–Action–Observation implementado en Python.';
@@ -276,7 +276,7 @@ $modules = @(
         Requirements='Lectura web para analizar el flujo; para ejecutar, notebook, dependencias compatibles y token de Hugging Face configurado fuera del repositorio.'
     },
     [pscustomobject]@{
-        File='Agente_LangChain.ipynb'; Output='03-frameworks-skills.html'; Number='03'; Title='De ReAct a frameworks y skills';
+        File='modulo-3.ipynb'; Output='03-frameworks-skills.html'; Number='03'; Title='De ReAct a frameworks y skills';
         Focus=@('Declarar tools','Orquestar el flujo','Componer skills');
         SourceId='SRC-03'; Pdf='Agente_LangChain.ipynb - Colab.pdf';
         Summary='Abstracción de herramientas y agentes con LangChain/LangGraph, y composición de skills.';

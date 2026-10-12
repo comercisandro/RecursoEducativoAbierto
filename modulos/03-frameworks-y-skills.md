@@ -18,7 +18,7 @@ Relacionar el agente construido de forma explícita con las abstracciones que of
 4. Distinguir una herramienta puntual de una skill que combina varios pasos o capacidades.
 5. Comparar la implementación manual con la solución basada en framework: qué se simplifica y qué decisiones siguen a cargo del desarrollador.
 
-El contenido se basa en **SRC-03, `Agente_LangChain.ipynb`**, disponible en `fuentes/`, que aborda LangChain, LangGraph, runtime de agentes y skills compuestas. Las versiones de bibliotecas y APIs se verificarán contra el notebook antes de publicar instrucciones de instalación.
+El contenido se basa en **SRC-03, `modulo-3.ipynb`**, disponible en `fuentes/`, que aborda LangChain, LangGraph, runtime de agentes y skills compuestas. Las versiones de bibliotecas y APIs se verificarán contra el notebook antes de publicar instrucciones de instalación.
 
 ## Preguntas para orientar el aprendizaje
 

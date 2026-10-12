@@ -18,7 +18,7 @@ Comprender el patrón de interacción que permite conectar un modelo de lenguaje
 4. Analizar el formato de instrucciones, el parser de acciones y el bucle de ejecución.
 5. Examinar cómo se conecta el ejemplo con un proveedor de modelos mediante una API.
 
-El contenido se basa en **SRC-04, `Agente_ReAct.ipynb`**, disponible en `fuentes/`. Los detalles de implementación deben cotejarse con el archivo fuente antes de publicar código o instrucciones ejecutables.
+El contenido se basa en **SRC-04, `modulo-2.ipynb`**, disponible en `fuentes/`. Los detalles de implementación deben cotejarse con el archivo fuente antes de publicar código o instrucciones ejecutables.
 
 ## Preguntas para orientar el aprendizaje
 

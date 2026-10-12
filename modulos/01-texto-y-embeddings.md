@@ -19,7 +19,7 @@ Explorar cómo se transforma un texto para que un programa pueda procesarlo y c�
 5. **Word2Vec:** comparación entre CBOW y Skip-gram como estrategias para aprender representaciones a partir del contexto.
 6. **Geometría:** exploración de distancias y similitudes entre vectores; visualización en dimensiones reducidas si lo aborda el notebook.
 
-Esta progresión se basa en **SRC-01, `2025_word2vec.ipynb`**, disponible en `fuentes/`. Los ejemplos, parámetros y resultados concretos se presentan en la página HTML generada desde el notebook.
+Esta progresión se basa en **SRC-01, `modulo-1.ipynb`**, disponible en `fuentes/`. Los ejemplos, parámetros y resultados concretos se presentan en la página HTML generada desde el notebook.
 
 ## Preguntas para orientar el aprendizaje
 
