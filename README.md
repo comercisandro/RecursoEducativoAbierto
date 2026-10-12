@@ -2,6 +2,8 @@
 
 Primera versión pública de revisión de un Recurso Educativo Abierto (REA) para la cátedra de Inteligencia Artificial. El sitio propone una ruta progresiva desde el preprocesamiento del texto y los embeddings hasta la construcción de agentes con herramientas, con prácticas conceptuales y una actividad integradora.
 
+**Autoría:** Ing. Comerci Sandro Mauricio.
+
 ## Ver el sitio
 
 La portada para GitHub Pages está en [`index.md`](index.md). Las tres páginas HTML de lectura se generan en `modulos_html/` desde las notebooks originales de `fuentes/`.

@@ -15,7 +15,7 @@ title: Del lenguaje a los agentes inteligentes
       <a class="button secondary" href="guia-reutilizacion.html">Ver guía docente</a>
       <a class="button secondary" href="evaluacion-final.html">Actividad integradora</a>
     </div>
-    <p class="source-note">Material de la Cátedra de Inteligencia Artificial · páginas HTML y cuadernos Jupyter · guía docente disponible</p>
+    <p class="source-note">Autoría: Ing. Comerci Sandro Mauricio · Material de la Cátedra de Inteligencia Artificial · páginas HTML y cuadernos Jupyter · guía docente disponible</p>
   </section>
 
   <section class="home-route" aria-labelledby="route-title">
