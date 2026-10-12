@@ -11,7 +11,7 @@ permalink: /guia-reutilizacion.html
 ## 1. Identificación del recurso
 
 - **Título:** Del lenguaje a los agentes inteligentes.
-- **Autoría y afiliación:** Ing. Comerci Sandro Mauricio, Dra. Laura Diaz Davila
+- **Autoría y afiliación:** Ing. Comerci Sandro Mauricio.
 - **Área:** Inteligencia Artificial y Procesamiento del Lenguaje Natural.
 - **Versión:** primera versión pública de revisión, 2026-10-10.
 - **Repositorio:** [RecursoEducativoAbierto en GitHub](https://github.com/comercisandro/RecursoEducativoAbierto); publicación web en GitHub Pages.
