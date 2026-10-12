@@ -20,7 +20,7 @@
 <div class="action-row">
 <a class="button primary" href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/modulo-3.ipynb" target="_blank" rel="noopener noreferrer">Abrir notebook en Google Colab <span aria-hidden="true">↗</span></a>
 <a class="button secondary" href="../fuentes/modulo-3.ipynb" download>Descargar notebook (.ipynb)</a>
-<a class="button secondary" href="../fuentes/Agente_LangChain.ipynb%20-%20Colab.pdf" download>Descargar PDF</a>
+<a class="button secondary" href="../fuentes/modulo-3%20-%20Colab.pdf" download>Descargar PDF</a>
 </div>
 <p class="source-note">Fuente: SRC-03 · <code>modulo-3.ipynb</code></p>
 </section>
@@ -125,7 +125,7 @@ LangChain</code></pre>
 <p>Tambi&#233;n usamos <code>ddgs</code> para una tool simple de b&#250;squeda web.</p>
 
 </article>
-<details class="code-cell"><summary>Código Python · ejecución guardada #1</summary><pre><code>!pip install -q langchain langchain-openai langchain-community ddgs</code></pre></details>
+<details class="code-cell"><summary>Código Python</summary><pre><code>!pip install -q langchain langchain-openai langchain-community ddgs</code></pre></details>
 <details class="output-cell" open><summary>Salida de diagnóstico · revisar</summary><pre class="output-text"><code>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/127.9 kB ? eta -:--:--
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ 122.9/127.9 kB 6.6 MB/s eta 0:00:01
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 127.9/127.9 kB 2.7 MB/s eta 0:00:00
@@ -140,7 +140,7 @@ LangChain</code></pre>
 ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
 google-colab 1.0.0 requires requests==2.32.4, but you have requests 2.34.2 which is incompatible.
 </code></pre></details>
-<details class="code-cell"><summary>Código Python · ejecución guardada #2</summary><pre><code>import os
+<details class="code-cell"><summary>Código Python</summary><pre><code>import os
 from getpass import getpass
 from datetime import datetime
 from typing import Optional
@@ -163,7 +163,7 @@ Hugging Face Router
 Modelo remoto</code></pre>
 
 </article>
-<details class="code-cell"><summary>Código Python · ejecución guardada #5</summary><pre><code>from openai import OpenAI
+<details class="code-cell"><summary>Código Python</summary><pre><code>from openai import OpenAI
 
 if &quot;HF_TOKEN&quot; not in os.environ:
     os.environ[&quot;HF_TOKEN&quot;] = getpass(&quot;Ingres&#225; tu HF_TOKEN: &quot;)
@@ -176,7 +176,7 @@ client = OpenAI(
 print(&quot;Cliente inicializado correctamente.&quot;)</code></pre></details>
 <details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>Cliente inicializado correctamente.
 </code></pre></details>
-<details class="code-cell"><summary>Código Python · ejecución guardada #4</summary><pre><code>models = client.models.list()
+<details class="code-cell"><summary>Código Python</summary><pre><code>models = client.models.list()
 
 print(&quot;Modelos disponibles:&quot;)
 for m in models.data[:30]:

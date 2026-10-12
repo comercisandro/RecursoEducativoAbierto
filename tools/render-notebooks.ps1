@@ -258,7 +258,7 @@ $modules = @(
     [pscustomobject]@{
         File='modulo-1.ipynb'; Output='01-word2vec.html'; Number='01'; Title='Del texto a Word2Vec';
         Focus=@('Preparar el corpus','Aprender embeddings','Leer similitudes');
-        SourceId='SRC-01'; Pdf='2025_word2vec.ipynb - Colab.pdf';
+        SourceId='SRC-01'; Pdf='modulo-1 - Colab.pdf';
         Summary='Preprocesamiento, tokenización, representaciones del texto y exploración de embeddings estáticos.';
         Lead='Convertimos un corpus en datos analizables y observamos cómo Word2Vec aprende vectores a partir de los contextos. La meta no es “entender” el texto, sino aprender a leer qué representan los resultados y cuáles son sus límites.';
         Purpose='Relacionar las decisiones de limpieza y tokenización con las representaciones vectoriales que aprende un modelo de embeddings.';
@@ -268,7 +268,7 @@ $modules = @(
     [pscustomobject]@{
         File='modulo-2.ipynb'; Output='02-agente-react.html'; Number='02'; Title='Construir un agente ReAct';
         Focus=@('Definir herramientas','Interpretar acciones','Cerrar el ciclo');
-        SourceId='SRC-04'; Pdf='Agente_ReAct.ipynb - Colab.pdf';
+        SourceId='SRC-04'; Pdf='modulo-2 - Colab.pdf';
         Summary='Herramientas, formato de acciones, parser y ciclo Thought–Action–Observation implementado en Python.';
         Lead='Construimos un agente haciendo visibles sus piezas: herramienta, instrucciones, parser, observación y respuesta final. El foco está en analizar el flujo y sus fallos, no en atribuir razonamiento humano al modelo.';
         Purpose='Distinguir la generación de texto de la ejecución de acciones y analizar cómo un bucle ReAct coordina ambas.';
@@ -278,7 +278,7 @@ $modules = @(
     [pscustomobject]@{
         File='modulo-3.ipynb'; Output='03-frameworks-skills.html'; Number='03'; Title='De ReAct a frameworks y skills';
         Focus=@('Declarar tools','Orquestar el flujo','Componer skills');
-        SourceId='SRC-03'; Pdf='Agente_LangChain.ipynb - Colab.pdf';
+        SourceId='SRC-03'; Pdf='modulo-3 - Colab.pdf';
         Summary='Abstracción de herramientas y agentes con LangChain/LangGraph, y composición de skills.';
         Lead='Comparamos el bucle ReAct explícito con las abstracciones de LangChain y LangGraph, y distinguimos una herramienta, una Skill y un protocolo como MCP. Elegimos la capa adecuada sin ocultar sus riesgos.';
         Purpose='Comparar distintas capas de abstracción y justificar cuándo conviene una herramienta puntual, una Skill o un runtime de orquestación.';

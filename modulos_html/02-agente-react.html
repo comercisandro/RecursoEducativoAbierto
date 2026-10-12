@@ -20,7 +20,7 @@
 <div class="action-row">
 <a class="button primary" href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/modulo-2.ipynb" target="_blank" rel="noopener noreferrer">Abrir notebook en Google Colab <span aria-hidden="true">↗</span></a>
 <a class="button secondary" href="../fuentes/modulo-2.ipynb" download>Descargar notebook (.ipynb)</a>
-<a class="button secondary" href="../fuentes/Agente_ReAct.ipynb%20-%20Colab.pdf" download>Descargar PDF</a>
+<a class="button secondary" href="../fuentes/modulo-2%20-%20Colab.pdf" download>Descargar PDF</a>
 </div>
 <p class="source-note">Fuente: SRC-04 · <code>modulo-2.ipynb</code></p>
 </section>
@@ -46,10 +46,11 @@
 <article class="markdown-cell">
 <h1>Agentes</h1>
 <hr>
-<p>FCEFyN - UNC</p>
-<hr>
 <ul>
-<li>Autor/es: Ing. Sandro Mauricio Comerci (LIDeSIA - FCEFyN)</li>
+<li>Autor/es: Ing. Sandro Comerci (LIDeSIA - FCEFyN)</li>
+</ul>
+<ul>
+<li>Directora: Dra. Laura Cecilia Diaz Davila (LIDeSIA - FCEFyN)</li>
 </ul>
 <hr>
 
@@ -60,7 +61,7 @@
 <p>Para dar respuesta a esta pregunta necesitamos: conectar con un LLM, probar una llamada simple, definir herramientas, dise&#241;ar un prompt ReAct, implementar el bucle <code>Thought → Action → Observation → Final Answer</code> y ejecutar ejemplos.</p>
 
 </article>
-<details class="code-cell"><summary>Código Python · ejecución guardada #1</summary><pre><code>import warnings
+<details class="code-cell"><summary>Código Python</summary><pre><code>import warnings
 warnings.filterwarnings(
     &quot;ignore&quot;,
     message=&quot;datetime.datetime.utcnow&quot;
@@ -85,7 +86,7 @@ Successfully installed ddgs-9.16.0 primp-2.0.1
 <p>Antes de crear el agente, importamos librer&#237;as generales y definimos tipos auxiliares.</p>
 
 </article>
-<details class="code-cell"><summary>Código Python · ejecución guardada #2</summary><pre><code>import os
+<details class="code-cell"><summary>Código Python</summary><pre><code>import os
 import re
 import ast
 import math
@@ -111,7 +112,7 @@ from typing import Callable, Dict, List, Optional, Tuple</code></pre></details>
 <p>La comunicaci&#243;n ocurre mediante requests HTTP. Internamente, el cliente de OpenAI env&#237;a mensajes JSON a un endpoint remoto. Hugging Face Router implementa una interfaz compatible con OpenAI, por eso podemos reutilizar el mismo cliente cambiando &#250;nicamente la URL base (<code>base_url</code>).</p>
 
 </article>
-<details class="code-cell"><summary>Código Python · ejecución guardada #3</summary><pre><code>from openai import OpenAI
+<details class="code-cell"><summary>Código Python</summary><pre><code>from openai import OpenAI
 
 if &quot;HF_TOKEN&quot; not in os.environ:
     os.environ[&quot;HF_TOKEN&quot;] = getpass(&quot;Ingres&#225; tu HF_TOKEN: &quot;)
@@ -125,7 +126,7 @@ print(&quot;Cliente inicializado correctamente.&quot;)</code></pre></details>
 <details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>Ingres&#225; tu HF_TOKEN: &#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;
 Cliente inicializado correctamente.
 </code></pre></details>
-<details class="code-cell"><summary>Código Python · ejecución guardada #4</summary><pre><code>models = client.models.list()
+<details class="code-cell"><summary>Código Python</summary><pre><code>models = client.models.list()
 
 print(&quot;Modelos disponibles:&quot;)
 for m in models.data[:30]:
@@ -726,7 +727,7 @@ El LLM contin&#250;a razonando</code></pre>
 <pre class="markdown-code"><code>Final Answer: ...</code></pre>
 
 </article>
-<details class="code-cell"><summary>Código Python · ejecución guardada #5</summary><pre><code>def run_agent(user_query: str, max_steps: int = 5) -&gt; Tuple[str, List[dict]]:
+<details class="code-cell"><summary>Código Python</summary><pre><code>def run_agent(user_query: str, max_steps: int = 5) -&gt; Tuple[str, List[dict]]:
     messages = [
         {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: SYSTEM_PROMPT},
         {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: user_query},
