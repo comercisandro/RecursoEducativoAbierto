@@ -184,8 +184,18 @@ h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; letter-spacing: -.03em; }
 .code-cell summary::after { margin-left: auto; color: var(--violet-dark); content: "＋"; font-size: 1.1rem; }
 .code-cell[open] summary::after { content: "−"; }
 .code-cell pre { margin: 0; border-radius: 0; }
-.output-text { margin: .4rem 0 1.2rem; background: #202b40; }
+.output-cell { margin: .4rem 0 1.2rem; border: 1px solid #d9e1ed; border-radius: .8rem; overflow: hidden; background: #f8faff; }
+.output-cell summary { display: flex; align-items: center; gap: .55rem; min-height: 2.7rem; padding: .65rem 1rem; color: #34445e; background: #eef2f9; cursor: pointer; font-size: .87rem; font-weight: 760; list-style: none; }
+.output-cell summary::-webkit-details-marker { display: none; }
+.output-cell summary::before { display: grid; width: 1.45rem; height: 1.45rem; place-items: center; border-radius: .42rem; color: #fff; background: #6681a8; content: "↳"; font-size: .9rem; font-weight: 850; }
+.output-cell summary::after { margin-left: auto; color: var(--violet-dark); content: "＋"; font-size: 1.1rem; }
+.output-cell[open] summary::after { content: "−"; }
+.output-cell pre { margin: 0; border-radius: 0; }
+.output-text { background: #202b40; }
 .output-error { border: 1px solid #e6a1a8; color: #fff1f2; background: #4b202c; }
+.output-cell-error { border-color: #e6a1a8; }
+.output-cell-error summary { color: #73382e; background: #fff0e9; }
+.output-cell-error summary::before { background: #b75a4a; content: "!"; }
 .output-note { margin: .55rem 0 1rem; padding: .72rem .9rem; border: 1px solid #dce3ed; border-radius: .65rem; color: var(--muted); background: #f5f7fb; font-size: .9rem; }
 .notebook-image { margin: 1.3rem auto; text-align: center; }
 .notebook-image img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: .75rem; box-shadow: 0 8px 24px rgb(28 41 70 / 8%); }
@@ -281,4 +291,5 @@ code { overflow-wrap: anywhere; }
   .module-hero h1, .module-hero .lead, .module-hero .source-note { color: black; }
   .notebook-content { border: 0; box-shadow: none; padding: 0; }
   .code-cell pre { display: block; }
+  .output-cell > *:not(summary) { display: block; }
 }

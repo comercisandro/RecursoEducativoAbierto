@@ -142,6 +142,21 @@ function Get-OutputData($Output, [string]$Mime) {
     return $null
 }
 
+function Add-CollapsibleOutput($Builder, [string]$Text, [string]$Class, [string]$Label) {
+    $normalized = $Text -replace "`r`n?", "`n"
+    $content = $normalized.Trim()
+    $lineCount = if ($content) { ($content -split "`n").Count } else { 0 }
+    $isBrief = $content.Length -gt 0 -and $content.Length -le 420 -and $lineCount -le 8
+    $isError = $Class -eq 'output-error'
+    $isDiagnostic = $isError -or $content -match '(?im)^\s*(warning|error|traceback|exception)\b|\b(deprecationwarning|syntaxwarning)\b'
+    $isOpen = $isBrief -or $isDiagnostic
+    $openAttribute = if ($isOpen) { ' open' } else { '' }
+    $summary = if ($isError) { 'Salida de error · revisar' } elseif ($isDiagnostic) { 'Salida de diagnóstico · revisar' } elseif (-not $content) { 'Salida vacía · revisar' } elseif ($isBrief) { "$Label · breve" } else { "$Label · salida extensa" }
+    $safe = [System.Net.WebUtility]::HtmlEncode($normalized)
+    $cellClass = if ($isError) { 'output-cell output-cell-error' } else { 'output-cell' }
+    [void]$Builder.AppendLine("<details class=`"$cellClass`"$openAttribute><summary>$summary</summary><pre class=`"$Class`"><code>$safe</code></pre></details>")
+}
+
 function Add-CellOutput($Builder, $Output) {
     if ($Output.output_type -eq 'stream') {
         $text = Get-CellSource $Output
@@ -151,8 +166,7 @@ function Add-CellOutput($Builder, $Output) {
             $text = $text -replace "`r`n?", "`n"
             $text = [regex]::Replace($text, '[ \t]+(?=\r?$)', '', [System.Text.RegularExpressions.RegexOptions]::Multiline)
             if ($text.Length -gt 12000) { $text = $text.Substring(0, 12000).TrimEnd() + "`n[Salida truncada en la versión web.]" }
-            $safe = [System.Net.WebUtility]::HtmlEncode($text)
-            [void]$Builder.AppendLine("<pre class=`"output-text`"><code>$safe</code></pre>")
+            Add-CollapsibleOutput $Builder $text 'output-text' 'Respuesta guardada'
         }
         return
     }
@@ -161,7 +175,7 @@ function Add-CellOutput($Builder, $Output) {
         if (-not $text) { $text = "$($Output.ename): $($Output.evalue)" }
         $text = [regex]::Replace($text, ([char]27 + '\[[0-?]*[ -/]*[@-~]'), '')
         if ($text.Length -gt 12000) { $text = $text.Substring(0, 12000).TrimEnd() + "`n[Salida truncada en la versión web.]" }
-        [void]$Builder.AppendLine("<pre class=`"output-error`"><code>$([System.Net.WebUtility]::HtmlEncode($text))</code></pre>")
+        Add-CollapsibleOutput $Builder $text 'output-error' 'Salida de error'
         return
     }
 
@@ -176,7 +190,7 @@ function Add-CellOutput($Builder, $Output) {
         $text = if ($plain -is [array]) { $plain -join '' } else { [string]$plain }
         $text = [regex]::Replace($text, '[ \t]+(?=\r?$)', '', [System.Text.RegularExpressions.RegexOptions]::Multiline)
         if ($text.Length -gt 12000) { $text = $text.Substring(0, 12000).TrimEnd() + "`n[Salida truncada en la versión web.]" }
-        [void]$Builder.AppendLine("<pre class=`"output-text`"><code>$([System.Net.WebUtility]::HtmlEncode($text))</code></pre>")
+        Add-CollapsibleOutput $Builder $text 'output-text' 'Respuesta guardada'
     }
 
     $htmlOutput = Get-OutputData $Output 'text/html'
@@ -289,8 +303,8 @@ foreach ($module in $modules) {
     [void]$builder.AppendLine('<meta name="viewport" content="width=device-width, initial-scale=1">')
     [void]$builder.AppendLine("<meta name=`"description`" content=`"$([System.Net.WebUtility]::HtmlEncode($module.Summary))`">")
     [void]$builder.AppendLine("<title>$([System.Net.WebUtility]::HtmlEncode($module.Title)) · Recurso educativo</title>")
-    [void]$builder.AppendLine('<link rel="stylesheet" href="../assets/rea.css?v=20261010-7">')
-    [void]$builder.AppendLine('<script src="../assets/learning.js?v=20261010-1" defer></script>')
+    [void]$builder.AppendLine('<link rel="stylesheet" href="../assets/rea.css?v=20261011-1">')
+    [void]$builder.AppendLine('<script src="../assets/learning.js?v=20261011-1" defer></script>')
     [void]$builder.AppendLine('</head>')
     [void]$builder.AppendLine('<body>')
     [void]$builder.AppendLine('<a class="skip-link" href="#contenido">Saltar al contenido</a>')

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Abstracci&#243;n de herramientas y agentes con LangChain/LangGraph, y composici&#243;n de skills.">
 <title>De ReAct a frameworks y skills · Recurso educativo</title>
-<link rel="stylesheet" href="../assets/rea.css?v=20261010-7">
-<script src="../assets/learning.js?v=20261010-1" defer></script>
+<link rel="stylesheet" href="../assets/rea.css?v=20261011-1">
+<script src="../assets/learning.js?v=20261011-1" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -126,7 +126,7 @@ LangChain</code></pre>
 
 </article>
 <details class="code-cell"><summary>Código Python · ejecución guardada #1</summary><pre><code>!pip install -q langchain langchain-openai langchain-community ddgs</code></pre></details>
-<pre class="output-text"><code>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/127.9 kB ? eta -:--:--
+<details class="output-cell" open><summary>Salida de diagnóstico · revisar</summary><pre class="output-text"><code>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/127.9 kB ? eta -:--:--
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ 122.9/127.9 kB 6.6 MB/s eta 0:00:01
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 127.9/127.9 kB 2.7 MB/s eta 0:00:00
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/2.4 MB ? eta -:--:--
@@ -139,7 +139,7 @@ LangChain</code></pre>
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.1/73.1 kB 4.3 MB/s eta 0:00:00
 ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
 google-colab 1.0.0 requires requests==2.32.4, but you have requests 2.34.2 which is incompatible.
-</code></pre>
+</code></pre></details>
 <details class="code-cell"><summary>Código Python · ejecución guardada #2</summary><pre><code>import os
 from getpass import getpass
 from datetime import datetime
@@ -174,14 +174,14 @@ client = OpenAI(
 )
 
 print(&quot;Cliente inicializado correctamente.&quot;)</code></pre></details>
-<pre class="output-text"><code>Cliente inicializado correctamente.
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>Cliente inicializado correctamente.
+</code></pre></details>
 <details class="code-cell"><summary>Código Python · ejecución guardada #4</summary><pre><code>models = client.models.list()
 
 print(&quot;Modelos disponibles:&quot;)
 for m in models.data[:30]:
     print(&quot;-&quot;, m.id)</code></pre></details>
-<pre class="output-text"><code>Modelos disponibles:
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>Modelos disponibles:
 - Qwen/Qwen3.8-27B
 - deepseek-ai/DeepSeek-V4.1-Flash
 - zai-org/GLM-5.3
@@ -212,7 +212,7 @@ for m in models.data[:30]:
 - inclusionAI/Ling-3.0-flash
 - Qwen/Qwen2.5-Coder-32B-Instruct
 - ibm-granite/granite-4.2-8b
-</code></pre>
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>llm = ChatOpenAI(
     api_key=os.environ[&quot;HF_TOKEN&quot;],
     base_url=&quot;https://router.huggingface.co/v1&quot;,
@@ -226,8 +226,8 @@ for m in models.data[:30]:
 </article>
 <details class="code-cell"><summary>Código Python</summary><pre><code>response = llm.invoke(&quot;Explica en una frase qu&#233; es LangChain.&quot;)
 print(response.content)</code></pre></details>
-<pre class="output-text"><code>LangChain es una plataforma que conecta modelos de lenguaje de forma secuencial para mejorar su rendimiento y capacidad en tareas complejas.
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>LangChain es una plataforma que conecta modelos de lenguaje de forma secuencial para mejorar su rendimiento y capacidad en tareas complejas.
+</code></pre></details>
 <article class="markdown-cell">
 <h2>7. De tools manuales a tools con LangChain</h2>
 <p>Anteriormente defin&#237;amos herramientas manualmente usando una clase <code>Tool</code>.</p>
@@ -278,7 +278,7 @@ for t in tools:
     print(&quot;Tool:&quot;, t.name)
     print(&quot;Descripci&#243;n:&quot;, t.description)
     print()</code></pre></details>
-<pre class="output-text"><code>Tool: now_tool
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>Tool: now_tool
 Descripci&#243;n: Devuelve la fecha y hora actual.
 Usar solo cuando el usuario pregunte por fecha, hora o momento actual.
 
@@ -287,7 +287,7 @@ Descripci&#243;n: Busca informaci&#243;n en internet.
 Usar para preguntas que requieren informaci&#243;n externa, conceptos, historia, noticias o enlaces.
 Input esperado: una consulta de b&#250;squeda en texto.
 
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <h2>8. Tool calling directo</h2>
 <p>Antes de construir el agente, podemos ejecutar una tool directamente.</p>
@@ -295,7 +295,7 @@ Input esperado: una consulta de b&#250;squeda en texto.
 
 </article>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(web_search.invoke(&quot;qu&#233; es un agente ReAct&quot;))</code></pre></details>
-<pre class="output-text"><code>T&#237;tulo: &#191;Qu&#233; es un agente ReAct? | IBM
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>T&#237;tulo: &#191;Qu&#233; es un agente ReAct? | IBM
 URL: https://www.ibm.com/es-es/think/topics/react-agent
 Resumen: &#191;Qu&#233; es un agente ReAct? Un agente ReAct es un agente de IA que utiliza el marco de &quot;razonamiento y actuaci&#243;n&quot; (ReAct) para combinar el razonamiento de la cadena de pensamiento (CoT) con el uso de herramientas externas.
 
@@ -314,14 +314,14 @@ Resumen: Domina el patr&#243;n ReAct en arquitecturas de agentes ReAct: bucle re
 T&#237;tulo: C&#243;mo Funcionan los Agentes de IA: Arquitectura y Ciclo ReAct
 URL: https://gurusup.com/es/blog/how-ai-agents-work
 Resumen: Apr 9, 2026 &#183; Un agente de IA funciona mediante un bucle iterativo en el que percibe una entrada, razona sobre ella, ejecuta una acci&#243;n con herramientas externas y observa el resultado antes de decidir el siguiente paso. Este ciclo, conocido como ReAct, es lo que separa a un agente de un simple modelo de lenguaje que genera texto.
-</code></pre>
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(web_search.name)
 print(web_search.description)</code></pre></details>
-<pre class="output-text"><code>web_search
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>web_search
 Busca informaci&#243;n en internet.
 Usar para preguntas que requieren informaci&#243;n externa, conceptos, historia, noticias o enlaces.
 Input esperado: una consulta de b&#250;squeda en texto.
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <h2>9. Crear un agente con LangChain</h2>
 <p>Ahora usamos LangChain para construir un agente.</p>
@@ -338,9 +338,9 @@ Input esperado: una consulta de b&#250;squeda en texto.
 
 </article>
 <details class="code-cell"><summary>Código Python</summary><pre><code>from langchain.agents import create_agent</code></pre></details>
-<pre class="output-text"><code>/usr/local/lib/python3.12/dist-packages/langgraph/checkpoint/serde/encrypted.py:5: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects=&#39;messages&#39; or allowed_objects=&#39;core&#39;) to suppress this warning.
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>/usr/local/lib/python3.12/dist-packages/langgraph/checkpoint/serde/encrypted.py:5: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects=&#39;messages&#39; or allowed_objects=&#39;core&#39;) to suppress this warning.
   from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
-</code></pre>
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>agent = create_agent(
     model=llm,
     tools=tools,
@@ -365,10 +365,10 @@ Input esperado: una consulta de b&#250;squeda en texto.
 )
 
 result</code></pre></details>
-<pre class="output-text"><code>{&#39;messages&#39;: [HumanMessage(content=&#39;Explica brevemente qu&#233; es una herramienta en un agente de IA.&#39;, additional_kwargs={}, response_metadata={}, id=&#39;c4e578e5-21f6-4a2b-847a-08f583d74cd7&#39;),
-  AIMessage(content=&#39;En el contexto de un agente de inteligencia artificial, una herramienta es un recurso o funci&#243;n que el agente puede utilizar para obtener informaci&#243;n adicional o realizar tareas complejas que no est&#225;n dentro de su conjunto de conocimientos o capacidades predefinidas. Estas herramientas pueden incluir b&#250;squedas en internet, acceso a bases de datos, c&#225;lculos matem&#225;ticos, entre otros. El agente utiliza estas herramientas cuando la informaci&#243;n requerida no est&#225; disponible en su base de conocimientos interna o cuando necesita realizar una tarea espec&#237;fica que no est&#225; programada en su l&#243;gica.&#39;, additional_kwargs={&#39;refusal&#39;: None}, response_metadata={&#39;token_usage&#39;: {&#39;completion_tokens&#39;: 130, &#39;prompt_tokens&#39;: 377, &#39;total_tokens&#39;: 507, &#39;completion_tokens_details&#39;: None, &#39;prompt_tokens_details&#39;: None, &#39;cached_tokens&#39;: 0}, &#39;model_provider&#39;: &#39;openai&#39;, &#39;model_name&#39;: &#39;Qwen/Qwen2.5-7B-Instruct-Turbo&#39;, &#39;system_fingerprint&#39;: None, &#39;id&#39;: &#39;oj4bof4-4YNCb4-9fba76885d8eb788&#39;, &#39;finish_reason&#39;: &#39;stop&#39;, &#39;logprobs&#39;: None}, id=&#39;lc_run--019e26cf-509c-72a3-87ee-c61dafd762f8-0&#39;, tool_calls=[], invalid_tool_calls=[], usage_metadata={&#39;input_tokens&#39;: 377, &#39;output_tokens&#39;: 130, &#39;total_tokens&#39;: 507, &#39;input_token_details&#39;: {}, &#39;output_token_details&#39;: {}})]}</code></pre>
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>{&#39;messages&#39;: [HumanMessage(content=&#39;Explica brevemente qu&#233; es una herramienta en un agente de IA.&#39;, additional_kwargs={}, response_metadata={}, id=&#39;c4e578e5-21f6-4a2b-847a-08f583d74cd7&#39;),
+  AIMessage(content=&#39;En el contexto de un agente de inteligencia artificial, una herramienta es un recurso o funci&#243;n que el agente puede utilizar para obtener informaci&#243;n adicional o realizar tareas complejas que no est&#225;n dentro de su conjunto de conocimientos o capacidades predefinidas. Estas herramientas pueden incluir b&#250;squedas en internet, acceso a bases de datos, c&#225;lculos matem&#225;ticos, entre otros. El agente utiliza estas herramientas cuando la informaci&#243;n requerida no est&#225; disponible en su base de conocimientos interna o cuando necesita realizar una tarea espec&#237;fica que no est&#225; programada en su l&#243;gica.&#39;, additional_kwargs={&#39;refusal&#39;: None}, response_metadata={&#39;token_usage&#39;: {&#39;completion_tokens&#39;: 130, &#39;prompt_tokens&#39;: 377, &#39;total_tokens&#39;: 507, &#39;completion_tokens_details&#39;: None, &#39;prompt_tokens_details&#39;: None, &#39;cached_tokens&#39;: 0}, &#39;model_provider&#39;: &#39;openai&#39;, &#39;model_name&#39;: &#39;Qwen/Qwen2.5-7B-Instruct-Turbo&#39;, &#39;system_fingerprint&#39;: None, &#39;id&#39;: &#39;oj4bof4-4YNCb4-9fba76885d8eb788&#39;, &#39;finish_reason&#39;: &#39;stop&#39;, &#39;logprobs&#39;: None}, id=&#39;lc_run--019e26cf-509c-72a3-87ee-c61dafd762f8-0&#39;, tool_calls=[], invalid_tool_calls=[], usage_metadata={&#39;input_tokens&#39;: 377, &#39;output_tokens&#39;: 130, &#39;total_tokens&#39;: 507, &#39;input_token_details&#39;: {}, &#39;output_token_details&#39;: {}})]}</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>result[&quot;messages&quot;][-1].content</code></pre></details>
-<pre class="output-text"><code>&#39;En el contexto de un agente de inteligencia artificial, una herramienta es un recurso o funci&#243;n que el agente puede utilizar para obtener informaci&#243;n adicional o realizar tareas complejas que no est&#225;n dentro de su conjunto de conocimientos o capacidades predefinidas. Estas herramientas pueden incluir b&#250;squedas en internet, acceso a bases de datos, c&#225;lculos matem&#225;ticos, entre otros. El agente utiliza estas herramientas cuando la informaci&#243;n requerida no est&#225; disponible en su base de conocimientos interna o cuando necesita realizar una tarea espec&#237;fica que no est&#225; programada en su l&#243;gica.&#39;</code></pre>
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>&#39;En el contexto de un agente de inteligencia artificial, una herramienta es un recurso o funci&#243;n que el agente puede utilizar para obtener informaci&#243;n adicional o realizar tareas complejas que no est&#225;n dentro de su conjunto de conocimientos o capacidades predefinidas. Estas herramientas pueden incluir b&#250;squedas en internet, acceso a bases de datos, c&#225;lculos matem&#225;ticos, entre otros. El agente utiliza estas herramientas cuando la informaci&#243;n requerida no est&#225; disponible en su base de conocimientos interna o cuando necesita realizar una tarea espec&#237;fica que no est&#225; programada en su l&#243;gica.&#39;</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>result = agent.invoke(
     {
         &quot;messages&quot;: [
@@ -381,7 +381,7 @@ result</code></pre></details>
 )
 
 result[&quot;messages&quot;][-1].content</code></pre></details>
-<pre class="output-text"><code>&#39;Aqu&#237; tienes 8 noticias del d&#237;a basadas en las fuentes que he consultado:\n\n1. **M&#233;xico**: El gobernador de Sinaloa se separa del cargo mientras la Fiscal&#237;a de M&#233;xico investiga acusaciones de EE.UU. por narcotr&#225;fico. Rub&#233;n Rocha Moya se declara inocente de estas acusaciones.\n\n2. **M&#233;xico**: Cientos de trabajadores mexicanos participan en una marcha multitudinaria por el D&#237;a del Trabajo.\n\n3. **EE.UU.**: Un juez ordena al Gobierno de EE.UU. que devuelva a la mujer colombiana deportada a la Rep&#250;blica Democr&#225;tica del Congo.\n\n4. **Filipinas**: El ex jefe de Polic&#237;a de Filipinas, requerido por La Haya, sale del Senado tras d&#237;as atrincherado, pero no se confirma su detenci&#243;n.\n\n5. **M&#233;xico**: La acusaci&#243;n contra el gobernador de Sinaloa no fue una sorpresa para Sheinbaum. Ahora enfrenta un dilema casi imposible.\n\n6. **M&#233;xico**: BBC Mundo viaj&#243; a Santo Domingo para conocer c&#243;mo sucedi&#243; la mayor tragedia humana de este siglo en el pa&#237;s caribe&#241;o y la lucha de los familiares de las v&#237;ctimas para obtener justicia.\n\n7. **Argentina y el mundo**: LA NACION ofrece las &#250;ltimas noticias, fotos y videos de la Argentina y el mundo, cubriendo temas como pol&#237;tica, econom&#237;a y deportes.\n\n8. **EE.UU.**: Durante buena parte del siglo XX, un peque&#241;o grupo de firmas estadounidenses y europeas decidi&#243; todo en el mercado petrolero: desde cu&#225;nto se produc&#237;a y d&#243;nde, hasta a qu&#233; precio se vend&#237;a cada barril.\n\nEstas noticias cubren diversos temas y pa&#237;ses, proporcionando una visi&#243;n general de lo que est&#225; sucediendo en el mundo hoy.&#39;</code></pre>
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>&#39;Aqu&#237; tienes 8 noticias del d&#237;a basadas en las fuentes que he consultado:\n\n1. **M&#233;xico**: El gobernador de Sinaloa se separa del cargo mientras la Fiscal&#237;a de M&#233;xico investiga acusaciones de EE.UU. por narcotr&#225;fico. Rub&#233;n Rocha Moya se declara inocente de estas acusaciones.\n\n2. **M&#233;xico**: Cientos de trabajadores mexicanos participan en una marcha multitudinaria por el D&#237;a del Trabajo.\n\n3. **EE.UU.**: Un juez ordena al Gobierno de EE.UU. que devuelva a la mujer colombiana deportada a la Rep&#250;blica Democr&#225;tica del Congo.\n\n4. **Filipinas**: El ex jefe de Polic&#237;a de Filipinas, requerido por La Haya, sale del Senado tras d&#237;as atrincherado, pero no se confirma su detenci&#243;n.\n\n5. **M&#233;xico**: La acusaci&#243;n contra el gobernador de Sinaloa no fue una sorpresa para Sheinbaum. Ahora enfrenta un dilema casi imposible.\n\n6. **M&#233;xico**: BBC Mundo viaj&#243; a Santo Domingo para conocer c&#243;mo sucedi&#243; la mayor tragedia humana de este siglo en el pa&#237;s caribe&#241;o y la lucha de los familiares de las v&#237;ctimas para obtener justicia.\n\n7. **Argentina y el mundo**: LA NACION ofrece las &#250;ltimas noticias, fotos y videos de la Argentina y el mundo, cubriendo temas como pol&#237;tica, econom&#237;a y deportes.\n\n8. **EE.UU.**: Durante buena parte del siglo XX, un peque&#241;o grupo de firmas estadounidenses y europeas decidi&#243; todo en el mercado petrolero: desde cu&#225;nto se produc&#237;a y d&#243;nde, hasta a qu&#233; precio se vend&#237;a cada barril.\n\nEstas noticias cubren diversos temas y pa&#237;ses, proporcionando una visi&#243;n general de lo que est&#225; sucediendo en el mundo hoy.&#39;</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>result = agent.invoke(
     {
         &quot;messages&quot;: [
@@ -394,7 +394,7 @@ result[&quot;messages&quot;][-1].content</code></pre></details>
 )
 
 result[&quot;messages&quot;][-1].content</code></pre></details>
-<pre class="output-text"><code>&#39;Hoy es 14 de mayo de 2026.&#39;</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>&#39;Hoy es 14 de mayo de 2026.&#39;</code></pre></details>
 <article class="markdown-cell">
 <h2>13. Comparaci&#243;n: Agente manual vs LangChain</h2>
 <p>| Parte | Agente manual | LangChain | |---|---|---| | Tools | Clase propia <code>Tool</code> | Decorador <code>@tool</code> | | Prompt | Manual | <code>system_prompt</code> / templates | | Parser | Regex manual | Interno | | Loop | <code>while</code> manual | Runtime del agente | | Observations | Agregadas manualmente | Gestionadas por el framework | | Escalabilidad | Limitada | M&#225;s modular | | Debugging | M&#225;s expl&#237;cito | M&#225;s abstracto |</p>
@@ -436,7 +436,7 @@ def research_skill(topic: str) -&gt; str:
     response = llm.invoke(prompt)
     return response.content</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>research_skill(&quot;qu&#233; es LangChain&quot;)</code></pre></details>
-<pre class="output-text"><code>&#39;LangChain es un framework de c&#243;digo abierto que facilita la creaci&#243;n de aplicaciones utilizando modelos de lenguaje de gran tama&#241;o (LLMs). Este marco ayuda a los desarrolladores a integrar inteligencia artificial de manera eficiente, permitiendo la orquestaci&#243;n de c&#243;digo y la combinaci&#243;n de LLMs con fuentes de datos externas. Las empresas lo utilizan para desarrollar aplicaciones avanzadas como chatbots y agentes virtuales, mejorando la interacci&#243;n con los usuarios y automatizando procesos. LangChain es compatible con diversas plataformas, incluyendo AWS, Google Cloud, IBM, OVHcloud y Kanaries, lo que lo hace vers&#225;til para diferentes entornos de desarrollo y implementaci&#243;n.&#39;</code></pre>
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>&#39;LangChain es un framework de c&#243;digo abierto que facilita la creaci&#243;n de aplicaciones utilizando modelos de lenguaje de gran tama&#241;o (LLMs). Este marco ayuda a los desarrolladores a integrar inteligencia artificial de manera eficiente, permitiendo la orquestaci&#243;n de c&#243;digo y la combinaci&#243;n de LLMs con fuentes de datos externas. Las empresas lo utilizan para desarrollar aplicaciones avanzadas como chatbots y agentes virtuales, mejorando la interacci&#243;n con los usuarios y automatizando procesos. LangChain es compatible con diversas plataformas, incluyendo AWS, Google Cloud, IBM, OVHcloud y Kanaries, lo que lo hace vers&#225;til para diferentes entornos de desarrollo y implementaci&#243;n.&#39;</code></pre></details>
 <article class="markdown-cell">
 <h2>15. Convertir una skill en tool</h2>
 <p>Una skill tambi&#233;n puede exponerse como una tool para que el agente la use.</p>
@@ -476,7 +476,7 @@ def research_skill(topic: str) -&gt; str:
     return response.content</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>tools_v2 = [now_tool, web_search, research_skill]</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>research_skill.invoke(&quot;&#191;qu&#233; es MCP en el contexto de agentes de IA?&quot;)</code></pre></details>
-<pre class="output-text"><code>&#39;El Model Context Protocol (MCP) es un est&#225;ndar abierto que facilita la interacci&#243;n entre los agentes de inteligencia artificial (IA) y los sistemas, datos y herramientas externos. Este protocolo act&#250;a como un puente, permitiendo a los modelos de IA acceder directamente a archivos, APIs y herramientas sin necesidad de procesos intermedios como embeddings o b&#250;squedas vectoriales. El MCP resuelve el problema de integraci&#243;n N&#215;M, que dificultaba la interoperabilidad entre diferentes sistemas y herramientas, lo que en &#250;ltima instancia mejoraba el rendimiento y la eficiencia de los agentes de IA. Este est&#225;ndar es crucial para el futuro de la IA conectada, permitiendo una comunicaci&#243;n m&#225;s directa y segura entre los modelos de IA y sus fuentes de datos, lo que puede reemplazar sistemas actuales como RAG (Retrieval-Augmented Generation) y optimizar el retorno de la inversi&#243;n en IA empresarial.&#39;</code></pre>
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>&#39;El Model Context Protocol (MCP) es un est&#225;ndar abierto que facilita la interacci&#243;n entre los agentes de inteligencia artificial (IA) y los sistemas, datos y herramientas externos. Este protocolo act&#250;a como un puente, permitiendo a los modelos de IA acceder directamente a archivos, APIs y herramientas sin necesidad de procesos intermedios como embeddings o b&#250;squedas vectoriales. El MCP resuelve el problema de integraci&#243;n N&#215;M, que dificultaba la interoperabilidad entre diferentes sistemas y herramientas, lo que en &#250;ltima instancia mejoraba el rendimiento y la eficiencia de los agentes de IA. Este est&#225;ndar es crucial para el futuro de la IA conectada, permitiendo una comunicaci&#243;n m&#225;s directa y segura entre los modelos de IA y sus fuentes de datos, lo que puede reemplazar sistemas actuales como RAG (Retrieval-Augmented Generation) y optimizar el retorno de la inversi&#243;n en IA empresarial.&#39;</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code></code></pre></details>
 </section>
 <nav class="module-nav" aria-label="Explorar módulos de la ruta">

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Preprocesamiento, tokenizaci&#243;n, representaciones del texto y exploraci&#243;n de embeddings est&#225;ticos.">
 <title>Del texto a Word2Vec · Recurso educativo</title>
-<link rel="stylesheet" href="../assets/rea.css?v=20261010-7">
-<script src="../assets/learning.js?v=20261010-1" defer></script>
+<link rel="stylesheet" href="../assets/rea.css?v=20261011-1">
+<script src="../assets/learning.js?v=20261011-1" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -77,12 +77,12 @@
 <details class="code-cell"><summary>Código Python</summary><pre><code>vocab = [&quot;queen&quot;, &quot;woman&quot;, &quot;girl&quot;, &quot;boy&quot;, &quot;man&quot;, &quot;king&quot;]
 one_hot = {w: [1 if i == j else 0 for i in range(len(vocab))] for j, w in enumerate(vocab)}
 one_hot</code></pre></details>
-<pre class="output-text"><code>{&#39;queen&#39;: [1, 0, 0, 0, 0, 0, 0],
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>{&#39;queen&#39;: [1, 0, 0, 0, 0, 0, 0],
  &#39;woman&#39;: [0, 1, 0, 0, 0, 0, 0],
  &#39;girl&#39;: [0, 0, 1, 0, 0, 0, 0],
  &#39;boy&#39;: [0, 0, 0, 1, 0, 0, 0],
  &#39;king&#39;: [0, 0, 0, 0, 0, 0, 1],
- &#39;man&#39;: [0, 0, 0, 0, 0, 1, 0]}</code></pre>
+ &#39;man&#39;: [0, 0, 0, 0, 0, 1, 0]}</code></pre></details>
 <article class="markdown-cell">
 <p><strong>Bag-of-Words (BoW):</strong> en este enfoque, cada unidad de texto (puede ser una oraci&#243;n, un p&#225;rrafo o un documento completo) se representa como un vector que indica cu&#225;ntas veces aparece cada palabra del vocabulario.</p>
 <ul>
@@ -111,10 +111,10 @@ for doc in corpus:
 # Resultados
 for doc, vec in zip(corpus, bow_vectors):
     print(f&quot;&#39;{doc}&#39; → {vec}&quot;)</code></pre></details>
-<pre class="output-text"><code>Vocabulario: [&#39;el&#39;, &#39;gato&#39;, &#39;ladra&#39;, &#39;ma&#250;lla&#39;, &#39;perro&#39;]
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>Vocabulario: [&#39;el&#39;, &#39;gato&#39;, &#39;ladra&#39;, &#39;ma&#250;lla&#39;, &#39;perro&#39;]
 &#39;el perro ladra&#39; → [1, 0, 1, 0, 1]
 &#39;el gato ma&#250;lla&#39; → [1, 1, 0, 1, 0]
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <p>Ambos enfoques marcaron los primeros pasos en la representaci&#243;n num&#233;rica del lenguaje, pero resultaban muy limitados. Sus principales problemas eran:</p>
 <ul>
@@ -146,7 +146,7 @@ for doc, vec in zip(corpus, bow_vectors):
 <details class="code-cell"><summary>Código Python</summary><pre><code>!pip install contractions
 !pip install googletrans
 !pip install gensim</code></pre></details>
-<pre class="output-text"><code>Requirement already satisfied: contractions in /usr/local/lib/python3.12/dist-packages (0.1.73)
+<details class="output-cell" open><summary>Salida de diagnóstico · revisar</summary><pre class="output-text"><code>Requirement already satisfied: contractions in /usr/local/lib/python3.12/dist-packages (0.1.73)
 Requirement already satisfied: textsearch&gt;=0.0.21 in /usr/local/lib/python3.12/dist-packages (from contractions) (0.0.24)
 Requirement already satisfied: anyascii in /usr/local/lib/python3.12/dist-packages (from textsearch&gt;=0.0.21-&gt;contractions) (0.3.3)
 Requirement already satisfied: pyahocorasick in /usr/local/lib/python3.12/dist-packages (from textsearch&gt;=0.0.21-&gt;contractions) (2.2.0)
@@ -196,7 +196,7 @@ opencv-python 4.12.0.88 requires numpy&lt;2.3.0,&gt;=2; python_version &gt;= &qu
 tsfresh 0.21.1 requires scipy&gt;=1.14.0; python_version &gt;= &quot;3.10&quot;, but you have scipy 1.13.1 which is incompatible.
 opencv-contrib-python 4.12.0.88 requires numpy&lt;2.3.0,&gt;=2; python_version &gt;= &quot;3.9&quot;, but you have numpy 1.26.4 which is incompatible.
 Successfully installed gensim-4.3.3 numpy-1.26.4 scipy-1.13.1
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <h2>Lematizaci&#243;n:</h2>
 <ul>
@@ -226,11 +226,11 @@ from nltk.corpus import stopwords
 
 nltk.download(&#39;wordnet&#39;)
 nltk.download(&#39;stopwords&#39;)</code></pre></details>
-<pre class="output-text"><code>[nltk_data] Downloading package wordnet to /root/nltk_data...
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>[nltk_data] Downloading package wordnet to /root/nltk_data...
 [nltk_data] Downloading package stopwords to /root/nltk_data...
 [nltk_data]   Unzipping corpora/stopwords.zip.
-</code></pre>
-<pre class="output-text"><code>True</code></pre>
+</code></pre></details>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>True</code></pre></details>
 <article class="markdown-cell">
 <h2>Limpieza del texto</h2>
 <ul>
@@ -260,7 +260,7 @@ def clean_text_round2(text):
     text = re.sub(&#39;[‘’“”…&#171;&#187;]&#39;, &#39;&#39;, text)
     text = re.sub(&#39;\n&#39;, &#39; &#39;, text)
     return text</code></pre></details>
-<pre class="output-text"><code>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\[&#39;
+<details class="output-cell" open><summary>Salida de diagnóstico · revisar</summary><pre class="output-text"><code>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\[&#39;
 &lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\w&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\[&#39;
 &lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\w&#39;
@@ -268,7 +268,7 @@ def clean_text_round2(text):
   text = re.sub(&#39;\[.*?&#191;\]\%&#39;, &#39; &#39;, text)
 /tmp/ipython-input-3910757363.py:5: SyntaxWarning: invalid escape sequence &#39;\w&#39;
   text = re.sub(&#39;\w*\d\w*&#39;, &#39;&#39;, text)
-</code></pre>
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>lemmatizer = WordNetLemmatizer()
 sw = stopwords.words(&#39;english&#39;)</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>df = pd.read_csv(&#39;/content/drive/MyDrive/Inteligencia Artificial/Materia/2024 - NLP/simpsons_dataset.csv&#39;)
@@ -289,19 +289,19 @@ df[&#39;spoken_words&#39;] = df[&#39;spoken_words&#39;].apply(round2)
 
 
 df.head()</code></pre></details>
-<pre class="output-text"><code>        raw_character_text                                       spoken_words
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>        raw_character_text                                       spoken_words
 0              Miss Hoover  No, actually, it was a little of both. Sometim...
 1             Lisa Simpson                             Where&#39;s Mr. Bergstrom?
 2              Miss Hoover  I don&#39;t know. Although I&#39;d sure like to talk t...
 3             Lisa Simpson                         That life is worth living.
 4  Edna Krabappel-Flanders  The polls will be open from now until the end ...
-</code></pre>
-<pre class="output-text"><code>        raw_character_text                                       spoken_words
+</code></pre></details>
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>        raw_character_text                                       spoken_words
 0              Miss Hoover  no  actually  it was a little of both  sometim...
 1             Lisa Simpson                            where is mr  bergstrom
 2              Miss Hoover  i do not know  although i would sure like to t...
 3             Lisa Simpson                         that life is worth living
-4  Edna Krabappel-Flanders  the polls will be open from now until the end ...</code></pre>
+4  Edna Krabappel-Flanders  the polls will be open from now until the end ...</code></pre></details>
 <article class="markdown-cell">
 <h3>Tokenizaci&#243;n de las frases</h3>
 <ul>
@@ -311,7 +311,7 @@ df.head()</code></pre></details>
 </article>
 <details class="code-cell"><summary>Código Python</summary><pre><code>input_data = [row.split() for row in df[&#39;spoken_words&#39;]]
 input_data[0]</code></pre></details>
-<pre class="output-text"><code>[&#39;no&#39;,
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>[&#39;no&#39;,
  &#39;actually&#39;,
  &#39;it&#39;,
  &#39;was&#39;,
@@ -342,7 +342,7 @@ input_data[0]</code></pre></details>
  &#39;think&#39;,
  &#39;you&#39;,
  &#39;have&#39;,
- &#39;it&#39;]</code></pre>
+ &#39;it&#39;]</code></pre></details>
 <article class="markdown-cell">
 <h3>Construcci&#243;n de bigramas</h3>
 <p><strong>&quot;El gato est&#225; sobre la mesa&quot;</strong></p>
@@ -362,7 +362,7 @@ input_data[0]</code></pre></details>
 bigram = Phraser(phrases)
 sentences = bigram[input_data]
 sentences[0]</code></pre></details>
-<pre class="output-text"><code>[&#39;no&#39;,
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>[&#39;no&#39;,
  &#39;actually&#39;,
  &#39;it&#39;,
  &#39;was&#39;,
@@ -393,12 +393,12 @@ sentences[0]</code></pre></details>
  &#39;think&#39;,
  &#39;you&#39;,
  &#39;have&#39;,
- &#39;it&#39;]</code></pre>
+ &#39;it&#39;]</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>for sentence in sentences:
     for word in sentence:
         if &quot;_&quot; in word:
             print(f&quot;Bigrama encontrado: {word}&quot;)</code></pre></details>
-<pre class="output-text"><code>Streaming output truncated to the last 5000 lines.
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>Streaming output truncated to the last 5000 lines.
 Bigrama encontrado: cannot_believe
 Bigrama encontrado: next_week
 Bigrama encontrado: an_hour
@@ -804,7 +804,7 @@ Bigrama encontrado: do_not
 Bigrama encontrado: all_right
 Bigrama encontrado: do_not
 Bigrama encontrado:
-[Salida truncada en la versi&#243;n web.]</code></pre>
+[Salida truncada en la versi&#243;n web.]</code></pre></details>
 <article class="markdown-cell">
 <h2><a href="https://arxiv.org/pdf/1301.3781" rel="noopener noreferrer">Word2Vec</a></h2>
 <p>En 2013, Tomas Mikolov y su equipo presentaron <strong>Word2Vec</strong>, un modelo neuronal sencillo (con una sola capa oculta) dise&#241;ado para aprender embeddings de palabras de manera <strong>eficiente y de alta calidad</strong>.</p>
@@ -838,20 +838,20 @@ w2v_model = Word2Vec(sg=0, min_count=20, window=2, vector_size=300, sample=6e-5,
 # Obtener las palabras del vocabulario
 words = list(w2v_model.wv.key_to_index.keys())
 print (len(words))</code></pre></details>
-<pre class="output-text"><code>4318
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>4318
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>w2v_model.train(sentences, total_examples=w2v_model.corpus_count, epochs=30, report_delay=1)
 w2v_model.init_sims(replace=True)</code></pre></details>
-<pre class="output-text"><code>/tmp/ipython-input-3234137765.py:2: DeprecationWarning: Call to deprecated `init_sims` (Gensim 4.0.0 implemented internal optimizations that make calls to init_sims() unnecessary. init_sims() is now obsoleted and will be completely removed in future versions. See https://github.com/RaRe-Technologies/gensim/wiki/Migrating-from-Gensim-3.x-to-4).
+<details class="output-cell" open><summary>Salida de diagnóstico · revisar</summary><pre class="output-text"><code>/tmp/ipython-input-3234137765.py:2: DeprecationWarning: Call to deprecated `init_sims` (Gensim 4.0.0 implemented internal optimizations that make calls to init_sims() unnecessary. init_sims() is now obsoleted and will be completely removed in future versions. See https://github.com/RaRe-Technologies/gensim/wiki/Migrating-from-Gensim-3.x-to-4).
   w2v_model.init_sims(replace=True)
 WARNING:gensim.models.keyedvectors:destructive init_sims(replace=True) deprecated &amp; no longer required for space-efficiency
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <h3>Palabras m&#225;s cercanas en el espacio de embeddings</h3>
 
 </article>
 <details class="code-cell"><summary>Código Python</summary><pre><code>w2v_model.wv.most_similar(positive=[&quot;homer&quot;])</code></pre></details>
-<pre class="output-text"><code>[(&#39;marge&#39;, 0.5010542869567871),
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>[(&#39;marge&#39;, 0.5010542869567871),
  (&#39;dad&#39;, 0.4555928707122803),
  (&#39;homie&#39;, 0.4531590938568115),
  (&#39;mom&#39;, 0.4006149172782898),
@@ -860,9 +860,9 @@ WARNING:gensim.models.keyedvectors:destructive init_sims(replace=True) deprecate
  (&#39;becky&#39;, 0.3578633666038513),
  (&#39;honey&#39;, 0.357191264629364),
  (&#39;reverend_lovejoy&#39;, 0.3556356430053711),
- (&#39;mr_burns&#39;, 0.35553038120269775)]</code></pre>
+ (&#39;mr_burns&#39;, 0.35553038120269775)]</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>w2v_model.wv.most_similar(negative=[&quot;homer&quot;])</code></pre></details>
-<pre class="output-text"><code>[(&#39;pole&#39;, 0.28931981325149536),
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>[(&#39;pole&#39;, 0.28931981325149536),
  (&#39;known_as&#39;, 0.27104973793029785),
  (&#39;played&#39;, 0.2437598705291748),
  (&#39;uses&#39;, 0.23563413321971893),
@@ -871,9 +871,9 @@ WARNING:gensim.models.keyedvectors:destructive init_sims(replace=True) deprecate
  (&#39;hits&#39;, 0.2258554846048355),
  (&#39;texas&#39;, 0.22228050231933594),
  (&#39;hail&#39;, 0.22134463489055634),
- (&#39;including&#39;, 0.216420516371727)]</code></pre>
+ (&#39;including&#39;, 0.216420516371727)]</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>w2v_model.wv.most_similar(positive=[&quot;homer&quot;, &quot;marge&quot;, &quot;bart&quot;, &quot;lisa&quot;, &quot;bart&quot;])</code></pre></details>
-<pre class="output-text"><code>[(&#39;mom&#39;, 0.5834949612617493),
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>[(&#39;mom&#39;, 0.5834949612617493),
  (&#39;dad&#39;, 0.5291776657104492),
  (&#39;maggie&#39;, 0.5242363214492798),
  (&#39;homie&#39;, 0.5223982334136963),
@@ -882,7 +882,7 @@ WARNING:gensim.models.keyedvectors:destructive init_sims(replace=True) deprecate
  (&#39;becky&#39;, 0.4486558437347412),
  (&#39;dr_hibbert&#39;, 0.4396235942840576),
  (&#39;sweetie&#39;, 0.43065086007118225),
- (&#39;jessica&#39;, 0.42579010128974915)]</code></pre>
+ (&#39;jessica&#39;, 0.42579010128974915)]</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>import plotly.graph_objs as go
 from sklearn.decomposition import PCA
 import numpy as np
@@ -1009,7 +1009,7 @@ fig = go.Figure(data=[trace_words] + trace_lines, layout=layout)
 # Mostrar la gr&#225;fica interactiva
 fig.show()
 </code></pre></details>
-<pre class="output-text"><code>Distancias entre &#39;homer&#39; y &#39;marge&#39;:
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>Distancias entre &#39;homer&#39; y &#39;marge&#39;:
   Euclidiana: 0.9989451169967651
   Similitud de coseno: 0.5010542869567871
   Distancia Manhattan: 13.873126983642578
@@ -1039,43 +1039,43 @@ Distancias entre &#39;bart&#39; y &#39;lisa&#39;:
   Similitud de coseno: 0.6266626902420134
   Distancia Manhattan: 11.924253463745117
 
-</code></pre>
+</code></pre></details>
 <p class="output-note">La notebook contiene aquí una salida HTML dinámica que no se ejecuta en esta página. Consulta el código fuente o abre el cuaderno en Colab.</p>
 <details class="code-cell"><summary>Código Python</summary><pre><code>analogous_words = w2v_model.wv.mostpositive=[&#39;bart&#39;, &#39;_similar(marge&#39;], negative=[&#39;homer&#39;], topn=1)
 print(&quot;La palabra que completa la analog&#237;a &#39;homero es a bart como marge es a ...&#39; es:&quot;, analogous_words[0][0])</code></pre></details>
-<pre class="output-text"><code>La palabra que completa la analog&#237;a &#39;homero es a bart como marge es a ...&#39; es: lisa
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>La palabra que completa la analog&#237;a &#39;homero es a bart como marge es a ...&#39; es: lisa
+</code></pre></details>
 <article class="markdown-cell">
 <p>vec(&quot;bart&quot;)+vec(&quot;marge&quot;)−vec(&quot;homer&quot;) = vec(&quot;lisa&quot;)</p>
 
 </article>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(w2v_model.wv.most_similar(positive=[&quot;burns&quot;, &quot;smithers&quot;], negative=[&quot;boss&quot;], topn=1))</code></pre></details>
-<pre class="output-text"><code>[(&#39;waylon&#39;, 0.3694535493850708)]
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>[(&#39;waylon&#39;, 0.3694535493850708)]
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(w2v_model.wv.most_similar(positive=[&quot;homer&quot;, &quot;moe&quot;], negative=[&quot;bar&quot;], topn=1))</code></pre></details>
-<pre class="output-text"><code>[(&#39;dad&#39;, 0.40101078152656555)]
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>[(&#39;dad&#39;, 0.40101078152656555)]
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(w2v_model.wv.most_similar(positive=[&quot;maggie&quot;, &quot;marge&quot;], negative=[&quot;mother&quot;], topn=1))</code></pre></details>
-<pre class="output-text"><code>[(&#39;homer&#39;, 0.34902775287628174)]
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>[(&#39;homer&#39;, 0.34902775287628174)]
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(w2v_model.wv.most_similar(positive=[&quot;apu&quot;, &quot;beer&quot;], negative=[&quot;store&quot;], topn=1))</code></pre></details>
-<pre class="output-text"><code>[(&#39;baron&#39;, 0.3830994963645935)]
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>[(&#39;baron&#39;, 0.3830994963645935)]
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(w2v_model.wv.most_similar(positive=[&quot;bart&quot;, &quot;school&quot;], negative=[&quot;student&quot;], topn=1))</code></pre></details>
-<pre class="output-text"><code>[(&#39;lisa&#39;, 0.4070283770561218)]
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>[(&#39;lisa&#39;, 0.4070283770561218)]
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(w2v_model.wv.most_similar(positive=[&quot;teacher&quot;, &quot;bart&quot;], negative=[&quot;edna&quot;], topn=1))</code></pre></details>
-<pre class="output-text"><code>[(&#39;lisa&#39;, 0.41088035702705383)]
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>[(&#39;lisa&#39;, 0.41088035702705383)]
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(w2v_model.wv.doesnt_match([&quot;homer&quot;, &quot;marge&quot;, &quot;bart&quot;, &quot;pizza&quot;]))</code></pre></details>
-<pre class="output-text"><code>pizza
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>pizza
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code></code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>print(w2v_model.wv.doesnt_match([&quot;burns&quot;, &quot;smithers&quot;, &quot;apu&quot;, &quot;spaceship&quot;]))</code></pre></details>
-<pre class="output-text"><code>WARNING:gensim.models.keyedvectors:vectors for words {&#39;spaceship&#39;} are not present in the model, ignoring these words
-</code></pre>
-<pre class="output-text"><code>apu
-</code></pre>
+<details class="output-cell" open><summary>Salida de diagnóstico · revisar</summary><pre class="output-text"><code>WARNING:gensim.models.keyedvectors:vectors for words {&#39;spaceship&#39;} are not present in the model, ignoring these words
+</code></pre></details>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>apu
+</code></pre></details>
 <article class="markdown-cell">
 <h2>Limitaciones de Word2Vec y de los embeddings est&#225;ticos</h2>
 <p>A pesar de su enorme utilidad, los embeddings tradicionales como Word2Vec presentan limitaciones importantes:</p>

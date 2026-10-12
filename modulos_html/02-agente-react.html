@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Herramientas, formato de acciones, parser y ciclo Thought–Action–Observation implementado en Python.">
 <title>Construir un agente ReAct · Recurso educativo</title>
-<link rel="stylesheet" href="../assets/rea.css?v=20261010-7">
-<script src="../assets/learning.js?v=20261010-1" defer></script>
+<link rel="stylesheet" href="../assets/rea.css?v=20261011-1">
+<script src="../assets/learning.js?v=20261011-1" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -67,7 +67,7 @@ warnings.filterwarnings(
 )
 warnings.filterwarnings(&quot;ignore&quot;, category=DeprecationWarning)
 !pip install ddgs</code></pre></details>
-<pre class="output-text"><code>Collecting ddgs
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>Collecting ddgs
   Downloading ddgs-9.16.0-py3-none-any.whl.metadata (16 kB)
 Requirement already satisfied: click&gt;=8.1.8 in /usr/local/lib/python3.13/dist-packages (from ddgs) (8.5.0)
 Collecting primp&gt;=1.3.1 (from ddgs)
@@ -79,7 +79,7 @@ Downloading primp-2.0.1-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.wh
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 52.4 MB/s eta 0:00:00
 Installing collected packages: primp, ddgs
 Successfully installed ddgs-9.16.0 primp-2.0.1
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <h2>2. Imports y configuraci&#243;n inicial</h2>
 <p>Antes de crear el agente, importamos librer&#237;as generales y definimos tipos auxiliares.</p>
@@ -122,15 +122,15 @@ client = OpenAI(
 )
 
 print(&quot;Cliente inicializado correctamente.&quot;)</code></pre></details>
-<pre class="output-text"><code>Ingres&#225; tu HF_TOKEN: &#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>Ingres&#225; tu HF_TOKEN: &#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;&#183;
 Cliente inicializado correctamente.
-</code></pre>
+</code></pre></details>
 <details class="code-cell"><summary>Código Python · ejecución guardada #4</summary><pre><code>models = client.models.list()
 
 print(&quot;Modelos disponibles:&quot;)
 for m in models.data[:30]:
     print(&quot;-&quot;, m.id)</code></pre></details>
-<pre class="output-text"><code>Modelos disponibles:
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>Modelos disponibles:
 - deepseek-ai/DeepSeek-V4.1-Flash
 - Qwen/Qwen3.8-27B
 - meta-llama/Llama-3.1-8B-Instruct
@@ -161,7 +161,7 @@ for m in models.data[:30]:
 - google/gemma-3-12b-it
 - Qwen/Qwen3-Coder-30B-A3B-Instruct
 - meta-llama/Llama-3.3-70B-Instruct
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <p>&#191;Por qu&#233; usamos la librer&#237;a de OpenAI si el modelo est&#225; en Hugging Face?</p>
 
@@ -180,10 +180,10 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 </code></pre></details>
-<pre class="output-text"><code>Un agente de IA es un programa o sistema dise&#241;ado para tomar decisiones y realizar tareas de manera aut&#243;noma utilizando inteligencia artificial, aprendiendo de los datos y adapt&#225;ndose a nuevas situaciones.
-</code></pre>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>Un agente de IA es un programa o sistema dise&#241;ado para tomar decisiones y realizar tareas de manera aut&#243;noma utilizando inteligencia artificial, aprendiendo de los datos y adapt&#225;ndose a nuevas situaciones.
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>response</code></pre></details>
-<pre class="output-text"><code>ChatCompletion(id=&#39;oiBCAHg-6Ng1vN-9f82fb8b3c6ffb02&#39;, choices=[Choice(finish_reason=&#39;stop&#39;, index=0, logprobs=None, message=ChatCompletionMessage(content=&#39;Un agente de IA es un programa o sistema dise&#241;ado para tomar decisiones y realizar tareas de manera aut&#243;noma utilizando inteligencia artificial, aprendiendo de los datos y adapt&#225;ndose a nuevas situaciones.&#39;, refusal=None, role=&#39;assistant&#39;, annotations=None, audio=None, function_call=None, tool_calls=[]), seed=3256071366684055000)], created=1778185826, model=&#39;Qwen/Qwen2.5-7B-Instruct-Turbo&#39;, object=&#39;chat.completion&#39;, service_tier=None, system_fingerprint=None, usage=CompletionUsage(completion_tokens=44, prompt_tokens=43, total_tokens=87, completion_tokens_details=None, prompt_tokens_details=None, cached_tokens=0), prompt=[])</code></pre>
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>ChatCompletion(id=&#39;oiBCAHg-6Ng1vN-9f82fb8b3c6ffb02&#39;, choices=[Choice(finish_reason=&#39;stop&#39;, index=0, logprobs=None, message=ChatCompletionMessage(content=&#39;Un agente de IA es un programa o sistema dise&#241;ado para tomar decisiones y realizar tareas de manera aut&#243;noma utilizando inteligencia artificial, aprendiendo de los datos y adapt&#225;ndose a nuevas situaciones.&#39;, refusal=None, role=&#39;assistant&#39;, annotations=None, audio=None, function_call=None, tool_calls=[]), seed=3256071366684055000)], created=1778185826, model=&#39;Qwen/Qwen2.5-7B-Instruct-Turbo&#39;, object=&#39;chat.completion&#39;, service_tier=None, system_fingerprint=None, usage=CompletionUsage(completion_tokens=44, prompt_tokens=43, total_tokens=87, completion_tokens_details=None, prompt_tokens_details=None, cached_tokens=0), prompt=[])</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>def call_llm(messages: List[Dict[str, str]], temperature: float = 0.2) -&gt; str:
     response = client.chat.completions.create(
         model=MODEL_ID,
@@ -367,7 +367,7 @@ def build_tools_description(tools: Dict[str, Tool]) -&gt; str:
 TOOLS_DESC = build_tools_description(TOOLS)
 
 print(TOOLS_DESC)</code></pre></details>
-<pre class="output-text"><code>- now: Devuelve la fecha y hora actual.
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>- now: Devuelve la fecha y hora actual.
 
 Usar SOLO para:
 - fecha actual
@@ -415,7 +415,7 @@ Ejemplos:
 Action: web_search | historia de Los Simpson | k=5
 Action: web_search | qu&#233; es LangChain | k=3
 Action: web_search | &#250;ltimas noticias IA | k=10
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <h1>Prompt ReAct</h1>
 <p>ReAct significa <strong>Reasoning + Acting</strong>.</p>
@@ -529,7 +529,7 @@ FINAL: Hoy es 7 de mayo de 2026.
 
 print(SYSTEM_PROMPT)
 </code></pre></details>
-<pre class="output-text"><code>Sos un agente ReAct.
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>Sos un agente ReAct.
 
 Tu objetivo es:
 1. Razonar paso a paso.
@@ -663,7 +663,7 @@ Observation: 2026-05-07 14:30:00
 Thought: Ya tengo la fecha actual.
 
 FINAL: Hoy es 7 de mayo de 2026.
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <h2>Parser de acciones</h2>
 <p>El modelo devuelve texto plano. Para que el agente pueda ejecutar herramientas reales, Python necesita interpretar ese texto autom&#225;ticamente.</p>
@@ -783,7 +783,7 @@ El LLM contin&#250;a razonando</code></pre>
 <details class="code-cell"><summary>Código Python</summary><pre><code>answer, trace = run_agent(&quot;qu&#233; es una herramienta en un agente de IA&quot;)
 print_trace(trace)
 print(&quot;\nFINAL:\n&quot;, answer)</code></pre></details>
-<pre class="output-text"><code>
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>
 --- Paso 1 ---
 Thought: Para explicar brevemente qu&#233; es una herramienta en un agente de IA, necesito buscar una definici&#243;n adecuada.
 
@@ -804,11 +804,11 @@ Final Answer: Una herramienta en un agente de IA es una funcionalidad que permit
 
 FINAL:
  Una herramienta en un agente de IA es una funcionalidad que permite al agente interactuar con el mundo externo, como navegar la web, enviar correos electr&#243;nicos, procesar datos y automatizar flujos de trabajo. Estas herramientas permiten que los agentes de IA realicen tareas de manera aut&#243;noma, integrando memoria persistente y la orquestaci&#243;n de modelos de lenguaje.
-</code></pre>
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>answer, trace = run_agent(&quot;Qu&#233; fecha es hoy?&quot;)
 print_trace(trace)
 print(&quot;\nFINAL:\n&quot;, answer)</code></pre></details>
-<pre class="output-text"><code>
+<details class="output-cell" open><summary>Respuesta guardada · breve</summary><pre class="output-text"><code>
 --- Paso 1 ---
 Thought: Necesito saber la fecha actual.
 Action: now |
@@ -816,11 +816,11 @@ Action: now |
 FINAL:
  Thought: Necesito saber la fecha actual.
 Action: now |
-</code></pre>
+</code></pre></details>
 <details class="code-cell"><summary>Código Python</summary><pre><code>answer, trace = run_agent(&quot;Busc&#225; informaci&#243;n sobre Los Simpson y dame 5 enlaces relacionados.&quot;)
 print_trace(trace)
 print(&quot;\nFINAL:\n&quot;, answer)</code></pre></details>
-<pre class="output-text"><code>
+<details class="output-cell"><summary>Respuesta guardada · salida extensa</summary><pre class="output-text"><code>
 --- Paso 1 ---
 Thought: Necesito buscar informaci&#243;n sobre Los Simpson y obtener 5 enlaces relacionados.
 Action: web_search | historia de Los Simpson | k=5
@@ -872,7 +872,7 @@ FINAL:
 5. [OJ Simpson es absuelto tras terminar su libertad condicional](https://www.dw.com/es/oj-simpson-es-absuelto-tras-terminar-su-libertad-condicional/a-60124041)
 
 Estos enlaces te proporcionar&#225;n informaci&#243;n variada sobre la serie, desde su historia hasta curiosidades y noticias relacionadas con los personajes.
-</code></pre>
+</code></pre></details>
 <article class="markdown-cell">
 <h1>Pr&#243;ximos pasos: otros tipos de agentes</h1>
 <p>En esta notebook implementamos un agente <strong>ReAct</strong>, donde el modelo:</p>
