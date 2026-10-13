@@ -100,7 +100,7 @@ function Write-Page([string]$Source, [string]$Destination) {
     $page = @"
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="$description"><title>$title · $siteTitle</title><link rel="stylesheet" href="/assets/rea.css?v=local"><link rel="stylesheet" href="/assets/course.css"></head>
-<body><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="/">$siteTitle</a><nav aria-label="Navegación principal"><a href="/">Inicio</a><a href="/guia-reutilizacion.html">Guía de reutilización</a><a href="/evaluacion-final.html">Actividad integradora</a><a href="/licencias-y-atribuciones.html">Licencias</a></nav></div></header>$main<footer class="site-footer"><p>Recurso educativo · Cátedra de Inteligencia Artificial</p><p>Fuentes: <a href="/fuentes/README.html">inventario de fuentes</a>.</p></footer></body></html>
+<body><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="/">$siteTitle</a><nav aria-label="Navegación principal"><a href="/">Inicio</a><a href="/aula.html">Aula</a><a href="/guia-reutilizacion.html">Guía de reutilización</a><a href="/evaluacion-final.html">Actividad integradora</a><a href="/licencias-y-atribuciones.html">Licencias</a></nav></div></header>$main<footer class="site-footer"><p>Recurso educativo · Cátedra de Inteligencia Artificial</p><p>Fuentes: <a href="/fuentes/README.html">inventario de fuentes</a>.</p></footer></body></html>
 "@
     $page = Convert-LocalLinks $page
     New-Item -ItemType Directory -Force -Path (Split-Path -Parent $Destination) | Out-Null
