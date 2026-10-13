@@ -36,7 +36,7 @@ try {
         $context = $listener.GetContext()
         try {
             $relative = [Uri]::UnescapeDataString($context.Request.Url.AbsolutePath.TrimStart('/'))
-            if ([string]::IsNullOrWhiteSpace($relative)) { $relative = 'aula.html' }
+            if ([string]::IsNullOrWhiteSpace($relative)) { $relative = 'index.html' }
             $candidate = [IO.Path]::GetFullPath((Join-Path $Root $relative))
             if (-not $candidate.StartsWith($rootPath, [StringComparison]::OrdinalIgnoreCase) -or -not (Test-Path -LiteralPath $candidate -PathType Leaf)) {
                 Write-NotFound $context
