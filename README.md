@@ -12,6 +12,8 @@ La rama experimental [`feature/interfazdDUA`](../../tree/feature/interfazdDUA) i
 
 Para probarla localmente en Windows, ejecuta `powershell -NoProfile -ExecutionPolicy Bypass -File tools/serve-local.ps1 -Port 8765` y abre `http://localhost:8765/aula.html`. El servidor admite rangos de bytes para los videos y tolera que el navegador cancele una descarga. No se recomienda abrirla con `file://`, porque la carga de las transcripciones utiliza `fetch`.
 
+Para simular además la integración final de GitHub Pages sin instalar Ruby/Jekyll, ejecuta `powershell -NoProfile -ExecutionPolicy Bypass -File tools/build-local.ps1` y luego `powershell -NoProfile -ExecutionPolicy Bypass -File tools/serve-local.ps1 -Port 8769 -Root .\site-local`. Abre `http://localhost:8769/`; la salida de prueba se mantiene fuera del repositorio mediante `.gitignore`.
+
 Para regenerarlas después de editar una notebook, ejecuta en Windows:
 
 ```powershell
