@@ -139,20 +139,27 @@ function Add-VideoResource($Builder, $Video) {
     $title = [System.Net.WebUtility]::HtmlEncode([string]$Video.title)
     $description = [System.Net.WebUtility]::HtmlEncode([string]$Video.description)
     $captionNote = [System.Net.WebUtility]::HtmlEncode([string]$Video.captions.note)
+    $viewUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.viewUrl)
+    $downloadUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.downloadUrl)
     [void]$Builder.AppendLine("<section class=`"video-resource`" aria-labelledby=`"video-title-$number`">")
     [void]$Builder.AppendLine("<div class=`"video-resource-copy`"><span class=`"section-kicker`">EXPLICACIÓN MULTIMEDIA</span><h2 id=`"video-title-$number`">$title</h2><p>$description</p>")
     if ($Video.status -eq 'available') {
-        $viewUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.viewUrl)
-        $downloadUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.downloadUrl)
-        [void]$Builder.AppendLine("<div class=`"action-row video-actions`"><a class=`"button primary`" href=`"$viewUrl`" target=`"_blank`" rel=`"noopener noreferrer`">Abrir video en Google Drive <span aria-hidden=`"true`">↗</span></a><a class=`"button secondary`" href=`"$downloadUrl`" target=`"_blank`" rel=`"noopener noreferrer`">Descargar video</a></div>")
+        $watchLabel = if ($Video.previewUrl) { 'Abrir video en Google Drive' } else { 'Abrir video local' }
+        $watchTarget = if ($Video.previewUrl) { ' target=`"_blank`" rel=`"noopener noreferrer`"' } else { '' }
+        $watchArrow = if ($Video.previewUrl) { ' <span aria-hidden=`"true`">↗</span>' } else { '' }
+        [void]$Builder.AppendLine("<div class=`"action-row video-actions`"><a class=`"button primary`" href=`"$viewUrl`"$watchTarget>$watchLabel$watchArrow</a><a class=`"button secondary`" href=`"$downloadUrl`" download>Descargar video</a></div>")
         [void]$Builder.AppendLine("<p class=`"video-caption-note`"><strong>Subtítulos y transcripción:</strong> $captionNote</p>")
     } else {
         [void]$Builder.AppendLine('<p class="video-caption-note"><strong>Estado:</strong> recurso pendiente de enlace público. Esta sección ya está preparada para incorporarlo sin modificar la estructura del módulo.</p>')
     }
     [void]$Builder.AppendLine('</div>')
     if ($Video.status -eq 'available') {
-        $previewUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.previewUrl)
-        [void]$Builder.AppendLine("<div class=`"video-frame`"><iframe src=`"$previewUrl`" title=`"$title`" loading=`"lazy`" allow=`"autoplay; fullscreen`" allowfullscreen></iframe></div>")
+        if ($Video.previewUrl) {
+            $previewUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.previewUrl)
+            [void]$Builder.AppendLine("<div class=`"video-frame`"><iframe src=`"$previewUrl`" title=`"$title`" loading=`"lazy`" allow=`"autoplay; fullscreen`" allowfullscreen></iframe></div>")
+        } else {
+            [void]$Builder.AppendLine("<div class=`"video-frame`"><video controls preload=`"metadata`" aria-label=`"$title`"><source src=`"$downloadUrl`" type=`"video/mp4`">Tu navegador no puede reproducir este video. <a href=`"$downloadUrl`">Descargar el archivo MP4</a>.</video></div>")
+        }
     } else {
         [void]$Builder.AppendLine('<div class="video-pending" role="status"><span aria-hidden="true">03</span><p>Video pendiente de incorporación.</p><small>El registro multimedia ya contiene el lugar y los metadatos para completar este recurso.</small></div>')
     }

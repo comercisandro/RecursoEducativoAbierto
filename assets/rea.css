@@ -125,7 +125,7 @@ h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; letter-spacing: -.03em; }
 .video-actions .button.secondary:hover { color: var(--navy); background: #eef4fa; }
 .video-caption-note { margin-top: .7rem !important; color: var(--muted) !important; font-size: .82rem !important; }
 .video-frame { overflow: hidden; aspect-ratio: 16 / 9; border-radius: .8rem; background: #18213f; box-shadow: 0 8px 20px rgb(34 49 82 / 12%); }
-.video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video-frame iframe, .video-frame video { display: block; width: 100%; height: 100%; border: 0; }
 .video-pending { display: grid; min-height: 10rem; place-items: center; align-content: center; padding: 1.2rem; border: 1px dashed #b7b2dd; border-radius: .8rem; color: var(--muted); background: rgb(255 255 255 / 70%); text-align: center; }
 .video-pending span { display: grid; width: 2.7rem; height: 2.7rem; margin-bottom: .6rem; place-items: center; border-radius: 50%; color: white; background: var(--violet); font-size: .75rem; font-weight: 850; }
 .video-pending p { color: var(--navy); font-weight: 780; }
