@@ -15,6 +15,8 @@ Esta carpeta contiene las notebooks de la cátedra y copias de documentos descar
 | SRC-01 | `modulo-1.ipynb` y `modulo-1 - Colab.pdf` | Original local aportado al proyecto | Componente propio autorizado: CC BY-NC-SA 4.0; revisar terceros |
 | SRC-03 | `modulo-3.ipynb` y `modulo-3 - Colab.pdf` | Original local aportado al proyecto | Componente propio autorizado: CC BY-NC-SA 4.0; revisar terceros |
 | SRC-04 | `modulo-2.ipynb` y `modulo-2 - Colab.pdf` | Original local aportado al proyecto | Componente propio autorizado: CC BY-NC-SA 4.0; revisar terceros |
+| Video-01 | `modulo-1-explicacion.mp4` | Grabación audiovisual enlazada desde Google Drive; registro en [`assets/videos.json`](../assets/videos.json) | Verificar autoría, permiso de redistribución y subtítulos antes de publicar una copia |
+| Video-02 | `modulo-2-explicacion.mp4` | Grabación audiovisual enlazada desde Google Drive; registro en [`assets/videos.json`](../assets/videos.json) | Verificar autoría, permiso de redistribución y subtítulos antes de publicar una copia |
 | SRC-07 | `SRC-07-villarreal-curso-repositorios-aspectos-tecnologicos.pdf` | [SEDICI: Curso de Repositorios Digitales - Aspectos tecnológicos](https://sedici.unlp.edu.ar/handle/10915/57192) | CC BY-SA 4.0 |
 | SRC-08 | `SRC-08-diaz-davila-aprendizaje-matematica-ingenieria.pdf` | [SEDICI: La pandemia. Acciones para facilitar el aprendizaje en Matemática durante el ingreso a carreras de Ingeniería](https://sedici.unlp.edu.ar/handle/10915/103682) | CC BY-NC-SA 4.0 |
 | SRC-12 | `SRC-12-educar-ia-y-educacion-encuesta-2025.pdf` | [Educ.ar: IA y educación. Usos y representaciones de la comunidad educativa](https://www.educ.ar/recursos/159144/ia-y-educacion-informe-encuesta) | CC BY-NC-SA (según ficha de Educ.ar) |

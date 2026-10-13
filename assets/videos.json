@@ -1,0 +1,52 @@
+{
+  "videos": [
+  {
+    "moduleNumber": "01",
+    "title": "Explicación en video del módulo 1",
+    "status": "available",
+    "description": "Recorrido audiovisual por el código de preprocesamiento, entrenamiento y consulta de Word2Vec.",
+    "driveId": "1P72hdUcRjhEczzgtXxFBD8OZbMtq2i52",
+    "viewUrl": "https://drive.google.com/file/d/1P72hdUcRjhEczzgtXxFBD8OZbMtq2i52/view?usp=sharing",
+    "previewUrl": "https://drive.google.com/file/d/1P72hdUcRjhEczzgtXxFBD8OZbMtq2i52/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1P72hdUcRjhEczzgtXxFBD8OZbMtq2i52",
+    "localFile": "fuentes/modulo-1-explicacion.mp4",
+    "captions": {
+      "status": "pending",
+      "file": null,
+      "note": "Google Drive no expone una pista de subtítulos descargable mediante este enlace público. Incorporar un archivo .vtt o .srt cuando esté disponible."
+    }
+  },
+  {
+    "moduleNumber": "02",
+    "title": "Explicación en video del módulo 2",
+    "status": "available",
+    "description": "Recorrido audiovisual por las herramientas, el parser y el ciclo Thought–Action–Observation de ReAct.",
+    "driveId": "11obRKjCaQyzhnOF3Zp92GlomkoklG2MX",
+    "viewUrl": "https://drive.google.com/file/d/11obRKjCaQyzhnOF3Zp92GlomkoklG2MX/view?usp=sharing",
+    "previewUrl": "https://drive.google.com/file/d/11obRKjCaQyzhnOF3Zp92GlomkoklG2MX/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=11obRKjCaQyzhnOF3Zp92GlomkoklG2MX",
+    "localFile": "fuentes/modulo-2-explicacion.mp4",
+    "captions": {
+      "status": "pending",
+      "file": null,
+      "note": "Google Drive no expone una pista de subtítulos descargable mediante este enlace público. Incorporar un archivo .vtt o .srt cuando esté disponible."
+    }
+  },
+  {
+    "moduleNumber": "03",
+    "title": "Explicación en video del módulo 3",
+    "status": "pending",
+    "description": "Espacio preparado para el recorrido audiovisual por frameworks, tools y Skills.",
+    "driveId": null,
+    "viewUrl": null,
+    "previewUrl": null,
+    "downloadUrl": null,
+    "localFile": null,
+    "captions": {
+      "status": "pending",
+      "file": null,
+      "note": "Pendiente de recibir el enlace público del video y, si existe, su archivo de subtítulos."
+    }
+  }
+  ]
+}

@@ -7,11 +7,16 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $notebooksDir = Join-Path $root 'fuentes'
 $outputDir = Join-Path $root 'modulos_html'
+$videoRegistryPath = Join-Path $root 'assets\videos.json'
 $utf8 = [System.Text.UTF8Encoding]::new($false)
 
 if (-not (Test-Path $notebooksDir)) {
     throw "No se encuentra la carpeta fuentes/: $notebooksDir"
 }
+if (-not (Test-Path $videoRegistryPath)) {
+    throw "No se encuentra el registro de videos: $videoRegistryPath"
+}
+$videoRegistry = (Get-Content -Raw -Encoding utf8 $videoRegistryPath | ConvertFrom-Json).videos
 New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
 
 function Get-CellSource($Cell) {
@@ -126,6 +131,32 @@ function Convert-Markdown([string]$Markdown) {
     & $flushParagraph
     Close-MarkdownList $html ([ref]$listType)
     return $html.ToString()
+}
+
+function Add-VideoResource($Builder, $Video) {
+    if ($null -eq $Video) { return }
+    $number = [System.Net.WebUtility]::HtmlEncode([string]$Video.moduleNumber)
+    $title = [System.Net.WebUtility]::HtmlEncode([string]$Video.title)
+    $description = [System.Net.WebUtility]::HtmlEncode([string]$Video.description)
+    $captionNote = [System.Net.WebUtility]::HtmlEncode([string]$Video.captions.note)
+    [void]$Builder.AppendLine("<section class=`"video-resource`" aria-labelledby=`"video-title-$number`">")
+    [void]$Builder.AppendLine("<div class=`"video-resource-copy`"><span class=`"section-kicker`">EXPLICACIÓN MULTIMEDIA</span><h2 id=`"video-title-$number`">$title</h2><p>$description</p>")
+    if ($Video.status -eq 'available') {
+        $viewUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.viewUrl)
+        $downloadUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.downloadUrl)
+        [void]$Builder.AppendLine("<div class=`"action-row video-actions`"><a class=`"button primary`" href=`"$viewUrl`" target=`"_blank`" rel=`"noopener noreferrer`">Abrir video en Google Drive <span aria-hidden=`"true`">↗</span></a><a class=`"button secondary`" href=`"$downloadUrl`" target=`"_blank`" rel=`"noopener noreferrer`">Descargar video</a></div>")
+        [void]$Builder.AppendLine("<p class=`"video-caption-note`"><strong>Subtítulos y transcripción:</strong> $captionNote</p>")
+    } else {
+        [void]$Builder.AppendLine('<p class="video-caption-note"><strong>Estado:</strong> recurso pendiente de enlace público. Esta sección ya está preparada para incorporarlo sin modificar la estructura del módulo.</p>')
+    }
+    [void]$Builder.AppendLine('</div>')
+    if ($Video.status -eq 'available') {
+        $previewUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.previewUrl)
+        [void]$Builder.AppendLine("<div class=`"video-frame`"><iframe src=`"$previewUrl`" title=`"$title`" loading=`"lazy`" allow=`"autoplay; fullscreen`" allowfullscreen></iframe></div>")
+    } else {
+        [void]$Builder.AppendLine('<div class="video-pending" role="status"><span aria-hidden="true">03</span><p>Video pendiente de incorporación.</p><small>El registro multimedia ya contiene el lugar y los metadatos para completar este recurso.</small></div>')
+    }
+    [void]$Builder.AppendLine('</section>')
 }
 
 function Close-MarkdownList($Builder, [ref]$ListType) {
@@ -292,6 +323,7 @@ foreach ($module in $modules) {
     if (-not (Test-Path $sourcePath)) { throw "Falta el notebook requerido: $sourcePath" }
     $notebook = Get-Content -Raw -Encoding utf8 $sourcePath | ConvertFrom-Json
     $builder = [System.Text.StringBuilder]::new()
+    $video = $videoRegistry | Where-Object { $_.moduleNumber -eq $module.Number } | Select-Object -First 1
     $notebookPath = "../fuentes/$($module.File)"
     $pdfPath = "../fuentes/$([uri]::EscapeDataString($module.Pdf))"
     $colabPath = "https://colab.research.google.com/github/$Repository/blob/$Branch/fuentes/$($module.File)"
@@ -342,6 +374,7 @@ foreach ($module in $modules) {
     [void]$builder.AppendLine("<article class=`"overview-card overview-evidence`"><span class=`"overview-label`">EVIDENCIA SUGERIDA</span><p>$([System.Net.WebUtility]::HtmlEncode($module.Evidence))</p></article>")
     [void]$builder.AppendLine("<article class=`"overview-card overview-requirements`"><span class=`"overview-label`">REQUISITOS</span><p>$([System.Net.WebUtility]::HtmlEncode($module.Requirements))</p></article>")
     [void]$builder.AppendLine('</div></section>')
+    Add-VideoResource $builder $video
     [void]$builder.AppendLine("<div class=`"lesson-label`"><span class=`"lesson-dot`"></span><span>$($module.Number) / CONTENIDO DE LA LECCIÓN</span><span class=`"lesson-source`">Transcripción estática de la notebook</span></div>")
     [void]$builder.AppendLine('<section class="notebook-content" aria-label="Contenido original de la notebook">')
     $cellNumber = 0
