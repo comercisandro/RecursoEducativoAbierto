@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interfaz de aula accesible para recorrer los tres módulos del REA.">
+  <title>Aula · Del lenguaje a los agentes inteligentes</title>
+  <link rel="stylesheet" href="assets/course.css">
+  <script src="assets/course.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#lesson">Saltar al contenido</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">IA</span><span>Del lenguaje a los agentes inteligentes</span></a>
+    <nav class="top-links" aria-label="Navegación del recurso"><a href="index.html">Inicio</a><a href="guia-reutilizacion.html">Guía docente</a><a href="evaluacion-final.html">Actividad integradora</a></nav>
+    <div class="access-tools" aria-label="Preferencias de lectura">
+      <button type="button" id="font-down" aria-label="Reducir tamaño del texto">A−</button>
+      <button type="button" id="font-up" aria-label="Aumentar tamaño del texto">A+</button>
+      <button type="button" id="contrast" aria-pressed="false">Contraste</button>
+    </div>
+  </header>
+
+  <div class="course-layout">
+    <aside class="sidebar" aria-label="Contenido del curso">
+      <div class="course-summary"><p class="eyebrow">AULA · RUTA DE APRENDIZAJE</p><h1>Del lenguaje a los agentes inteligentes</h1><p>Elige cómo estudiar cada módulo. El avance se guarda solamente en este navegador.</p><div class="progress-label"><span id="progress-label">0 de 3 completados</span><strong id="progress-percent">0%</strong></div><progress id="progress" max="3" value="0">0 de 3</progress></div>
+      <nav id="module-nav" class="module-nav" aria-label="Módulos">
+        <button class="module-button active" data-module="1" type="button" aria-current="step"><span class="module-number">01</span><span><strong>Del texto a Word2Vec</strong><small>Corpus · tokens · embeddings</small></span><b aria-hidden="true">✓</b></button>
+        <button class="module-button" data-module="2" type="button"><span class="module-number">02</span><span><strong>Construir un agente ReAct</strong><small>Herramientas · acciones · observaciones</small></span><b aria-hidden="true">✓</b></button>
+        <button class="module-button" data-module="3" type="button"><span class="module-number">03</span><span><strong>Frameworks y Skills</strong><small>Tools · orquestación · composición</small></span><b aria-hidden="true">✓</b></button>
+      </nav>
+      <div class="sidebar-note"><strong>Recorrido flexible</strong><p>Video, transcripción, lectura web, notebook y PDF son entradas alternativas al mismo contenido.</p></div>
+    </aside>
+
+    <main id="lesson" class="lesson" tabindex="-1">
+      <div class="lesson-meta"><span id="position">MÓDULO 01 DE 03</span><span>A tu ritmo · avance local</span></div>
+      <section class="lesson-header" aria-labelledby="lesson-title"><p id="kicker" class="eyebrow">MÓDULO 1 · TEXTO Y EMBEDDINGS</p><h2 id="lesson-title">Del texto a Word2Vec</h2><p id="description">Prepara un corpus, observa cómo se aprenden embeddings y explora qué muestran —y qué no muestran— las similitudes entre palabras.</p><div id="objectives" class="pills"><span>Preparar el corpus</span><span>Aprender embeddings</span><span>Leer similitudes</span></div></section>
+
+      <section class="learning-card" aria-label="Formatos de aprendizaje">
+        <div class="tabs" role="tablist" aria-label="Selecciona un formato"><button class="tab selected" id="tab-video" data-view="video" role="tab" aria-selected="true" aria-controls="panel-video" type="button">Ver explicación</button><button class="tab" id="tab-transcript" data-view="transcript" role="tab" aria-selected="false" aria-controls="panel-transcript" type="button">Leer transcripción</button><button class="tab" id="tab-reading" data-view="reading" role="tab" aria-selected="false" aria-controls="panel-reading" type="button">Leer módulo</button></div>
+        <div id="panel-video" class="tab-panel" role="tabpanel" aria-labelledby="tab-video"><div id="media" class="media"></div><p id="media-note" class="media-note">Explicación audiovisual. También puedes seguir el contenido mediante la transcripción.</p></div>
+        <div id="panel-transcript" class="tab-panel" role="tabpanel" aria-labelledby="tab-transcript" hidden><div class="panel-heading"><div><p class="eyebrow">ALTERNATIVA TEXTUAL</p><h3 id="transcript-title">Transcripción del módulo 1</h3></div><a id="transcript-download" href="fuentes/modulo-1-transcripcion.txt" download>Descargar .txt</a></div><p class="helper">Transcripción con marcas de tiempo. Puedes buscar palabras en este texto.</p><pre id="transcript" tabindex="0" aria-label="Transcripción">Cargando transcripción…</pre></div>
+        <div id="panel-reading" class="tab-panel" role="tabpanel" aria-labelledby="tab-reading" hidden><p class="eyebrow">LECTURA Y PRÁCTICA</p><h3>Continúa en el módulo web</h3><p class="helper">La lectura estática permite estudiar sin instalar software ni ejecutar código. También puedes descargar los materiales o abrir la notebook en Colab.</p><div class="actions"><a id="page-link" class="action primary" href="modulos_html/01-word2vec.html">Abrir módulo web</a><a id="notebook-link" class="action" href="fuentes/modulo-1.ipynb">Notebook</a><a id="pdf-link" class="action" href="fuentes/modulo-1%20-%20Colab.pdf">PDF</a><a id="colab-link" class="action" target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/modulo-1.ipynb">Colab ↗</a></div><p id="requirements" class="helper"></p></div>
+      </section>
+
+      <section class="study-grid"><div class="study-card"><p class="eyebrow">IDEA CLAVE</p><h3>Lo importante de esta lección</h3><p id="key-idea"></p></div><details><summary>Objetivos, actividad y pregunta guía</summary><div class="details-body"><h4>Al finalizar, podrás</h4><ul id="outcomes"></ul><h4>Actividad breve</h4><p id="activity"></p><h4>Pregunta para reflexionar</h4><p id="question"></p></div></details></section>
+      <section class="evidence"><div><p class="eyebrow">MÚLTIPLES FORMAS DE EXPRESIÓN</p><h3>Elige cómo mostrar lo aprendido</h3><p id="evidence"></p></div><ul><li>Explicación escrita</li><li>Explicación oral o demostración</li><li>Esquema o diagrama anotado</li><li>Comentario de una traza o salida</li></ul><small>Los formatos deben conservar los mismos objetivos de aprendizaje.</small></section>
+      <div class="lesson-actions"><label><input id="complete" type="checkbox"> Marcar módulo como completado</label><div><button id="previous" class="action" type="button" disabled>← Anterior</button><button id="next" class="action primary" type="button">Siguiente módulo →</button></div></div>
+      <p id="storage" class="storage" role="status">El avance se almacena solo en este navegador.</p>
+    </main>
+  </div>
+</body>
+</html>
