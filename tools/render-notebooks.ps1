@@ -141,13 +141,15 @@ function Add-VideoResource($Builder, $Video) {
     $captionNote = [System.Net.WebUtility]::HtmlEncode([string]$Video.captions.note)
     $viewUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.viewUrl)
     $downloadUrl = [System.Net.WebUtility]::HtmlEncode([string]$Video.downloadUrl)
+    $transcriptUrl = if ($Video.transcript.file) { [System.Net.WebUtility]::HtmlEncode('../' + [string]$Video.transcript.file) } else { '' }
     [void]$Builder.AppendLine("<section class=`"video-resource`" aria-labelledby=`"video-title-$number`">")
     [void]$Builder.AppendLine("<div class=`"video-resource-copy`"><span class=`"section-kicker`">EXPLICACIÓN MULTIMEDIA</span><h2 id=`"video-title-$number`">$title</h2><p>$description</p>")
     if ($Video.status -eq 'available') {
         $watchLabel = if ($Video.previewUrl) { 'Abrir video en Google Drive' } else { 'Abrir video local' }
-        $watchTarget = if ($Video.previewUrl) { ' target=`"_blank`" rel=`"noopener noreferrer`"' } else { '' }
-        $watchArrow = if ($Video.previewUrl) { ' <span aria-hidden=`"true`">↗</span>' } else { '' }
-        [void]$Builder.AppendLine("<div class=`"action-row video-actions`"><a class=`"button primary`" href=`"$viewUrl`"$watchTarget>$watchLabel$watchArrow</a><a class=`"button secondary`" href=`"$downloadUrl`" download>Descargar video</a></div>")
+        $watchTarget = if ($Video.previewUrl) { ' target="_blank" rel="noopener noreferrer"' } else { '' }
+        $watchArrow = if ($Video.previewUrl) { ' <span aria-hidden="true">↗</span>' } else { '' }
+        $transcriptAction = if ($Video.transcript.status -eq 'available') { "<a class=`"button secondary`" href=`"$transcriptUrl`" target=`"_blank`" rel=`"noopener noreferrer`">Leer transcripción</a>" } else { '' }
+        [void]$Builder.AppendLine("<div class=`"action-row video-actions`"><a class=`"button primary`" href=`"$viewUrl`"$watchTarget>$watchLabel$watchArrow</a><a class=`"button secondary`" href=`"$downloadUrl`" download>Descargar video</a>$transcriptAction</div>")
         [void]$Builder.AppendLine("<p class=`"video-caption-note`"><strong>Subtítulos y transcripción:</strong> $captionNote</p>")
     } else {
         [void]$Builder.AppendLine('<p class="video-caption-note"><strong>Estado:</strong> recurso pendiente de enlace público. Esta sección ya está preparada para incorporarlo sin modificar la estructura del módulo.</p>')

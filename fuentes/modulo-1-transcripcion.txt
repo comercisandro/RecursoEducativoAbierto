@@ -1,0 +1,952 @@
+0:07
+Ahí va. Bueno, arranquemos entonces. Ahí
+0:14
+la idea de de la clase de hoy es seguir un poco con lo que empezó Mauro, en el
+0:20
+sentido de que vamos a estar hablando de series temporales.
+0:23
+Eh, vamos a empezar a a trabajar con texto y eh la idea es, bueno, ahora les
+0:31
+voy a mostrar WordW, que es un modelo de los primeros que que comenzó para para
+0:37
+trabajar con texto. vamos a ir evolucionando, por así
+0:41
+decirlo, para pasar a trabajar con con Transformers y bueno, después con
+0:45
+agentes, pero estas son las bases, por así decirlo, de cómo empezó con con el
+0:51
+NLP, ¿no?, con el procedimiento de lenguaje natural.
+0:54
+Eh, entonces, como les decía, el modelo que vamos a ver es WBUC, pero antes yo
+1:00
+les quiero mostrar o hacer un recorrido por cómo se trabajaba, ¿no? Más allá que
+1:06
+también es un es un modelo antiguo. Antes antes de WCK las representaciones
+1:12
+de las palabras se transformaban como la la primera representación
+1:18
+era como un what encoding, ¿no? donde cada una de las palabras
+1:25
+eh vocabulario se se le llama a todas las que vamos a estar trabajando. Es
+1:31
+decir, fíjense que yo en la primera celda
+1:34
+defino un vocabulario, defino todas las palabras con las que voy a estar.
+1:39
+Ahí son seis palabras. Queen, woman, girl, boy, maning, king. Con eso,
+1:45
+fíjense, con todo ese vocabulario puedo hacer un one code que básicamente va a
+1:52
+generar tres vectores donde cada palabra va a tener un uno según la ubicación y
+1:58
+un cero para todos los demás. Eh, fíjense,
+2:03
+eh, para va a tener un un primera ubicación del vector y todos los demás
+2:08
+elementos van a ser cero. Para woman, que es la segunda palabra del
+2:11
+vocabulario, bueno, el segundo elemento del vector va a ser uno y todos los
+2:15
+elementos van a ser ceros y así sucesivamente, ¿no? Esta es una de las
+2:20
+primeras formas de representar las palabras que con las que se trabajó,
+2:25
+¿no? Bueno, acá les dejo, ¿no? Esto estos problemas, ¿no? Todos los vectores
+2:29
+tienen la misma dimensión que el vocabulario, es decir, mientras más
+2:32
+grande sea el vocabulario, los vectores van a ser más grandes y va a ser mayor
+2:37
+el poder de cómputos para trabajar con esos con esos vectores y la mayoría de
+2:43
+los elementos de estos vectores van a ser cero. Entonces estamos como
+2:47
+desperdiciando mucho, mucho gusto de memoria, ¿no? Solamente tenemos un uno y
+2:51
+muchos ceros. La mayoría de las operaciones van a ser multiplicaciones,
+2:55
+sumas restas, todos por cero. Entonces, bueno, esta fue la primera forma de
+3:00
+representar las palabras. Obviamente no hay ninguna ninguna relación semántica
+3:04
+entre las palabras, eh, solamente es una forma de de representarlas. No podemos
+3:10
+trabajar con estas palabras de una forma adecuada.
+3:14
+El siguiente enfoque con el que se trabajó con el que se empezó a trabajar
+3:19
+es Bag of Wars o bolsas de palabras. Bueno, en este enfoque
+3:25
+eh la idea era eh representar
+3:30
+en un vector. Fíjense lo acá les dejo les dejo un poco un poco escrito lo que
+3:36
+vamos a hacer, pero es básicamente la la estructura es más o menos la misma.
+3:41
+Fíjense que tenemos un corpus o lo que queremos trabajar, que son dos frases.
+3:46
+El perro ladra que está en el primer elemento del vector en la línea dos y la
+3:51
+segunda es el gato maulla. Con eso vamos a a generar nuestro vocabulario y el
+3:58
+vocabulario va a estar compuesto de las palabras que no se repiten. Es decir, en
+4:04
+este vocabulario vamos a tener el perro ladra y gato maulla, ¿no? Porque la
+4:09
+palabra el se repite en las dos frases. Entonces el vocabulario son las palabras
+4:15
+que no se repiten. En este caso son cinco, el gato, la dramaulla y perro. Y
+4:21
+las representaciones van a ser en base al vocabulario, es decir, para cada
+4:26
+frase se va a poner un uno en la ubicación
+4:32
+de la palabra, es decir, pónganse, el perro ladra va a
+4:37
+tener un uno en la ubicación del vocabulario donde está él, que es la
+4:41
+primera posición. Fíjense ahí que el vector, cada uno de los vectores tiene
+4:46
+cinco elementos porque cinco son las palabras del vocabulario.
+4:50
+Entonces, fíjense, para los dos vectores, el primer elemento es uno
+4:54
+porque los dos tienen un, ¿no? El perro ladra, el gato maulla, los dos empiezan
+4:59
+con él, van a tener un uno en el primer elemento. El segundo elemento para el
+5:04
+primer vector es cero, porque la segunda palabra del vocabulario es gato, no es
+5:08
+perro. Fíjense que tarro es la última palabra del vocabulario. Por eso la
+5:14
+primera frase en el primer vector de representación, el último elemento es
+5:19
+uno porque es ladra. Entonces, de vuelta para la primera frase, el perro ladra va
+5:23
+a quedar 101 por la ubicación de estas palabras
+5:29
+dentro de del vocabulario, mientras que para la segunda palabra, en la segunda
+5:34
+frase, perdón, que es el gato maulla, va a tener 1 10 porque es el gato cero para
+5:41
+Ladra y uno para Maulo. Entonces, acá vamos a tener menos ceros, es una
+5:46
+representación más compacta, por así decirlo, donde los vectores solamente
+5:51
+son eh palabras únicas del vocabulario, entonces no vamos a tener un elemento
+5:57
+por por cada palabra, pero eh seguimos teniendo el mismo problema básicamente
+6:03
+que no hay una relación semántica entre las palabras, ¿no? O sea, es todo lo
+6:06
+mismo, digamos, no hay no hay representación, no hay no hay relación
+6:10
+entre las palabras. Entonces, acá están eh
+6:15
+escritos o o les dejé un poco de de los principales problemas de de trabajar de
+6:20
+esta forma. El primero que ya se los dije es un vector enorme y donde la
+6:24
+mayoría de los elementos son ceros. Eh, se ignora el orden, ¿no?, en la que
+6:30
+aparecen las palabras. Y bueno, lo que les decía, no captura relación entre las
+6:33
+palabras. Entonces ahí dejé un ejemplo excelente y estupendo. Sonmin términos
+6:39
+cercanos en cuanto al sentido, pero acá no podemos ver esa relación, no hay unas
+6:44
+distancias, por decirlo que sí lo van a tener los embeding, que es a lo que
+6:48
+vamos a ir ahora. Entonces, para superar, como dice ahí,
+6:52
+estas limitaciones, surgen los embedings, que básicamente los embedings
+6:56
+es voy a definir una dimensión para mi vector, típicamente, como dice ahí,
+7:01
+entre 50 y 300 valores, es decir, voy a definir un valor, una cantidad de
+7:07
+elementos para mi vector, pónganse 300. Y eh esos valores van a ser fijos para
+7:13
+todas las frases. Y lo que vamos a hacer ahora es no poner
+7:17
+unos y ceros, sino que vamos a poner eh un valor intermedio, ¿no? Vamos a poner
+7:22
+continuos. Y acá sí vamos a poder representar una representación semántica
+7:29
+del significado de cada palabra, ¿no? Entonces, los modelos que que trabajan
+7:34
+con con embedings pueden capturar estos matices semánticos y las asociaciones
+7:40
+entre las palabras, es decir, como van a ver más adelante, las distancias, qué
+7:45
+palabras son parecidas y y cuáles palabras no son parecidas. en relación a
+7:51
+las cercanías y lejanías de esos vectores, vamos a poder representar esas
+7:55
+relaciones, ¿no? Pero bueno, antes de de ir a los embeding, vamos a ver
+8:00
+justamente el modelo que que genera estos embeding con los que vamos a estar
+8:04
+viendo ahora es Fortivec, que son son dos modelos, más abajo lo vamos a ver,
+8:09
+pero son son dos modelos y son dos formas de de entrenar los modelos para
+8:13
+NLP. Pero antes de eso, como todos los trabajos eh con datos, sean los datos
+8:20
+que sean tabulares, imágenes, series temporales, necesitamos realizar un
+8:24
+preprocesamiento, ¿no? En este caso, el preprocesamiento va a ser a nivel de de
+8:30
+palabras, de texto y vamos a hacer distintas técnicas, ¿no?, que que estas
+8:34
+sí se se siguen utilizando siempre que trabajamos con con series eh de texto,
+8:42
+vamos a decirle texto, siempre por detrás los modelos hacen algunas de
+8:46
+estas técnicas, obviamente de una forma más o menos sofisticada, ¿no? La primera
+8:50
+que les quiero mostrar, hay muchas, seguramente aquí no, acá no van a estar
+8:54
+todas, pero la primera es la lematización, que fíjense que es llevar
+8:58
+las palabras a su forma base, ¿no? o a la raíz. Fíjense, corriendo y corre lo
+9:05
+lleva a correr, ¿no? Ahí tenemos corriendo, corre y correrá. Bueno, tiene
+9:08
+el mismo lema o la misma raíz que es correr. Eh, y el objetivo es justamente
+9:13
+eso, justamente este, disminuir la cantidad de palabras, eh, porque se
+9:20
+acuerdan que si lo hacíamos de de la otra forma, cada una de estas palabras
+9:24
+podría llegar a tomar un valor distinto, ¿no? Pero bueno, la palabra en el mismo,
+9:29
+¿no? Corriendo, correr y correrás. donde están están distintos los tiempos,
+9:36
+pero bueno, el el verbo bas que es correr es es el mismo. Entonces, esa es
+9:40
+la primera lo primero de los tratamientos que les voy a mostrar, que
+9:44
+es la lematización. Bueno, fíjense que es una forma de de normalización, ¿no?
+9:49
+Como las que trabajáamos con los números. En este caso es una una forma
+9:53
+de normalizar las palabras. Eh, y bueno, y aumenta la precisión de de estos
+9:58
+modelos WordWK. La otra
+10:03
+eh el otro procesamiento, la otra adecuación de los datos que que se
+10:07
+utiliza es las eh stopw se llaman, ¿no? Que son básicamente palabras eh que son
+10:13
+comunes en los distintos idiomas, pero que noado
+10:18
+eh o sea, no aportan un significado adicional al texto. Fíjense que uno
+10:23
+puede eliminar estas que son los artículos y las preposiciones, ¿no? bajo
+10:28
+con contra D, D, mediante, todas esas y podemos seguir entendiendo el texto,
+10:34
+¿no? Por más que saquemos los artículos y demás, el sentido de las fracciones,
+10:40
+por lo menos el modelo, no se ven modificadas. Es más, estamos sacando,
+10:46
+no estamos sacando ruido al modelo. Eh, justamente ahí abajo dice la eliminación
+10:51
+de estas stopws es importante para reducir el ruido de los datos. O sea,
+10:55
+fíjense que el ruido, la normalización son términos que estamos viendo con los
+11:01
+otros tipos de datos, con eh los datos tabulares y con las imágenes, ¿no? El
+11:06
+ruido es es eh justamente bastante conocido al trabajar con imágenes.
+11:13
+Entonces, obviamente, todo esta la lematización y la eliminación de estas
+11:17
+stops y demás ya está armado, ¿no? ¿Cómo lo vamos a hacer? tenemos distintas
+11:23
+librerías que tienen métodos que se encargan de hacerle instal, ¿no?
+11:29
+Fíjense, o sea, básicamente por detrás ustedes lo pueden ver, pero es eh
+11:34
+podemos imaginar que hay un diccionario para cada idioma con todas las palabras,
+11:39
+con todas las uy, me fui para cualquier lado, con todas las preposiciones.
+11:43
+Esperen que no los quiero marear. Acá imagino un diccionario con todos los
+11:47
+artículos, las posiciones, las conjugaciones y entonces te hace como un
+11:51
+red, ¿no? Una búsqueda de esas palabras y las eliminamos.
+11:56
+Entonces, bueno, estos estos métodos ya tienen incorporado toda la lógica para
+12:02
+hacer eso. Entonces, la limpieza, lo que yo les
+12:07
+decía era un esto eliminación de ruido, normalización,
+12:12
+pero también tenemos otros tipos de limpieza para mejorar la la precisión o
+12:16
+la performance del modelo, que es eliminar lo que ven acá, justamente,
+12:21
+puntos y coma, signos de admiración. Eh, bueno, primero fíjense que en la
+12:27
+línea dos de la primera celda lo primero que hace es llevar toda minúscula, ¿no?
+12:32
+Llevar todas las palabras a todos los caracteres en minúscula,
+12:37
+eliminar los saltos de línea, los espacios, los símbolos, ¿no? Las
+12:42
+secuencias de escape y demás que pueden estar en el texto, pero que no nos
+12:47
+suman. Y fíjense que como les decía, acá este el lematizador y el eliminador de
+12:53
+de stopws y podemos seleccionar un idioma, ¿no? En
+13:00
+este caso yo voy a estar trabajando con una base de datos de de juguete que es
+13:05
+de de los Simpson y esta base de datos va a estar en inglés, por eso eh para el
+13:11
+Stop Wars elijo el idioma inglés. Eh, les voy a mostrar un poco de qué se
+13:17
+trata la base de datos, pero básicamente es eh tenemos dos columnas donde la
+13:25
+primera es el la el personaje eh Simpson, Momero, bueno, Flanters y
+13:32
+demás. Y eh en la otra columna son eh líneas de eh diálogo, ¿no?, de los
+13:41
+personajes en distintos capítulos, ¿no? Entonces, no sé, Lisa Simpson
+13:45
+preguntando, "Weres una persona, Mr. Brexman ahí no no sé en inglés la verdad
+13:51
+cuál es ese personaje, pero está el diálogo entre estos dos estos dos
+13:56
+personajes, entre la profesora y Lisa Simpson. Entonces, básicamente es es esa
+14:01
+la eh la base de datos con la que voy a
+14:05
+estar trabajando. Pero fíjense acá, voy a ir primero este eh el que está acá, el
+14:12
+las primeras líneas son el texto crudo y la segunda línea o o la segunda tabla es
+14:17
+el texto curado o preprocesado. Y fíjense que en esta celda donde estamos
+14:25
+llamando a los distintos eh métodos que que eran para alematizar
+14:31
+y a las distintas funciones que nosotros creamos para eliminar los caracteres
+14:36
+innecesarios y los saltos de línea y demás, fíjense que después de aplicar
+14:41
+estas estas limpiezas nos queda
+14:45
+todas las palabras en minúscula, como dijimos, y eh no tenemos las comas Y
+14:52
+fíjense que en inglés las apóstrofes s, ¿no? Las constricciones
+14:58
+las elimina y pone is. En este caso, bueno, justo estamos trabajando con
+15:02
+inglés, ¿no? Pero fíjense que dice I don't know y en la línea puso I do not.
+15:09
+No hizo ese ese procesamiento. Eso justamente lo hizo, uy, perdón, lo hizo
+15:16
+acá las stopws en inglés, la lematización y demás.
+15:21
+Eh, entonces como para recordarles, estos métodos hay muchos que ya están
+15:26
+armados, ¿no? Solo es importarlos y eh enviarles los datos, ¿no? Entonces, acá
+15:34
+ya tenemos hasta este punto nuestros datos normalizados, limpios y y demás.
+15:43
+Entonces, ahora sí, una vez que ya estamos con con los datos limpios, como
+15:47
+si en sus datos tabulares hubiesen rellenado los nulos, hubiesen
+15:50
+normalizado, llevado entre cero y uno, escalado y demás, bueno, estamos en la
+15:54
+misma etapa donde ya tenemos los datos limpios. Acá hay una etapa más que es la
+15:58
+tokenización, ¿no? Los famosos tokens, que para este caso los tokens
+16:04
+dependiendo los modelos eh pueden ser o palabras o o frases. En este caso lo
+16:10
+vamos a trabajar como palabras. Entonces, la tokenización es convertir
+16:17
+cada uno de estas unit. Eh, la tokenización es convertir cada
+16:26
+uno de estas frases separarlos en palabra simplemente solamente eso.
+16:31
+Entonces, fíjense la primera frase que era no actualidad y was little, fíjense
+16:37
+que lo separa en genera un vector donde cada una de las palabras es un token. Es
+16:43
+lo que se considera un token, ¿no? Fíjense, lo separó.
+16:47
+Entonces, una vez que tenemos cada frase separada en token, acá va a haber como
+16:52
+una matriz, ¿no? Un vector de vectores donde el el elemento cero es la primera
+16:57
+frase, el elemento uno será la segunda y así tenemos todas las frases dentro de
+17:02
+vectores. Ya podemos empezar a trabajar. Bueno,
+17:07
+acá, perdón, hay otro preprocamiento más que se suele o no hacer es la
+17:13
+construcción de de bigramas. se se denomina unigrama a lasamente a las dos
+17:19
+palabras que siempre aparecen juntas, ¿no? O sea, en este en este ejemplo, un
+17:27
+bigrama sería tomar la frase, ir de dos en dos entre las palabras y ver si estas
+17:33
+palabras, esta dupla de palabras se repiten mucho en los datos que tenemos
+17:38
+nosotros, ¿no? En esta frase, el gato está sobre la mesa. Obviamente los
+17:42
+biramas son el gato, gato está está sobre la y la mesa. Son las distintos
+17:49
+formas en las que podemos agrupar dedos estas palabras. Bueno, y la idea es que
+17:55
+si acá hay un número mínimo, fíjense, si estos bigramas aparecen un mínimo de 30
+18:02
+veces, esto es un hiperparámetro, nosotros lo podemos setear, podemos
+18:06
+juntar, o sea, podemos decir que si este biograma aparece más de 30 veces,
+18:10
+podemos trabajar esas dos palabras como si fuesen una sola. Entonces, seguimos
+18:14
+reduciendo la cantidad de palabras. ¿Por qué queremos reducir la cantidad de
+18:19
+palabras? Porque la cantidad de palabras van a generar lo que lo que antes
+18:23
+denominamos como diccionario, ¿no? Entonces, mientras tengamos menor
+18:27
+cantidad de palabras, vamos a tener diccionarios más chicos y va a ser más
+18:32
+más fácil entrenar estos modelos, ¿no? Va a ser más rápido y van a tener mayor
+18:36
+precisión. Entonces, si yo le paso todos estos datos, que después ustedes los
+18:41
+pueden ver tranqui, pero si yo le paso todos estos datos de juguete a este
+18:47
+método para para encontrar bigramas, fíjense que nos va a encontrar y tienen
+18:53
+sentido. Cannot believe. Siempre estas dos palabras aparecen juntas. Next week
+18:58
+lo transforma como un bigrama porque siempre aparecen más de 30 veces juntas.
+19:02
+Siempre que aparece next y week seguidos, bueno, va a ser una palabra
+19:07
+sola. An hour, have been kind of. Bueno, do not, excuse me. Fíjense, esta es
+19:15
+media compleja. Excuse me. Eh, fíjense, los do notan los don'ts que estaban
+19:20
+contraídos. Entonces, pasó de ser un don't contraído a un do not, que eran
+19:25
+dos palabras. O sea, pasamos de una palabra, dos palabras con una
+19:28
+contracción a dos palabras y volvió a ser una palabra, ¿no? Entonces
+19:34
+separación anterior no generó más vocabulario.
+19:38
+Bueno, nada, es reducción del vocabulario, ¿no? Fíjense, tiene
+19:41
+sentido, ¿eh? Fíjense. Ay, caramba, ¿no?
+19:45
+Distintas frases, best friends, demás. Podemos nosotros eh aumentar o disminuir
+19:50
+la cantidad de palabras o la cantidad de veces que tienen que aparecer el bigrama
+19:54
+para considerarlos una palabra. Bueno, nada, ahí puse un número arbitrario y y
+20:01
+me dio ese resultado. Entonces, ahora sí tenemos el dataset eh sin puntos, sin
+20:08
+comas, todo en minúscula, sin las contracciones, sin todo llevado a los a
+20:14
+los verbos raíz. Eh, ¿qué más? Eliminamos el ruido y eh
+20:20
+hicimos los bigramas, ¿no? Las palabras que aparecían juntas, bueno, las
+20:23
+transformamos en una. En este punto ya estamos listos para entrenar ahora sí
+20:30
+nuestros modelos que recuerdo acá nuestros modelos van a generar los
+20:35
+embedings, ¿no? Recuerden que el propósito, yo ahí me me fui a la
+20:40
+limpieza de los datos, pero el propósito lo que yo les quiero mostrar es la forma
+20:45
+en la que representamos las palabras como vectores, ¿no? Claramente los
+20:50
+modelos de inteligencia artificial, los NLP, los LLMs, los modelos de lenguaje
+20:55
+natural utilizan vectores, utilizan números, no utilizan palabras, no
+20:59
+utilizan string, no saben trabajar con palabras.
+21:03
+Entonces, WordBC va a ser un modelo, en realidad, como les dije, son dos, pero
+21:09
+es una forma de entrenar estos modelos para generar los vectores. Después,
+21:14
+cuando ustedes trabajen convert o trabajen con modelos más grandes por su
+21:18
+cuenta o en la materia, van a ver que todos estos modelos vienen con su eh
+21:23
+tokenizador y con su generador de embedings, porque cada modelo
+21:29
+genera los embedings de formas distintas, ¿no? ¿Por qué? Porque ciertos
+21:34
+modelos trabajan con una entrada de, no sé, vectores de dimensión 300, dimensión
+21:39
+50. Entonces, para eh normalizar o para adecuar las entradas al modelo, eh cada
+21:48
+modelo trae su eh generador de embedics. Bueno, yo acá les voy a mostrar de los
+21:54
+primeros, fíjense, esto es 2013 es Word toc, que Word en realidad, como
+22:01
+les decía, son dos modelos y es la forma o por ahí es la forma en la que la que
+22:06
+yo entiendo y la que pueden llegar a comprender cómo se entrenan estos
+22:10
+modelos. Hay dos formas. La primera es pasando una frecuencia de palabras, o
+22:16
+sea, de las frases. Le enviamos la frase y eliminamos una palabra y el modelo
+22:21
+tiene que predecir cuál era esa palabra en base a las anteriores y a las
+22:25
+siguientes. Entonces, lo primero que tenemos que definir, obviamente, es una
+22:30
+ventana, ¿qué cantidad de palabras vamos a tomar? Fíjense, en este caso es una
+22:34
+ventana de en en el caso de la izquierda, la ventana sería de cinco
+22:39
+palabras, pero eliminamos una, entonces nos queda las dos anteriores, las dos
+22:45
+siguientes, el modelo tiene que predecir la palabra que eliminamos. Esa es una de
+22:51
+las formas de entrenar estos estos embedings y la otra es justamente la
+22:56
+contraria es darle una palabra sola y que el modelo aprenda a predecir o no
+23:03
+aprenda a predecir, pero que prediga las siguientes dos palabras y las dos
+23:08
+anteriores, ¿no? Fíjense que es como el proceso inverso. Uno es en más caro tapo
+23:14
+una palabra, intento predecirla y la otra es le doy una palabra e intento
+23:19
+predecir las dos anteriores y las dos siguientes. Básicamente una se llama CBO
+23:25
+y la otra es Kick Grama, no importa. Los dos están dentro de de la librería que
+23:29
+les voy a mostrar, pero esta es la forma de entrenarlo. Entonces, fíjense para la
+23:36
+construcción del vocabulario, un segundo,
+23:47
+tongo un poco de agua porque tenía la boca seca.
+23:51
+Entonces, para la construcción del del bigrama, perdón, para la construcción de
+23:57
+estos embings eh las dos formas. La primera es la back
+24:03
+of la bolsa de palabras continua, que es la
+24:08
+primera que les mostraba, donde tenemos de vuelta la frase el perro ladra
+24:12
+fuerte. Entonces, eliminamos la palabra perro, le damos el ladera fuerte y el
+24:18
+modelo tiene que aprender a predecir que la palabra que falta ahí es perro, ¿no?
+24:23
+Y para seleccionar este modelo, el parámetro que tenemos que elegir es SG.
+24:28
+Ahora se lo voy a mostrar. Este acá abajo, SG = 0. Para elegir el segundo
+24:34
+modelo, podemos elegir cualquiera de los dos, ¿no? Pero para el segundo modelo,
+24:38
+el skip grama, que es darle una palabra y que predija las dos anteriores y las
+24:44
+dos siguientes, eh, fíjense, nada, tenemos que cambiar
+24:49
+ese parámetro y ponerlo en uno. Pero fíjense que siempre es lo mismo, es
+24:55
+llamar una librería, importar un método, o sea, llamar una librería, importar un
+25:00
+modelo, seleccionar los hiperparámetros de de ese modelo y entrenarlo. Fíjense
+25:06
+acá el modelo se llama word y los hiperparámetros son cuál de los dos
+25:10
+modelos queremos, si el la bolsa de palabras continua o el skip grama,
+25:16
+la mínima cantidad de palabras que tiene que repetirse. Acá lo que estoy
+25:21
+haciendo, perdón, voy a aclarar, estoy construciendo el embeding, pero también
+25:25
+el vocabulario, ¿no? Entonces estoy diciendo en el segundo hiperparámetro
+25:30
+estoy diciendo, bueno, la cantidad de veces, la mínima cantidad de veces que
+25:33
+tiene que aparecer una palabra para que pertenezca a mi vocabulario es 20. Si
+25:37
+aparece más de 20, listo, es parte de mi vocabulario. Si no, no es de mi
+25:42
+vocabulario. ¿Por qué? porque puede haber palabras que aparezcan una o dos
+25:45
+veces y no se repitan, entonces no las tenemos en cuenta. De vuelta es un
+25:49
+hiperparámetro, como todos los hiperparámetros, hay que ir buscando
+25:53
+cuál es el mejor para resolver el problema, ¿no? Windows, justamente es el
+25:58
+tamaño de la ventana, ¿cuántas palabras adelante y detrás voy a tomar? El
+26:05
+que sigue es el tamaño del vocabulario, que en este caso es 300. Bueno, y
+26:10
+después hay distintos parámetros para eh el entrenamiento del del modelo. Esperen
+26:16
+que me fui para arriba. Voy a bajar un segundito.
+26:32
+Y acá estoy de vuelta. Espera, se me fue por el costado. Entonces, bueno, las
+26:36
+otros hiperparámetros son eh, ¿qué? Me fui para arriba de vuelta.
+26:43
+Bueno, son hiperparámetros, son para la el entrenamiento de del modelo, perdón.
+26:48
+Acá está. Entonces, en la próxima línea, yo lo que
+26:52
+voy a hacer es a mi modelo, donde ya eh definí los hiperparámetros, voy a
+26:58
+construir, justamente como dice el método, voy a construir el vocabulario.
+27:02
+Para construir el vocabulario, llamo el método construir vocabulario de mi
+27:07
+modelo y le paso las frases, las sentence que estaban dentro de un vector
+27:12
+de vectores. Entonces, fíjense que después de eh generar el
+27:20
+vocabulario, eh voy a tener un vocabulario, valga la
+27:24
+redundancia, que lo dije un montón de veces, de 4318 palabras, o sea, van a
+27:29
+ser 4318 vectores de 300 elementos, ¿no? Entonces,
+27:36
+ese va a ser el tamaño total de de mi vocabulario, el tamaño total de palabras
+27:40
+con el que voy a entrenar los los embedings. Y ahora sí, una vez que tengo
+27:45
+armado el vocabulario, es decir, que tengo las palabras que se repiten más de
+27:49
+20 veces, voy a entrenar mi modelo, ¿no? Entonces, lo voy a entrenar acá. Sí, ya
+27:57
+entrenamos. Acá estamos trabajando con redes neuronales, que después lo van a
+28:00
+ver. Eh, creo que algo empezó la hora, pero después lo van a ver y lo estamos
+28:04
+entrenando por 30 épocas, ¿no? Y eh bueno, este es el el entrenamiento de
+28:12
+del modelo, ¿no? En esta línea estamos entrenando mi modelo con esas palabras,
+28:18
+eh, por 30 épocas, como les decía, se me fue de vuelta para arriba. No sé por qué
+28:22
+le gusta irse para ahí, pero ahora me pasé.
+28:27
+Estamos acá. Bueno, una vez que tenemos entrenado el modelo, lo que tenemos es
+28:35
+los los 4318 en bin de 300 elementos, ¿no? De 300 lugares. Y fíjense que ahora
+28:44
+sí, una vez que está entrenado el modelo, ya en esa celda lo entrené,
+28:48
+podemos encontrar eh relaciones entre las palabras, ¿no?
+28:53
+Entonces, podemos buscar palabras y podemos buscar qué palabras están cerca.
+28:59
+de esa palabra. ¿Cómo buscamos la relación entre las palabras? Bueno,
+29:03
+buscamos distancias entre los vectores generados, ¿no? En este espacio
+29:07
+vectorial que es el vocabulario. Entonces, fíjense, podemos buscar con
+29:12
+positive, buscamos las palabras más similares a Homero, en este caso, bueno,
+29:18
+está en inglés, ¿no? Entonces, aparece Mar, Dad, Omy, Mom, Lisa. Tiene sentido,
+29:24
+¿no? La la más parecida Homero es March. Bueno, y y papá, ¿no?, que justamente
+29:29
+Homero, bueno, es el padre. Eh, también podemos buscar las
+29:34
+negativas, es decir, las que tienen la dirección opuesta al vector,
+29:40
+serían las que menos se relacionan con la palabra omer. Y bueno, acá hay
+29:45
+distintas palabras que, fíjense que no se relacionan en nada como las otras,
+29:49
+¿no? que fíjense que también podemos darle una lista de palabras y que el a
+29:59
+través de los embedings poder encontrar entre esas cinco palabras cuáles son las
+30:04
+que más se relacionan a estas cinco. Entonces, fíjense,
+30:09
+Homero, Mar, Bart, Lisa, Bart. Bueno, ahí repetí dos veces Bart, pero aparece
+30:14
+Mam, aparece Maggi, que no está, que es otro de los hijos, o sea, tiene sentido
+30:18
+que aparezca. Bueno, y aparece 1000 house y y demás, pero bueno, es es
+30:23
+similitud palabras similares a estas cinco.
+30:26
+Lo que podemos hacer también es podemos hacer un un análisis de de componentes
+30:32
+principales, este PSA, para reducir la dimensionalidad, porque ahora tenemos
+30:36
+una dimensión de 300. Podemos hacer una reducción de dimensionalidad a tres
+30:40
+componentes. Y lo quiero hacer para mostrarles que podemos graficar nuestros
+30:46
+embeding. De vuelta. fue para arriba, pero acá
+30:51
+está. Fíjense, con la reducción de la dimensionalidad
+30:57
+podemos graficar en en tres dimensiones todas nuestras palabras y francés.
+31:03
+Podemos visualizar el vocabulario, podemos girarlo. A ver si puedo
+31:08
+acercarme. No estoy pudiendo, pero ahí está la
+31:12
+palabra Homero. Fíjense. A ver si me deja hacer zoom. No, no me deja. Pero
+31:18
+ahí está la palabra Homero. Y fíjense que aparece la palabra el vector que era
+31:25
+antes 300 dimensiones, ahora aparece con tres dimensiones y en el gráfico, en el
+31:29
+plano lo graficamos en el espacio, perdón, lo graficamos como un punto,
+31:32
+pero está ahíero, está om m, fíjense, todas las palabras
+31:38
+relacionadas, está Dad por ahí también, Simpsons. Bueno, tiene tiene sentido.
+31:47
+Y acá, bueno, nada, estoy graficando. Acá lo que les quiero mostrar es cómo
+31:51
+podemos calcular las distancias entre palabras, ¿no? Tenemos distintas formas
+31:55
+de calcular distancias. Tenemos la distancia euclía, la distancia coseno,
+32:00
+distancia Manhattan. La que se suele utilizar siempre es la la distancia
+32:05
+coseno, ¿no? Se mide la distancia coseno entre entre dos vectores que va es un
+32:09
+valor entre 0 y uno. Eh, pero bueno, el la decisión de de
+32:14
+cómo medir esta cercanía o cercanía es nada arbitraria, dependiendo de vuelta
+32:19
+el dominio es cómo cómo podemos medir las distancias. Pero fíjense, las
+32:25
+distancias entre eh Omer y March es casi uno, acá es 05. distancia más tenda 13
+32:33
+se interpretan distinto, ¿no? Dependiendo de cómo hacemos el cálculo
+32:37
+de las distancias, pero se pueden se pueden calcular estas distancias de
+32:41
+distintas formas. Y fíjense, acá están las cuatro palabras
+32:45
+y la distancia entre cada una de esas,
+32:49
+¿no? Entonces, podemos ver como March está más cerca de Homero
+32:54
+y Bart está más cerca de Lisa y bueno, nada y y tiene tiene sentido esa
+33:00
+relación. Eh, y entonces, ¿cómo eh ver la
+33:06
+performance de estos modelos? Bueno, es justamente intentando que el modelo
+33:10
+complete frases trabajando con cercanías y lejanías, ¿no? Podemos hacer estos
+33:17
+estas analogías donde fíjense la palabra que completa la analogía
+33:23
+perdón Homerosart como March es a y queremos predecir,
+33:28
+fíjense dónde está. Ah, bueno, ahí. Uy, se me va
+33:33
+siempre paraí arriba, pero ahí decía Lisa. Fíjense
+33:38
+para Rabasco de vuelta. Ya queda poquito, ¿no? Pero fíjense
+33:43
+eh parte Homero como eh marche a Y aparece,
+33:48
+estamos buscando la palabra análoga. Fíjense ahí en la celda de arriba, en el
+33:52
+00 dice palabra análoga. Lisa. Bueno, después podemos buscar las seminales,
+33:58
+¿no? Fíjense, ponemos Bern Smider y la negativa de jefe y aparece Won, que
+34:05
+entiendo que es el el segundo nombre de Smir, ahí no recuerdo, habría que verlo
+34:09
+un poco también. Hay que ver si no está alucinando, si está bien calibrado el
+34:13
+modelo, puede ser que no esté bien entrenado, que haya que cambiar los sil
+34:16
+parámetros, ¿no? Pero fíjense, fíjense este Homero y Mou y bar, ¿no? Bar de
+34:23
+lugar para ir a tomar. y aparece data ahí. Entonces, bueno, Maggie, Mar,
+34:29
+Mother, Homero, bueno, se puede jugar, ¿no? La idea es jugar de esta forma para
+34:35
+ver eh si tiene sentido lo que está generando, si estas distancias, estas
+34:41
+cercanías o la forma en que representó los embedings mi modelo, eh, tiene
+34:46
+sentido o no. Fíjense, también tenemos acá, no lo ejecuté, acá está ese dark
+34:51
+match. Podemos, hay distintos métodos, ustedes pueden buscar más, pero hay un
+34:56
+método que dice, bueno, de esta lista de palabras, ¿cuál es la que no
+35:01
+la que la que se diferencia, la que no no va ahí? ¿Cuál es la palabra
+35:07
+infiltrada, por así decirlo? Fíjense. Eh, acá tenemos dos en match, eh,
+35:15
+Homero, Mars, eh, Piza. Bueno, ahí no sé qué pasó.
+35:20
+No sé si habré hecho otro ejemplo donde estaba. Fíjense. Sí, ahí no. Seguramente
+35:25
+en esta línea que que hay una coma debe estar la palabra pis. Eh, y en esta,
+35:32
+fíjense, en esto. Entonces, acá lo voy a hacer, lo voy a escribir. Así que
+35:40
+la ejecución fue así, ¿no? Con este con este vector de palabras. Y fíjense que
+35:45
+en esta última, en esta celda, cuando yo ejecuté, puse Burns, Smider, Appu y
+35:51
+Spaceship, o sea, nave espacial, nada que ver, y me tiró un warning, me dijo,
+35:55
+spaceship no está presente en el modelo, o sea, en mi vocabulario
+35:59
+la palabra spaceship no está presente. Entonces, eso es un error, ¿no? O sea,
+36:04
+fue a buscar la palabra, fue a buscar el embing para esa palabra y no encontró
+36:08
+nada, nada. también son formas de validar que el modelo esté trabajando o
+36:14
+bien o mal. E limitaciones, ¿no?, de de Word toback y
+36:20
+y estos enveedings estáticos. Bueno, eh justamente eh es que las palabras no se
+36:26
+diferencian en su contexto, ¿no? Ahí hay un ejemplo, pero la palabra banco eh no
+36:32
+significa lo mismo de estar sentado en un banco que abrir una cuenta en un
+36:36
+banco, ¿no? Entonces, esas esas palabras tienen son, o sea, esa palabra en
+36:43
+particular tiene un significado distinto en el contexto en que se utilice estosc
+36:50
+y los edings estáticos eh no encuentran esta relación. Banco
+36:55
+siempre va a tener el mismo el mismo siempre que lo utilicemos. Nada, esta
+37:01
+palabra va a estar codificada en un con los mismos números. Los embedinges
+37:05
+dinámicos modifican eso, ¿no? Y la palabra va a tener un valor de embeding
+37:10
+distinto dependiendo el contexto en la que se usa, que eso lo vamos a ver más
+37:14
+adelante. Em eh bueno, nada, de abajo es lo que les
+37:21
+decía, que se pierde el el contexto. Eh, bueno, acá está. Para obtener estos
+37:28
+embitan gran cantidad de texto y un cuidadoso ajuste de hiperparámetro. esto
+37:33
+gran cantidad de texto. ¿Por qué? Porque vieron que yo en mucho, o sea, dos veces
+37:37
+por lo menos dije, bueno, la palabra tiene que aparecer más de 30 veces, la
+37:42
+palabra tiene que aparecer más de 20 veces. Entonces, si yo tengo un texto
+37:46
+donde tenemos muchas palabras, pero que se repiten poco, vamos a perder todas
+37:51
+esas palabras. vamos a perder muchas palabras de mi vocabulario y no vamos a
+37:54
+poder representar bien eh los datos que estamos trabajando, ¿no?
+38:00
+Eh, y esto lo que tiene, esto es importante, tiene una herencia de sesgo,
+38:05
+¿no? Fíjense que los datos con los que entrenamos, si tienen sesgos raciales,
+38:11
+de género, lo que sea, quedan reflejados en los vectores, ¿no?
+38:16
+El ejemplo clásico dice los dej que es doctor queda cerca de man y y enfermera
+38:22
+o nurse queda cerca de woman. Entonces esta es una desventaja de de este tipo
+38:27
+de embeding. Ahora se utilizan embeding dinámico. Obviamente esto, fíjense desde
+38:31
+2013 es de de hace muchísimo para para lo que hablamos de inteligencia
+38:35
+artificial. No es de hace mucho, pero en lo queaban en su inteligencia artificial
+38:39
+es muchísimo. Antes trabajábamos con con redes recurrentes, no trabajábamos con
+38:45
+con estos grandes lenguajes, estos grandes modelos de lenguaje
+38:50
+natural. Entonces, se utilizaban estos en y funcionaban bien, ¿no? Para
+38:53
+análisis de sentimiento y para hacer resúmenes o traducción. Eh, imagínense
+38:59
+que para traducción le damos un vocabulario con todas las palabras en
+39:03
+inglés, todas las palabras en español, por así decirlo. Y bueno, las palabras
+39:06
+en inglés, que significan lo mismo que en español, van a quedar una distancia
+39:10
+coseno, manhattan, o clíde, la que utilicemos cercana. Entonces, para esos
+39:14
+problemas funciona bien este tipo de modelos, para problemas más complejos,
+39:20
+generación de texto y todos los que resolvemos ahora con con Chatte o Gemini
+39:26
+o todos estos del LM, estos en Bedins quedan quedan chicos, no les falta todas
+39:31
+estas capacidades de de estos significados dinámicos.
+39:35
+Entonces, bueno, la idea mía de acá o lo que yo quiero que por ahí por ahí se
+39:41
+lleven es primero que que es un embeding, que son estos vectores que
+39:46
+codifican las palabras y después a mí lo que me gusta mucho o lo que lo que lo
+39:51
+que me queda de esto es esto de acá, cómo estos embeding generan mi eh
+39:56
+vocabulario y mi espacio vectorial de palabras, como las palabras, fíjense que
+40:02
+estas palabras por detrás son números, no son vectores, Pero sí tienen la
+40:05
+relación semántica. Eh, y a partir de acá, yo creo que de
+40:12
+acá en adelante, eh, con esta base se entiende un poco mejor lo que viene
+40:16
+después, ¿no? Porque después viene Transformers, que es una arquitectura un
+40:21
+poco más compleja que donde entiendo que no vamos a entrar muy a detalle, pero sí
+40:27
+generan estos bings y lo hacen con autoencodor y demás, o sea, son
+40:30
+arquitecturas muy muy complejas. Fíjense que esta arquitectura es simple, es solo
+40:35
+una capa oculta, o sea, entrada, capa oculta, salida. Fíjense, es sers
+40:41
+sencillo. Pero bueno, nada, eh, esto es lo que les quería mostrar hoy, que es el
+40:47
+inicio de trabajo con series temporales, más precisamente con eh texto, ¿no? Eh,
+40:56
+no sé si tienen alguna pregunta, si se escuchó, si se cortó o si están todos
+41:01
+bien por ahí. No sé si me pueden hablar tampoco, así
+41:06
+que ahí, Nico, si querés. Ahí está. Bueno, genial. Em, si tienen alguna
+41:13
+pregunta, la como no me pueden hablar, la pueden mandar por WhatsApp. Eh,
+41:20
+revisen esta esta notebook de vuelta y lo que pueden hacer es agarrar su su
+41:25
+dataset de texto y pasarlo por acá por wordback. Nada, no no sé ahí cómo les va
+41:30
+a dar, la verdad. eh porque es un modelo, como vieron, ser sencillo y y no
+41:35
+es tan complejo, pero bueno, pueden ver cómo cómo les performa y alguna cercanía
+41:39
+entre palabras van a van a descubrir. Voy a dejar de grabar.
+41:48
+A ver, dejo de grabar y les paso ahí la posta.

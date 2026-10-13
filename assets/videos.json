@@ -13,7 +13,13 @@
     "captions": {
       "status": "pending",
       "file": null,
-      "note": "Google Drive no expone una pista de subtítulos descargable mediante este enlace público. Incorporar un archivo .vtt o .srt cuando esté disponible."
+      "note": "No hay subtítulos temporizados .vtt/.srt; se ofrece una transcripción textual con marcas de tiempo."
+    },
+    "transcript": {
+      "status": "available",
+      "file": "fuentes/modulo-1-transcripcion.txt",
+      "format": "txt",
+      "note": "Transcripción textual con marcas de tiempo."
     }
   },
   {
@@ -29,7 +35,13 @@
     "captions": {
       "status": "pending",
       "file": null,
-      "note": "Google Drive no expone una pista de subtítulos descargable mediante este enlace público. Incorporar un archivo .vtt o .srt cuando esté disponible."
+      "note": "No hay subtítulos temporizados .vtt/.srt; se ofrece una transcripción textual con marcas de tiempo."
+    },
+    "transcript": {
+      "status": "available",
+      "file": "fuentes/modulo-2-transcripcion.txt",
+      "format": "txt",
+      "note": "Transcripción textual con marcas de tiempo."
     }
   },
   {
@@ -45,7 +57,13 @@
     "captions": {
       "status": "pending",
       "file": null,
-      "note": "El video está disponible, pero todavía no se recibió un archivo .vtt o .srt verificable."
+      "note": "No hay subtítulos temporizados .vtt/.srt; se ofrece una transcripción textual con marcas de tiempo."
+    },
+    "transcript": {
+      "status": "available",
+      "file": "fuentes/modulo-3-transcripcion.txt",
+      "format": "txt",
+      "note": "Transcripción textual con marcas de tiempo."
     }
   }
   ]

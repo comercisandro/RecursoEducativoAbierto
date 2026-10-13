@@ -29,7 +29,7 @@ El script solo representa texto, código y salidas guardadas; **no ejecuta las n
 
 Las tres notebooks originales `.ipynb` y sus PDF exportados ya están en `fuentes/`. Hay copias de trabajo locales asociadas a fuentes curriculares, pero no se incorporan al repositorio mientras se cotejan procedencia, integridad y permisos. Los enlaces de Colab apuntan a los notebooks de este repositorio.
 
-Las explicaciones audiovisuales se administran desde [`assets/videos.json`](assets/videos.json). Los módulos 1 y 2 enlazan a sus grabaciones públicas de Google Drive y el módulo 3 queda preparado como pendiente. El registro también conserva el estado de subtítulos/transcripciones; no se presentan como disponibles hasta contar con un archivo `.vtt` o `.srt` verificable.
+Las explicaciones audiovisuales se administran desde [`assets/videos.json`](assets/videos.json). Los módulos 1 y 2 enlazan a sus grabaciones públicas de Google Drive y el módulo 3 utiliza el MP4 local del repositorio. Cada módulo dispone ahora de una transcripción textual con marcas de tiempo; los subtítulos temporizados `.vtt` o `.srt` todavía no están disponibles.
 
 El inventario de originales, atribuciones, licencias registradas y copias curriculares locales está en [`fuentes/README.md`](fuentes/README.md). La carpeta también incluye [`fuentes/actualizacion-fuentes-2026.md`](fuentes/actualizacion-fuentes-2026.md), con fuentes primarias actuales y cambios propuestos para la ruta. Los PDFs curriculares locales todavía no se publican desde Git y requieren cotejo y autorización.
 

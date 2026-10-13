@@ -1,0 +1,1540 @@
+0:02
+Ahí está. Ahora sí.
+0:07
+Ahí va. Bueno, eh entonces
+0:12
+nada, eh la idea era un poco, como les contaba, empezar a hablar de de agentes
+0:20
+eh más precisamente o de un tipo de agente acá en este caso, en este ejemplo
+0:24
+que es un agente REA, que ahora lo vamos a ver, pero hay hay distintos tipos de
+0:30
+de agente y es una una palabra o una forma de trabajo con estos estos grandes
+0:39
+modelos de lenguaje natural que que hace mucho ruido este último tiempo, ¿no?
+0:43
+como que se habla, seguramente escucharon hablar un montón de estos
+0:47
+agentes o de agentes en general y es algo que no está nuevo, o sea,
+0:52
+obviamente es nuevo porque todo esto es bastante está bastante en auge, pero ya
+0:57
+en 2022, fines de 2022 aproximadamente
+1:03
+se lanzó una librería que se llama Long Chain,
+1:08
+que un poco viene a simplificar eh el trabajo y la creación. y un poco
+1:13
+bien a definir, ¿no?, estos estos agentes que básicamente, como les
+1:18
+contaba, son eh o es un Ll, un gran modelo de lenguaje natural como GPT,
+1:27
+Gemini, Cloud, cualquiera, cualquiera cualquiera de esos que tiene acceso o
+1:33
+puede usar eh funciones externas, digamos, que se llaman tools o
+1:41
+herramientas. que le permiten ampliar su capacidad. O
+1:46
+sea, van a poder buscar el internet, van a poder ejecutar código, van a poder
+1:51
+hacer muchísimas cosas. Ahora hacen muchísimas, muchísimas cosas, manejar
+1:56
+otros LLM y demás. Eh, pero bueno, esto es como la
+2:01
+parte más primitiva, por así decirlo, donde vamos a crear un un agente desde
+2:07
+cero. Vamos a importar un un Ll, eso sí, lo no lo vamos a estar ejecutando
+2:14
+localmente. vieron que ustedes pueden un modelo de inteligencia artificial,
+2:18
+más allá de si es un un Llm o si es, no sé, un de otro dominio como Visión y
+2:24
+demás, ustedes pueden ejecutarlo localmente en su computadora
+2:30
+o pueden ejecutarlo en Google Colab o pueden usar un una un entorno de de
+2:38
+desarrollo como una API donde el modelo está alojado en en
+2:44
+alguna computadora privada, ¿no? Como como Charpt, supónganse, o Gemini, donde
+2:50
+ustedes hacen un una petición, un request, se llaman así, pues pueden
+2:54
+buscar que son estas lasas palabras para los que no no las conocen, eh, donde
+3:00
+ustedes en estos en estos requests o en estas peticiones le mandan información
+3:04
+al al modelo, que serían como los tokens, digamos, que después le facturan
+3:08
+a uno. Pero lo la idea que les quiero transmitir es que este modelo está
+3:12
+alojado en una computadora y nosotros no tenemos acceso a cómo se gestiona, cómo
+3:18
+se maneja esa información, ¿no? Básicamente consumimos un servicio.
+3:25
+Eh, acá lo vamos a hacer de esa forma, la parte del LM. nos vamos a conectar a
+3:31
+a Hin Face, que ahora le no me acuerdo si les hablé de esa página, pero ahora
+3:35
+se las voy a mostrar un poquito. Nos vamos a conectar a través de una de
+3:40
+justamente una AP se llama, que es un una llave de de acceso a tu cuenta o a
+3:47
+sus cuentas personales. Eh, muchas aplicaciones tienen esta
+3:52
+forma de de conectarse, ¿no?, para trabajar eh programáticamente, digamos.
+3:58
+o sea, con código. Entonces, nos vamos a conectar a a Hinface, vamos a importar
+4:04
+un un modelo, no lo vamos a importar, sino nos vamos a conectar al modelo,
+4:08
+justamente le vamos a a
+4:12
+enviar información y con la información que nos va a devolver el modelo, con las
+4:16
+respuestas, vamos a poder eh utilizar herramientas y y generar más
+4:25
+un contenido eh más específico para nuestro problema, ¿no? como que
+4:30
+podríamos darle herramientas al modelo para un dominio específico o para
+4:34
+resolver situaciones concretas. Eh, bueno, esa como una intro.
+4:43
+Después ustedes de vuelta ven tranquila la las notebooks que yo les dejo, pero
+4:50
+la idea es esta, ¿no? Como un uno de estos grandes modelos de lenguaje
+4:53
+natural eh puede dejar de responder solo texto o ser un chatb, por así decirlo, a
+5:02
+usar eh estas tools o herramientas internas. Ahora también existen, después
+5:07
+lo vamos a ver, pero hay un concepto de skill donde ya es una tarea que que
+5:14
+tiene los agentes, ¿no? Van a van a escuchar mucho de esto de de skills,
+5:17
+tools, bueno, en el en el uso de agentes.
+5:22
+Eh, entonces estos estos LLM ahora van a poder pensar en
+5:28
+base a la pregunta que les estamos haciendo, van a poder tomar una una
+5:34
+acción en base a su respuesta y poder usar herramientas, ¿no?, para darnos una
+5:40
+respuesta final. Ahí hay un pequeño nada, una seguidilla que es el
+5:44
+pensamiento, la acción, la observación en base a la respuesta y llegar a una
+5:50
+respuesta final de una forma iterativa. Vamos a ver, nosotros vamos a definir
+5:54
+esos cuántas veces o cuánto puede pensar el el antes de de responder y demás,
+6:01
+porque todo eso se transforma o se traduce en gasto, ¿no?, de de
+6:06
+facturación. Así estamos usando un modelo pago.
+6:11
+Eh, estoy, bueno, acá instalando algunas librerías, no importa, ¿la vegas de
+6:16
+estas librerías lo que pasa con estas notebooks es que por ahí quedan viejas
+6:22
+fácil, ¿no? Porque hacen actualizaciones de las librerías, de los métodos, de las
+6:26
+formas en las que se usan. Entonces esta creo que esta igual la ejecuté hace
+6:32
+poco. Me voy a conectar al entorno. Ahí toqué arriba en connect.
+6:37
+Vamos a intentar ejecutarla después a ver dónde dónde rompe, si es que rompe.
+6:42
+Pero estas notebooks eh que usan librerías nuevas, digamos, que están en
+6:46
+desarrollo, suelen cambiar los métodos y suelen romperse, ¿no? Entonces ustedes
+6:51
+si si la ejecutan y se rompe, digamos, o hay algo que no está ejecutando
+6:57
+correctamente, bueno, creo que tienen ya las capacidades para poder arreglarlo. Y
+7:05
+obviamente acá abajo y todo tienen a Gemini, ¿no?, que
+7:10
+lo pueden usar justamente como como agente, ¿no? Para para ayudar a a
+7:15
+solucionar los problemas que que tengan en la programación.
+7:19
+Obviamente acá me estoy yendo por para otro lado, pero eh para usar este este
+7:25
+LM, este agente que es Gemini, tienen distintas versiones y dependiendo la
+7:30
+versión que usan es la cantidad de tokens o usos que pueden que pueden
+7:34
+hacer del modelo y nada, se va se van acabando, ¿no? No los deja usar mucho.
+7:42
+Entonces, como siempre, al principio hacemos un un import de de distintas
+7:46
+librerías que vamos a estar utilizando. Eh, y lo primero, como les contaba, es
+7:53
+conectarnos con el proveedor de el modelo del del modelo de lenguaje
+7:58
+natural, el el e
+8:04
+Bueno, fíjense, justo esto es lo que les estaba contando, ¿no?, que se ejecuta
+8:08
+dentro de nuestra notebook y lo habitual es consumirlo de desde una API remota
+8:14
+como como est como estaríamos consumiendo un servicio web o como
+8:17
+estaríamos utilizando chat PPT. Fíjense ahí me voy a ir a Haging Face.
+8:23
+No me acuerdo si yo estoy seguro y creo que sí que la primera o segunda clase
+8:27
+les mostré esta página, pero Having Face de vuelta es un repositorio
+8:33
+principalmente de modelos de inteligencia artificial de distintos
+8:37
+modelos. Ahora les muestro un poco todos los tipos de de dominios de problemas
+8:42
+que pueden resolver. También hay datasets y también hay modelos
+8:47
+desplegados que podemos consumir, ¿no? Como el que vamos a estar utilizando
+8:51
+ahora. Eh,
+8:55
+fíjense que en models tienen eh los modelos
+9:02
+separados por, bueno, hay hay distintas categorías, ¿no? Cantidad de parámetros
+9:06
+del modelo en cuanto a a tamaño, ¿no? a eso del modelo y en tareas tienen,
+9:12
+bueno, multimodal, es decir, que trabajan con texto, audio y datos
+9:16
+tabulares y y demás imágenes indistintamente.
+9:22
+de computer vision, distintos problemas dentro de de computer vision,
+9:28
+procesamiento lenguaje natural, también audio, bueno, datos tabulares y reinfor
+9:36
+el tercer tipo de de aprendizaje, ¿no? Está supervisado o no supervisado y eh
+9:42
+por refuerzo. Dentro de acá aclaración aclaración
+9:48
+rápida. Cuando trabajamos con reinforcement
+9:51
+los o la mayoría de las veces los modelos que se entrenan con reinformance
+9:57
+se denominan agentes, pero no son los mismos que estos que vamos a ver ahora.
+10:02
+Pero eso se los dejo ahí por si ustedes ven agentes de reinforcement, nada, se
+10:07
+lo llama gente porque es un modelo que interactúa con el entorno, ¿no? Entonces
+10:11
+tiene el mismo nombre. Pero de acá lo que les quiero mostrar es
+10:14
+en la parte esquina superior derecha está mi cuenta, ¿no? Mi mi perfil y
+10:22
+demás. Y eh bueno, acá fíjense que hay cuota de uso. Importa. que les quiero
+10:30
+mostrar es este access token, que es la forma en que nos vamos a
+10:36
+conectar desde Googlecab a Huginface y nos va a dar la
+10:42
+posibilidad de poder usar distintos tipos de de modelos de forma gratuita.
+10:49
+Eh, hay modelos que son pagos también, pero nada, vamos a estar viendo los
+10:52
+modelos en forma gratuita. Entonces ustedes lo que van a tener que hacer es
+10:56
+obviamente crear una cuenta en en Hinface. Una vez que tienen la cuenta
+11:00
+creada, se loguean a esa cuenta, van a la parte
+11:06
+de tokens y acá tienen un create new token, tocan acá. Y bueno, tienen
+11:13
+ustedes después ahí lo pueden buscar un poquito más, pero tienen para solo
+11:18
+lectura, para escritura o para configurar ustedes que qué es lo que
+11:22
+quieren hacer. Sobre lectura para hacer inferencias,
+11:26
+para escritura, para hacer CCD, que es despliegue de modelo. Bueno, hay
+11:31
+muchísimas cosas. Yo acá voy a voy a mostrarles unos de lectura para los
+11:37
+modelos. Acá pueden poner un eh, no sé, clase IA
+11:43
+o clase IA. Lo voy a poner así. crean el token.
+11:48
+Fíjense que el token les va a aparecer esto y es un como si fuese una clave,
+11:55
+¿no? Que ustedes la pueden copiar, que tiene permisos para acceder a su cuenta,
+12:00
+tiene permisos solo para leer cosas de su cuenta, no tiene permisos para
+12:04
+escribir. Y fíjense que esto que tienen acá es algo que es super privado, o sea,
+12:10
+es como si yo acá les estuviese mostrando la contraseña de de mi cuenta.
+12:14
+Y una vez que yo le doy down, yo la copio. Una vez que le doy down, fíjense
+12:19
+que no tengo eh posibilidad o no tengo forma de poder ver el código que acabo
+12:25
+de generar, ¿no? Fíjense que acá no lo puedo ver y en mis opciones
+12:33
+puedo invalidar y crear una nueva y eh eliminarla, pero no puedo ver el código.
+12:39
+Una vez que se creó y cerramos ahí, no lo puedo ver. Eso es obviamente por
+12:44
+seguridad y obviamente acá yo si dejara este
+12:48
+código ustedes podrían acceder a mi cuenta. Yo lo que hago acá es invalidar
+12:52
+y crear otro nuevo. Fíjense, me va a volver a mostrar un nuevo código, ¿no?
+12:57
+Entonces eso no sirve, digamos. siguen teniendo acceso a quién se los muestren.
+13:02
+Entonces lo borro acá porque nada, lo que les decía, la notebook ya la tengo
+13:06
+ejecutada y no me no me no me necesito este código para
+13:12
+mostrarles el ejemplo, ¿no? Entonces, lo borro. Ustedes no tienen que borrarlo,
+13:17
+solamente no tienen que compartir ni debería, o sea, es una buena práctica de
+13:23
+de programación no tener eh ni códigos ni datos ni ni nada. eh escrito, como se
+13:30
+dice, hardcodeado en su código, ¿no? Entonces, una vez que ustedes generaron
+13:35
+el token, lo copian, se lo guardan y nosotros nos podemos conectar desde
+13:41
+Google Colab a Hagin Face utilizando ese no. Entonces, bueno, acá de vuelta eh
+13:48
+vamos a usar Haging Face como eh capa intermedia para acceder a los distintos
+13:54
+modelos de lenguaje hospedados en infraestructura externa. Entonces, es lo
+13:59
+que les decía, los modelos están fuera de de nuestro alcance, es decir, son de
+14:04
+propiedad privados. Nosotros vamos a interactuar con ellos, es decir, vamos a
+14:09
+enviar la información, vamos a recibir información. ¿Qué pasa con esa
+14:13
+información cuando la enviamos? No tenemos idea. O sea, si la utilizan para
+14:18
+ajustar sus modelos, para entrenar sus modelos, para,
+14:22
+no sé, quedarse con la información, no lo podemos saber de esta forma. La
+14:27
+forma más segura de trabajar con modelos eh LLM, si es algo que necesita ese
+14:36
+nivel de seguridad es ejecutarlos ustedes localmente o en eh la nube, ¿no?
+14:42
+En en AWS, en Asure y demás, pero de esta forma nosotros no sabemos qué pasa
+14:46
+con la información en el medio. Eh,
+14:51
+entonces eh bueno, esto la notebook actúa como un cliente. No, no, no
+14:55
+importa, después lo leen, pero es un poco lo que les estoy diciendo. La
+14:58
+ventaja de esto, obviamente, es que ventajas y desventajas, las desventajas
+15:03
+es lo que les decía, no tienen un límite, suelen ser servicios pagos y y
+15:08
+demás, no saben qué pasa con la información.
+15:12
+Las ventajas, eh, creo que se cargo de vuelta, las ventajas es eh ustedes no se
+15:18
+encargan de mantener los modelos y eh corren en servidores gigantes, digamos
+15:24
+que uno por ahí para hacerlo funcionar. para correr modelos tan grandes
+15:29
+necesitaría infraestructura grande y sería eh por ahí caro, ¿no? Nada se
+15:36
+puede hacer, pero eh la ventaja, para mí la mayor ventaja es que no tenés que no
+15:41
+tienen mantenimiento de nuestro lado, o sea, nosotros lo usamos y si por detrás
+15:46
+esto se rompe, se cae, se actualizan librerías, tienen que modificarlo y
+15:50
+demás, encarga la empresa que que nos está brindando el servicio. Sol somos
+15:55
+como simples usuarios. Eh, entonces para conectarnos al
+16:00
+proveedor, acá está un poquito de de cómo se se
+16:04
+envían los mensajes a los este concepto de end points y de las apps y demás.
+16:08
+Después lo pueden profundizar, pero fíjense que qué fácil es. Vamos a usar
+16:13
+la librería de de Open AI y vamos a estar utilizando esta librería
+16:20
+porque face creo que lo puse acá. Bueno, acá, ¿por qué usamos la librería de Open
+16:26
+AI si el modelo es en hing? Bueno, la respuesta es que Hugin Face como que
+16:32
+tomó la la forma en la que eh se trabaja con los modelos de Open AI o como Open
+16:38
+AI recibía los inputs para sus modelos y lo estandarizó, ¿no? Entonces, podemos
+16:43
+usar su librería, la de Hagin Face o la de Open AI, y trabajan de la misma
+16:48
+forma, tienen las mismas funciones, los mismos métodos. Entonces, fíjense,
+16:53
+a ver, vamos a tratar de de ejecutarlo. Eh, tenemos un poquito de tiempo
+17:01
+conectado a la a la compu de de colab. Se están bajando las las
+17:07
+librerías. A ver, importo las librerías. Y esta es la conexión. Fíjense que
+17:16
+cuando yo ejecute esto me va a pedir el token.
+17:21
+Lo voy a crear mientras lo había borrado.
+17:25
+Eh, vamos a ver si con el de lectura me
+17:30
+alcanza. Esto es tría de vuelta. Lo copiamos
+17:44
+acá. Fíjense, me dice, ingreso su token, lo pego, control B, le doy enter y ahí
+17:51
+estamos conectados. cliente iniciado correctamente. Fíjense antes de por las
+17:56
+dudas, antes de ejecutar esta celda y que se rompa todo o no, les muestro que
+18:02
+una vez que estamos conectados a nuestro nuestra cuenta, o sea, acá directamente
+18:07
+estamos conectados a nuestra cuenta de Hf por medio de de la API, digamos,
+18:13
+tenemos un listado de modelos que podemos utilizar, ¿no? Modelos
+18:17
+disponibles. Fíjense la cantidad que hay.
+18:20
+Tenemos de de dips de los de Wol, tenemos lama. Ahí debe estar lama, los
+18:27
+de meta. Acá estáama, ¿eh? A ver, vamos a ver si hay más.
+18:33
+Fíjense que acá estoy mostrando los últimos 30, no más hay un montón más.
+18:38
+Fí, ahí está. O sea, ahí estoy conectado a mi a mi cuenta deface. ¿Cómo me doy
+18:44
+cuenta? Bueno, porque me me listó los modelos que que están disponibles y que
+18:49
+podemos utilizar. Fíjense que cada uno de estos modelos
+18:54
+suele tener estos grandes modelos los podemos usar
+18:59
+para para muchas cosas, pero hay modelos específicos o mejores para eh agentes de
+19:05
+programación o para ayudarnos en programación, para resúmenes, para un
+19:10
+idioma, para traducción, para distintas cosas, ¿no? ustedes tendrían que buscar
+19:15
+cada uno de estos modelos y es como de cultura general, por así decirlo, y
+19:19
+saber cuál utilizar, ¿no? Y fíjense lo que lo que dice acá que B es billón y
+19:25
+son 1000 millones, es porque acá están los parámetros del módulo, ¿no? ¿Qué tan
+19:29
+grandes son? 27 billones, o sea, 27,000 millones de parámetros. los parámetros,
+19:37
+si se acuerdan, no me acuerdo si si lo vieron con Laura ya, pero son las
+19:42
+conexiones, ¿no? Cada uno de estos parámetros es los W, creo que lo mostró
+19:45
+Laura, son los W, son los pesos sinápticos que el modelo aprende.
+19:50
+Mientras más cantidad de parámetros tiene, eh el modelo es capaz
+19:57
+de tener es capaz de aprender mayor
+20:02
+información, ¿no? Mayor representación de de los datos.
+20:05
+Pero bueno, eso es un costo beneficio, digamos, ¿no? Por ahí no no necesitan
+20:09
+tener un un modelo con tantos tantos tantos parámetros si la aplicación es es
+20:15
+sencillo, ¿no? Esto es porque son modelos nada como si estuviesen trayendo
+20:19
+a chat y cosas así. Entonces siempre recuerden de si lo
+20:26
+están mostrando como yo y más se iba a quedar grabado, bueno, eliminar el token
+20:31
+para que nadie más tenga acceso a su cuenta.
+20:36
+Entonces este estos modelos yo acá estoy trayendo uno X cualquiera. Usted puede
+20:42
+después ustedes eh ven cuál les conviene. Este es bueno para por lo que
+20:46
+busqué ahí, ¿no? Ustedes pueden justamente googlear o hasta preguntarle
+20:50
+acá. a a Shemin cuál les conviene utilizar.
+20:55
+Eh, entonces definimos el nombre del modelo
+21:00
+y fíjense qué fácil que es eh llamar al modelo con el model ID y pasarles un
+21:07
+mensaje donde el content de la pregunta es
+21:13
+explicar en una oración que es un agente de
+21:16
+la temperatura, que es un un hiperparámetro en los modelos de
+21:20
+lenguaje natural la pueden modificar va entre 0 y uno y a medida que el la
+21:27
+temperatura es mayor,
+21:31
+el modelo puede devolver palabras con menor probabilidad de de ser la
+21:39
+palabra correcta. A ver, lo que quiero decir es, ¿se acuerdan de la clase
+21:43
+pasada cuando vimos los embedings que los embedings tenían cierta distancia
+21:49
+entre ellos dependiendo la similitud o lejanía de esas palabras? Bueno, esto lo
+21:53
+que hace es que pueda elegir palabras que no estén tan cercanas, pero que
+21:58
+signifiquen lo mismo, ¿no? Entonces, eh va a tener como mayor creatividad, por
+22:03
+así decirlo, el modelo al momento de de responder.
+22:10
+Eh, nada, esto obviamente si suben mucho. Sí,
+22:14
+disculpe. Eh, eso de mayor creatividad, mayor libertad, era con temperatura más
+22:19
+alta o más baja. Perdón, escuché. con temperaturas más altas. Sí, sí.
+22:24
+E pero a medida que que la temperatura es mayor o o el o el modelo puede puede
+22:31
+improvisar más, por así decirlo, o la palabra que que quieran, tiene más
+22:35
+riesgo de alucinar, ¿no? También nada responder cualquier cosa, obviamente.
+22:42
+Entonces, fíjense, fíjense que esto es esto todo esto se va a ver de vuelta la
+22:50
+forma en la que nos comunicamos o le mandamos el tipo de de diccionario
+22:55
+Jason, esta estructura, ¿no? con con llaves al modelo, la forma en la que
+23:01
+encontramos la respuesta, porque fíjense que de acá de la respuesta de un con una
+23:08
+un método choice, nos quedamos con la primer elemento de la respuesta. O sea,
+23:12
+es como complejo encontrar la respuesta dentro de toda la, o sea, lo que
+23:17
+queremos dentro de toda la respuesta. con Long Chain te lo simplifica un
+23:21
+montón todas estas cosas, o sea, es como menos tedioso porque si ustedes ven la
+23:27
+respuesta solamente la respuesta, o sea, esta de acá este response que es la
+23:34
+variable, o sea, lo que obtiene, lo que guardo en esta variable antes de hacer
+23:38
+el print es esto. Y fíjense que es una ID de conversación, como ustedes
+23:44
+interactúan con chatti y van quedando los historiales de conversación. Bueno,
+23:48
+acá está una ID de la conversación y metadata, ¿no? del modelo. Fíjense,
+23:56
+eh, acá está la respuesta, pero debe haber un lugar donde está,
+24:03
+miren, fíjense el modelo que estamos utilizando, la cantidad de tokens, ¿no?
+24:08
+44 tokens, eh, y debe ser, fíjense, Total Tokens 87
+24:15
+deben ser los eh los que utilizo para pensar la respuesta y demás.
+24:20
+Entonces, de todo esto que me respondió el modelo, yo lo que quiero es esto de
+24:25
+acá, pero lo otro me sirve también, ¿no? Es como, bueno, a ver si supónganse que
+24:31
+estoy siendo un agente para para una solución y necesito monitorear el uso
+24:36
+del agente o el consumo. Bueno, acá tengo los tokens que los puedo traducir
+24:40
+en eh plata, por así decirlo, y tienen que tener en cuenta también esto es un
+24:46
+es un mundo, ¿no? que cada modelo para cada modelo un token es
+24:54
+o una palabra o una frase o una oración o
+24:58
+como que no mide no tiene el mismo peso o el mismo valor un token para todos los
+25:04
+modelos. Eso hay que que tenerlo en cuenta.
+25:07
+Obviamente eso te lo la información te la brinda el proveedor del del servicio.
+25:13
+Eh, entonces acá armamos una función que lo
+25:19
+que hace es aceptar o o le llega como parámetro a esta función el mensaje y la
+25:25
+temperatura y nos responde lo que nosotros necesitamos. Fíjense que
+25:30
+está como esto eh hecho función de vuelta. La clase que viene, vamos a ver
+25:36
+que con Longchain esto es no necesitamos hacer una función, es un método ya que
+25:41
+es como preguntarle y te da la respuesta superlmia y y superlinda, digamos, ¿no?
+25:46
+No hay que hacer todo este embrollo
+25:50
+que es la las mejoras, ¿no? Pero bueno, esto es para mostrarles un poco a bajo
+25:54
+nivel cómo se armaban los o cómo lo pueden armar todavía los módulos.
+26:00
+Entonces, una tool o una herramienta eh es esto, ¿no? Es es código, es un
+26:07
+programa, es una herramienta que el modelo puede usar para para
+26:13
+realizar tareas específicas, para buscar más información, para conectarse con
+26:17
+internet. Eh, a ver, un poquito acá lo que tengo
+26:20
+escrito es que son muy buenos generando texto y razonando, pero tienen
+26:25
+limitaciones como el acceso internet, nada, los modelos, el el
+26:30
+modelo que tiene dependiendo el proveedor, ¿no? Pero como a grandes
+26:35
+rasgos, el proveedor del modelo eh justamente el modelo, perdón, no está
+26:42
+conectado a internet. No, no, no podemos decirle que vaya a buscar información a
+26:46
+cierta página o típico caso, ¿no? Si nosotros le preguntamos, bueno, ¿cuál es
+26:51
+el presidente o cuál es el actual x cargo de de algún país, nos va a traer o
+26:57
+nos va a dar como respuesta la información que tiene en su último
+27:01
+entrenamiento, ¿no? Entonces, bueno, eso nos limita muchos usos. Entonces, ahora
+27:07
+lo que lo que podemos hacer es armar una tool para que ante una pregunta que el
+27:12
+modelo no tenga la última respuesta pueda ir a buscarlo internet. Ahora
+27:17
+vamos a ver cómo configuramos eso también, cómo le decimos cuándo ir a
+27:22
+buscar internet o cuándo. Eh, bueno, justo era la segunda línea
+27:28
+acá. Eh, no conoce información posterior de su entrenamiento. Eh, no puede
+27:33
+ejecutar código Python. Bueno, no puede leer archivos y demás. O sea, lo único
+27:38
+que puede hacer un LLM es darnos una respuesta ante una pregunta, ¿no? Porque
+27:43
+lo único que puedo hacer es transformar nuestro texto en tokens, generar los
+27:48
+embedings y buscar las palabras más probables, eh, lo que vimos la clase
+27:54
+pasada, ¿no? Como respuesta y darnos embedings que los vuelve a transformar
+27:59
+en texto legible y que nosotros lo podemos entender. Pero eso es todo lo
+28:04
+que hace un modelo, todo lo que vemos ahora en FPT, en Gem,
+28:10
+en no sé si vieron notebook LM y demás. Bueno, esos son herramientas, son
+28:15
+agentos. Eh,
+28:18
+entonces nada, eh, fíjense
+28:26
+algo acá, una idea que que les quiero mostrar o resaltar es que el modelo no
+28:31
+ejecuta las herramientas directamente. Eh, ahora lo vamos a ver más abajo, no
+28:36
+es que si tiene un un script hace un python. RAM o algo así, sino que genera
+28:45
+texto y nosotros vamos a hacer un bucle lógico para que con ese texto,
+28:51
+dependiendo de de ese texto que respondió al modelo, utilizamos una
+28:56
+herramienta u otra. Ahora vamos a ver cómo, pero esa es la idea, digamos, no
+28:59
+es que nosotros le decimos, "Busca en internet y el modelo va a tener la
+29:04
+capacidad de, bueno, voy a entrar a Google y y buscar en internet, ¿no? El
+29:09
+modelo va a razonar y va a decir, bueno, el el usuario pide que utilice una
+29:16
+herramienta que es búsqueda en internet y nosotros vamos a captar ese
+29:20
+pensamiento, esa respuesta del modelo. Vamos a decir if. El modelo dice buscar
+29:25
+en internet. Entonces le pasamos un ejecutamos la T. Ahora lo vamos a ver
+29:32
+más abajo. E nada, acuérdense que esto es solo
+29:37
+texto, digamos, con lo que con lo que trabajamos nosotros.
+29:41
+Por ahora es así. Entonces, acá voy a definir unas unas funciones que van a
+29:47
+ser mis tools, mis herramientas. Una es para eh nada saber qué qué fecha es hoy,
+29:54
+porque es algo que que el modelo no debería poder saber, digamos, o no
+29:59
+tendría la posibilidad de saber qué qué fecha es, digamos. no no tiene como un
+30:05
+posición espacio temporal, sino que está ahí como aislado.
+30:11
+Eh, y una herramienta que no importa, est es bastante compleja y con de vuelta
+30:17
+con handface, esto se simplifica mucho, que es para buscar en internet, ¿no?
+30:21
+donde recibe, esto sí es importante, como parámetro, recibe un un un stream
+30:27
+texto, una cadena de texto y bueno, tiene un parámetro acá que es K que es
+30:32
+cuántas páginas queremos queremos visitar, ¿no? La respuesta de
+30:37
+cuántas páginas. Bueno, y acá hay una lógica de, bueno, no se encontró un
+30:41
+resultado, si hace un hacemos una búsqueda y no hay resultados y una
+30:45
+respuesta con el título de de la página que consultamos, una URL y un resumen.
+30:53
+Ahora se los se los voy a mostrar, pero acá fíjense que vamos a ver muchos de
+30:57
+estas herramientas de parseo es la es la palabra, pero es
+31:04
+búsqueda de o separación de de strings. hay mucho trabajo con cadenas de
+31:10
+caracteres, ¿no? Entonces, fíjense que permite recibir
+31:14
+inputs. Acá dice como historia de la Argentina y K = A 5. Entonces va a
+31:18
+buscar los cinco primeros resultados sobre historia de la Argentina.
+31:24
+Eh, nada, yo creo que la clase que viene va a quedar un poco más claro esto
+31:28
+porque esto es bastante rústico la forma en que se hace, pero lo que les quiero
+31:31
+mostrar es que por detrás hay toda lógica, lógica Python, digamos, lógica
+31:35
+de programación. No, no hay no hay el modelo no hace por sí solo nada.
+31:41
+Eh, bueno, e en estos agentes no React
+31:46
+porque React es un tipo de agente, pero los agentes
+31:51
+eh las herramientas necesitan estar almacenadas en en una forma
+31:56
+estructurada. En estos casos vamos a ver de vuelta que la próxima clase se hace
+32:00
+distinto y más fácil, pero eh la herramienta tiene que tener un nombre,
+32:05
+una descripción, qué es lo que hace eh y obviamente la función que va a ejecutar
+32:11
+esa esa tub, ¿no? Entonces vamos a estar utilizando.
+32:17
+Eh, bueno, esto es de una librería importa, pero la forma en la que
+32:24
+hacíamos ahora se hace más fácil, pero la forma en la que la que armábamos
+32:29
+estas estas tules con un decorador, esta función se llama decorador o este tipo
+32:34
+de de función se llama decorador. Lo pueden buscar después. y vamos a tener
+32:39
+un un tipo de clase, no importa también esta programación orientada objetos,
+32:44
+pero la idea es que estas tools, estas herramientas tienen un nombre, una
+32:48
+descripción y un código, ¿no? O sea, un código, una un código Python.
+32:56
+Eh, entonces, fíjense que para la herramienta que nos va a decir
+33:02
+qué fecha es, ¿no? La primera de todas que era sencilla, que era
+33:07
+esta de acá. Tenemos
+33:12
+el nombre de la herramienta que es now. Acá la descripción
+33:17
+que está así. O sea, esto es lo que va a a leer el agente, ¿no? O sea, para saber
+33:24
+qué herramienta tiene que utilizar, tiene que saber qué hace la herramienta.
+33:28
+Es la descripción. Devuelve la fecha y hora actual. Usar solo para fecha
+33:33
+actual, hora actual, día actual. O sea, acá le estoy lo estoy guiando al al
+33:37
+modelo, ¿no? Es como si fuese un mini prompt de lo que hace la tool. Entonces,
+33:42
+el modelo va a leer esto, va a tener esta información, va acceder y va a
+33:45
+decir, "Ah, bueno, esto si a mí me preguntan por la fecha actual, la hora
+33:49
+actual o el día actual, tengo que utilizaram esta herramienta. Obviamente
+33:55
+no la tengo que usar para hacer búsquedas web, concepto, historia. Acá
+33:58
+lo estoy delimitando muy de una forma muy muy cerrada porque nada, es un es
+34:03
+sencillo el agente, entonces por ahí alucina bastante.
+34:07
+Eh, bueno, nada, ¿qué qué va a ser la
+34:12
+acción? O sea, la acción que va a hacer o la acción que va a hacer a la gente
+34:18
+utilizar esta tool es eh now, o sea, cuando el agente cuando en la respuesta
+34:24
+del agente esté la acción now, o sea, que el agente responda con acción dos
+34:29
+puntos now, es porque va a tener que usar esta librería. Ahora lo vamos a ver
+34:32
+en un par de ejemplos. Supónganse la otra tool que armé era para buscar en
+34:39
+internet, se llama Web search y busca información actualizada en internet.
+34:44
+Usar para buscar conceptos, investigación, noticias, historia,
+34:47
+personas, tecnología, usar para cálculos matemáticos.
+34:52
+Esto acá lo pueden enriquecer como tanto como ustedes quieran.
+34:58
+Eh, y la acción es web search y eh bueno, K igual a C, que son las cantidad
+35:04
+de búsquedas que queríamos usar. Eh,
+35:09
+después lo después lo buscan, pero también fíjense que en este mini prom
+35:14
+que es cómo usar la tool que se la vamos a dar la agente, le ponemos ejemplos,
+35:19
+¿no? Eh, por ejemplo, si queremos historia de los Simpson, usas la acción
+35:25
+o cómo tiene que responder el el agente, va a ser web search, historia de los
+35:29
+Simpson K = 5. Esto es lo que va a generar el agente, o sea, el agente va a
+35:35
+responder con esta oración y esta oración
+35:39
+va a pasar como parámetro a mi tool, a mi función, ¿no? ¿Por qué?
+35:46
+Porque después acá, ¿cuántos eh qué es lo que quiero buscar
+35:53
+ahora? Lo de vuelta lo vamos a ver más creo que va a quedar más claro,
+35:57
+¿eh? Entonces, junto todas estas esta descripción.
+36:02
+Fíjense, acá estoy haciendo entonces de vuelta el nombre de la tool, la
+36:07
+descripción, qué es lo que hace y la función search, que es esta de acá.
+36:13
+Estoy pasando, estoy como encapsulando todo con este código de acá. Entonces,
+36:18
+el modelo va a tener el nombre de la herramienta, la descripción de lo que
+36:22
+hace y el código. Eh,
+36:28
+esto es lo que les mostré. Entonces, nuestras herramientas totales quedan
+36:31
+como la herramienta now, que devuelve la fecha y la hora actual
+36:36
+y la herramienta Web search. Acá está acá, que es bueno para buscar
+36:43
+información actualizada en internet. Entonces,
+36:48
+eh los agentes Reap son estos agentes que al final del de la notebook hay una
+36:54
+lista de otros tipos de agentes, pero básicamente estos son eh razonan y
+37:00
+generan una acción, o sea, razonoman, razonan, perdón, y en base a ese
+37:04
+razonamiento deciden una acción, usan una
+37:08
+herramienta, acá está, observan los resultados y continúan eh razonando
+37:14
+eh hasta llegar una respuesta final, o sea, este continuar razonando es eh
+37:19
+seguir generando como si fuese un checkpoint, ¿no? O sea, se va
+37:24
+preguntando y respondiendo solo hasta que llega a una respuesta
+37:29
+consistente. Cuando llega esa respuesta, van a ver
+37:33
+que el agente dice, "Bueno, respuesta final. Esta es mi respuesta final." Y en
+37:37
+base a eso nosotros vamos a decir más adelante y respuesta final está en la
+37:43
+respuesta de la gente. Entonces mostremos esto que que acaba de decir el
+37:48
+agente. Eh, bueno, poquito. Fíjense acá dice más
+37:53
+o menos lo mismo. En lugar de generar una única respuesta directa, el agente
+37:57
+construye un ciclo interactivo de pensamiento y acción. Pero van a ver que
+38:01
+como lo armamos acá, este ciclo interactivo es justamente un ciclo for,
+38:04
+o sea, está codificado en un ciclo for. Eh,
+38:10
+entonces la estructura general de estos tipos de agente es pensar,
+38:15
+razonamiento breve, acción si necesito usar una una tool, observar el resultado
+38:22
+de la herramienta, el resultado del código que ejecutó. En base a eso puede
+38:27
+seguir razonando y tomando acciones, pero si encontró la la respuesta final,
+38:33
+bueno, devuelve eso. Y acá tenemos el system prom, que
+38:38
+básicamente es un justamente como como el nombre lo indica, es un prom. Acá le
+38:44
+podemos poner cualquier cualquier nombre, ¿no? Yo acá le puse prom, pero
+38:48
+es un prom o instrucciones con las cuales nosotros vamos a definir
+38:55
+nuestro agente. Fíjense lo que dice acá. Eso es un agente React. Esto es como la
+38:59
+instrucción que le estamos dando al a la gente. Un segundito.
+39:08
+Esos es un agente RAP. Tu objetivo es razonar paso a paso, elegir herramientas
+39:13
+cuando sea necesario, observar resultados y llegar a una respuesta
+39:16
+final. Justamente lo que yo les decía de que es un agente React.
+39:22
+Tenés herramientas disponibles que son tool description. Fíjense que Tool
+39:26
+description es a la gente le va a llegar esto más para arriba esto, el listado de
+39:34
+todas las herramientas y cómo utilizarlas y ejemplos de cómo usarlas.
+39:40
+Entonces, ya le dijimos qué es, qué herramientas tiene.
+39:44
+Estoy intentando bajar. Ahí está. formato obligatorio, ¿no? Lo estamos
+39:50
+obligando, lo estamos estructurando a la gente para que las respuestas de la
+39:54
+gente tengan un un sentido, una forma, ¿no?, que no puede responder cualquier
+40:00
+cosa porque nosotros vamos a codificar en base a la lógica a la respuesta de la
+40:05
+gente, entonces la gente no puede responder cualquier cosa. Con este prom
+40:09
+le estamos diciendo, bueno, si necesitas usar una herramienta, responde
+40:12
+exactamente así, el razonamiento, la acción, el nombre de la herramienta,
+40:17
+lo mismo que estaba definido arriba y el input con el que queres usar esa tool.
+40:23
+Ejemplos válidos. Pensamiento. Necesito conocer la fecha actual. Supónganse que
+40:28
+nosotros le preguntamos al modelo, "¿Qué fecha es hoy?" Se lo enviamos al
+40:34
+LLM. elm va a razonar, perdón, o va a dar una respuesta en base a este prom
+40:42
+gigante que le estamos dando. O sea, esto va junto con la pregunta que le
+40:46
+estamos haciendo. Entonces, la gente va a tener nuestra pregunta y todo este
+40:52
+contexto y va a decir, "Ah, bueno, necesito conocer la fecha actual. La
+40:56
+acción es now. Si necesito buscar información sobre los Simpson, bueno, la
+41:01
+acción es WIP search, que es el nombre de la función que nosotros le dimos, lo
+41:06
+que queremos buscar, historial de los Simpson y la cantidad de ejemplos que
+41:12
+queremos como respuesta, ¿no? La cantidad de resultados. Fíjense que acá
+41:17
+lo que me estoy dando cuenta mientras hablo con ustedes es después lo ven que
+41:21
+acá yo pongo k = 5, ¿no?, que es la cantidad de respuestas. Pero si ustedes
+41:25
+ven la tool, por lo que estaba viendo recién,
+41:29
+eh, a ver si me deja subir acá la tool cuando la definí,
+41:35
+perdón que que lo fíjense que el input de la tool es eh no tiene el parámetro
+41:41
+K, o sea, no tengo esto acá K igual a o K. Entonces ahí hay un pequeño error
+41:49
+donde la gente no va a poder elegir cuántas respuestas, o sea, si yo le digo
+41:53
+a la gente, dame las primeras 10 respuestas que que encuentres, no lo va
+41:58
+a poder hacer porque está Jarcodeo el número cinco. Siempre va a las cinco
+42:02
+primeras respuestas. Eh, nada, un detalle que que me di
+42:06
+cuenta con ese. Entonces, reglas importantes, solo puedes usar estas
+42:11
+herramientas, la lista de herramientas. Le estoy volviendo a a decir, "No
+42:14
+inventes herramientas, no inventes observaciones, nunca escribas
+42:17
+observaciones." O sea, esto es para evitar alucinaciones. Lo tengo que
+42:21
+definir muy bien al a la gente eh cómo debe estar estructurada la acción.
+42:29
+Aunque no respua, no necesites input, igualmente escribí action now. Bueno,
+42:35
+cuando tenga suficiente información. Una pregunta, profe.
+42:38
+Sí. O sea, cuando vos le decís que no
+42:41
+invente algo, es es como decirle que no alucine, porque he visto que, por
+42:45
+ejemplo, muchos pron le ponen, por ejemplo, no cometas errores, pero es
+42:48
+posible que eso no
+42:52
+no no. Acá yo sí está buena la pregunta, o sea, no podemos decirle, "No cometas
+42:56
+errores porque no los hace intencionalmente."
+43:01
+Lo que yo quiero decirle acá es que eh a ver, ¿dónde estaba lo que leí recién?
+43:07
+eh que decían, supóng acá estas, no escribas final answer, respuesta final,
+43:14
+answer resultados, o sea, estas cosas sí les puedo decir. Si necesitas usar una
+43:18
+herramienta, no respondas final todavía, ¿no? Eh, sup
+43:28
+como que te anticipada la respuesta que va a tener. Claro, en este, fíjense,
+43:32
+inventas herramientas, es bueno, limitate solamente a
+43:37
+estas tools que están acá, ¿no? Seguramente cuando yo lo fir armando y
+43:42
+les va a pasar a ustedes es eh nada, lo empecé a usar y le preguntaba algo al
+43:48
+modelo y el modelo me decía, "Bueno, necesito utilizar la herramienta, no sé,
+43:52
+descargar PDF y no existe esa herramienta. está alucinando con una
+43:56
+herramienta que podría llegar a necesitar, pero que no la tiene.
+44:00
+Entonces, con eso lo estoy como fue como prueba y error, ¿no?
+44:05
+Entonces, por ejemplo, perdón, le pondrías como ahí diciendo no utilizar
+44:09
+esta herramienta que no existe o directamente le pondrías no inventes
+44:13
+herramientas que no hay. Claro, no no inventes herramientas,
+44:16
+limitate a las herramientas de Tool description.
+44:20
+Sí, sí. Eh, fíjense acá este lo como está lo
+44:25
+debo haber escrito yo a mano, ¿no? Pero acá comentario,
+44:31
+la mejor forma de armar proms, la mejor forma de armar estos system proms o la
+44:36
+mejor forma de armar la las descripciones de las herramientas es
+44:40
+justamente utilizando un modelo del elm. O sea, si yo copio este esto que tengo
+44:45
+acá, uy, se me Si yo copio esta descripción y se la doy a chap GPT y le
+44:50
+digo, "Mejórame este promo, mucho mejor que esto, mejor
+44:54
+estructurado, mejor definido. Cada vez, yo lo fui
+44:58
+armando, estoy seguro que cuando lo armé fue de prueba y error y era como, bueno,
+45:04
+tengo otro otra notebook ahí que es más vieja donde yo quería usar
+45:10
+e stable diffusion, que es un modelo de generación de imagen, y siempre que le
+45:16
+pedía me respondía cualquier cosa, no lograba que use esa herramienta y y
+45:22
+bueno, con el prom interno, con este prom lo fui guiando hasta bueno
+45:27
+hasta que hizo lo que quiso, no lo que yo quise, ¿no? Si no hacía lo que él
+45:31
+quería. Eh, pero más que nada esto es eh limitarle o tratar de que no se vaya por
+45:38
+cualquier lado. Eh, pero sí es eso. No podría decirle no no te equivoques
+45:42
+porque no no tiene sentido porque no lo hace de forma en teoría no lo haría de
+45:48
+forma no no quiero decir consciente, no lo no
+45:52
+lo haría a propósito. Eh, pero bueno, es eso. Es como si
+45:57
+ustedes lo están usando y de golpe ven que siempre que ustedes le están en un
+46:01
+dominio, no sé, están en un banco y ven que están haciendo un modelo y cada vez
+46:07
+que le preguntan sobre, qué s yo un plazo fijo, estoy pensando
+46:12
+en el aire, se va el modelo y empieza a buscar herramientas o cosas que no
+46:18
+tienen nada que ver. Bueno, entonces pueden ir al promp interno y
+46:21
+específicamente decirle, "Bueno, cada vez que un usuario te pregunte sobre un
+46:26
+plazo fijo, responde esto, usa este conocimiento o
+46:31
+usa esta herramienta." Pero pero sí es es eso.
+46:37
+Este es el prom interno y fíjense, eh, bueno, este parseo de acción de vuelta,
+46:44
+el modelo nos devuelve texto, solo texto plano para que la gente pueda ejecutar
+46:50
+estas estas herramientas que son código que nosotros les estamos definiendo,
+46:56
+eh necesitamos interpretar la respuesta de la gente, ¿no? Entonces, para eso
+47:02
+usamos el el parseo, que básicamente es eh bueno, me voy a ir un poquito más
+47:07
+abajo, pero es extraer el buscar que está respondiendo la herramienta que el
+47:12
+modelo, ¿no? Entonces, fíjense, si el modelo está respondiendo final answer,
+47:18
+entonces nosotros sabemos que tenemos que salir del de un ciclof que hay más
+47:23
+abajo porque el modelo ya llegó a la respuesta final, ¿no? Si el modelo
+47:28
+respondió acción en su respuesta, entonces nosotros sabemos que en el
+47:33
+ciclof va a haber un if que si responde con action, entonces tenemos que usar
+47:37
+una herramienta. Por eso es también esta estas esta estructura que le decimos,
+47:43
+bueno, respondé siempre de esta forma porque nosotros más abajo voy a bajar
+47:48
+cuando hagamos el modelo, hay un ciclo for y hay if, ¿no?
+47:54
+If final answer está en las respuestas, entonces
+47:59
+va a haber un rectón final. Ahora vamos un poquito abajo. Pero, ¿por qué estamos
+48:05
+estructurando la respuesta? porque vamos a utilizar la respuesta del agente para
+48:09
+ejecutar código. Eh,
+48:14
+entonces, para saber qué código necesitamos ejecutar, tenemos que buscar
+48:19
+dentro de la respuesta de la gente, bueno, distintas palabras para tomar
+48:23
+decisiones. Final answer es una de las respuestas que estamos buscando, que es
+48:27
+para decir, "Bueno, listo, hasta acá llegamos, ya encontraste la mejor
+48:30
+respuesta." el modelo, ¿no? Eh eh interpreto que tiene la mejor respuesta
+48:34
+y con la que puede responder. Eh quizás tiene que quiere usar una
+48:40
+herramienta, bueno, va a actions. Y también vamos a ver más abajoanto
+48:46
+super ansioso, pero en el ciclofors
+48:56
+o pensamientos o razonamiento que pueda hacer el módulo, porque también se nos
+49:00
+puede hacer un loop como un ciclo wi, ¿vieron? O sea, se nos puede quedar
+49:03
+pensando todo el todo el tiempo usando una herramienta, eh, pensando en la
+49:08
+respuesta. Dice, "No, necesito una respuesta mejor." y tera y tera itera y
+49:12
+terera y todo eso es consumo y y es interacción con con el proveedor de
+49:17
+servicio. Entonces, eso lo tenemos que frenar, che. Si si la gente ahora vuelvo
+49:22
+un poquito para arriba, pero si la gente hizo más de cinco interacciones de
+49:26
+pensamiento, bueno, frenalo porque se trabó o no llegó a la respuesta.
+49:31
+Eh, entonces estábamos en esto, ¿no? Eh, el
+49:36
+paro de las acciones, el modelo devuelve texto plano. Nosotros necesitamos buscar
+49:41
+dentro de ese texto formatos como acción, websarch y eh bueno,
+49:46
+Transformers. Acá dice nada que ver, pero supóng si la pregunta es
+49:52
+dame o buscar información en internet sobre Transformers. Bueno, el modelo por
+49:58
+el prom interno que yo armé va a responder acción dos punsearch
+50:03
+barra vertical transformer. Fíjense que yo definí acá arriba, vuelvo de vuelta
+50:08
+para arriba, perdón, pero yo definí explícitamente acá el formato opción
+50:13
+siempre debe tener un una barra barra vertical.
+50:18
+Entonces, ahora vamos a la la verdad, digamos, cómo cómo funciona esta gente
+50:23
+por detrás. Bueno, tenemos el bucle, el bucle del
+50:27
+agente, en este caso bucle react porque es el tipo de agente este de que razona
+50:31
+y y toma acción, pero es el bucle de la gente, es el núcleo de del agente. Dice,
+50:38
+"Envía la consulta al Lelm, lo que les venía diciendo, el modelo
+50:43
+razona, más que razona, el modelo envío una respuesta, o sea, genera una
+50:47
+respuesta como la respuesta la genera como yo les mostré la clase pasada que
+50:51
+se generaban los gembing, las distancias entre los las distintas palabras y
+50:55
+demás, va por ese lado. Es ese es el razonamiento.
+51:01
+Decide si necesita utilizar una herramienta.
+51:04
+Python ejecuta la herramienta. De la herramienta obtenemos una
+51:09
+respuesta, ¿no? Si es un cálculo, si es la búsqueda en internet, vamos a obtener
+51:13
+una respuesta. Se la damos de vuelta al modelo. Esa respuesta razona el modelo
+51:18
+si con la información nueva que tiene le alcanza.
+51:22
+Ejemplo, ¿cuál es el presidente de cierto país? cualquiera. El modelo dice,
+51:28
+"Bueno, para saber esto necesito buscar en internet."
+51:34
+Ejecutamos la herramienta, buscamos en internet los cinco primeros resultados
+51:38
+de quién es el presidente de ese país, se las volvemos a dar al modelo. El
+51:42
+modelo dice, "Bueno, esta respuesta, esta información me sirve para ahora sí
+51:46
+saber cuál es el presidente actual de ese país final answer. El nombre de la
+51:52
+de la persona, ¿no? Es es como un ejemplo ahí medio pensado en el aire.
+51:56
+Entonces, a ver, e el usuario hace una pregunta, el genera
+52:02
+y toma acciones con Python ahí en el ciclo for que vamos a ver abajo.
+52:07
+Detectamos si necesitamos ejecutar la tool, ejecutamos la tool, obtenemos le
+52:13
+volvemos a mandar el modelo de la respuesta. Observación, bueno, modelo
+52:16
+con resum eh razonando hasta que el modelo responde con final answer, dos
+52:23
+puntos y bueno, la respuesta al final. Entonces sí, acá está, fíjense, el
+52:31
+la función principal que es esta que es ejecutar el agente RAM Gu baj.
+52:37
+Necesitamos la user query, que es la pregunta de del
+52:43
+usuario, que es un un este tipo de programación es una programación dicen
+52:49
+estructurada, ¿no? Porque yo, fíjense, esto lo puedo definir así o no, pero
+52:54
+fíjense que acá define la función, define el parámetro, dos puntos y define
+53:01
+el tipo de de dato que está esperando, que es un stream.
+53:05
+Y acá esta flechita que ven acá es cómo va a ser la respuesta. Entonces, uno
+53:11
+viendo la pregunta, eh, perdón, viendo la función, la definición de la función,
+53:14
+dice, "Ah, bueno, esta función espera un stream y va a devolver una lista de
+53:19
+listas, ¿no? Una lista con un string y un diccionario.
+53:26
+Pero nada, es un tipo de de programación más estructurada que
+53:31
+en Python la facilidad o una de las ventajas de
+53:35
+Python es que no necesitamos hacer esto, o sea, no necesitamos estructurar tanto
+53:40
+nuestro código, ¿no? Como era C++ esos. E
+53:48
+entonces, fíjense, tenemos el el system prom, que es la la
+53:55
+definición que nosotros hicimos más arriba de esos un agente Rapa, qué sunta
+54:00
+del usuario. Entonces nosotros en esto hay que tenerlo en cuenta, ¿no? Cada vez
+54:06
+que nosotros estamos usando el modelo o le estamos haciendo una pregunta, le
+54:10
+estamos pasando todo el system prom, que todo ese system prom son tokens y es
+54:15
+plata, básicamente es interacción con el con el modelo.
+54:21
+Eh, entonces eso hay que tenerlo en cuenta, ¿no? Y además seguramente
+54:28
+no me acuerdo cómo está acá, pero estamos pasando
+54:32
+el system prom, la respuesta, el la pregunta del usuario y después empezamos
+54:37
+a pasar de vuelta el system prom con la respuesta del modelo. Entonces cada vez
+54:41
+empieza a ser más grande, ¿no? Y el uso es mayor. de vuelta. Hay long chain, hay
+54:48
+long graph y hay nuevos framework y nuevas herramientas que justamente hacen
+54:53
+que no tengamos que que gastar token en eso. Nico les va a
+54:59
+mostrar la próxima clase RAC, que es una forma de guardar información también
+55:05
+para que el modelo pueda usar eso y no tener que todo el tiempo buscar
+55:10
+información por distintos lugares. Eso son cosas que hay que tener en
+55:13
+cuenta, pero son más del uso, ¿no? Del uso de de las herramientas.
+55:19
+Entonces, acá tenemos el ciclo for, el ciclo iterativo, donde le vamos a decir,
+55:23
+bueno, para cada uno de los pasos en la cantidad máxima de pasos que que te
+55:29
+dije, que es esta de acá, fíense. Bueno, llamamos al LM con la primera función,
+55:35
+la primera de todas que les mostré, le pasamos el mensaje.
+55:40
+Bueno, y fíjense acá hay una pend, o sea, que este mensaje lo que les decía,
+55:44
+se va haciendo cada vez más grande. Le vamos pasando el system prom. la
+55:48
+pregunta del usuario. Voy marcando, bueno, el mensaje y al mensaje le vamos
+55:55
+haciendo una pen. El appen, si se acuerdan, era agregar al final de la
+56:00
+lista eh, bueno, la salida del LLM, acá la respuesta y como es un ciclofor, esto
+56:07
+lo vamos a hacer cinco veces. Nada, la este mensaje se va haciendo cada vez más
+56:11
+grande. Seguramente hay formas mejores de
+56:14
+optimizar lo que lo hice acá. Eh, entonces estamos buscando. Lo
+56:20
+primero que hacemos es le damos la pregunta a la gente, el agente nos da
+56:24
+una respuesta, de la respuesta del output del agente buscamos si está el
+56:29
+final answer, si está la pregunta, la eh el stream final answer o si está el
+56:35
+stream acción. En base a eso tomamos una una decisión.
+56:43
+Si está final answer en la respuesta del modelo,
+56:47
+en el stream que nos devuelve el modelo, si está final answer y no está acción,
+56:53
+entonces esta es la respuesta final de del modelo.
+56:59
+Si no, o sea, no si no no hay un else, sino un otro if. Sí, está solo action,
+57:05
+¿no? O sea, fíjense acá estaba final answer y estaba acción. Entonces, bueno,
+57:12
+esto no se cumple, no pasa al segundo paso, porque se confundió el modelo y
+57:15
+puso final answer y puso acción. Si no estaba final answer y estaba
+57:21
+acción, vamos al segundo a la segunda lógica, ¿no? Donde vamos a buscar una
+57:28
+tool, el el nombre de la tool y eh el input que necesita la tool. Y acá está
+57:35
+la acción, ¿no?, que es justamente el la tool que el modelo quería usar.
+57:40
+Si la tool que nos dijo el modelo no está en la lista de todas las tools que
+57:44
+tenemos, devolvemos un error. No, nada, me estás me estás yendo. Esto es para el
+57:50
+modelo, ¿no? Me estás yendo a buscar una tool que no existe. Las tooles, las
+57:55
+tools disponibles son esta de acá. Fíjense que está todo programático,
+57:59
+digamos. No, no, no es nada que hace el modelo, sino que en base a la respuesta
+58:04
+del modelo tomamos decisiones. Si no, bueno, usas la tool. con el tool
+58:10
+name y le mandas el input. Después ustedes ven cómo está calificado. Yo les
+58:14
+quiero mostrar ahí un poco la lógica, ¿no?, que hay por detrás, más allá de de
+58:19
+bien el código y que está haciendo en cada uno de los pasos.
+58:22
+Eh, entonces este trace es como el historial, ¿no? Entonces, al historial
+58:27
+le sumamos en qué paso estamos, la salida del LLM, qué tool va a usar y eh
+58:34
+la observación a la salida de SAT. Eh, bueno, nada. Y acá está el mensaje,
+58:41
+después lo lo ven tranqui, ¿no? ¿Cómo está este ciclo?
+58:45
+Eh, y si se llegó, o sea, acá terminó el ciclo for, si en las cinco iteraciones
+58:49
+no obtuvo una respuesta, bueno, devolvemos este que no no se obtuvo una
+58:53
+respuesta final dentro de el máximo de pasos y devolvemos igual que que fue
+58:59
+pensando y observando el el agente. Pero fíjense que entonces el agente es
+59:04
+esto, ¿no? Es de la respuesta del modelo tener una lógica para usar distintas
+59:09
+funciones. Esta es la forma de de
+59:14
+hacemos un cómo mostrar este historial. Y
+59:20
+bueno, acá hay ejemplos, fíjense, corremos la gente con esta es la
+59:27
+respuesta final y los pensamientos o el historial, que es una herramienta en un
+59:32
+agente de A, paso uno, pensamiento. Fíjense cómo está estructurando la
+59:37
+respuesta el agente como nosotros le pedimos. Paso uno, pensamiento. Para
+59:42
+explicar brevemente qué es una herramienta en una agentea, necesito
+59:46
+buscar una definición adecuada y responde entonces en base al prom
+59:51
+interno que leemos nosotros, action web search, que es una herramienta en un
+59:55
+agente de IVA con un K igual a 1, que es la la cantidad de respuestas. Entonces
+1:00:01
+se ejecuta la tool web search con el input que es una herramienta y estos son
+1:00:07
+los parámetros de de la función. Este es del stream que le va a pasar al a la
+1:00:12
+función. Fue a buscar internet. encontró un
+1:00:17
+el título, la URL y un resumen, pero que esto es el código que nosotros armamos,
+1:00:23
+¿no? Para que esto es de de la respuesta de la herramienta. Entonces, le volvemos
+1:00:29
+a pasar la respuesta de la herramienta al modelo y dice, "Bueno, pensamiento,
+1:00:34
+la observación proporcionada, perdón, la observación proporciona una
+1:00:38
+definición clara de qué es una herramienta en un agente de grama.
+1:00:41
+Respuesta final, dos puntos. Una herramienta es en una agente es una
+1:00:46
+funcionalidad que permite a la gente interactuar con el mundo externo, como
+1:00:49
+navegar en la web, enviar correos electrónicos, procesar datos,
+1:00:53
+automatizar flujo de trabajo. Bueno, sí, esta herramienta permite la cosa es que
+1:00:57
+acá dijo final answer, modelo dijo final answer. Entonces
+1:01:03
+vino acá en este cayó en el if, en este if y nos
+1:01:07
+devolvió eso. Eh, ¿qué fecha es hoy?
+1:01:13
+dice, "Necesito saber la fecha actual." Entonces va a ir usar la la tool now.
+1:01:18
+Necesito saber la fecha actual. Fíjense acá no no funcionó. No no llamó bien a
+1:01:22
+la herramienta. No me respondió la fecha final.
+1:01:26
+Eh, respondió a esto. Nada que ver. Busca información sobre los Simpson y
+1:01:31
+dame cinco enlaces relacionados. Bueno, acá hice lo mismo. Fue necesito buscar
+1:01:36
+información sobre los Simpson y obtener cinco enlaces relacionados. A ver, vamos
+1:01:40
+a intentar subir esta lógica. dijo action web search. Entonces si vamos al
+1:01:46
+ciclo for action llamó a la herramienta web search va
+1:01:54
+tool name. Acá tools to name después se fijan cómo está codificado esto, pero
+1:01:59
+básicamente acá en Tool name dijo web search y el input que le dio a la
+1:02:04
+función es eh,
+1:02:08
+¿cómo era? a buscar los Simpson, no me acuerdo. Eh,
+1:02:13
+acá le digo el perdón, me acá historia de los Simpson,
+1:02:21
+eh, la acción web search y el input, historia de los Simpson y el K = 5.
+1:02:25
+Fíjense que el K está funcionando ahí en el código. Eso me equivoqué yo que les
+1:02:29
+dije que que quizá no funcionaba, ¿no? Fíjense, acá puso K = 1 y eh devolvió un
+1:02:36
+solo título. acá K = 5 y me devolvió cinco. Fíjense que el el agente solo no
+1:02:44
+eh buscó la información y se dio cuenta que yo necesitaba cinco enlaces.
+1:02:49
+Entonces, bueno, busco los cinco enlaces que fíjense que a ver, fíjense, acá se
+1:02:56
+equivoca, ¿no? Eh, necesito buscar información sobre
+1:03:00
+los Simpson. Yo le estaba hablando de de la serie de televisión, no se lo aclaré,
+1:03:05
+pero acá está buscando casos de OJ Simpson, ¿no? Es ese caso de de
+1:03:09
+asesinato de Estados Unidos. Acá está la historia de los Simpson,
+1:03:14
+pero hay unos links que no que no corresponden, ¿no? ¿Por qué? Porque yo
+1:03:19
+le hice no fui específico en la respuesta
+1:03:23
+eh en la pregunta, perdón. Ya tengo cinco enlaces relacionados con
+1:03:27
+la historia de los Simpson. Bueno, estos enlaces proporcionan información. Quizás
+1:03:31
+si yo le le hubiese pedido algo más complejo como busca información y dame
+1:03:36
+un resumen de la historia de los Simpson, ahí habría que ver qué hubiese
+1:03:40
+hecho. Seguramente hubiese mezclado información de la serie de los Simpson
+1:03:44
+con el caso policial, ¿no? Bueno, próximos pasos, o sea, esto es
+1:03:53
+eh nada, próximos pasos va a ser Long Chain, que es esta esta framework que te
+1:03:59
+facilita el uso y la creación de estos agentes. Vamos a ver que definimos la
+1:04:03
+herramienta de una forma s super más fácil.
+1:04:06
+E este es uno de los agentes, el React,
+1:04:10
+donde usa la herramienta, observa los resultados y acá lo que yo les propongo,
+1:04:14
+hay hay otras arquitecturas de agente. Si quieren cuando trabajen con acá, lo
+1:04:20
+que pueden hacer es eh bueno, no van a estar trabajando con con ninguno de sus
+1:04:27
+de sus bases de datos porque estamos eh importando un un modelo y y nada,
+1:04:33
+estamos interactuando, digamos, ¿no? no hay una base de datos por detrás. ¿Por
+1:04:37
+qué? Porque el modelo ya está entrenado y y funcionando, digamos. No hay que
+1:04:41
+hacer ningún entrenamiento. E pero podrían intentar armar alguno de
+1:04:47
+de estos otros otros agentes, ¿no? Eh, estos de cadenas de pensamientos, de
+1:04:52
+armar, separar y planificar. Eh, fíjense que sobre estos, no sé si
+1:04:59
+si han trabajado con con agentes o trabajan en su día a día con agentes, yo
+1:05:04
+lo uso para eh eh lo uso en en mi trabajo
+1:05:11
+personalmente, en Visual el Studio Code. Desde el trabajo me dan un plan de
+1:05:18
+Copilot, el de el de GitHub, nada, es una herramienta de Guidus que
+1:05:23
+lo puede conectar a Visual Studio Code. Y ahí cuando estamos haciendo
+1:05:28
+programación usamos un tipo de agente que es eh este
+1:05:33
+que planifica y ejecuta. ¿Para qué? para que nosotros le decimos, "Che, no sé,
+1:05:37
+necesito generar una nueva función que haga tal cosa." Bueno, que la gente no
+1:05:42
+empieza a modificar el código rápidamente, sino que puede hacer un
+1:05:46
+plan donde nosotros podemos modificar ese plan y en base a lo que vamos
+1:05:50
+interactuando con el LLM, con esta gente, bueno, después sí modifica el el
+1:05:55
+código y demás. Eh, y este último RAR, eh,
+1:06:02
+son agentes que este después lo van a poder armar para para el segundo TP. eh
+1:06:09
+están conectados a unas bases de conocimiento externas que se las va a
+1:06:12
+dar Nico, la clase que viene, ¿no? Entonces va a ser van a poder hacer un
+1:06:16
+un agente conectado a estos estos retribal
+1:06:20
+eh a decir el nombre y se me fue, ¿no? De R
+1:06:27
+eh es generación aumentada. Entonces,
+1:06:34
+¿tienen alguna dudas? Muchas dudas, pocas dudas. Entendió más o menos cómo
+1:06:40
+funcionan los agentes más allá de de esto del código y la lógica, de cómo
+1:06:45
+funcionan por detrás los agentes. No sé si
+1:06:53
+si se entendió. Por mi parte yo entendí.
+1:07:00
+Genial. Sí, profe, bastante claro.
+1:07:03
+Gracias. Y pregunta. Bueno, esperen que dejo de grabar
+1:07:09
+así les unas preguntas,

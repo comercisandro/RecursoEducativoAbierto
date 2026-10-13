@@ -1,0 +1,680 @@
+0:02
+Bueno, eh, bueno, eso, cualquier cosa, si si no me
+0:07
+escuchan bien o o no ven bien, me avisan. Estoy medio medio refriado.
+0:13
+La idea de hoy es ver eh la segunda parte de agentes.
+0:18
+¿Se acuerdan que las clases pasadas estuvimos viendo
+0:22
+cómo crear un agente de una forma más rústica, como la vamos
+0:27
+a ver ahora? Eh,
+0:30
+era un agente tipo React. Yo les dije que había había distintos tipos de
+0:34
+agente, que era un tipo de agente y eh habíamos armado unas tools que eran las
+0:40
+herramientas con las que podía interactuar el agente para realizar
+0:44
+distintas tareas, ¿no? Como buscar en internet, buscar información por la eh
+0:48
+con la que no fue entrenado y y por lo tanto no tiene conocimiento.
+0:52
+Y hoy lo que les quiero mostrar es e agentes con Longchain, que Longchain es
+0:58
+un framework de trabajo para crear agentes. Es un framework que está en
+1:03
+constante eh desarrollo, por lo que muchas de las
+1:08
+funciones quizás que que vean acá están deprecadas y hay que buscar las nuevas
+1:12
+actualizaciones. Yo creo que este lo había actualizado igual, pero por las
+1:15
+dudas este está en el repositorio por las dudas. Si ven que alguna cuando
+1:19
+lo corren ustedes alguna función no les no les funciona o algún método, nada,
+1:24
+quizá cambio cambio de nombre o cambiaron los los argumentos que los
+1:28
+parámetros, perdón, que que pide la función.
+1:32
+Pero la idea de de este framework es e facilitar la forma en la que en la que
+1:37
+creamos el el agente. Si se acuerdan de la clase pasada, después si revisan o si
+1:42
+ya lo vieron. Para crear una skill teníamos que armar un bueno, una clase
+1:47
+que no no viene no viene el caso, pero teníamos que definir la tool, después
+1:51
+agregar un una descripción de de qué hacía la tool por separado y unificar
+1:57
+las dos cosas, ¿no? Y después armar el promo interno de la gente, bueno, y
+2:00
+explicarle todo lo demás. Eh, el framework este facilita la
+2:05
+creación de de tools y la descripción de las tools y también se encarga de
+2:10
+facilitar o o nos facilita, perdón, la definición de la gente y todo
+2:16
+ese ciclo iterativo. ¿Se acuerdan que hacíamos un ciclo for que buscábamos el
+2:19
+regex de en la, o sea, con un rex buscábamos en la respuesta de la gente
+2:24
+si necesitaba usar una herramienta o no? Bueno, esto lo facilita, es mucho más
+2:28
+fácil de armar con esto. Entonces, e bueno, acá está un poco lo
+2:34
+que les estaba comentando de qué vimos en la clase pasada. Definimos las tools,
+2:40
+hicimos el prompt de de la gente, esto que les decíamos, parábamos las
+2:45
+acciones, las respuestas, ¿no? Con un Rex buscábamos si la gente quería usar
+2:49
+una tool o qué quería hacer o si era su respuesta final. Nosotros le decíamos,
+2:53
+¿no? Bueno, si es tu respuesta final, eh, responde con respuesta final. Eh,
+2:59
+bueno, ejecutaba las las herramientas y era un bucle, un ciclof, ¿no? Era un
+3:04
+bucle iterativo. Entonces, la idea es trabajar con con
+3:09
+Long Chain, lo que les decía, este framework, eh, que nos permite codificar
+3:14
+menos, digamos, ya está como más más servido, más fácil de armar.
+3:19
+eh las partes que tuvimos que bueno, esto
+3:23
+es como un repaso de la clase pasada, después lo ver, pero está el PR manual,
+3:27
+el par las tisíamos teníamos esto, ¿no? Que que al cuando el
+3:35
+agente o cuando íbamos agregando más tools y demás se hacía cada vez más
+3:38
+grande, el código que teníamos que escribir era mayor, las definiciones de
+3:42
+de que hace cada tool quedaban como bastante mezcladas y demás. O sea, por
+3:46
+un lugar, por un lado teníamos las tools, que eran las funciones, por
+3:50
+otro lado teníamos las definiciones en en texto, digamos, de qué hacía la tool
+3:54
+con los ejemplos. Entonces, Longchain nos facilita eh este
+3:59
+trabajo. Ya vamos a ver. Eh, bueno, acá está un poco la definición de que es qué
+4:04
+es lachain, pero básicamente eh lo lo vamos a usar
+4:10
+como esto, como una abstracción de lo que ya construimos manualmente. Nos
+4:13
+facilita el la creación de los agentes de vuelta. Lo mismo esa es la idea, ¿no?
+4:18
+Reemplaza el concepto de React. Digamos, React es un tipo de agente. Longchange
+4:22
+es un framework para crear estos agentes. Eh, bueno, y acá es justo lo
+4:27
+que les acabo decir. Entonces, como siempre, lo primero que hacemos es
+4:30
+instalar las librerías que necesitamos, en este caso LCin, Lchain Open AI, que
+4:38
+con esto vamos a a traernos los distintos modelos.
+4:42
+Y lo que vamos a hacer es conectarnos a a
+4:48
+un proveedor del modelo que vamos a estar utilizando como el cerebrito de la
+4:52
+gente, digamos, al al LGM. E
+4:57
+bueno, ahora vamos a la clase pasada les mostré cómo conectarnos a Hening Face.
+5:02
+Ahora lo vamos a hacer de vuelta. se los voy a se los muestro de vuelta, pero nos
+5:06
+vamos a a conectar a Hugin Face a partir de eh Long Chain, ¿no?
+5:11
+Entonces, si recuerdan, para conectarnos a a Haging Face o a la mayoría de los
+5:17
+servicios, eh necesitamos un token, una clave personal que si quieren les
+5:24
+recuerdo cómo cómo obtenerla, pero era entrar a la página de de Haging Face, ir
+5:29
+al a nuestra cuenta. Había una sección que
+5:33
+decía KISS o API Keys. Creamos esa clave única y que no la tienen que compartir.
+5:41
+Y con eso cuando lo lo ingresábamos acá, a ver, vamos a ver si conecta la el
+5:48
+notebook para que vean cómo les aparece, pero
+5:51
+una vez que que ejecutamos esa celda de código, nos
+5:55
+va a aparecer nada un lugarcito acá para introducir es aquí. Una vez que
+6:01
+introducimosla aquí y ejecutamos, vamos a estar conectados a a Heading
+6:06
+Face y vamos a poder listar, como hicimos la
+6:09
+otra vez todos los modelos disponibles, ¿no? Fíjense que es muy parecido a lo
+6:13
+que hicimos la vez, la forma de conexión y cómo listamos los modelos, salvo que
+6:17
+acá lo usamos o nos conectamos a través de la
+6:24
+librería de Open. Acá me aparece para poner el token.
+6:28
+Vamos a ir a buscarlo. Vamos acá. Eh,
+6:33
+quiero ver si tengo la sesión iniciada. A ver,
+6:40
+opciones, eh,
+6:45
+así les recuerdo cómo era. Iban a su perfil,
+6:49
+iban a la parte de access token y creaban un nuevo token.
+6:57
+Token name, clase.
+7:04
+Vamos a poner crear token. Bueno, este lo copian. ¿Se
+7:09
+acuerdan que este lo después lo tenían que borrar? Esto no lo comparten con
+7:11
+nadie porque ustedes ahora podrían entrar a mi cuenta. Si quieren pueden
+7:15
+conectar, pero una vez que lo ingresamos, listo, ya estamos conectados
+7:20
+y podemos listar todos los modelos que hay. No,
+7:24
+que debe haber cambiado la lista esta. Entonces, yo ahora lo que voy a hacer es
+7:29
+borrar el token y listo. Nadie va a poder entrar con este token. Fíjense, si
+7:34
+yo me quiero conectar nuevamente acá utilizando el mismo token, bueno,
+7:38
+tendría que reiniciar la sesión, pero cuando lo ingrese me va a decir token
+7:42
+invalido. Entonces, esta es la lista de modelos
+7:46
+que que tenemos disponible. Hay hay un montón, como les decía, están creados
+7:50
+para distintos usos, ¿no? Están entrenados
+7:54
+para para distintos usos, para responder preguntas, bueno, hay hay de todos, para
+7:59
+sumarización, para traducción y demás. Y como les decía, estos son la cantidad de
+8:04
+parámetros, ¿no? Y están en el orden de los billones, de miles de millones.
+8:09
+Eh, entonces nosotros podemos seleccionar el
+8:13
+el modelo que vamos a usar. teníamos el hiperparámetro de la temperatura, que
+8:16
+era eh cuál era la probabilidad o o cómo restringíamos el modelo que para generar
+8:24
+el texto eh utilice la palabra más probable o menos probable. Con esto le
+8:28
+damos un poco más de creatividad al modelo, le dejáamos ser un poco más
+8:32
+creativo en las respuestas, pero bueno, esto pega directamente también en las en
+8:37
+las alucinaciones. Entonces, fíjense que ahora para llamar
+8:42
+al modelo es simplemente antes era una función un poco más compleja, ahora es
+8:47
+simplemente el L el que es la librería invok y qué le queremos preguntar el
+8:53
+modelo. Y la respuesta, el content de la respuesta directamente es el resultado,
+9:00
+¿no?, de de invocar el modelo. Acá estamos invocando el modelo, le estamos
+9:03
+pasando esta este texto y lo que genera el
+9:08
+modelo a partir de este texto, la respuesta es esta que es Long Chain en
+9:13
+una frase. Longchain es una plataforma que conecta modelo de lenguaje en forma
+9:17
+secuencial para mejorar su rendimiento y capacidad en tareas complejas.
+9:21
+mucho más simple que lo que hacíamos antes, ¿no? Antes era teníamos un poco
+9:26
+más de líneas eh para un poco más de líneas de texto para
+9:32
+poder interactuar con el agente y después si si revisan la notebook
+9:36
+anterior creamos una función para poder hacer esto. Entonces acá ya está la
+9:41
+función creada directamente usamos esta función. Entonces, ya ahí es un
+9:48
+unas cinco o seis líneas de código se transformaron en una sola línea
+9:53
+y nos tenemos que olvidar de cómo está hecho esto por detrás. Eh, bueno, y
+9:58
+también otra de las grandes diferencias es cómo
+10:01
+armamos las las tools, ¿no? Estas herramientas a las que tiene acceso el
+10:06
+el agente. Antes hacíamos un decorador, se llama este tipo de función, ¿no? Que
+10:12
+se llamaba Tool, le hacíamos toda la descripción. poníamos la descripción por
+10:16
+fuera, eh, y y se hacía un un
+10:21
+choclo de código, digamos, se hacía bastante largo.
+10:24
+Ahora solamente utilizamos, perdón, antes hacíamos la función, ¿no? Hacamos
+10:29
+la función larga con la descripción y y teníamos que ir
+10:35
+agregando las funciones de las tools a otra clase. Bueno, ahora nos permite
+10:42
+utilizar este decorador que básicamente después de poner este @tool, lo que
+10:48
+sigue después, el código ya sabe que va a ser una tool para eh
+10:55
+blockchain. Y fíjense que ahora la descripción de la de la herramienta, o
+11:01
+sea, lo que hace la tool, queda simplemente definido en el encabezado de
+11:07
+la función, ¿no? Uno en cuando define una función, lo que suele poner después
+11:13
+entre estas comillas triples es, bueno, una descripción de la función. Bueno,
+11:18
+ahora Longchain toma esta descripción de la función como justamente la definición
+11:24
+o la descripción de la tool, ¿no? Entonces ahora esta tool devuelve la
+11:29
+fecha y hora actual. Usar solo cuando el usuario pregunte por fecha, hora o
+11:33
+momento actual. Antes lo hacíamos por separado, ¿no? Teníamos la función que
+11:37
+era esta. Y por otro lado teníamos la definición de la función que iba por
+11:41
+otro lado y teníamos que poner esto. Bueno, también nos ahorra líneas de
+11:46
+código y queda todo comprimido, encapsulado en un solo lugar, ¿no? Ahora
+11:51
+la tool está solo encapsulada acá. Necesitamos tener varias eh función y
+11:57
+descripción y demás. Lo mismo para web search, que era una
+12:02
+tool que que habíamos armado para que el modelo, el agente pueda ir a buscar
+12:06
+información por internet. Bueno, de vuelta. Ahora ponemos el decorador, la
+12:10
+descripción la ponemos, bien armamos la función y busca información. Usa para
+12:15
+preguntar eh eh usar para preguntas, perdón, que
+12:19
+requieren información externa, concepto, historia, noticias, enlaces.
+12:24
+Eh, entonces, fíjense que ahora sí armamos una lista de de las distintas
+12:29
+funciones de perdón, una lista de de tools
+12:34
+y nos quedan ya la tool con el título de la tool y la descripción.
+12:41
+Fíjense que con el decorador este, con este decorador nos creó dos métodos. Uno
+12:48
+es el nombre que lo sacó de acá, web search, web search y tiene una
+12:54
+descripción que la sacó de la descripción propia de
+12:58
+la función. Este texto lo sacó acá.
+13:03
+Entonces, nada, esto nos facilita mucho el la forma en la que más que nada
+13:09
+mantenemos el código, ¿no? En vez de ir a buscar por distintos lugares el
+13:12
+código, lo tenemos todo encapsulado en la función.
+13:17
+Y entonces, fíjense que eh
+13:22
+bueno, podemos podemos ejecutar como invocábamos a la
+13:28
+gente, podemos ejecutar las funciones
+13:31
+directamente, probarlas directamente con el websearch.inow, que es un agente
+13:35
+React. Entonces, ya con esto es como que forzamos al agente o al LM, en este caso
+13:41
+todavía no es un agente, sino que son es un ll con tools. Lo forzamos a que use
+13:47
+la tool para ver si funciona o no. Entonces, ya acá podemos hacer una
+13:51
+prueba del funcionamiento de las funciones,
+13:54
+de la redundancia, eh, que antes no podíamos hacer. Antes teníamos que crear
+13:58
+a la gente, cuando lo teníamos definido, teníamos que probar que las funciones
+14:05
+eh funcionan, o sea, que las funciones, las tools, las herramientas eh funcionen
+14:11
+correctamente. ¿Cómo hacíamos? Bueno, intentábamos forzar al modelo para que
+14:15
+busque en internet. Acá lo que hacemos en vez de hacer eso
+14:19
+es utilizar el método directamente. Entonces esto también es una gran
+14:25
+ventaja, ¿no? Eh,
+14:30
+entonces eh de vuelta, fíjense, está el name y la
+14:33
+descripción. Acá está es lo mismo que este, que este acá está como duplicado
+14:39
+eso, pero es el nombre y la descripción. Entonces, ahora sí podemos crear el el
+14:46
+agente con con Long Chin de una forma s superfácil. Ya no vamos, como dice acá,
+14:52
+ya no vamos a escribir manualmente el Rex, este, el parseo y el loop,
+14:57
+eh, ni el lugar donde la gente va a guardar el razonamiento y el historial.
+15:02
+¿Se acuerdan que antes nosotros, miren, vamos a ver la definición
+15:08
+antes nosotros, a ver si si lo tengo para mostrárselos
+15:12
+así lo comparamos, creo que va a quedar más visualos acá
+15:21
+eh materiapente
+15:27
+React? Vamos a hacer una comparación rápida.
+15:32
+cómo lo teníamos la clase anterior y cómo es esta. Este es el del anterior,
+15:36
+¿no? Fíjense, esto es lo mismo para invocar el el
+15:39
+token. Esto era lo mismo, pero acá para mandar un mensaje teníamos que hacer
+15:45
+esto, ¿no? Y para sacar la para obtener la
+15:50
+salida útil del mensaje también era un poquito más complejo.
+15:54
+Entonces, fíjense cómo pasó de esto a dónde está a esto de acá. Fíjense, nada
+16:02
+que ver. Después nosotros habíamos armado una función, ¿no? Acá está la
+16:07
+función para llamar el LLM, que es algo parecido
+16:11
+a esto de acá, pero esto está programado por detrás, ¿no? Los que mantienen el
+16:16
+framewor este, bueno, por detrás sí, si ustedes descargan esta librería y entran
+16:20
+a ver los distintos métodos, van a ver algo parecido, mucho mejor codificado a
+16:25
+esto. Pero la definición de las tools también,
+16:28
+fíjense que antes definíamos la herramienta,
+16:33
+después agregamos una descripción de la herramienta.
+16:37
+Teníamos que hacer esto, ¿no? Agregar una descripción. Entonces concatenáamos
+16:41
+el nombre de la tool con la descripción y con la herramienta.
+16:45
+Bueno, ahora era superfácil. Usáamos el decorador,
+16:49
+perdónamos para abajo. Usábamos el decorador y listo. Esto que está acá o
+16:54
+este que está acá de web search es lo mismo que
+16:58
+todo esto, que es la definición de la herramienta,
+17:03
+la descripción y ponerla todo acá dentro.
+17:08
+Y por último, e bueno, está este llamado directo que
+17:12
+antes no lo teníamos, pero para armar el agente
+17:18
+teníamos que definir el prom interno, el system prom lo guardábamos en una
+17:23
+variable, ¿no? Le decíamos cuáles eran las
+17:27
+herramientas que tenía que usar y demás. teníamos que definirlo explícitamente
+17:32
+y teníamos que hacer el parseo de las de las respuestas, o sea, entre la
+17:37
+respuesta de la gente buscar qué acción quería quería llevar a cabo el agente y
+17:42
+en base a eso redirigir a la herramienta, ¿no? Y si era una respuesta
+17:46
+final, bueno, teníamos que captar este mensaje para poder terminar el ciclo.
+17:51
+Y el bucle, si se acuerdan, era un ciclo for donde definimos la cantidad máxima
+17:56
+de etapas y dentro nosotros manualmente
+18:00
+codificábamos la lógica para encontrar si la gente quería hacer una acción, si
+18:04
+la gente tenía la respuesta final y demás. Todo esto después lo ven, se
+18:11
+transforma en esto de acá. Fíjense, es solamente llamar una función que es
+18:17
+crear agente, pasarle el modelo que vamos a utilizar, pasarle las tools y
+18:22
+definir el system promp acá. O sea, ya no tenemos ni que poner las tools
+18:26
+adentro del system prom y demás. Fíjense como estas 11 líneas de código, que
+18:32
+podrían ser menos, nos sustituyen la cantidad esta acá, hay 43 más todas las
+18:39
+otras más esta de acá y más. O sea, realmente nos ahorra
+18:45
+tiempo en la construcción eh y el mantenimiento también, ¿no?
+18:49
+Porque nos olvidamos cómo está armado esto por detrás, cómo hicieron esto,
+18:53
+cómo hicieron esto del crear agente, nos olvidamos. Solo nos pide como los
+18:56
+parámetros que necesitamos. Y listo. Eh, y ahora sí, la ejecución del agente
+19:03
+es simplemente, fíjense, acá definimos el agente, ¿no? Es simplemente con el
+19:08
+mismo método invoke. Decimos, bueno, a la gente lo queremos invocar con un
+19:13
+mensaje. ¿Cuál es el mensaje? Bueno, explica
+19:16
+brevemente que es una herramienta en un agente de guía.
+19:20
+En el contexto de agente inteligencia artificial, una herramienta, bueno, es
+19:23
+un recurso función que la gente puede utilizar para obtener información
+19:26
+adicional o realizar tareas complejas. Nada, de de este mensaje nos quedamos
+19:31
+con la última parte. El menos un si se acuerdan, es es la última parte.
+19:34
+Entonces, acá está el mensaje. Eh,
+19:40
+podemos invocarlo de vuelta. Fíjense que acá le estoy intentando que use la
+19:46
+herramienta de búsqueda. Dame las ocho noticias del día. Acá tienes las ocho
+19:50
+noticias del día. Bueno, esto no sé de cuándo será la última vez que lo
+19:53
+ejecuté, pero nos aparecen todas las las noticias. No habría que mejorar un poco
+19:58
+cómo se muestra acá porque están los saltos de línea y demás que no se ve muy
+20:02
+lindo, pero es mucho más fácil eh el uso de cómo lo hacíamos antes, ¿no?
+20:10
+¿Qué día es hoy? Bueno, quiero que use la herramienta
+20:14
+e la la que habíamos de hecho es la de Naus, ¿no? No me acuerdo cómo se
+20:19
+llamaba, pero esta de que busca en el s en el sistema cuál es la era la hora y
+20:25
+la la fecha actual. Eh, ah, bueno, la fecha solamente.
+20:30
+Entonces, nada, perdón que fui rápido, la verdad me siento más o menos, pero
+20:35
+creo que se entendió y y más que se entendió, la clase pasada le dedicamos
+20:38
+bastante a la gente reacca a mano y esto es una una simplificación, ¿no?, de lo
+20:44
+anterior. Creo que hay una comparación un poco entre el agente manual y el
+20:48
+agente creado con la long chain. Teníamos que armar la la clase propia
+20:52
+tool para para armar las herramientas. Acá es el decorador este, ¿no? Con
+20:57
+arroba. Listo. Todo lo que está por debajo y la gente ya sabe que va a ser
+21:02
+una tool. El promp es manual, el promp interno, ¿no? Este, sos un agente. Este
+21:07
+de acáú, acá sos un agente, ¿dónde está? Sos un
+21:13
+agente React. Tu objetivo es todo esto de acá. Bueno, acá ya tenemos un system
+21:18
+prompt y y hay varios templates para usar, ¿no? Dentro de la librería ustedes
+21:22
+pueden buscar que dependiendo de la gente que queremos usar, podemos
+21:25
+traernos un template acá en el system. E
+21:32
+bueno, el loops, ah, bueno, el reex, este, esto era lo más lo más tedioso por
+21:37
+ahí, el parseo de la información y buscar qué acción tiene que que tomar,
+21:42
+qué herramienta tiene que usar. Lo hacíamos a mano, lo codificábamos a
+21:45
+mano. Me voy de vuelta acá. Y fíjense que era un montón. Era hacer el ciclo
+21:51
+for y buscar en la respuesta de la gente. Acá hace lo mismo, pero es
+21:55
+interno, es transparente para nosotros, no lo vemos, digamos. Es una caja negra
+22:00
+y ya está, nos olvidamos el loop. Bueno, era acá lo dice un while, pero nosotros
+22:06
+habíamos hecho un for, pero puede ser obviamente un while hasta que termine. Y
+22:10
+acá nada, se ocupa el agente internamente.
+22:14
+Eh, y las observaciones, ¿qué eran las observaciones? que es básicamente enviar
+22:21
+nuevamente cuando hacemos una nueva pregunta eh lo que nos había respondido
+22:26
+antes el agente. Fíjense, me fui a la al anterior, pero acá en el mensaje
+22:32
+nosotros hacíamos una pen, o sea, agregábamos al mensaje anterior el
+22:36
+último mensaje y lo volvíamos a mandar todo esto a la gente de forma manual.
+22:41
+Bueno, acá se encarga por detrás el framework, bueno, lo gestiona el
+22:45
+framework. E la escalabilidad es limitada en el
+22:49
+sentido de que esto se vuelve tedioso, ¿no? Mantenerlo y demás. Acá es están
+22:55
+más encapsuladas las las funciones, es más modular.
+22:59
+Bueno, y esto esto el debin sí es más explícito porque nosotros tenemos el
+23:04
+código eh armado por nosotros. Entonces, si la
+23:09
+función o si un método rompe, sabemos dónde ir a buscarlo. Este es más
+23:13
+abstracto porque si nos rompe un método, bueno, tenemos que entrar al método, ir
+23:16
+a la a la documentación a ver por qué rompió, ¿no?
+23:20
+Y acá les dejo algo que que también es un término más o menos nuevo, no es tan
+23:26
+nuevo, pero tendrá un año, o sea, que es bastante nuevo. Que es un skills, que el
+23:32
+skill es básicamente eh una tool que utiliza
+23:38
+eh un programa externo. A ver, un programa
+23:42
+externo pero es, supónganse que mi skill tiene que ejecutar otro script o tiene
+23:48
+que ejecutar otra cosa. Bueno, una skill se llama eso. Es una tool que tiene la
+23:53
+capacidad de ejecutar no solo código Python ahora, sino que otro tipo de
+23:58
+código, ¿no? Otro tipo de script o generar otras acciones. Entonces, para
+24:02
+eso, para generar la skill acá no sé si la tengo.
+24:06
+Eh, sí, acá, miren, tengo una skill, pero
+24:12
+eh, fíjense, bueno, capacidad más ampliada
+24:17
+reutilizable. Yo lo que tengo acá, una tool es el web search y una skill es
+24:22
+bueno, hacer la investigación. La skill se llama investigación web, busca,
+24:27
+resumí, compará y extrae entidades, ¿no? Entonces, fíjense que es algo más
+24:30
+complejo, no es solo ir a buscar, sino que un skill tiene varios pasos, ¿no? El
+24:35
+el buscar, el resumir, el comparar, el extraer. Entonces, a eso se llama skill.
+24:40
+Y también eh es lo que les decía yo, que se agregan quizá eh porque esto lo
+24:46
+podríamos hacer como un promp. se agregan la ejecución de scripts o eh
+24:52
+herramientas externas al al código, ¿no? O sea, eh podríamos tener un CSB acá o
+24:58
+un tipo de archivo o una conexión a una base de datos y eso ya sería un skill.
+25:04
+Eh, bueno, acá hay un un ejemplo de un skill
+25:09
+skill simple investigación. hace el web search, después lo resume
+25:15
+y nos da la información final, ¿no? Entonces, en esta skill se invoca dos
+25:19
+veces a la gente, uno para ir a buscar la información. Fíjense que acá estamos
+25:23
+usando la herramienta, ¿no? O sea, la primera parte del skill.
+25:28
+usa la herramienta con la respuesta de la herramienta de la
+25:32
+búsqueda en internet, resume la información y para resumir la
+25:36
+información lo usa la gente.
+25:40
+Entonces, fíjense que acá hay más pasos, ¿no? En esta skill hay más pasos. Hay un
+25:44
+uso explícito de una tool y el resultado con un prom se lo damos a la gente.
+25:50
+Eh, bueno,
+25:56
+fíjense acá también habla de convertir una skill en una tool.
+26:01
+Eh, a ver qué hay acá. No los quiero, no los quiero mezclar, pero
+26:06
+research. Este, ¿dónde está? Ah, bueno, eh, fíjense acá sube un nivel de
+26:13
+extracción, ¿no? Investigar un tema en internet, devuelve un resumen en
+26:16
+español. Bueno, entonces acá dentro de esta tool tenemos el research, que es
+26:22
+este de acá. Acá está como como de más, ¿no? Porque esto está como esto
+26:28
+encapsulado dentro de lo otro. No tiene mucho sentido. No se mareen con esto.
+26:34
+Eh, fíjense que bueno, esto MCP eh se usan
+26:40
+estos estos protocolos. Eh, después búsquenlo un poquito en
+26:45
+internet. es una forma de eh es un estándar abierto que facilita esto, ¿no?
+26:50
+La interacción entre distintos agentes de inteligencia artificial, ¿no? Eh son
+26:56
+formas de o son protocolos, se está estandarizando esta forma de de armar
+27:00
+las skills y demás. Entonces, si ustedes usan, por ejemplo, no sé, Copilot en
+27:05
+Visual Studio Code, bueno, hay una forma de armar los skills con estos MCP para
+27:10
+que para que yo después pueda llevarme ese skill a otra plataforma y lo pueda
+27:14
+seguir usando, ¿no? Como que me puedo seguir, puedo crear un skill que sea
+27:19
+abstracto a dónde lo estoy ejecutando, sea Visual Studio Code, sea en Google
+27:23
+Collab o sea donde fuera. Eh, perdón, no me da mucho más la
+27:30
+garganta. No sé si tienen alguna alguna pregunta, pero básicamente
+27:35
+esta notebook de acá es un nivel más de abstracción y es una forma más fácil de
+27:41
+crear los los agentes. partida. Sí.
