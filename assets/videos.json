@@ -13,13 +13,7 @@
     "captions": {
       "status": "pending",
       "file": null,
-      "note": "No hay subtítulos temporizados .vtt/.srt; se ofrece una transcripción textual con marcas de tiempo."
-    },
-    "transcript": {
-      "status": "available",
-      "file": "fuentes/modulo-1-transcripcion.txt",
-      "format": "txt",
-      "note": "Transcripción textual con marcas de tiempo."
+      "note": "No hay subtítulos temporizados .vtt/.srt disponibles."
     }
   },
   {
@@ -35,13 +29,7 @@
     "captions": {
       "status": "pending",
       "file": null,
-      "note": "No hay subtítulos temporizados .vtt/.srt; se ofrece una transcripción textual con marcas de tiempo."
-    },
-    "transcript": {
-      "status": "available",
-      "file": "fuentes/modulo-2-transcripcion.txt",
-      "format": "txt",
-      "note": "Transcripción textual con marcas de tiempo."
+      "note": "No hay subtítulos temporizados .vtt/.srt disponibles."
     }
   },
   {
@@ -57,13 +45,7 @@
     "captions": {
       "status": "pending",
       "file": null,
-      "note": "No hay subtítulos temporizados .vtt/.srt; se ofrece una transcripción textual con marcas de tiempo."
-    },
-    "transcript": {
-      "status": "available",
-      "file": "fuentes/modulo-3-transcripcion.txt",
-      "format": "txt",
-      "note": "Transcripción textual con marcas de tiempo."
+      "note": "No hay subtítulos temporizados .vtt/.srt disponibles."
     }
   }
   ]
