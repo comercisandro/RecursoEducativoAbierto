@@ -29,19 +29,19 @@ title: Del lenguaje a los agentes inteligentes
         <div class="home-card-top"><span class="home-module-number">01</span><span class="home-card-kicker">REPRESENTACIÓN</span></div>
         <h3>Del texto a Word2Vec</h3>
         <p>Preprocesamiento, tokens, Bag-of-Words, embeddings y distancias entre palabras. Requiere revisar el corpus y la reproducibilidad del entrenamiento.</p>
-        <div class="home-card-actions"><a href="aula.html?module=1">Avanzar en el aula <span aria-hidden="true">→</span></a><a href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/modulo-1.ipynb" target="_blank" rel="noopener noreferrer">Abrir Colab ↗</a></div>
+        <div class="home-card-actions"><a href="aula.html?module=1">Avanzar en el aula <span aria-hidden="true">→</span></a></div>
       </article>
       <article class="home-module-card module-card-02">
         <div class="home-card-top"><span class="home-module-number">02</span><span class="home-card-kicker">RAZONAR Y ACTUAR</span></div>
         <h3>Construir un agente ReAct</h3>
         <p>Herramientas, parser de acciones y ciclo Thought–Action–Observation en Python; incluye casos de prueba y límites del formato de respuesta.</p>
-        <div class="home-card-actions"><a href="aula.html?module=2">Avanzar en el aula <span aria-hidden="true">→</span></a><a href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/modulo-2.ipynb" target="_blank" rel="noopener noreferrer">Abrir Colab ↗</a></div>
+        <div class="home-card-actions"><a href="aula.html?module=2">Avanzar en el aula <span aria-hidden="true">→</span></a></div>
       </article>
       <article class="home-module-card module-card-03">
         <div class="home-card-top"><span class="home-module-number">03</span><span class="home-card-kicker">ABSTRACCIÓN</span></div>
         <h3>Frameworks y skills</h3>
         <p>LangChain, LangGraph, Skills y MCP: qué resuelve cada capa y qué controles considerar al conectar herramientas.</p>
-        <div class="home-card-actions"><a href="aula.html?module=3">Avanzar en el aula <span aria-hidden="true">→</span></a><a href="https://colab.research.google.com/github/comercisandro/RecursoEducativoAbierto/blob/master/fuentes/modulo-3.ipynb" target="_blank" rel="noopener noreferrer">Abrir Colab ↗</a></div>
+        <div class="home-card-actions"><a href="aula.html?module=3">Avanzar en el aula <span aria-hidden="true">→</span></a></div>
       </article>
     </div>
   </section>
