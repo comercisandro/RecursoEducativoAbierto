@@ -184,6 +184,7 @@ h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; letter-spacing: -.03em; }
 .rubric-reset { align-self: flex-end; padding: .3rem .55rem; border: 1px solid #b9c8df; border-radius: .4rem; color: #354b70; background: #fff; cursor: pointer; font-size: .75rem; }
 .rubric-reset:hover { background: #eef3ff; }
 .peer-review-list li { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.peer-check input { width:1.15rem; height:1.15rem; accent-color:var(--violet); cursor:pointer; }
 .peer-selfcheck { margin-top:.9rem; }
 .integrator-card th { color: var(--navy); background: #f0edff; }
 .checklist { padding-left: 0; list-style: none; }

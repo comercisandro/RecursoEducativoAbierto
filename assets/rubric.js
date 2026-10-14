@@ -23,6 +23,24 @@
     reset.addEventListener('click', () => { selects.forEach((select) => { select.value = 'pending'; }); render(); });
     render();
   }
+  function setupChecks() {
+    const checks = [...document.querySelectorAll('[data-peer-review]')];
+    if (!checks.length) return;
+    const summary = document.getElementById('peer-summary');
+    const progress = document.getElementById('peer-progress');
+    const reset = document.getElementById('peer-reset');
+    let states = {};
+    try { states = JSON.parse(localStorage.getItem(`${key}-peerReview`) || '{}'); } catch (_) { states = {}; }
+    function renderChecks() {
+      const complete = checks.filter((check) => check.checked).length;
+      progress.value = complete;
+      summary.textContent = `${complete} de ${checks.length} criterios revisados`;
+      try { localStorage.setItem(`${key}-peerReview`, JSON.stringify(Object.fromEntries(checks.map((check) => [check.dataset.peerReview, check.checked])))); } catch (_) { /* La revisión sigue funcionando sin almacenamiento. */ }
+    }
+    checks.forEach((check) => { check.checked = states[check.dataset.peerReview] === true; check.addEventListener('change', renderChecks); });
+    reset.addEventListener('click', () => { checks.forEach((check) => { check.checked = false; }); renderChecks(); });
+    renderChecks();
+  }
   setupGroup({ selector: '[data-rubric]', stateKey: 'rubric', summaryId: 'rubric-summary', progressId: 'rubric-progress', resetId: 'rubric-reset', stateAttribute: 'data-rubric-row' });
-  setupGroup({ selector: '[data-peer-review]', stateKey: 'peerReview', summaryId: 'peer-summary', progressId: 'peer-progress', resetId: 'peer-reset', stateAttribute: 'data-peer-row' });
+  setupChecks();
 })();
