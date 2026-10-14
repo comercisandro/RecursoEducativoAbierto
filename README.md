@@ -8,7 +8,7 @@ Primera versión pública de revisión de un Recurso Educativo Abierto (REA) par
 
 La portada para GitHub Pages está en [`index.md`](index.md). Las tres páginas HTML de lectura se generan en `modulos_html/` desde las notebooks originales de `fuentes/`.
 
-La rama experimental [`feature/interfazdDUA`](../../tree/feature/interfazdDUA) incluye [`aula.html`](aula.html), una interfaz de aula tipo curso: permite elegir video, transcripción o lectura; marcar módulos completados; ajustar tamaño de texto y contraste; y seleccionar formatos alternativos de evidencia. El avance se guarda únicamente en el navegador.
+La rama experimental [`feature/interfazdDUA`](../../tree/feature/interfazdDUA) incluye [`aula.html`](aula.html), una interfaz de aula tipo curso: permite elegir video, transcripción o lectura; marcar módulos completados; y seleccionar formatos alternativos de evidencia. El avance se guarda únicamente en el navegador.
 
 Para probarla localmente en Windows, ejecuta `powershell -NoProfile -ExecutionPolicy Bypass -File tools/serve-local.ps1 -Port 8765` y abre `http://localhost:8765/aula.html`. El servidor admite rangos de bytes para los videos y tolera que el navegador cancele una descarga. No se recomienda abrirla con `file://`, porque la carga de las transcripciones utiliza `fetch`.
 

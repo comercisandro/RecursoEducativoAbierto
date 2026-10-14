@@ -89,7 +89,7 @@ El recurso incorpora actualmente las siguientes alternativas y apoyos:
 - alternativa de trabajo sin cuenta, API ni ejecución mediante diagramas, pseudocódigo, trazas y datos ficticios;
 - opciones de explicación escrita, oral, demostración, esquema o diagrama;
 - navegación semántica, enlace para saltar al contenido, foco visible y etiquetas ARIA en la interfaz de aula;
-- ajuste del tamaño del texto, modo de alto contraste, diseño adaptable a dispositivos móviles y preferencia de movimiento reducido;
+- diseño adaptable a dispositivos móviles, foco visible y preferencia de movimiento reducido;
 - avance a ritmo propio y almacenamiento del progreso únicamente en el navegador.
 
 El recurso se encuentra **en proceso de validación de accesibilidad**. Las transcripciones están conservadas en `fuentes/`, pero deben publicarse o enlazarse de forma visible junto a cada video para constituir una alternativa completa. También debe verificarse la presencia y calidad de subtítulos, el contraste, la navegación con teclado, la compatibilidad con lectores de pantalla y el funcionamiento en dispositivos móviles. La disponibilidad de un control no sustituye las pruebas con personas usuarias y tecnologías de asistencia.

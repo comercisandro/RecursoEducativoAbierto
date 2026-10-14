@@ -218,26 +218,6 @@
   $('previous').addEventListener('click', () => { if (current > 1) render(current - 1); });
   $('next').addEventListener('click', () => { if (current < 4) render(current + 1); });
 
-  const changeFont = (delta) => {
-    const size = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    document.documentElement.style.fontSize = `${Math.max(14, Math.min(21, size + delta))}px`;
-  };
-  $('font-down').addEventListener('click', () => changeFont(-1));
-  $('font-up').addEventListener('click', () => changeFont(1));
-
-  try {
-    if (localStorage.getItem('rea-course-contrast') === 'true') {
-      document.body.classList.add('high-contrast');
-      $('contrast').setAttribute('aria-pressed', 'true');
-    }
-  } catch (_) {}
-
-  $('contrast').addEventListener('click', () => {
-    const enabled = document.body.classList.toggle('high-contrast');
-    $('contrast').setAttribute('aria-pressed', String(enabled));
-    try { localStorage.setItem('rea-course-contrast', String(enabled)); } catch (_) {}
-  });
-
   const requestedModule = Number(new URLSearchParams(window.location.search).get('module'));
   render([1, 2, 3, 4].includes(requestedModule) ? requestedModule : 1);
 })();
