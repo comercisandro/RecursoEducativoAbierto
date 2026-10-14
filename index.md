@@ -12,7 +12,6 @@ title: Del lenguaje a los agentes inteligentes
     <p class="lead">Una ruta teórico-práctica para explorar cómo se procesa el lenguaje, cómo se representa con vectores y cómo un agente puede usar herramientas para resolver tareas. Avanza desde los fundamentos de NLP hasta la orquestación de agentes, con prácticas en notebooks y alternativas de lectura sin ejecutar código.</p>
     <div class="action-row">
       <a class="button primary" href="aula.html?module=1">Comenzar la ruta <span aria-hidden="true">→</span></a>
-      <a class="button secondary" href="aula.html">Probar interfaz de aula</a>
       <a class="button secondary" href="guia-reutilizacion.html">Ver guía docente</a>
       <a class="button secondary" href="aula.html?module=4">Actividad integradora</a>
     </div>
