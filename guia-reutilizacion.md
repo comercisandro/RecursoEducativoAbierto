@@ -1,142 +1,150 @@
 ---
 layout: page
-title: Guía de reutilización docente
+title: Guía de reutilización REA
 permalink: /guia-reutilizacion.html
 ---
 
 <link rel="stylesheet" href="{{ '/assets/rea.css?v=20261010-6' | relative_url }}">
 
-# Guía de reutilización docente
+# Guía de reutilización REA
 
-## 1. Identificación del recurso
+> **Propósito de esta guía:** establecer las orientaciones necesarias para que otros docentes puedan comprender, adaptar, remezclar y aplicar este Recurso Educativo Abierto (REA) con criterios pedagógicos, técnicos y de seguridad jurídica.
 
-- **Título:** Del lenguaje a los agentes inteligentes.
-- **Autoría y afiliación:** Ing. Comerci Sandro Mauricio.
-- **Área:** Inteligencia Artificial y Procesamiento del Lenguaje Natural.
-- **Versión:** primera versión pública de revisión, 2026-10-10.
-- **Repositorio:** [RecursoEducativoAbierto en GitHub](https://github.com/comercisandro/RecursoEducativoAbierto); publicación web en GitHub Pages.
+## 1. Identificación y metadatos del recurso
 
-## 2. Destinatarios y contexto
+| Campo | Descripción / detalle |
+|---|---|
+| **Título del REA** | *Del lenguaje a los agentes inteligentes* |
+| **Autoría y afiliación** | Ing. Comerci Sandro Mauricio. Material de la Cátedra de Inteligencia Artificial. |
+| **Área disciplinar** | Inteligencia Artificial y Procesamiento del Lenguaje Natural (NLP). |
+| **Destinatarios** | Estudiantes de nivel superior de carreras o espacios curriculares vinculados con Inteligencia Artificial, informática o áreas afines. Los conocimientos previos y el contexto institucional deben ser definidos por la cátedra que lo implemente. |
+| **Licencia abierta** | **CC BY-NC-SA 4.0** para los componentes propios autorizados: atribución, uso no comercial y distribución de adaptaciones bajo la misma licencia. Los materiales de terceros conservan sus propias condiciones. |
+| **Repositorio** | [RecursoEducativoAbierto en GitHub](https://github.com/comercisandro/RecursoEducativoAbierto). Publicación prevista mediante GitHub Pages. |
+| **Versión** | Primera versión pública de revisión, octubre de 2026. |
 
-Propuesta dirigida a estudiantes de nivel superior vinculados con Inteligencia Artificial o áreas afines. El nivel, carrera, espacio curricular y perfil de ingreso deben precisarse con la cátedra.
+## 8. Intencionalidad pedagógica y curricular
 
-Antes de implementarla, completar con el equipo docente: asignatura/carrera, conocimientos previos, modalidad, cantidad de encuentros, tamaño del grupo, dispositivos disponibles y conectividad. La planificación se presenta como adaptable y no presupone una duración institucional.
+### Propósito de aprendizaje
 
-## 3. Propósito pedagógico
+El REA propone una ruta teórico-práctica para comprender cómo se procesa y representa el lenguaje, y cómo esos fundamentos se conectan con el diseño de agentes de inteligencia artificial que utilizan herramientas. La secuencia avanza desde el texto y los embeddings hasta los agentes ReAct, los frameworks y las Skills.
 
-Construir una comprensión progresiva del procesamiento y la representación del lenguaje, y conectar esos fundamentos con el diseño de agentes que utilizan herramientas.
+### Objetivos del REA
 
-## 4. Objetivos de aprendizaje propuestos
+**Objetivo principal:** comprender la relación entre las representaciones del lenguaje, el uso de herramientas y la construcción de agentes de IA auditables.
 
-Al finalizar la ruta, se espera que el estudiantado pueda:
+**Objetivos específicos:** al finalizar la ruta, se espera que el estudiantado pueda:
 
 1. Describir decisiones básicas de preprocesamiento y tokenización de texto.
-2. Explicar la diferencia entre una representación basada en frecuencias y embeddings aprendidos a partir de contextos.
-3. Interpretar de manera básica distancias o similitudes entre vectores de palabras.
-4. Describir el ciclo ReAct e identificar la función de una herramienta y de su observación.
-5. Comparar una implementación manual de agente con una implementación basada en framework.
-6. Diseñar una actividad o extensión pequeña que use herramientas y contemple pruebas.
-7. Distinguir una herramienta, un paquete de instrucciones (Skill), un protocolo de interoperabilidad (MCP) y un runtime de orquestación; argumentar qué problema resuelve cada capa.
-8. Registrar versiones, parámetros y datos de entrada para poder revisar la reproducibilidad de una práctica de NLP o agentes.
+2. Diferenciar representaciones basadas en frecuencias y embeddings aprendidos a partir de contextos.
+3. Interpretar de forma básica similitudes y distancias entre vectores de palabras.
+4. Explicar el ciclo ReAct e identificar la función de una herramienta y su observación.
+5. Comparar una implementación manual de agente con una basada en un framework.
+6. Distinguir una herramienta, una Skill, un protocolo MCP y un runtime de orquestación.
+7. Diseñar una solución pequeña que use herramientas, incluya pruebas y contemple límites.
+8. Registrar versiones, parámetros, datos de entrada, permisos y supuestos para favorecer la reproducibilidad.
 
-Estos objetivos son una propuesta y deben validarse con el programa de la asignatura y los notebooks originales.
+### Sugerencia de implementación
 
-## 5. Organización y sugerencia de implementación
+Se recomienda utilizar el recurso como una secuencia de **inicio, desarrollo y cierre integrador**:
 
-La secuencia se organiza en tres módulos: **texto y embeddings** (SRC-01), **ReAct manual** (SRC-04) y **frameworks y skills** (SRC-03). Se sugiere avanzar en ese orden y reservar una instancia integradora para diseñar y probar una herramienta. La duración y modalidad se definirán según la planificación de la cátedra.
-
-### Secuencia orientativa
-
-| Momento | Propuesta de trabajo | Evidencia observable |
+| Momento | Implementación sugerida | Evidencia orientativa |
 |---|---|---|
-| Apertura | Recuperar ideas previas sobre cómo representar texto y qué puede hacer un agente. Presentar una pregunta guía: ¿qué información gana y qué pierde un sistema al convertir texto en vectores y acciones? | Predicción inicial o mapa de conceptos. |
-| Módulo 1 | Explorar tokens, Bag-of-Words y embeddings; contrastar una lectura conceptual con la notebook si el entorno está disponible. | Explicación de una transformación y registro de corpus/parámetros. |
-| Módulo 2 | Seguir un ciclo ReAct e inspeccionar parser, acción, observación y terminación. Probar ejemplos válidos y fallidos. | Traza anotada y casos de prueba. |
-| Módulo 3 | Comparar herramientas, Skills, MCP y orquestación; diseñar una solución acotada que aplique mínimo privilegio. | Diagrama de componentes y plan de pruebas. |
-| Cierre | Integrar la ruta en una explicación, prototipo en papel o demostración revisada por pares. | Producto integrador y reflexión sobre límites y reproducibilidad. |
+| Inicio | Recuperar ideas previas sobre representación de texto y agentes. Presentar la pregunta: ¿qué gana y qué pierde un sistema al convertir texto en vectores y acciones? | Predicción inicial o mapa conceptual. |
+| Desarrollo · Módulo 1 | Explorar tokens, Bag-of-Words y embeddings. Comparar la lectura web con la notebook si el entorno está disponible. | Explicación de una transformación y registro del corpus/parámetros. |
+| Desarrollo · Módulo 2 | Analizar el ciclo ReAct, el parser, la acción, la observación y la terminación. Probar casos válidos y fallidos. | Traza anotada y casos de prueba. |
+| Desarrollo · Módulo 3 | Comparar herramientas, Skills, MCP y orquestación. Diseñar una solución con permisos mínimos. | Diagrama de componentes y plan de pruebas. |
+| Cierre integrador | Diseñar y documentar un agente pequeño, con código, pseudocódigo o diagrama. | Producto integrador, revisión entre pares y reflexión sobre límites. |
 
-La secuencia retoma como orientación el diseño desde contexto, objetivos, tareas y evaluación de SRC-38 y el ciclo de adopción/adaptación de SRC-37. No es una plantilla institucional ni sustituye la planificación de la asignatura.
+La duración, modalidad, obligatoriedad de las actividades y criterios de acreditación deben ser definidos por la cátedra según su programa vigente.
 
-## 6. Requisitos técnicos y formatos
+## 9. Especificaciones técnicas y requisitos de acceso
 
-- Navegador web para leer las páginas estáticas; no requieren ejecutar código ni instalar software (SRC-09, portabilidad).
-- Notebook Jupyter `.ipynb` para las prácticas; Google Colab es opcional y requiere acceso a internet. Las páginas HTML y PDF permiten una alternativa de lectura/análisis sin ejecutar celdas.
-- La práctica Word2Vec necesita el CSV `simpsons_dataset.csv`, no incluido; cada ejemplo con modelo externo puede exigir una cuenta/token y depender de cambios de proveedor o API (SRC-01, SRC-03, SRC-04).
-- Antes de la actividad, documentar versiones probadas y dependencias. No se publicarán claves, tokens ni credenciales.
+### Formatos y tecnologías
 
-### Alternativas de implementación
+- Páginas web estáticas en HTML/Jekyll para lectura sin instalación.
+- Notebooks Jupyter (`.ipynb`) y versiones exportadas en PDF.
+- Videos en formato MP4 y videos enlazados desde Google Drive.
+- Transcripciones de trabajo en formato TXT.
+- Código de apoyo en JavaScript y scripts PowerShell para generar o servir el sitio local.
+- Google Colab como alternativa opcional para ejecutar notebooks.
 
-- **Con ejecución:** preparar Python/Jupyter o Colab y probar previamente dependencias, datos y servicios. Para actividades con modelos/API, explicitar costos, límites, manejo de datos y alternativas sin cuenta.
-- **Solo lectura o baja conectividad:** trabajar con las páginas HTML, capturas/código ya visibles y trazas impresas o descargadas; entregar análisis y casos de prueba sin ejecutar celdas.
-- **Trabajo colaborativo:** distribuir roles (lectura del flujo, pruebas, documentación y revisión de riesgos) y permitir una entrega individual equivalente si las condiciones de acceso lo requieren.
+Para leer el recurso alcanza con un navegador web. Para ejecutar las prácticas pueden requerirse Python/Jupyter o Colab, dependencias específicas, el archivo `simpsons_dataset.csv`, conexión a internet y, en algunos ejemplos, una cuenta o token de un proveedor externo. No se deben publicar credenciales.
 
-## 7. Accesibilidad y alternativas de participación
+### Instalación y acceso
 
-Mantener jerarquía de encabezados, instrucciones textuales, enlaces descriptivos y explicaciones que no dependan únicamente del color o de una imagen. Acompañar gráficos con una descripción textual. Ofrecer una alternativa de lectura/análisis para quien no pueda ejecutar el notebook. La copia local de **SRC-09** incluye accesibilidad sensorial/motora, acceso en distintos dispositivos y problemas técnicos; revisar el sitio con esos criterios y documentar las limitaciones observadas. **SRC-26** pide declarar elementos de Diseño Universal para el Aprendizaje (DUA), como transcripciones, contraste y compatibilidad con lectores de pantalla: no marcar una característica como satisfecha sin comprobarla.
+El recurso no requiere una instalación web específica para su uso básico. Puede:
 
-Como comprobación práctica inspirada en SRC-39, revisar: orden de encabezados; navegación por teclado; propósito comprensible de cada enlace; texto alternativo útil para imágenes informativas y descripción extensa cuando el gráfico sea complejo; contraste y legibilidad en móvil; y disponibilidad de alternativa textual para medios. Una revisión automatizada puede ayudar, pero no demuestra por sí sola conformidad ni sustituye pruebas con tecnologías de asistencia y personas usuarias.
+1. consultarse publicado en GitHub Pages;
+2. abrirse localmente mediante el servidor incluido en `tools/serve-local.ps1`;
+3. generarse como sitio local completo ejecutando `tools/build-local.ps1` y luego servirse desde la carpeta `site-local/`.
 
-## 8. Orientaciones para adaptar y remezclar
+Para modificar una notebook y actualizar sus páginas HTML puede ejecutarse `tools/render-notebooks.ps1`. El script representa texto, código y salidas guardadas; no ejecuta las notebooks.
 
-- Reemplazar el corpus de ejemplo por textos pertinentes a otra disciplina y explicar los criterios de selección.
-- Comparar cómo las decisiones de normalización afectan los tokens y las representaciones.
-- Sustituir o ampliar herramientas del agente, especificando entradas, salidas y errores posibles.
-- Cambiar el problema integrador conservando la progresión conceptual.
-- Registrar los cambios realizados y atribuir las fuentes y materiales reutilizados según sus licencias.
+### Accesibilidad y Diseño Universal para el Aprendizaje (DUA)
 
-Los componentes propios autorizados pueden adaptarse y redistribuirse bajo **CC BY-NC-SA 4.0**, respetando atribución, uso no comercial y compartir igual. Esta licencia no se extiende automáticamente a materiales de terceros; revisar el inventario y las condiciones de cada componente antes de reutilizarlo.
+El recurso incorpora actualmente las siguientes alternativas y apoyos:
 
-## 9. Actividades y evaluación formativa
+- lectura web sin necesidad de ejecutar código;
+- notebooks, PDF y materiales audiovisuales;
+- alternativa de trabajo sin cuenta, API ni ejecución mediante diagramas, pseudocódigo, trazas y datos ficticios;
+- opciones de explicación escrita, oral, demostración, esquema o diagrama;
+- navegación semántica, enlace para saltar al contenido, foco visible y etiquetas ARIA en la interfaz de aula;
+- ajuste del tamaño del texto, modo de alto contraste, diseño adaptable a dispositivos móviles y preferencia de movimiento reducido;
+- avance a ritmo propio y almacenamiento del progreso únicamente en el navegador.
 
-- Explicar una transformación del texto y justificar sus decisiones.
-- Comparar dos vectores o representaciones y explicar qué permite concluir la medida usada.
-- Trazar una iteración ReAct distinguiendo acción y observación.
-- Diseñar una herramienta pequeña y proponer casos de prueba, incluidos errores.
-- Comparar la solución manual y la solución con framework.
-- Clasificar un ejemplo como herramienta, Skill, conexión MCP u orquestación; justificar los límites de cada componente.
-- Auditar una herramienta del agente: permisos mínimos, datos que envía/recibe, errores, confirmación humana y pruebas negativas.
-- Repetir una práctica Word2Vec registrando versión de Gensim, corpus, semilla y número de workers; explicar la variación observada (SRC-27).
+El recurso se encuentra **en proceso de validación de accesibilidad**. Las transcripciones están conservadas en `fuentes/`, pero deben publicarse o enlazarse de forma visible junto a cada video para constituir una alternativa completa. También debe verificarse la presencia y calidad de subtítulos, el contraste, la navegación con teclado, la compatibilidad con lectores de pantalla y el funcionamiento en dispositivos móviles. La disponibilidad de un control no sustituye las pruebas con personas usuarias y tecnologías de asistencia.
 
-Son propuestas iniciales. Para el pilotaje, registrar evidencias usando como referencia las dimensiones visibles de **SRC-09**: claridad de objetivos, calidad/vigencia, feedback, accesibilidad, reutilización, portabilidad, licenciamiento, diseño y usabilidad. **SRC-21** incluye la presentación de una plantilla completa para evaluar el REA de un compañero y reflexión personal; esta guía propone que esa evaluación cite ejemplos concretos del recurso y relacione conceptos con las fuentes. **SRC-06** agrega plazos, actividades acreditables/citación APA, condición REA y exposición final. Las rúbricas locales son referencias de cotejo, no autorizan inventar puntajes o reemplazar las decisiones de la cátedra.
+## 10. Orientaciones para la adaptación y el remix (reutilización)
 
-### Lista breve para preparar una implementación
+Los docentes pueden adaptar los componentes propios respetando la licencia **CC BY-NC-SA 4.0**, manteniendo la atribución, el uso no comercial y la misma licencia en las adaptaciones. Antes de redistribuir una versión, debe revisarse la licencia de cada material de terceros, imagen, dataset, biblioteca, texto o fragmento de código.
 
-- [ ] Validar destinatarios, objetivos y contenidos con el programa vigente.
-- [ ] Elegir módulos y tiempos; indicar qué actividades son obligatorias o ampliatorias.
-- [ ] Comprobar equipos, conectividad, dependencias, datasets y servicios externos antes de clase.
-- [ ] Preparar una vía equivalente sin ejecución y opciones para diferentes dispositivos.
-- [ ] Alinear cada actividad con una evidencia y dar criterios/retroalimentación comprensibles.
-- [ ] Revisar accesibilidad, datos personales, credenciales, atribuciones y permisos antes de compartir materiales.
-- [ ] Registrar versión, adaptaciones realizadas y problemas observados durante el pilotaje.
+Se sugieren las siguientes adaptaciones:
 
-Esta lista sintetiza criterios de planificación de SRC-38, adopción/adaptación y metadatos de SRC-37, y revisión de accesibilidad de SRC-39; es una ayuda de trabajo, no una certificación de calidad.
+- reemplazar el corpus de ejemplo por textos de otra disciplina y documentar los criterios de selección;
+- comparar cómo distintas decisiones de limpieza y normalización modifican los tokens y embeddings;
+- sustituir o ampliar las herramientas del agente, describiendo entradas, salidas, errores y permisos;
+- adaptar los ejemplos a otro framework o protocolo sin ocultar el flujo ReAct ni los controles de seguridad;
+- cambiar la tarea integradora por un problema propio de la carrera o asignatura;
+- ofrecer la misma actividad en modalidad ejecutable, de baja conectividad o completamente analítica;
+- incorporar las transcripciones y subtítulos al aula virtual o LMS institucional;
+- registrar la versión, los cambios, las fuentes, las atribuciones y las pruebas realizadas en cada adaptación.
 
-### Evidencias de revisión sugeridas
+La adaptación debe conservar la progresión conceptual, los objetivos de aprendizaje y una vía equivalente para quienes no puedan ejecutar código o acceder a servicios externos.
 
-| Criterio de las fuentes curriculares | Evidencia que puede reunir el equipo |
-|---|---|
-| Objetivos, calidad y vigencia (SRC-09) | Correspondencia objetivo–actividad–evidencia; enlaces técnicos comprobados y fecha de revisión. |
-| Accesibilidad, dispositivos y portabilidad (SRC-09, SRC-26) | Revisión por teclado y móvil; alternativa sin ejecución; texto alternativo/transcripción cuando corresponda; limitaciones pendientes. |
-| Reutilización y licencia (SRC-09, SRC-21, SRC-26) | Guía de adaptación, atribuciones y permiso/licencia explícitos aprobados por titulares. |
-| Evaluación entre pares y reflexión (SRC-21) | Plantilla completa aplicada a otro REA con ejemplos y reflexión conectada a autores/fuentes. |
-| Actividades, referencias y presentación (SRC-06) | Registro de actividades entregadas, citas APA verificadas y material para la exposición final. |
+## 11. Criterios sugeridos de evaluación formativa
 
-### Autocomprobaciones y producto integrador
+Las siguientes pautas son orientativas. No constituyen una calificación institucional ni reemplazan la consigna, la rúbrica o las reglas de la cátedra.
 
-Cada módulo incluye tres preguntas conceptuales con retroalimentación inmediata. El resultado se muestra como **práctica sobre 3 por módulo y sobre 9 en la ruta completa**; puede repetirse y no se almacena ni se envía a un servidor. El puntaje no es una nota: sirve para decidir qué concepto revisar y qué evidencia conviene discutir.
+### Actividades y preguntas guía
 
-La [actividad integradora](evaluacion-final.html) propone diseñar un agente pequeño y auditable en código, pseudocódigo o diagrama. Incluye una rúbrica formativa de **100 puntos**: comprensión conceptual (25), flujo y pruebas (25), reproducibilidad y límites (20), seguridad y privacidad (20), y comunicación y reflexión (10). La cátedra debe validar los criterios, los puntajes y cualquier condición de acreditación antes de aplicarlos.
+- Explicar una decisión de preprocesamiento y su posible efecto sobre los embeddings.
+- Interpretar una similitud entre vectores sin extraer conclusiones que los datos no permiten.
+- Trazar una iteración ReAct distinguiendo acción, herramienta, observación y respuesta final.
+- Diseñar una herramienta pequeña y proponer casos normales y de error.
+- Comparar la solución manual con una solución basada en framework.
+- Clasificar un componente como herramienta, Skill, conexión MCP u orquestación.
+- Auditar permisos, datos, errores, confirmación humana y pruebas negativas.
 
-La interacción entre pares sigue el ciclo **resolver → comparar → revisar**. Cada estudiante debe poder entregar una alternativa equivalente sin ejecución, cuenta o clave de API. La actividad no modifica las reglas de SRC-16: confirmar siempre la consigna vigente antes de usar herramientas de IA en una tarea acreditable.
+Cada módulo incluye una práctica conceptual de tres preguntas con retroalimentación inmediata. El resultado orientativo es de 3 puntos por módulo y 9 para la ruta completa; no se almacena en un servidor ni debe interpretarse como una nota.
 
-## 10. Licencias, atribución y materiales de terceros
+### Producto integrador y rúbrica propuesta
 
-La licencia de los componentes propios autorizados está declarada en [LICENSE.md](LICENSE.md). Antes de adaptar o redistribuir la versión, identificar autoría, procedencia y licencia de cada texto, imagen, dataset, fragmento de código y biblioteca incorporados. Ver [Licencias y atribuciones](licencias-y-atribuciones.html).
+La actividad integradora propone diseñar un agente pequeño y auditable. Puede entregarse código, pseudocódigo o diagrama acompañado de una explicación. No es obligatorio utilizar una API real: pueden emplearse trazas simuladas y datos ficticios.
 
-## 11. Referencias, versión y transparencia
+La rúbrica formativa propone 100 puntos:
 
-La secuencia técnica se apoya en SRC-01, SRC-04 y SRC-03, actualizadas con documentación oficial de Gensim (SRC-27), el artículo de ReAct (SRC-28), LangChain (SRC-29), LangGraph (SRC-30), Agent Skills (SRC-31) y MCP (SRC-32 y SRC-33). Para el marco REA y la IA en educación se incorporan la Recomendación UNESCO sobre REA (SRC-34), su orientación sobre IA generativa (SRC-35) y la herramienta de selección de Creative Commons (SRC-36). El registro de consulta y los hallazgos están en [`fuentes/actualizacion-fuentes-2026.html`](fuentes/actualizacion-fuentes-2026.html); consultar las fuentes primarias antes de implementar cambios porque la documentación técnica es dinámica. El uso de IA durante la elaboración se documentará con precisión en la versión publicada.
+| Criterio | Puntos | Evidencia esperada |
+|---|---:|---|
+| Comprensión y distinción conceptual | 25 | Diferencia representación, herramienta, observación, Skill, protocolo y orquestación cuando corresponde. |
+| Flujo, trazas y pruebas | 25 | Muestra pasos verificables, respuesta final y casos normales y de error. |
+| Reproducibilidad y límites | 20 | Declara datos, versiones, supuestos, parámetros y limitaciones. |
+| Seguridad y privacidad | 20 | Aplica mínimo privilegio, valida entradas y resultados y evita credenciales o datos innecesarios. |
+| Comunicación y reflexión | 10 | Explica decisiones, incorpora una revisión y reconoce cambios pendientes. |
 
-## Inventario de fuentes
+Como revisión entre pares puede utilizarse el ciclo **resolver → comparar → revisar**, comprobando si el objetivo y los límites son claros, si se distingue el modelo de la herramienta, si existen pruebas de error y terminación, si los permisos son mínimos y si hay una alternativa sin ejecución.
 
-Consulta el [inventario de fuentes SRC](fuentes/README.html) para identificar la procedencia, licencia y estado de cada material utilizado en esta guía. Los códigos `SRC-01`, `SRC-03`, etc. funcionan como referencias breves para localizar allí la fuente completa.
+La cátedra debe validar los criterios, puntajes, umbrales y condiciones de acreditación antes de aplicar esta propuesta.
+
+## Inventario de fuentes y licencias
+
+El inventario de fuentes, atribuciones, estado de permisos y materiales de terceros está disponible en [`fuentes/README.md`](fuentes/README.html). Para conocer las condiciones de uso de los componentes propios, consultar [Licencias y atribuciones](licencias-y-atribuciones.html) y [LICENSE.md](LICENSE.md).

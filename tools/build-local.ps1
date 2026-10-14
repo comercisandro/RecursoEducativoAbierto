@@ -6,7 +6,11 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $utf8 = [Text.UTF8Encoding]::new($false)
 $siteTitle = 'Del lenguaje a los agentes inteligentes'
-$siteDescription = 'Ruta didáctica abierta desde el procesamiento del lenguaje hasta los agentes de inteligencia artificial.'
+$siteDescription = 'Ruta did' + [char]0x00E1 + 'ctica abierta desde el procesamiento del lenguaje hasta los agentes de inteligencia artificial.'
+$titleSeparator = '&#183;'
+$navigationLabel = 'Navegaci' + [char]0x00F3 + 'n principal'
+$guideLabel = 'Gu' + [char]0x00ED + 'a de reutilizaci' + [char]0x00F3 + 'n'
+$footerTitle = 'Recurso educativo &#183; C' + [char]0x00E1 + 'tedra de Inteligencia Artificial'
 
 function Convert-Inline([string]$Text) {
     $value = [Net.WebUtility]::HtmlEncode($Text)
@@ -17,6 +21,32 @@ function Convert-Inline([string]$Text) {
     return $value
 }
 
+function Render-Table([Collections.Generic.List[string]]$Rows) {
+    if ($Rows.Count -eq 0) { return '' }
+    $table = [Text.StringBuilder]::new()
+    [void]$table.AppendLine('<table>')
+    $header = @($Rows[0].Trim().Trim('|') -split '\|')
+    [void]$table.AppendLine('<thead><tr>')
+    foreach ($cell in $header) {
+        [void]$table.AppendLine("<th scope=`"col`">$(Convert-Inline $cell.Trim())</th>")
+    }
+    [void]$table.AppendLine('</tr></thead>')
+    if ($Rows.Count -gt 2) {
+        [void]$table.AppendLine('<tbody>')
+        for ($index = 2; $index -lt $Rows.Count; $index++) {
+            [void]$table.AppendLine('<tr>')
+            $cells = @($Rows[$index].Trim().Trim('|') -split '\|')
+            foreach ($cell in $cells) {
+                [void]$table.AppendLine("<td>$(Convert-Inline $cell.Trim())</td>")
+            }
+            [void]$table.AppendLine('</tr>')
+        }
+        [void]$table.AppendLine('</tbody>')
+    }
+    [void]$table.AppendLine('</table>')
+    return $table.ToString()
+}
+
 function Convert-Markdown([string]$Markdown) {
     $lines = ($Markdown -replace "`r`n?", "`n") -split "`n"
     $html = [Text.StringBuilder]::new()
@@ -24,6 +54,8 @@ function Convert-Markdown([string]$Markdown) {
     $listType = ''
     $inCode = $false
     $code = [Collections.Generic.List[string]]::new()
+    $inTable = $false
+    $tableRows = [Collections.Generic.List[string]]::new()
 
     function Close-List {
         if ($listType) { [void]$html.AppendLine("</$listType>"); $script:listType = '' }
@@ -46,6 +78,21 @@ function Convert-Markdown([string]$Markdown) {
             continue
         }
         if ($inCode) { $code.Add($line); continue }
+        $isTableSeparator = $line -match '^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?\s*$'
+        $isTableRow = (($line -split '\|').Count -ge 3) -and ($line -match '\|')
+        if ($inTable) {
+            if ($isTableSeparator -or $isTableRow) { $tableRows.Add($line.Trim()); continue }
+            [void]$html.AppendLine((Render-Table $tableRows))
+            $tableRows.Clear()
+            $inTable = $false
+        }
+        if ($isTableRow) {
+            Flush-Paragraph
+            if ($listType) { [void]$html.AppendLine("</$listType>"); $listType = '' }
+            $tableRows.Add($line.Trim())
+            $inTable = $true
+            continue
+        }
         if ([string]::IsNullOrWhiteSpace($line)) { Flush-Paragraph; if ($listType) { [void]$html.AppendLine("</$listType>"); $listType = '' }; continue }
         if ($line -match '^#{1,6}\s+(.+)$') {
             Flush-Paragraph; if ($listType) { [void]$html.AppendLine("</$listType>"); $listType = '' }
@@ -67,6 +114,7 @@ function Convert-Markdown([string]$Markdown) {
     Flush-Paragraph
     if ($listType) { [void]$html.AppendLine("</$listType>") }
     if ($inCode) { [void]$html.AppendLine("<pre><code>$([Net.WebUtility]::HtmlEncode(($code -join "`n")))</code></pre>") }
+    if ($inTable) { [void]$html.AppendLine((Render-Table $tableRows)) }
     return $html.ToString()
 }
 
@@ -99,8 +147,8 @@ function Write-Page([string]$Source, [string]$Destination) {
     $main = if ([string]$metadata.Layout -eq 'page') { "<main id=`"contenido`" class=`"page-shell standard-page`"><article class=`"standard-content`">$body</article></main>" } else { $body }
     $page = @"
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="$description"><title>$title · $siteTitle</title><link rel="stylesheet" href="/assets/rea.css?v=local"><link rel="stylesheet" href="/assets/course.css"><script>if (new URLSearchParams(window.location.search).get('embedded') === '1') document.documentElement.classList.add('embedded-page');</script></head>
-<body><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="/">$siteTitle</a><nav aria-label="Navegación principal"><a href="/">Inicio</a><a href="/aula.html">Aula</a><a href="/guia-reutilizacion.html">Guía de reutilización</a><a href="/aula.html?module=4">Actividad integradora</a><a href="/licencias-y-atribuciones.html">Licencias</a></nav></div></header>$main<footer class="site-footer"><p>Recurso educativo · Cátedra de Inteligencia Artificial</p><p>Fuentes: <a href="/fuentes/README.html">inventario de fuentes</a>.</p></footer></body></html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="$description"><title>$title $titleSeparator $siteTitle</title><link rel="stylesheet" href="/assets/rea.css?v=local"><link rel="stylesheet" href="/assets/course.css"><script>if (new URLSearchParams(window.location.search).get('embedded') === '1') document.documentElement.classList.add('embedded-page');</script></head>
+<body><a class="skip-link" href="#contenido">Saltar al contenido</a><header class="site-header"><div class="header-inner"><a class="brand" href="/">$siteTitle</a><nav aria-label="$navigationLabel"><a href="/">Inicio</a><a href="/aula.html">Aula</a><a href="/guia-reutilizacion.html">$guideLabel</a><a href="/licencias-y-atribuciones.html">Licencias</a></nav></div></header>$main<footer class="site-footer"><p>$footerTitle</p><p>Fuentes: <a href="/fuentes/README.html">inventario de fuentes</a>.</p></footer></body></html>
 "@
     $page = Convert-LocalLinks $page
     New-Item -ItemType Directory -Force -Path (Split-Path -Parent $Destination) | Out-Null
