@@ -44,13 +44,14 @@ Tu entrega debe incluir:
 
 Primero resuelve individualmente. Después compara tu diseño con otra persona o equipo. La revisión es formativa y puede hacerse con esta lista:
 
-<ul class="checklist">
-<li><label><input type="checkbox"> ¿El objetivo y los límites de la tarea se entienden?</label></li>
-<li><label><input type="checkbox"> ¿Se distingue lo que genera el modelo de lo que ejecuta una herramienta?</label></li>
-<li><label><input type="checkbox"> ¿Hay pruebas para entradas inválidas, fallos y terminación?</label></li>
-<li><label><input type="checkbox"> ¿Los permisos y datos son los mínimos necesarios?</label></li>
-<li><label><input type="checkbox"> ¿La explicación ofrece una alternativa si no se puede ejecutar el código?</label></li>
+<ul class="checklist peer-review-list">
+<li data-peer-row="scope"><span>¿El objetivo y los límites de la tarea se entienden?</span><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de objetivo y límites</span><select data-peer-review="scope" aria-label="Estado de objetivo y límites"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></li>
+<li data-peer-row="distinction"><span>¿Se distingue lo que genera el modelo de lo que ejecuta una herramienta?</span><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de distinción entre modelo y herramienta</span><select data-peer-review="distinction" aria-label="Estado de distinción entre modelo y herramienta"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></li>
+<li data-peer-row="tests"><span>¿Hay pruebas para entradas inválidas, fallos y terminación?</span><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de pruebas y terminación</span><select data-peer-review="tests" aria-label="Estado de pruebas y terminación"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></li>
+<li data-peer-row="permissions"><span>¿Los permisos y datos son los mínimos necesarios?</span><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de permisos y datos</span><select data-peer-review="permissions" aria-label="Estado de permisos y datos"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></li>
+<li data-peer-row="alternative"><span>¿La explicación ofrece una alternativa si no se puede ejecutar el código?</span><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de alternativa sin ejecución</span><select data-peer-review="alternative" aria-label="Estado de alternativa sin ejecución"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></li>
 </ul>
+<div class="rubric-selfcheck peer-selfcheck" aria-live="polite"><div><strong id="peer-summary">0 de 5 criterios cumplidos</strong><p>Marca el estado de la revisión del trabajo de otra persona o equipo. Este registro es formativo y local.</p></div><div class="rubric-progress-wrap"><progress id="peer-progress" max="5" value="0" aria-label="Progreso de la revisión entre pares">0 de 5</progress><button id="peer-reset" class="rubric-reset" type="button">Reiniciar revisión</button></div></div>
 
 Registra **qué observación recibiste, qué modificaste y por qué**. Si la actividad se usa en una consigna acreditable, confirma antes las reglas de colaboración, citación y uso de herramientas de IA; esta página no las modifica.
 
