@@ -45,6 +45,20 @@ title: Del lenguaje a los agentes inteligentes
     </div>
   </section>
 
+  <section class="home-objectives home-info-card" aria-labelledby="objectives-title">
+    <span class="home-card-kicker">OBJETIVOS DE APRENDIZAJE</span>
+    <h2 id="objectives-title">Al finalizar la ruta podrás comprender y construir</h2>
+    <p>El objetivo general es relacionar la representación del lenguaje con el diseño de agentes de inteligencia artificial que utilizan herramientas de forma controlada y auditable.</p>
+    <ul class="home-objectives-list">
+      <li>Describir decisiones básicas de preprocesamiento y tokenización de texto.</li>
+      <li>Diferenciar representaciones basadas en frecuencias y embeddings aprendidos a partir de contextos.</li>
+      <li>Interpretar de forma básica similitudes y distancias entre vectores de palabras.</li>
+      <li>Explicar el ciclo ReAct y distinguir lo que genera el modelo de lo que ejecuta una herramienta.</li>
+      <li>Comparar agentes manuales con frameworks, Skills, protocolos y capas de orquestación.</li>
+      <li>Diseñar un agente pequeño con pruebas, reproducibilidad, permisos mínimos y reflexión sobre sus límites.</li>
+    </ul>
+  </section>
+
   <section class="home-details" aria-label="Información del recurso">
     <article class="home-info-card">
       <span class="home-card-kicker">FICHA DEL RECURSO</span>
