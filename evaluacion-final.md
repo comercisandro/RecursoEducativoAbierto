@@ -5,6 +5,7 @@ permalink: /evaluacion-final.html
 ---
 
 <link rel="stylesheet" href="{{ '/assets/rea.css?v=20261010-6' | relative_url }}">
+<script src="{{ '/assets/rubric.js?v=20261013-1' | relative_url }}" defer></script>
 
 # Actividad integradora
 
@@ -27,15 +28,16 @@ Tu entrega debe incluir:
 <h2 id="rubric-title">Rúbrica propuesta · 100 puntos</h2>
 <p>Usa los niveles como guía de devolución. La cátedra debe confirmar criterios, puntajes y umbrales antes de utilizarlos para acreditar.</p>
 <table>
-<thead><tr><th scope="col">Criterio</th><th scope="col">Puntos</th><th scope="col">Evidencia esperada</th></tr></thead>
+<thead><tr><th scope="col">Criterio</th><th scope="col">Puntos</th><th scope="col">Evidencia esperada</th><th scope="col">Autoevaluación</th></tr></thead>
 <tbody>
-<tr><th scope="row">Comprensión y distinción conceptual</th><td>25</td><td>Diferencia representación, herramienta, observación, Skill, protocolo y orquestación cuando corresponde.</td></tr>
-<tr><th scope="row">Flujo, trazas y pruebas</th><td>25</td><td>El diseño muestra pasos verificables, una respuesta final y casos normales y de error.</td></tr>
-<tr><th scope="row">Reproducibilidad y límites</th><td>20</td><td>Declara datos, versiones, supuestos, parámetros y qué no puede concluirse.</td></tr>
-<tr><th scope="row">Seguridad y privacidad</th><td>20</td><td>Aplica mínimo privilegio, valida entradas y resultados y evita credenciales o datos innecesarios.</td></tr>
-<tr><th scope="row">Comunicación y reflexión</th><td>10</td><td>Explica decisiones con claridad, incorpora una revisión y reconoce cambios pendientes.</td></tr>
+<tr data-rubric-row="concepts"><th scope="row">Comprensión y distinción conceptual</th><td>25</td><td>Diferencia representación, herramienta, observación, Skill, protocolo y orquestación cuando corresponde.</td><td><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de comprensión conceptual</span><select data-rubric="concepts" aria-label="Estado de comprensión y distinción conceptual"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></td></tr>
+<tr data-rubric-row="flow"><th scope="row">Flujo, trazas y pruebas</th><td>25</td><td>El diseño muestra pasos verificables, una respuesta final y casos normales y de error.</td><td><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de flujo, trazas y pruebas</span><select data-rubric="flow" aria-label="Estado de flujo, trazas y pruebas"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></td></tr>
+<tr data-rubric-row="reproducibility"><th scope="row">Reproducibilidad y límites</th><td>20</td><td>Declara datos, versiones, supuestos, parámetros y qué no puede concluirse.</td><td><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de reproducibilidad y límites</span><select data-rubric="reproducibility" aria-label="Estado de reproducibilidad y límites"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></td></tr>
+<tr data-rubric-row="security"><th scope="row">Seguridad y privacidad</th><td>20</td><td>Aplica mínimo privilegio, valida entradas y resultados y evita credenciales o datos innecesarios.</td><td><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de seguridad y privacidad</span><select data-rubric="security" aria-label="Estado de seguridad y privacidad"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></td></tr>
+<tr data-rubric-row="communication"><th scope="row">Comunicación y reflexión</th><td>10</td><td>Explica decisiones con claridad, incorpora una revisión y reconoce cambios pendientes.</td><td><label class="rubric-status"><span class="status-light" aria-hidden="true"></span><span class="sr-only">Estado de comunicación y reflexión</span><select data-rubric="communication" aria-label="Estado de comunicación y reflexión"><option value="pending">Pendiente</option><option value="progress">En proceso</option><option value="complete">Cumplido</option></select></label></td></tr>
 </tbody>
 </table>
+<div class="rubric-selfcheck" aria-live="polite"><div><strong id="rubric-summary">0 de 5 criterios cumplidos</strong><p>Marca cada criterio según el estado actual de tu trabajo. Este registro es formativo y se guarda solo en este navegador.</p></div><div class="rubric-progress-wrap"><progress id="rubric-progress" max="5" value="0" aria-label="Progreso de la autoevaluación">0 de 5</progress><button id="rubric-reset" class="rubric-reset" type="button">Reiniciar autoevaluación</button></div></div>
 </section>
 
 ## Revisión entre pares
