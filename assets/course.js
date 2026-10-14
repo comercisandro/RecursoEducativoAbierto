@@ -27,5 +27,6 @@
   $('font-down').addEventListener('click', () => changeFont(-1)); $('font-up').addEventListener('click', () => changeFont(1));
   try { if (localStorage.getItem('rea-course-contrast') === 'true') { document.body.classList.add('high-contrast'); $('contrast').setAttribute('aria-pressed', 'true'); } } catch (_) {}
   $('contrast').addEventListener('click', () => { const enabled = document.body.classList.toggle('high-contrast'); $('contrast').setAttribute('aria-pressed', String(enabled)); try { localStorage.setItem('rea-course-contrast', String(enabled)); } catch (_) {} });
-  render(1);
+  const requestedModule = Number(new URLSearchParams(window.location.search).get('module'));
+  render([1, 2, 3].includes(requestedModule) ? requestedModule : 1);
 })();
