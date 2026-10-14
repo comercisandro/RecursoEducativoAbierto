@@ -6,6 +6,7 @@
   <meta name="description" content="{{ site.description | escape }}">
   <title>{{ page.title | escape }} · {{ site.title | escape }}</title>
   <link rel="stylesheet" href="{{ '/assets/rea.css?v=20261010-7' | relative_url }}">
+  <script>if (new URLSearchParams(window.location.search).get('embedded') === '1') document.documentElement.classList.add('embedded-page');</script>
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -16,7 +17,7 @@
       <a href="{{ '/' | relative_url }}">Inicio</a>
       <a href="{{ '/aula.html' | relative_url }}">Aula</a>
       <a href="{{ '/guia-reutilizacion.html' | relative_url }}">Guía de reutilización</a>
-      <a href="{{ '/evaluacion-final.html' | relative_url }}">Actividad integradora</a>
+      <a href="{{ '/aula.html?module=4' | relative_url }}">Actividad integradora</a>
       <a href="{{ '/licencias-y-atribuciones.html' | relative_url }}">Licencias</a>
     </nav>
   </div>

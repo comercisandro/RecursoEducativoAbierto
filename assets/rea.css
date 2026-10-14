@@ -66,6 +66,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid #f0a93b; outline-off
 .module-page > .module-hero { position: relative; margin-bottom: 1.2rem; }
 .embedded-module .site-header, .embedded-module .module-page > .module-hero, .embedded-module .learning-path, .embedded-module .video-resource, .embedded-module .site-footer { display: none; }
 .embedded-module .page-shell { width: min(1010px, calc(100% - 1rem)); padding-top: .7rem; }
+.embedded-page .site-header, .embedded-page .site-footer { display: none; }
+.embedded-page .page-shell { width: min(1010px, calc(100% - 1rem)); padding-top: .7rem; }
 .module-hero::after { position: absolute; z-index: -1; right: -5rem; bottom: -9rem; width: 24rem; height: 24rem; border: 1px solid rgb(255 255 255 / 13%); border-radius: 50%; box-shadow: 0 0 0 2rem rgb(255 255 255 / 3%), 0 0 0 4rem rgb(255 255 255 / 3%); content: ""; }
 .eyebrow { display: flex; align-items: center; gap: .65rem; color: var(--mint); font-size: .73rem; font-weight: 850; letter-spacing: .13em; }
 .eyebrow-divider { width: 1.5rem; height: 1px; background: rgb(255 255 255 / 44%); }
