@@ -342,6 +342,7 @@ foreach ($module in $modules) {
     [void]$builder.AppendLine("<title>$([System.Net.WebUtility]::HtmlEncode($module.Title)) · Recurso educativo</title>")
     [void]$builder.AppendLine('<link rel="stylesheet" href="../assets/rea.css?v=20261011-1">')
     [void]$builder.AppendLine('<script src="../assets/learning.js?v=20261011-1" defer></script>')
+    [void]$builder.AppendLine('<script>if (new URLSearchParams(window.location.search).get("embedded") === "1") document.documentElement.classList.add("embedded-module");</script>')
     [void]$builder.AppendLine('</head>')
     [void]$builder.AppendLine('<body>')
     [void]$builder.AppendLine('<a class="skip-link" href="#contenido">Saltar al contenido</a>')
